@@ -1,11 +1,26 @@
 # 依赖
 node_modules/
 
-# 临时文件
+# 爬虫临时文件
 cookies.txt
 go.txt
 result.html
 *.log
+
+# 调试/探测脚本
+inspect*.js
+probe*.js
+getjs.js
+sample.js
+checktype.js
+.quote_list*.js
+
+# API 调试输出
+accounts.json
+pages.json
+createproj.json
+verify.json
+zones.json
 
 # 系统文件
 .DS_Store

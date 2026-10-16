@@ -1,5 +1,6 @@
-// 八方报价单爬虫 v2
-// 修复：Cookie 反爬 + 基于 addCartFxsp 结构化解析
+// 八方报价单爬虫 v3（全分类版）
+// 遍历全部二级分类（km 参数），覆盖苹果/华为/小米/荣耀/VIVO/OPPO/三星/摩托罗拉/
+// 大疆/平板/手表/耳机/笔记本/配件等；按 sourceId 去重。
 // 运行：node crawler.js
 
 const fs = require('fs');
@@ -8,37 +9,40 @@ const path = require('path');
 const BASE_URL = 'http://www.lzbftx.vip';
 const QUOTE_URL = BASE_URL + '/quoteList.action';
 const MAX_REDIRECTS = 20;
+const REQ_DELAY = 400; // 每个分类请求间隔，防反爬
 
-// 带 Cookie 管理的 fetch
+// 全部二级分类（一个品牌/品类一个请求）
+const CATEGORIES = [
+  '贸易机.苹果', '贸易机.三星',
+  '国产机.OPPO', '国产机.VIVO', '国产机.功能机',
+  '国产机.华为', '国产机.华为ND', '国产机.华为全国',
+  '国产机.小米', '国产机.摩托罗拉', '国产机.荣耀',
+  '大疆.大疆',
+  '融合.华为融合', '融合.安顿', '融合.小米融合',
+  '融合.苹果融合', '融合.荣耀融合',
+  '配件.SKG', '配件.华为配件', '配件.小度配件', '配件.小米配件', '配件.苹果配件'
+];
+
+// ===== Cookie 管理（应对八方 JSESSIONID 重定向反爬）=====
 class CookieJar {
-  constructor() {
-    this.cookies = {};
-  }
-
+  constructor() { this.cookies = {}; }
   setFromHeaders(headers) {
     const setCookie = headers.getSetCookie ? headers.getSetCookie() : [];
     setCookie.forEach(cookieStr => {
       const [pair] = cookieStr.split(';');
       const idx = pair.indexOf('=');
       if (idx > 0) {
-        const name = pair.slice(0, idx).trim();
-        const value = pair.slice(idx + 1).trim();
-        this.cookies[name] = value;
+        this.cookies[pair.slice(0, idx).trim()] = pair.slice(idx + 1).trim();
       }
     });
   }
-
   toString() {
     return Object.entries(this.cookies).map(([k, v]) => `${k}=${v}`).join('; ');
   }
 }
 
-// 跟随重定向并保持 Cookie
 async function fetchWithCookies(url, cookieJar, redirectCount = 0) {
-  if (redirectCount > MAX_REDIRECTS) {
-    throw new Error('重定向次数超限');
-  }
-
+  if (redirectCount > MAX_REDIRECTS) throw new Error('重定向次数超限');
   const res = await fetch(url, {
     redirect: 'manual',
     headers: {
@@ -48,102 +52,81 @@ async function fetchWithCookies(url, cookieJar, redirectCount = 0) {
       'Cookie': cookieJar.toString(),
     }
   });
-
   cookieJar.setFromHeaders(res.headers);
-
-  // 处理重定向
   if (res.status >= 300 && res.status < 400) {
-    const location = res.headers.get('location');
+    let location = res.headers.get('location');
     if (!location) throw new Error('重定向缺少 Location');
-
-    let nextUrl = location;
-    if (location.startsWith('/')) {
-      nextUrl = BASE_URL + location;
-    } else if (location.startsWith('?')) {
-      nextUrl = url.split('?')[0] + location;
-    }
-
-    // 小延迟，避免被识别为爬虫
-    await new Promise(r => setTimeout(r, 200));
-
-    return fetchWithCookies(nextUrl, cookieJar, redirectCount + 1);
+    if (location.startsWith('/')) location = BASE_URL + location;
+    else if (location.startsWith('?')) location = url.split('?')[0] + location;
+    await new Promise(r => setTimeout(r, 250));
+    return fetchWithCookies(location, cookieJar, redirectCount + 1);
   }
-
   return res;
 }
 
-// 从 HTML 提取品牌分区
+// ===== 解析：th 分区 + 产品，并根据位置确定分区 =====
 function extractSections(html) {
   const sections = [];
-  // <tr><th colspan="10" class="text-center">苹果</th></tr>
   const thRegex = /<tr>\s*<th[^>]*class="text-center"[^>]*>\s*([^<]+?)\s*<\/th>\s*<\/tr>/g;
   let match;
-  while ((match = thRegex.exec(html)) !== null) {
-    sections.push({
-      name: match[1].trim(),
-      index: match.index
-    });
+  while ((match = thRegex.exec(html))) {
+    sections.push({ name: match[1].trim(), index: match.index });
   }
   return sections;
 }
 
-// 根据位置找到产品所属的品牌
-function findBrandForIndex(sections, index) {
-  let current = 'unknown';
+function findSectionForIndex(sections, index) {
+  let current = sections.length ? sections[0].name : '其他';
   for (const s of sections) {
-    if (s.index <= index) {
-      current = s.name;
-    } else {
-      break;
-    }
+    if (s.index <= index) current = s.name;
+    else break;
   }
   return current;
 }
 
-// 品牌名映射
-function mapBrand(sectionName) {
-  if (sectionName.includes('苹果')) return { brand: 'apple', category: sectionName };
-  if (sectionName.includes('华为ND')) return { brand: 'huawei', category: '华为ND' };
-  if (sectionName.includes('华为全国')) return { brand: 'huawei', category: '华为全国' };
-  if (sectionName.includes('华为')) return { brand: 'huawei', category: sectionName };
-  if (sectionName.includes('小米') || sectionName.includes('红米')) return { brand: 'xiaomi', category: sectionName };
-  if (sectionName.includes('OPPO')) return { brand: 'oppo', category: sectionName };
-  if (sectionName.includes('vivo')) return { brand: 'vivo', category: sectionName };
-  if (sectionName.includes('荣耀')) return { brand: 'honor', category: sectionName };
-  if (sectionName.includes('三星')) return { brand: 'samsung', category: sectionName };
-  return { brand: 'unknown', category: sectionName };
+// 品牌归类（依据分区名）
+function mapBrand(category, rawName) {
+  const c = category || '';
+  const n = rawName || '';
+  if (c.includes('苹果')) return 'apple';
+  if (c.includes('华为')) return 'huawei';
+  if (c.includes('小米') || c.includes('红米') || n.includes('小米') || n.includes('红米')) return 'xiaomi';
+  if (c.includes('荣耀') || n.includes('荣耀')) return 'honor';
+  if (c.includes('VIVO') || c.includes('vivo') || n.includes('vivo') || n.includes('iQOO') || n.includes('IQOO')) return 'vivo';
+  if (c.includes('OPPO') || n.includes('OPPO') || n.includes('一加')) return 'oppo';
+  if (c.includes('三星') || n.includes('三星')) return 'samsung';
+  if (c.includes('摩托罗拉') || n.includes('摩托罗拉') || n.includes('moto') || n.includes('razr')) return 'motorola';
+  if (c.includes('大疆') || n.includes('大疆')) return 'dji';
+  if (c.includes('诺基亚') || n.includes('诺基亚')) return 'nokia';
+  if (c.includes('百合') || n.includes('百合')) return 'baihe';
+  if (c.includes('小度') || n.includes('小度')) return 'xiaodu';
+  if (c.includes('SKG') || n.includes('SKG')) return 'skg';
+  if (c.includes('安顿') || n.includes('安顿')) return 'andun';
+  if (n.includes('小天才') || n.includes('科大讯飞') || n.includes('作业帮')) return 'edu';
+  return 'other';
 }
 
-// 从 addCartFxsp 提取产品
+// 从 addCartFxsp 提取产品（带分区）
 function extractProducts(html, sections) {
-  const products = [];
-  // addCartFxsp(this,'68549','59219','产品名','9330.00','sl68549',...)
+  const list = [];
   const regex = /addCartFxsp\(this\s*,\s*'([^']+)'\s*,\s*'([^']+)'\s*,\s*'([^']+)'\s*,\s*'([^']+)'\s*,\s*'([^']*)'/g;
-
   let match;
-  while ((match = regex.exec(html)) !== null) {
-    const productId = match[1];      // 68549
-    const shopId = match[2];         // 59219
-    const rawName = match[3];        // 产品名
-    const priceStr = match[4];       // 9330.00
-    const stockId = match[5];        // sl68549
-
+  while ((match = regex.exec(html))) {
+    const productId = match[1];
+    const shopId = match[2];
+    const rawName = match[3];
+    const priceStr = match[4];
     const price = parseFloat(priceStr);
     if (isNaN(price)) continue;
-
-    // 找到所属品牌分区
-    const sectionName = findBrandForIndex(sections, match.index);
-    const { brand, category } = mapBrand(sectionName);
-
-    const product = buildProduct(productId, brand, category, rawName, price, shopId);
-    products.push(product);
+    const category = findSectionForIndex(sections, match.index);
+    list.push({ productId, shopId, rawName, price, category });
   }
-
-  return products;
+  return list;
 }
 
 // 构建产品对象
-function buildProduct(productId, brand, category, rawName, price, shopId) {
+function buildProduct(p, brand, category) {
+  const rawName = p.rawName;
   let name = rawName;
   let channel = '*';
   let color = '';
@@ -153,39 +136,25 @@ function buildProduct(productId, brand, category, rawName, price, shopId) {
   const tags = [];
 
   // 渠道识别
-  if (name.includes('(官网)')) {
-    channel = '官网';
-    tags.push('原封');
-  } else if (name.includes('兰州激活')) {
-    channel = '兰州激活';
-    tags.push('激活');
-  } else if (name.includes('仅激活')) {
-    channel = '仅激活';
-    tags.push('激活');
-  } else if (name.includes('国补')) {
-    channel = '国补';
-    tags.push('国补');
-  } else if (name.includes('原封')) {
-    channel = '*';
-    tags.push('原封');
-  } else {
-    tags.push('原封');
-  }
+  if (name.includes('(官网)')) { channel = '官网'; tags.push('原封'); }
+  else if (name.includes('兰州激活')) { channel = '兰州激活'; tags.push('激活'); }
+  else if (name.includes('仅激活')) { channel = '仅激活'; tags.push('激活'); }
+  else if (name.includes('国补')) { channel = '国补'; tags.push('国补'); }
+  else if (name.includes('原封')) { channel = '*'; tags.push('原封'); }
+  else { tags.push('原封'); }
 
   // 缺货占位价
-  if (price < 100) {
-    tags.push('缺货');
-  }
+  if (p.price < 100) tags.push('缺货');
 
-  // 型号编码（如3715）
+  // 型号编码（苹果4位数字，如3715）
   const modelMatch = name.match(/\((\d{4})\)/);
   if (modelMatch) model = modelMatch[1];
 
-  // SKU 编码（如T74/TQ4）
+  // SKU 编码（如 T74/TQ4）
   const skuMatch = name.match(/\(([A-Z0-9]{3,4}\/[A-Z0-9]{3,4})\)/);
   if (skuMatch) sku = skuMatch[1];
 
-  // 容量（优先匹配 "12+512GB" 中的 512GB，其次匹配 "-256GB"）
+  // 容量
   let storageMatch = name.match(/\+\s*(\d+(?:GB|G|TB|T))\b/i);
   if (!storageMatch) storageMatch = name.match(/[-\s](\d+(?:GB|G|TB|T))\b/i);
   if (storageMatch) {
@@ -194,7 +163,7 @@ function buildProduct(productId, brand, category, rawName, price, shopId) {
     if (storage === 'T') storage = 'TB';
   }
 
-  // 颜色
+  // 颜色（扩展常见颜色）
   const colors = [
     '黑色', '白色', '银色', '酒红色', '冰川蓝色', '深空黑色', '云白色', '浅金色', '天蓝色',
     '青雾蓝色', '薰衣草紫色', '鼠尾草绿色', '星宇橙色', '深蓝色', '雪域白', '曜石黑',
@@ -207,17 +176,18 @@ function buildProduct(productId, brand, category, rawName, price, shopId) {
     '天际白', '星空黑', '向新绿', '流沙金', '珍珠白', '流光金', '午夜色', '星光色',
     '靛蓝色', '柑橘黄色', '桃粉色', '水蓝色', '浅紫色', '雪山粉', '冰融蓝', '暗影黑',
     '星云白', '星云灰', '寰宇红', '寰宇蓝', '云锦白', '云锦蓝', '幻影紫', '波尔多红',
-    '星际蓝', '跃影红', '活力橙', '橄榄金', '灵盾防窥屏', '深空灰', '钛黑色', '钛原色'
+    '星际蓝', '跃影红', '活力橙', '橄榄金', '深空灰', '钛黑色', '钛原色',
+    '原野绿', '冰川白', '冰川黑', '雅川青', '晴川蓝', '海湖青', '墨玉青', '松烟墨',
+    '泰山日出', '霓虹紫', '燃橙', '镭射灰', '赤焰红', '远山黛', '云水蓝', '白玉青',
+    '托特蓝', '玄武黑', '赤霞橙', '月光白', '雾川蓝', '薄荷青', '晨曦白', '暗夜绿',
+    '简艾灰', '简青', '荧彩色', '镜瓷白', '彩银色', '雾岛青', '夏日蓝', '海盐蓝'
   ];
   for (const c of colors) {
-    if (name.includes(c)) {
-      color = c;
-      break;
-    }
+    if (name.includes(c)) { color = c; break; }
   }
 
-  // 清理名称末尾的 * 和渠道标注
-  let cleanName = name
+  // 清理名称
+  const cleanName = name
     .replace(/\*+$/, '')
     .replace(/\(官网\)/g, '')
     .replace(/\(兰州激活\)/g, '')
@@ -225,15 +195,10 @@ function buildProduct(productId, brand, category, rawName, price, shopId) {
     .replace(/\s+/g, ' ')
     .trim();
 
-  // 唯一 ID
-  const id = [brand, model || productId, storage, color, channel]
-    .map(s => String(s).replace(/[^\w\u4e00-\u9fa5]/g, '').toLowerCase())
-    .join('-');
-
   return {
-    id,
-    sourceId: productId,
-    shopId,
+    id: `${brand}-${p.productId}`,
+    sourceId: p.productId,
+    shopId: p.shopId,
     brand,
     category,
     name: cleanName,
@@ -242,46 +207,81 @@ function buildProduct(productId, brand, category, rawName, price, shopId) {
     color,
     storage,
     channel,
-    price,
+    price: p.price,
     tags
   };
 }
 
-// 主函数
+// 请求单个分类页
+async function fetchCategory(jar, km) {
+  const url = QUOTE_URL + '?pp=&km=' + encodeURIComponent(km) + '&network=&tykhgsdm=&cksxname=';
+  const res = await fetchWithCookies(url, jar);
+  return await res.text();
+}
+
 async function main() {
-  console.log('开始爬取八方报价单...');
-  const cookieJar = new CookieJar();
+  console.log('开始全分类爬取八方报价单...');
+  const jar = new CookieJar();
 
-  const res = await fetchWithCookies(QUOTE_URL, cookieJar);
-  const html = await res.text();
-  console.log(`页面大小: ${html.length} 字符`);
+  // 1. 首页建立会话
+  console.log('建立会话...');
+  const homeRes = await fetchWithCookies(QUOTE_URL, jar);
+  const homeHtml = await homeRes.text();
 
-  // 提取品牌分区
-  const sections = extractSections(html);
-  console.log(`发现 ${sections.length} 个分区:`, sections.map(s => s.name).join(', '));
+  // 用 sourceId 去重的 Map
+  const byId = new Map();
 
-  // 提取产品
-  const products = extractProducts(html, sections);
-  console.log(`解析到 ${products.length} 个产品`);
-
-  // 品牌统计
-  const stats = {};
-  products.forEach(p => {
-    const key = `${p.brand}(${p.category})`;
-    stats[key] = (stats[key] || 0) + 1;
-  });
-  console.log('分区统计:');
-  Object.entries(stats).forEach(([k, v]) => console.log(`  ${k}: ${v}`));
-
-  // 价格区间
-  const validPrices = products.filter(p => p.price >= 100).map(p => p.price);
-  if (validPrices.length) {
-    console.log(`价格区间: ￥${Math.min(...validPrices)} ~ ￥${Math.max(...validPrices)}`);
+  function ingest(html, source) {
+    const sections = extractSections(html);
+    const raw = extractProducts(html, sections);
+    let added = 0;
+    for (const p of raw) {
+      if (byId.has(p.productId)) continue;
+      const brand = mapBrand(p.category, p.rawName);
+      byId.set(p.productId, buildProduct(p, brand, p.category));
+      added++;
+    }
+    return { total: raw.length, added, sections: sections.map(s => s.name) };
   }
 
-  // 生成时间
+  // 2. 首页默认
+  const homeStat = ingest(homeHtml, '首页');
+  console.log(`首页: 解析 ${homeStat.total}，新增 ${homeStat.added}，分区 [${homeStat.sections.join(',')}]`);
+
+  // 3. 遍历所有二级分类
+  for (const km of CATEGORIES) {
+    try {
+      const html = await fetchCategory(jar, km);
+      const st = ingest(html, km);
+      console.log(`  ${km.padEnd(14)} 解析 ${String(st.total).padStart(3)} 新增 ${String(st.added).padStart(3)} [${st.sections.join('/')}]`);
+    } catch (e) {
+      console.log(`  ${km.padEnd(14)} 失败: ${e.message}`);
+    }
+    await new Promise(r => setTimeout(r, REQ_DELAY));
+  }
+
+  const products = [...byId.values()];
+  console.log(`\n去重后总产品数: ${products.length}`);
+
+  // 品牌/分区统计
+  const byBrand = {}, byCat = {};
+  products.forEach(p => {
+    byBrand[p.brand] = (byBrand[p.brand] || 0) + 1;
+    byCat[p.category] = (byCat[p.category] || 0) + 1;
+  });
+  console.log('\n品牌统计:');
+  Object.entries(byBrand).sort((a, b) => b[1] - a[1]).forEach(([k, v]) => console.log(`  ${k}: ${v}`));
+  console.log('\n分区统计:');
+  Object.entries(byCat).sort((a, b) => b[1] - a[1]).forEach(([k, v]) => console.log(`  ${k}: ${v}`));
+
+  const validPrices = products.filter(p => p.price >= 100).map(p => p.price);
+  if (validPrices.length) {
+    console.log(`\n有效价格区间: ￥${Math.min(...validPrices)} ~ ￥${Math.max(...validPrices)}`);
+  }
+
   const now = new Date();
-  const updateTime = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+  const pad = n => String(n).padStart(2, '0');
+  const updateTime = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
 
   const output = {
     updateTime,
@@ -289,10 +289,8 @@ async function main() {
     count: products.length,
     products
   };
-
-  const outPath = path.join(__dirname, 'data.json');
-  fs.writeFileSync(outPath, JSON.stringify(output, null, 2), 'utf-8');
-  console.log(`\n已写入 ${outPath}`);
+  fs.writeFileSync(path.join(__dirname, 'data.json'), JSON.stringify(output, null, 2), 'utf-8');
+  console.log(`\n已写入 data.json（${products.length} 个产品）`);
 }
 
 main().catch(err => {
