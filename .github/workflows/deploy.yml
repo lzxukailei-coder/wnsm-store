@@ -12,6 +12,22 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v4
 
+      - name: 诊断 Cloudflare Token
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          echo "=== Token 长度 ==="
+          echo -n "$CLOUDFLARE_API_TOKEN" | wc -c
+          echo "=== 出口IP ==="
+          curl -s https://api.cloudflare.com/cdn-cgi/trace | grep '^ip='
+          echo "=== verify ==="
+          curl -s "https://api.cloudflare.com/client/v4/user/tokens/verify" -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+          echo ""
+          echo "=== pages project ==="
+          curl -s "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/wnsm-store" -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" | head -c 400
+          echo ""
+
       - name: 部署到 Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
