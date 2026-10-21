@@ -1,103 +1,93 @@
 # wnsm.store
 
-手机渠道报价网站，自动爬取八方报价单，区分 C 端零售价与 B 端批发价。
+手机渠道报价网站，自动爬取八方报价单（lzbftx.vip），C 端看零售价、B 端同行看批发价，价格全部在服务端计算、原始成本价不下发。
 
 ## 技术栈
 
 - 前端：纯 HTML/CSS/JS（移动端优先）
-- 部署：Cloudflare Pages
-- 自动化：GitHub Actions
-- 数据：自动爬取八方报价单
+- 后端：Cloudflare Pages Functions（无独立服务器，按请求运行）
+- 数据库：Cloudflare D1（SQLite）
+- 部署：Cloudflare Pages + GitHub Actions 自动化
+- 数据：crawler.js 每日定时爬取八方报价单并生成 data.json
 
 ## 项目结构
 
 ```
 .
-├── index.html              # 主页面（报价列表 + 登录注册）
-├── data.json               # 报价数据（爬虫自动生成）
-├── crawler.js              # 八方报价单爬虫
-├── .github/workflows/
-│   ├── crawl.yml           # 定时爬取（每天 UTC 0:00 / 北京 8:00）
-│   └── deploy.yml          # 自动部署到 Cloudflare Pages
-└── README.md
+├── index.html                  # C 端主页面（报价列表 + 真实登录注册）
+├── admin.html                  # 管理员审核后台（同行资质审核）
+├── data.json                   # 八方原始报价（爬虫生成，外部访问 403 拦截）
+├── crawler.js                  # 八方报价单爬虫
+├── wrangler.toml               # Pages 配置 + D1 绑定（binding 名 DB）
+├── schema.sql                  # D1 建表语句
+├── functions/
+│   ├── data.json.js            # 拦截外部直接访问 data.json（成本价保护）
+│   ├── _lib/
+│   │   ├── auth.js             # PBKDF2(10万次) 哈希、会话 Cookie
+│   │   ├── catalog.js          # 读 data.json + 服务端定价/分级
+│   │   └── respond.js          # JSON 响应与校验
+│   └── api/
+│       ├── register.js         # 注册（C 即通过 / B 待审核）
+│       ├── login.js            # 登录
+│       ├── logout.js           # 退出
+│       ├── me.js               # 当前登录用户
+│       ├── products.js         # 商品列表（按身份返回展示价）
+│       └── admin/
+│           ├── users.js        # 管理员：用户列表
+│           └── approve.js      # 管理员：通过/驳回同行
+└── .github/workflows/
+    ├── crawl.yml               # 定时爬取（每天 UTC 0:00 / 北京 8:00）
+    └── deploy.yml              # push 到 main 自动部署
 ```
 
-## 定价规则
+## 账号与价格分级
 
-| 用户类型 | 价格逻辑 |
-|---|---|
-| 未登录 | 不显示价格，提示登录 |
-| C 端个人客户 | 八方公开价 + 阶梯加价（200-800） |
-| B 端同行（已认证） | 八方会员价（公开价 - 80）+ 50 |
+| 身份 | 注册 | 看到的价格 |
+|---|---|---|
+| 未登录 | — | 不显示价格，引导登录 |
+| C 端个人客户 | 注册即通过 | 零售价 = 八方公开价 + 阶梯加价 |
+| B 端同行·审核中 | 提交门店/联系人/执照 | 暂看零售价，标“审核中” |
+| B 端同行·已通过 | 管理员审核 | 批发价 = 八方公开价 − 30 |
+| 管理员 | 数据库内置 | 进入 /admin.html 审核同行 |
 
-## 首次部署步骤
+零售价阶梯：公开价 <2000 加 200；2000–5000 加 300；5000–10000 加 500；≥10000 加 800。
+缺货（tags 含“缺货”或价格 <100）显示“缺货/待报价”，无价格。
 
-### 1. 创建 GitHub 仓库
+### 安全机制
+
+- 原始 `data.json` 含八方成本价：`functions/data.json.js` 对所有外部请求返回 403；函数内部通过 `env.ASSETS.fetch('/data.json')` 读取（5 分钟内存缓存）。
+- `/api/products` 只返回按身份计算后的 `displayPrice`，永不下发原始 `price`、`shopId`、`sourceId`。
+- 密码：PBKDF2-SHA256、10 万次迭代、每用户 16 字节随机 salt，不存明文。
+- 会话：32 字节随机 token 存 D1，经 `httpOnly + Secure + SameSite=Lax` Cookie 下发（名 `wnsm_session`，30 天）。
+
+## 本地复现 / 重建
 
 ```bash
-git init
-git add .
-git commit -m "init: wnsm.store 报价网站"
-git branch -M main
-git remote add origin https://github.com/你的用户名/wnsm-store.git
-git push -u origin main
+# 1. 创建 D1 数据库
+npx wrangler d1 create wnsm-db
+#   将返回的 database_id 填入 wrangler.toml 的 [[d1_databases]]
+
+# 2. 建表（远程）
+npx wrangler d1 execute wnsm-db --remote --file schema.sql
+
+# 3. 本地部署
+export CLOUDFLARE_API_TOKEN=...
+export CLOUDFLARE_ACCOUNT_ID=...
+npx wrangler pages deploy . --project-name=wnsm-store --branch=main --commit-dirty=true
 ```
 
-### 2. 获取 Cloudflare API Token
+管理员账户需直接写入 D1（密码哈希算法须与 functions/_lib/auth.js 一致：PBKDF2-SHA256、10 万次、salt 拼接）。
 
-1. 登录 https://dash.cloudflare.com
-2. 右上角头像 → My Profile → API Tokens
-3. Create Token → Edit zone DNS 模板或自定义
-4. 权限需要：
-   - Account → Cloudflare Pages → Edit
-   - User → User Details → Read
-5. 复制 Token 和 Account ID
+## 定时爬虫
 
-### 3. 配置 GitHub Secrets
+- `.github/workflows/crawl.yml` 每天 UTC 0:00（北京 8:00）运行 `node crawler.js`，自动 commit/push data.json。
+- push 触发 deploy.yml 自动部署。
 
-在 GitHub 仓库 → Settings → Secrets and variables → Actions → New repository secret：
+## 待做
 
-| Name | Value |
-|---|---|
-| `CLOUDFLARE_API_TOKEN` | 上一步复制的 Token |
-| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare 账户 ID（Dashboard 右侧） |
-
-### 4. 创建 Cloudflare Pages 项目
-
-1. Cloudflare Dashboard → Workers & Pages → Create → Pages
-2. 方式一：直接连接 GitHub 仓库（推荐）
-3. 方式二：等 GitHub Actions 自动部署（首次需要先手动创建项目）
-
-### 5. 绑定自定义域名
-
-1. Pages 项目 → Custom domains → Set up a custom domain
-2. 输入 `wnsm.store`
-3. 按提示在 Cloudflare DNS 添加记录
-
-### 6. 域名 DNS 托管到 Cloudflare
-
-如果域名在阿里云：
-
-1. Cloudflare → Add a site → 输入 `wnsm.store`
-2. 选择 Free 计划
-3. 复制 Cloudflare 分配的两个 NS 地址
-4. 阿里云域名控制台 → DNS 修改 → 改为 Cloudflare 的 NS
-5. 等待生效（几分钟到几小时）
-
-## 手动运行爬虫
-
-```bash
-node crawler.js
-```
-
-需要 Node.js 18+（内置 fetch）。
-
-## 后续待做
-
-- [ ] 后端真实注册登录（Cloudflare Workers + D1）
-- [ ] B 端营业执照上传审核
+- [ ] 域名 wnsm.store 接入 Cloudflare（Add site + 阿里云改 NS + Pages 自定义域名）
+- [ ] B 端营业执照图片上传（当前为文本字段）
+- [ ] 管理员/用户修改密码、找回密码
 - [ ] 价格涨跌对比（历史数据）
-- [ ] 型号聚合视图
-- [ ] 购物车/下单流程
-- [ ] 多供应商比价
-- [ ] 微信客服对接
+- [ ] 型号聚合视图、购物车/下单流程
+- [ ] 多供应商比价、微信客服对接
