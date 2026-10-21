@@ -17,15 +17,18 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          echo "=== Token 长度 ==="
-          echo -n "$CLOUDFLARE_API_TOKEN" | wc -c
           echo "=== 出口IP ==="
           curl -s https://api.cloudflare.com/cdn-cgi/trace | grep '^ip='
-          echo "=== verify ==="
-          curl -s "https://api.cloudflare.com/client/v4/user/tokens/verify" -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+          echo "=== /user (User Details) ==="
+          curl -s "https://api.cloudflare.com/client/v4/user" -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" | head -c 300
           echo ""
-          echo "=== pages project ==="
-          curl -s "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/wnsm-store" -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" | head -c 400
+          echo "=== /accounts (Account Settings) ==="
+          curl -s "https://api.cloudflare.com/client/v4/accounts" -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" | head -c 400
+          echo ""
+          echo "=== Secret里的AccountID长度 ==="
+          echo -n "$CLOUDFLARE_ACCOUNT_ID" | wc -c
+          echo "=== 硬编码AccountID访问Pages ==="
+          curl -s "https://api.cloudflare.com/client/v4/accounts/ad94869d77670dd16e2e8ef60a636724/pages/projects" -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" | head -c 300
           echo ""
 
       - name: 部署到 Cloudflare Pages
