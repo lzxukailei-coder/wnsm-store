@@ -13,6 +13,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 .header .logo span{color:#ffd700}
 .header .user-area{display:flex;align-items:center;gap:10px}
 .header .user-btn{font-size:13px;color:#fff;background:rgba(255,255,255,.15);border:none;padding:6px 14px;border-radius:16px;cursor:pointer}
+.header .user-btn.admin{background:#ffd700;color:#1a1a2e;font-weight:600}
 .header .user-info{font-size:12px;color:#ccc}
 /* 搜索 */
 .search-bar{background:#fff;padding:10px 16px 6px;border-bottom:1px solid #f0f0f3}
@@ -41,6 +42,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 .card .price-tag{font-size:10px;padding:2px 6px;border-radius:4px;font-weight:500}
 .tag-c{background:#e3f2fd;color:#1976d2}
 .tag-b{background:#fce4ec;color:#c2185b}
+.tag-p{background:#fff8e1;color:#f9a825}
 .card .tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px}
 .card .tags span{font-size:10px;padding:2px 7px;border-radius:4px}
 .t-original{background:#e3f2fd;color:#1976d2}
@@ -66,7 +68,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 .modal .field label{font-size:12px;color:#86868b;display:block;margin-bottom:5px}
 .modal .field input,.modal .field select{width:100%;padding:10px 12px;border:1px solid #d2d2d7;border-radius:8px;font-size:14px;outline:none}
 .modal .field input:focus,.modal .field select:focus{border-color:#0071e3}
-.modal .submit{width:100%;background:#0071e3;color:#fff;border:none;padding:12px;border-radius:10px;font-size:15px;font-weight:500;cursor:pointer;margin-top:6px}
+.modal .submit{width:100%;background:#0071e3;color:#fff;border:none;padding:12px;border-radius:10px;font-size:15px;font-weight:500;cursor:pointer}
+.modal .submit:disabled{background:#9ec9f5;cursor:wait}
 .modal .close{text-align:center;margin-top:14px;font-size:13px;color:#86868b;cursor:pointer}
 .modal .tip{font-size:11px;color:#86868b;text-align:center;margin-top:10px;line-height:1.5}
 /* 底部导航 */
@@ -87,7 +90,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 
 <div class="search-bar">
   <input type="text" id="searchInput" placeholder="搜索型号，如：18Pro 256 黑 / Mate70 / 平板">
-  <div class="update-line" id="updateLine"></div>
+  <div class="update-line" id="updateLine">正在加载报价…</div>
 </div>
 
 <!-- 品牌筛选 -->
@@ -146,9 +149,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
       </div>
       <div class="field">
         <label>密码</label>
-        <input type="password" id="loginPassword" placeholder="请输入密码">
+        <input type="password" id="loginPassword" placeholder="请输入密码" onkeydown="if(event.key==='Enter')doLogin()">
       </div>
-      <button class="submit" onclick="doLogin()">登录</button>
+      <button class="submit" id="loginBtn" onclick="doLogin()">登录</button>
     </div>
 
     <div id="registerForm" style="display:none">
@@ -162,13 +165,27 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
       </div>
       <div class="field">
         <label>客户类型</label>
-        <select id="regRole">
-          <option value="customer">个人客户（零售价）</option>
-          <option value="business">同行/渠道商（批发价）</option>
+        <select id="regRole" onchange="toggleBizFields()">
+          <option value="C">个人客户（零售价）</option>
+          <option value="B">同行/渠道商（批发价）</option>
         </select>
       </div>
-      <button class="submit" onclick="doRegister()">注册</button>
-      <div class="tip">同行注册后需提交营业执照审核，审核通过后显示批发价</div>
+      <div id="bizFields" style="display:none">
+        <div class="field">
+          <label>公司/门店名称</label>
+          <input type="text" id="regCompany" placeholder="如：兰州XX通讯器材经营部">
+        </div>
+        <div class="field">
+          <label>联系人</label>
+          <input type="text" id="regContact" placeholder="联系人姓名/微信">
+        </div>
+        <div class="field">
+          <label>营业执照编号</label>
+          <input type="text" id="regLicense" placeholder="统一社会信用代码">
+        </div>
+      </div>
+      <button class="submit" id="regBtn" onclick="doRegister()">注册</button>
+      <div class="tip" id="regTip">同行注册后需提交资质审核，审核通过后显示批发价</div>
     </div>
 
     <div class="close" onclick="closeModal()">关闭</div>
@@ -180,7 +197,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
   <div class="nav-item active"><span class="icon">🏠</span>报价</div>
   <div class="nav-item"><span class="icon">🔍</span>分类</div>
   <div class="nav-item"><span class="icon">🛒</span>购物车</div>
-  <div class="nav-item"><span class="icon">👤</span>我的</div>
+  <div class="nav-item" onclick="goMe()"><span class="icon">👤</span>我的</div>
 </div>
 
 <script>
@@ -200,34 +217,40 @@ const BRAND_NAMES = {
   edu:'学习设备', other:'其他'
 };
 
-// 品类推断
-function getType(p) {
-  const c = p.category || '', n = p.name || '';
-  if (c.includes('平板')) return 'tablet';
-  if (c.includes('手表')) return 'watch';
-  if (c.includes('耳机')) return 'audio';
-  if (c.includes('配件')) return 'accessory';
-  if (/平板|iPad|IPAD|MatePad|妙控键盘/.test(n)) return 'tablet';
-  if (/手表|Watch|WATCH|眼镜|手环|WhizKid/.test(n)) return 'watch';
-  if (/耳机|AirPods|AIRPODS|音响|音箱|蓝牙/.test(n)) return 'audio';
-  if (/笔记本|MacBook|电脑主机|mini主机|一体机|主机/.test(n)) return 'computer';
-  if (/充电器|键盘|鼠标|手写笔|Pencil|触控笔|转接线|数据线|电源适配器|快充|打印机|电脑包|保护壳|贴膜|线控|充电头/.test(n)) return 'accessory';
-  if (['苹果','华为','华为ND','华为全国','小米','荣耀','VIVO','OPPO','三星','摩托罗拉','诺基亚','百合'].includes(c)) return 'phone';
-  return 'smart';
+// 统一 API 请求（同源自动携带 httpOnly Cookie）
+async function api(path, method = 'GET', body) {
+  const opt = { method, credentials: 'same-origin', headers: {} };
+  if (body) { opt.headers['Content-Type'] = 'application/json'; opt.body = JSON.stringify(body); }
+  const r = await fetch(path, opt);
+  const data = await r.json().catch(() => ({}));
+  if (!r.ok || data.ok === false) throw new Error(data.error || '请求失败，请稍后重试');
+  return data;
 }
 
-// 加载数据
-fetch('data.json?t=' + Date.now())
-  .then(r => r.json())
-  .then(data => {
+// 加载商品（服务端按身份返回展示价）
+async function loadProducts() {
+  try {
+    const data = await api('/api/products');
     products = data.products || [];
-    products.forEach(p => p.ptype = getType(p));
-    if (data.updateTime) document.getElementById('updateLine').textContent = '报价更新：' + data.updateTime + ' · 共 ' + products.length + ' 个型号';
+    if (data.auth) user = data.auth;
+    document.getElementById('updateLine').textContent =
+      '报价更新：' + (data.updateTime || '未知') + ' · 共 ' + products.length + ' 个型号';
+    updateUserArea();
     render();
-  });
+  } catch (e) {
+    document.getElementById('updateLine').textContent = '报价加载失败：' + e.message;
+  }
+}
 
-const savedUser = localStorage.getItem('wnsm_user');
-if (savedUser) { user = JSON.parse(savedUser); updateUserArea(); }
+// 启动：先用 /me 恢复登录态，再加载商品
+(async function init() {
+  try {
+    const me = await api('/api/me');
+    user = me.user;
+  } catch (e) { user = null; }
+  updateUserArea();
+  await loadProducts();
+})();
 
 document.getElementById('searchInput').addEventListener('input', () => { displayCount = PAGE; render(); });
 
@@ -260,20 +283,6 @@ document.getElementById('channelFilter').addEventListener('click', e => {
 
 function loadMore() { displayCount += PAGE; render(); }
 
-// 定价规则
-const RETAIL_MARKUP = [
-  { min: 0, max: 2000, add: 200 },
-  { min: 2000, max: 5000, add: 300 },
-  { min: 5000, max: 10000, add: 500 },
-  { min: 10000, max: Infinity, add: 800 }
-];
-const WHOLESALE_MARKUP = 50;
-function getRetailPrice(base) {
-  const r = RETAIL_MARKUP.find(x => base >= x.min && base < x.max);
-  return base + (r ? r.add : 500);
-}
-function getWholesalePrice(base) { return base - 80 + WHOLESALE_MARKUP; }
-
 function getFiltered() {
   const kw = document.getElementById('searchInput').value.toLowerCase().trim();
   let list = products.filter(p => {
@@ -287,11 +296,10 @@ function getFiltered() {
     if (kw && !(p.name.toLowerCase().includes(kw) || (p.sku||'').toLowerCase().includes(kw) || (p.category||'').toLowerCase().includes(kw))) return false;
     return true;
   });
-  // 排序：品牌顺序，再价格
   list.sort((a, b) => {
     const ba = BRAND_ORDER.indexOf(a.brand), bb = BRAND_ORDER.indexOf(b.brand);
     if (ba !== bb) return (ba === -1 ? 99 : ba) - (bb === -1 ? 99 : bb);
-    return a.price - b.price;
+    return (a.displayPrice ?? Infinity) - (b.displayPrice ?? Infinity);
   });
   return list;
 }
@@ -304,14 +312,12 @@ function render() {
   if (!list.length) { box.innerHTML = ''; empty.style.display = 'block'; moreBtn.style.display = 'none'; return; }
   empty.style.display = 'none';
 
-  // 每个品牌的完整数量
   const totalByBrand = {};
   list.forEach(p => totalByBrand[p.brand] = (totalByBrand[p.brand] || 0) + 1);
 
   const shown = list.slice(0, displayCount);
   let html = '';
   let lastBrand = null;
-  const shownCount = {};
   shown.forEach(p => {
     if (p.brand !== lastBrand) {
       html += `<div class="brand-title">${BRAND_NAMES[p.brand] || p.brand}<span class="count">${totalByBrand[p.brand]} 个型号</span></div>`;
@@ -330,25 +336,19 @@ function renderCard(p) {
     return `<span class="${cls}">${t}</span>`;
   }).join('');
 
-  const outStock = (p.tags || []).includes('缺货');
   let priceHtml = '', priceTag = '';
-  if (outStock) {
+  if (p.outStock) {
     priceHtml = `<span style="font-size:15px;color:#86868b">缺货/待报价</span>`;
-  } else if (!user) {
+  } else if (!user || p.displayPrice == null) {
     priceHtml = `<span class="price-locked">🔒 登录后查看价格</span>`;
-  } else if (user.role === 'business' && user.verified) {
-    const price = getWholesalePrice(p.price);
-    priceHtml = `<span class="price cny">￥</span><span class="price">${price.toLocaleString()}</span>`;
-    priceTag = `<span class="price-tag tag-b">批发价</span>`;
-  } else if (user.role === 'business' && !user.verified) {
-    priceHtml = `<span class="price cny">￥</span><span class="price">${getRetailPrice(p.price).toLocaleString()}</span>`;
-    priceTag = `<span class="price-tag tag-c">审核中</span>`;
   } else {
-    priceHtml = `<span class="price cny">￥</span><span class="price">${getRetailPrice(p.price).toLocaleString()}</span>`;
-    priceTag = `<span class="price-tag tag-c">零售价</span>`;
+    priceHtml = `<span class="price cny">￥</span><span class="price">${Number(p.displayPrice).toLocaleString()}</span>`;
+    if (p.priceLabel === 'wholesale') priceTag = `<span class="price-tag tag-b">批发价</span>`;
+    else if (p.priceLabel === 'pending') priceTag = `<span class="price-tag tag-p">审核中·零售价</span>`;
+    else priceTag = `<span class="price-tag tag-c">零售价</span>`;
   }
 
-  const btn = outStock
+  const btn = p.outStock
     ? `<button class="buy-btn" disabled>缺货</button>`
     : user
       ? `<button class="buy-btn" onclick="buy('${encodeURIComponent(p.name)}')">咨询</button>`
@@ -376,45 +376,86 @@ function switchTab(type) {
   document.getElementById('loginForm').style.display = type === 'login' ? 'block' : 'none';
   document.getElementById('registerForm').style.display = type === 'register' ? 'block' : 'none';
 }
+function toggleBizFields() {
+  document.getElementById('bizFields').style.display =
+    document.getElementById('regRole').value === 'B' ? 'block' : 'none';
+}
 
-function doRegister() {
+async function doRegister() {
   const phone = document.getElementById('regPhone').value.trim();
   const password = document.getElementById('regPassword').value;
   const role = document.getElementById('regRole').value;
   if (!/^1\d{10}$/.test(phone)) { alert('请输入正确的手机号'); return; }
-  if (password.length < 6) { alert('密码至少6位'); return; }
-  user = { phone, role, verified: role === 'customer' };
-  localStorage.setItem('wnsm_user', JSON.stringify(user));
-  updateUserArea(); closeModal();
-  alert(role === 'business' ? '注册成功，请提交营业执照等待审核' : '注册成功');
-  render();
+  if (password.length < 6) { alert('密码至少 6 位'); return; }
+  const payload = { phone, password, role };
+  if (role === 'B') {
+    payload.company = document.getElementById('regCompany').value.trim();
+    payload.contact = document.getElementById('regContact').value.trim();
+    payload.businessLicense = document.getElementById('regLicense').value.trim();
+    if (!payload.company) { alert('请填写公司/门店名称'); return; }
+  }
+  const btn = document.getElementById('regBtn');
+  btn.disabled = true; btn.textContent = '提交中…';
+  try {
+    const r = await api('/api/register', 'POST', payload);
+    user = r.user;
+    updateUserArea(); closeModal();
+    await loadProducts();
+    alert(r.message || '注册成功');
+  } catch (e) {
+    alert(e.message);
+  } finally {
+    btn.disabled = false; btn.textContent = '注册';
+  }
 }
 
-function doLogin() {
+async function doLogin() {
   const phone = document.getElementById('loginPhone').value.trim();
   const password = document.getElementById('loginPassword').value;
   if (!phone || !password) { alert('请输入手机号和密码'); return; }
-  user = { phone, role: 'customer', verified: true };
-  localStorage.setItem('wnsm_user', JSON.stringify(user));
-  updateUserArea(); closeModal(); render();
+  const btn = document.getElementById('loginBtn');
+  btn.disabled = true; btn.textContent = '登录中…';
+  try {
+    const r = await api('/api/login', 'POST', { phone, password });
+    user = r.user;
+    updateUserArea(); closeModal();
+    await loadProducts();
+  } catch (e) {
+    alert(e.message);
+  } finally {
+    btn.disabled = false; btn.textContent = '登录';
+  }
 }
+
+async function logout() {
+  await api('/api/logout', 'POST').catch(() => {});
+  user = null;
+  updateUserArea();
+  await loadProducts();
+}
+
+function maskPhone(p) { return p ? p.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2') : ''; }
 
 function updateUserArea() {
   const area = document.getElementById('userArea');
-  if (user) {
-    const roleLabel = user.role === 'business' ? (user.verified ? 'B端' : '审核中') : 'C端';
-    area.innerHTML = `
-      <span class="user-info">${user.phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')} ${roleLabel}</span>
-      <button class="user-btn" onclick="logout()">退出</button>`;
-  } else {
+  if (!user) {
     area.innerHTML = `<button class="user-btn" onclick="openModal('login')">登录/注册</button>`;
+    return;
   }
+  let label = '';
+  if (user.role === 'admin') label = '管理员';
+  else if (user.role === 'B') label = user.status === 'approved' ? 'B端·批发价' : (user.status === 'pending' ? 'B端·审核中' : 'B端·未通过');
+  else label = 'C端·零售价';
+  const adminBtn = user.role === 'admin'
+    ? `<button class="user-btn admin" onclick="location.href='/admin.html'">审核后台</button>` : '';
+  area.innerHTML = `
+    <span class="user-info">${maskPhone(user.phone)} ${label}</span>
+    ${adminBtn}
+    <button class="user-btn" onclick="logout()">退出</button>`;
 }
-function logout() {
-  user = null;
-  localStorage.removeItem('wnsm_user');
-  updateUserArea(); render();
-}
+
+function goMe() { if (user) { alert('当前账号：' + user.phone + '\n类型：' + (user.role === 'B' ? '同行' : '个人客户')); } else { openModal('login'); } }
+
 function buy(nameEnc) {
   const name = decodeURIComponent(nameEnc);
   const text = `你好，我想咨询：${name}`;

@@ -1,0 +1,9 @@
+name = "wnsm-store"
+compatibility_date = "2026-10-21"
+pages_build_output_dir = "."
+
+# D1 数据库绑定（在 Functions 中通过 env.DB 访问）
+[[d1_databases]]
+binding = "DB"
+database_name = "wnsm-db"
+database_id = "956ae4f3-8d40-4f50-8b19-18d8e5298a2a"

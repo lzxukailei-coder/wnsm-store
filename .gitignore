@@ -30,3 +30,16 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# wrangler / 本地密钥
+.wrangler/
+.dev.vars
+.wrangler/
+
+# 本地部署/建库临时日志
+d1create.txt
+d1schema.txt
+tokverify.txt
+ghsec.txt
+oldcheck.txt
+run*.txt

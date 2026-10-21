@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>wnsm.store - 同行审核后台</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f5f5f7;color:#1d1d1f;padding-bottom:40px}
+.header{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+.header h1{font-size:16px;font-weight:600}
+.header a,.header button{color:#fff;background:rgba(255,255,255,.15);border:none;padding:6px 12px;border-radius:14px;font-size:12px;text-decoration:none;cursor:pointer;margin-left:8px}
+.wrap{max-width:760px;margin:0 auto;padding:14px}
+.stat{background:#fff;border-radius:12px;padding:14px 16px;margin-bottom:12px;font-size:13px;color:#555;display:flex;gap:18px;flex-wrap:wrap}
+.stat b{color:#0071e3;font-size:18px}
+.tabs{display:flex;gap:8px;margin-bottom:12px}
+.tabs button{flex:1;padding:9px;border:1px solid #d2d2d7;background:#fff;border-radius:10px;font-size:13px;cursor:pointer}
+.tabs button.active{background:#0071e3;color:#fff;border-color:#0071e3}
+.card{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.card .row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}
+.card .phone{font-size:15px;font-weight:600}
+.card .meta{font-size:12px;color:#666;line-height:1.7}
+.card .meta span{display:inline-block;margin-right:14px}
+.badge{font-size:11px;padding:2px 8px;border-radius:10px;font-weight:500}
+.b-pending{background:#fff8e1;color:#f9a825}
+.b-approved{background:#e8f5e9;color:#388e3c}
+.b-rejected{background:#ffebee;color:#d32f2f}
+.b-C{background:#e3f2fd;color:#1976d2}
+.b-B{background:#fce4ec;color:#c2185b}
+.actions{display:flex;gap:8px;margin-top:10px}
+.actions button{flex:1;padding:9px;border:none;border-radius:9px;font-size:13px;cursor:pointer;font-weight:500}
+.btn-ok{background:#0071e3;color:#fff}
+.btn-no{background:#fff;color:#d32f2f;border:1px solid #d32f2f !important}
+.empty{text-align:center;color:#86868b;padding:60px 20px;font-size:14px}
+.deny{max-width:360px;margin:60px auto;text-align:center;background:#fff;border-radius:14px;padding:36px 24px}
+.deny h2{font-size:18px;margin-bottom:12px}
+.deny p{color:#86868b;font-size:13px;margin-bottom:20px}
+.deny a{display:inline-block;background:#0071e3;color:#fff;padding:10px 24px;border-radius:10px;text-decoration:none;font-size:14px}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>wnsm.store 同行审核后台</h1>
+  <div>
+    <a href="/">返回报价</a>
+    <button onclick="logout()">退出</button>
+  </div>
+</div>
+
+<div class="wrap" id="app" style="display:none">
+  <div class="stat">
+    <div>待审核 <b id="cPending">0</b></div>
+    <div>已通过 <b id="cApproved">0</b></div>
+    <div>已驳回 <b id="cRejected">0</b></div>
+    <div>个人客户 <b id="cC">0</b></div>
+  </div>
+  <div class="tabs">
+    <button class="active" data-tab="pending" onclick="setTab('pending')">待审核</button>
+    <button data-tab="approved" onclick="setTab('approved')">已通过</button>
+    <button data-tab="rejected" onclick="setTab('rejected')">已驳回</button>
+    <button data-tab="all" onclick="setTab('all')">全部</button>
+  </div>
+  <div id="list"></div>
+</div>
+
+<div class="deny" id="deny" style="display:none">
+  <h2 id="denyTitle">需要管理员登录</h2>
+  <p id="denyText">当前账号没有后台访问权限</p>
+  <a href="/">返回首页</a>
+</div>
+
+<script>
+let users = [];
+let tab = 'pending';
+
+async function api(path, method = 'GET', body) {
+  const opt = { method, credentials: 'same-origin', headers: {} };
+  if (body) { opt.headers['Content-Type'] = 'application/json'; opt.body = JSON.stringify(body); }
+  const r = await fetch(path, opt);
+  const data = await r.json().catch(() => ({}));
+  if (!r.ok || data.ok === false) throw new Error(data.error || '请求失败');
+  return data;
+}
+
+function esc(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+async function load() {
+  const data = await api('/api/admin/users');
+  users = data.users || [];
+  const pending = users.filter(u => u.status === 'pending').length;
+  document.getElementById('cPending').textContent = pending;
+  document.getElementById('cApproved').textContent = users.filter(u => u.status === 'approved' && u.role === 'B').length;
+  document.getElementById('cRejected').textContent = users.filter(u => u.status === 'rejected').length;
+  document.getElementById('cC').textContent = users.filter(u => u.role === 'C').length;
+  render();
+}
+
+function setTab(t) {
+  tab = t;
+  document.querySelectorAll('.tabs button').forEach(b => b.classList.toggle('active', b.dataset.tab === t));
+  render();
+}
+
+function render() {
+  let list = users;
+  if (tab === 'pending') list = users.filter(u => u.status === 'pending');
+  else if (tab === 'approved') list = users.filter(u => u.status === 'approved');
+  else if (tab === 'rejected') list = users.filter(u => u.status === 'rejected');
+  const box = document.getElementById('list');
+  if (!list.length) { box.innerHTML = '<div class="empty">暂无记录</div>'; return; }
+  box.innerHTML = list.map(u => {
+    const statusBadge = { pending:'<span class="badge b-pending">待审核</span>', approved:'<span class="badge b-approved">已通过</span>', rejected:'<span class="badge b-rejected">已驳回</span>' }[u.status] || '';
+    const roleBadge = u.role === 'B' ? '<span class="badge b-B">同行</span>' : '<span class="badge b-C">个人</span>';
+    const actions = u.status === 'pending'
+      ? `<div class="actions">
+           <button class="btn-ok" onclick="decide(${u.id},'approve')">通过</button>
+           <button class="btn-no" onclick="decide(${u.id},'reject')">驳回</button>
+         </div>` : '';
+    return `<div class="card">
+      <div class="row">
+        <span class="phone">${esc(u.phone)}</span>
+        <span>${roleBadge} ${statusBadge}</span>
+      </div>
+      <div class="meta">
+        ${u.company ? `<span>门店：${esc(u.company)}</span>` : ''}
+        ${u.contact ? `<span>联系人：${esc(u.contact)}</span>` : ''}
+        ${u.business_license ? `<span>执照：${esc(u.business_license)}</span>` : ''}
+        ${u.reject_reason ? `<span style="color:#d32f2f">驳回原因：${esc(u.reject_reason)}</span>` : ''}
+        <span>注册：${esc((u.created_at||'').replace('T',' ').substr(0,16))}</span>
+      </div>
+      ${actions}
+    </div>`;
+  }).join('');
+}
+
+async function decide(id, action) {
+  let body = { id, action };
+  if (action === 'reject') {
+    const reason = prompt('请输入驳回原因（可留空）：', '资质不符');
+    if (reason === null) return;
+    body.reason = reason;
+  }
+  try {
+    await api('/api/admin/approve', 'POST', body);
+    await load();
+  } catch (e) { alert(e.message); }
+}
+
+async function logout() {
+  await api('/api/logout', 'POST').catch(() => {});
+  location.href = '/';
+}
+
+(async function init() {
+  try {
+    const me = await api('/api/me');
+    if (me.user && me.user.role === 'admin') {
+      document.getElementById('app').style.display = 'block';
+      await load();
+    } else {
+      document.getElementById('denyTitle').textContent = '需要管理员权限';
+      document.getElementById('denyText').textContent = '当前账号没有后台访问权限';
+      document.getElementById('deny').style.display = 'block';
+    }
+  } catch (e) {
+    document.getElementById('denyTitle').textContent = '请先登录';
+    document.getElementById('denyText').textContent = '登录管理员账号后访问审核后台';
+    document.getElementById('deny').style.display = 'block';
+  }
+})();
+</script>
+</body>
+</html>
