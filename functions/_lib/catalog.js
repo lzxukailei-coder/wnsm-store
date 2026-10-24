@@ -1,20 +1,78 @@
-// 商品目录读取与价格分级（全部在服务端计算，原始成本价永不下发）
+// 商品目录读取、SKU 底价保护与价格分级（全部在服务端计算，原始成本价永不下发）
 
-let cache = { data: null, time: 0 };
-const TTL = 5 * 60 * 1000;
+let catalogCache = { data: null, time: 0 };
+let pricingCache = { data: null, time: 0 };
+const CATALOG_TTL = 5 * 60 * 1000;   // 目录 5 分钟
+const PRICING_TTL = 60 * 1000;       // 底价规则/设置 60 秒（改价后最多 1 分钟生效）
+
+const DEFAULT_B_MARGIN = 50;         // B 端默认每台最低毛利（八方会员价 +50，即公开价 -30）
+const C_MIN_MARGIN = 100;            // 有真实成本时，C 端零售价至少高于成本 100
 
 // 通过 env.ASSETS 读取受保护的静态 data.json（ASSETS 不走 Functions 路由，可读到被拦截的文件）
 export async function loadCatalog(request, env) {
-  if (cache.data && Date.now() - cache.time < TTL) return cache.data;
+  if (catalogCache.data && Date.now() - catalogCache.time < CATALOG_TTL) return catalogCache.data;
   const url = new URL('/data.json', request.url);
   const res = await env.ASSETS.fetch(new Request(url.toString(), {
     headers: { 'Cache-Control': 'no-cache' }
   }));
   if (!res.ok) throw new Error('catalog load failed: ' + res.status);
   const data = await res.json();
-  cache.data = data;
-  cache.time = Date.now();
+  catalogCache.data = data;
+  catalogCache.time = Date.now();
   return data;
+}
+
+function num(v) {
+  if (v === null || v === undefined || v === '') return null;
+  const n = Number(v);
+  return Number.isFinite(n) ? n : null;
+}
+
+// 加载底价规则与全局设置，建立内存索引（id / model 精确，name 关键词）
+export async function loadPricing(env) {
+  if (pricingCache.data && Date.now() - pricingCache.time < PRICING_TTL) return pricingCache.data;
+  const [ovRes, setRes] = await Promise.all([
+    env.DB.prepare('SELECT * FROM price_overrides ORDER BY id DESC').all(),
+    env.DB.prepare('SELECT key, value FROM settings').all()
+  ]);
+  const idMap = {}, modelMap = {}, nameRules = [];
+  (ovRes.results || []).forEach(r => {
+    const rule = {
+      id: r.id,
+      match_type: r.match_type,
+      match_value: r.match_value,
+      cost: num(r.cost),
+      floor: num(r.floor),
+      fixed: num(r.fixed),
+      note: r.note || ''
+    };
+    if (r.match_type === 'id') idMap[r.match_value] = rule;
+    else if (r.match_type === 'model') modelMap[r.match_value] = rule;
+    else nameRules.push(rule);
+  });
+  const settings = {};
+  (setRes.results || []).forEach(s => { settings[s.key] = s.value; });
+  const bMargin = num(settings.b_margin);
+  const data = {
+    bMargin: bMargin !== null ? bMargin : DEFAULT_B_MARGIN,
+    idMap, modelMap, nameRules
+  };
+  pricingCache.data = data;
+  pricingCache.time = Date.now();
+  return data;
+}
+
+// 管理端写操作后调用：清本实例规则缓存（其余实例最多 60 秒后自然过期）
+export function invalidatePricing() { pricingCache.data = null; }
+
+// 匹配优先级：id 精确 > model 型号精确 > name 名称包含
+export function findOverride(p, pricing) {
+  if (p.id && pricing.idMap[p.id]) return pricing.idMap[p.id];
+  if (p.model && pricing.modelMap[p.model]) return pricing.modelMap[p.model];
+  for (const r of pricing.nameRules) {
+    if (r.match_value && p.name && p.name.includes(r.match_value)) return r;
+  }
+  return null;
 }
 
 // 品类推断（与历史前端一致）
@@ -44,26 +102,56 @@ export function retailPrice(base) {
   const r = RETAIL_MARKUP.find(x => base >= x.min && base < x.max);
   return base + (r ? r.add : 500);
 }
-// 批发价：八方会员价(公开价-80) 基础上自留 50 → 公开价 - 30
-export function wholesalePrice(base) {
-  return base - 30;
-}
 
 export function isOutOfStock(p) {
   return (p.tags || []).includes('缺货') || p.price < 100;
 }
 
-// 按身份把原始产品映射为对外产品（剔除原始价，仅给展示价）
-export function toPublicProduct(p, user) {
+// 核心定价：计算 B/C 两个价格，并应用 SKU 底价保护
+export function computePrices(p, pricing) {
+  const base = p.price;
+  const member = base - 80;                  // 八方会员价基准（公开价 -80）
+  const ov = findOverride(p, pricing);
+  const cost = ov ? ov.cost : null;
+  const floor = ov ? ov.floor : null;
+  const fixed = ov ? ov.fixed : null;
+
+  // B 端批发价：固定价优先；否则不得低于 默认安全线/成本+毛利/硬底价
+  let wholesale;
+  if (fixed !== null) {
+    wholesale = fixed;
+  } else {
+    let w = member + pricing.bMargin;
+    if (cost !== null) w = Math.max(w, cost + pricing.bMargin);
+    if (floor !== null) w = Math.max(w, floor);
+    wholesale = Math.round(w);
+  }
+
+  // C 端零售价：阶梯加价；若录了真实成本，不得低于成本 + 最低零售毛利
+  let retail = retailPrice(base);
+  if (cost !== null) retail = Math.max(retail, Math.round(cost + C_MIN_MARGIN));
+
+  return {
+    wholesale,
+    retail,
+    member: Math.round(member),
+    base: Math.round(base),
+    override: ov
+  };
+}
+
+// 按身份把原始产品映射为对外产品（剔除原始价，仅给展示价；不暴露成本/规则）
+export function toPublicProduct(p, user, pricing) {
   const outStock = isOutOfStock(p);
   let displayPrice = null;
   let priceLabel = null; // retail=零售价 wholesale=批发价 pending=B端审核中(暂看零售)
   if (!outStock) {
+    const c = computePrices(p, pricing);
     if (user && user.role === 'B' && user.status === 'approved') {
-      displayPrice = wholesalePrice(p.price);
+      displayPrice = c.wholesale;
       priceLabel = 'wholesale';
     } else if (user) {
-      displayPrice = retailPrice(p.price);
+      displayPrice = c.retail;
       priceLabel = (user.role === 'B' && user.status === 'pending') ? 'pending' : 'retail';
     }
     // 未登录：displayPrice/priceLabel 均为 null，前端引导登录

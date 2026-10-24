@@ -21,3 +21,10 @@ export async function readBody(request) {
 export function validPhone(phone) {
   return /^1\d{10}$/.test(String(phone || ''));
 }
+
+// 空值转 null，其余转有限数字（非法数字返回 null）
+export function numOrNull(v) {
+  if (v === null || v === undefined || v === '') return null;
+  const n = Number(v);
+  return Number.isFinite(n) ? n : null;
+}
