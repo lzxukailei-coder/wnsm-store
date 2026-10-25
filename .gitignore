@@ -45,5 +45,5 @@ oldcheck.txt
 run*.txt
 
 # 成本录入表（含真实拿货价，禁止提交）
-成本录入_*.csv
+成本*.csv
 
