@@ -1,11 +1,11 @@
 {
-  "updateTime": "2026-10-24 00:41",
+  "updateTime": "2026-10-25 00:31",
   "source": "http://www.lzbftx.vip/quoteList.action",
-  "count": 2326,
+  "count": 2334,
   "products": [
     {
-      "id": "apple-68628",
-      "sourceId": "68628",
+      "id": "apple-68582",
+      "sourceId": "68582",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
@@ -14,10 +14,44 @@
       "sku": "2N4/2Y4",
       "color": "黑色",
       "storage": "256GB",
-      "channel": "兰州激活",
-      "price": 16780,
+      "channel": "官网",
+      "price": 16880,
       "tags": [
-        "激活"
+        "原封"
+      ]
+    },
+    {
+      "id": "apple-69131",
+      "sourceId": "69131",
+      "shopId": "59219",
+      "brand": "apple",
+      "category": "苹果",
+      "name": "苹果18ProMax(3718)-1TB(YF4/YY4)黑色",
+      "model": "3718",
+      "sku": "YF4/YY4",
+      "color": "黑色",
+      "storage": "1TB",
+      "channel": "*",
+      "price": 16430,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "apple-68581",
+      "sourceId": "68581",
+      "shopId": "59219",
+      "brand": "apple",
+      "category": "苹果",
+      "name": "苹果Duo(3721)-256GB(2M4/2X4)白色",
+      "model": "3721",
+      "sku": "2M4/2X4",
+      "color": "白色",
+      "storage": "256GB",
+      "channel": "官网",
+      "price": 16880,
+      "tags": [
+        "原封"
       ]
     },
     {
@@ -32,9 +66,26 @@
       "color": "银色",
       "storage": "1TB",
       "channel": "兰州激活",
-      "price": 16030,
+      "price": 16080,
       "tags": [
         "激活"
+      ]
+    },
+    {
+      "id": "apple-68584",
+      "sourceId": "68584",
+      "shopId": "59219",
+      "brand": "apple",
+      "category": "苹果",
+      "name": "苹果Duo(3721)-512GB(2Q4/414)黑色",
+      "model": "3721",
+      "sku": "2Q4/414",
+      "color": "黑色",
+      "storage": "512GB",
+      "channel": "官网",
+      "price": 18980,
+      "tags": [
+        "原封"
       ]
     },
     {
@@ -55,18 +106,18 @@
       ]
     },
     {
-      "id": "apple-68581",
-      "sourceId": "68581",
+      "id": "apple-68583",
+      "sourceId": "68583",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
-      "name": "苹果Duo(3721)-256GB(2M4/2X4)白色",
+      "name": "苹果Duo(3721)-512GB(2P4/404)白色",
       "model": "3721",
-      "sku": "2M4/2X4",
+      "sku": "2P4/404",
       "color": "白色",
-      "storage": "256GB",
-      "channel": "*",
-      "price": 17880,
+      "storage": "512GB",
+      "channel": "官网",
+      "price": 18980,
       "tags": [
         "原封"
       ]
@@ -83,7 +134,24 @@
       "color": "酒红色",
       "storage": "1TB",
       "channel": "兰州激活",
-      "price": 16060,
+      "price": 16180,
+      "tags": [
+        "激活"
+      ]
+    },
+    {
+      "id": "apple-68631",
+      "sourceId": "68631",
+      "shopId": "59219",
+      "brand": "apple",
+      "category": "苹果",
+      "name": "苹果Duo(3721)-512GB(2P4/404)白色",
+      "model": "3721",
+      "sku": "2P4/404",
+      "color": "白色",
+      "storage": "512GB",
+      "channel": "兰州激活",
+      "price": 18680,
       "tags": [
         "激活"
       ]
@@ -100,7 +168,24 @@
       "color": "酒红色",
       "storage": "1TB",
       "channel": "*",
-      "price": 16510,
+      "price": 16480,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "apple-68586",
+      "sourceId": "68586",
+      "shopId": "59219",
+      "brand": "apple",
+      "category": "苹果",
+      "name": "苹果Duo(3721)-1TB(2U4/444)黑色",
+      "model": "3721",
+      "sku": "2U4/444",
+      "color": "黑色",
+      "storage": "1TB",
+      "channel": "官网",
+      "price": 23880,
       "tags": [
         "原封"
       ]
@@ -123,6 +208,23 @@
       ]
     },
     {
+      "id": "apple-68585",
+      "sourceId": "68585",
+      "shopId": "59219",
+      "brand": "apple",
+      "category": "苹果",
+      "name": "苹果Duo(3721)-1TB(2T4/434)白色",
+      "model": "3721",
+      "sku": "2T4/434",
+      "color": "白色",
+      "storage": "1TB",
+      "channel": "官网",
+      "price": 23880,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
       "id": "apple-68609",
       "sourceId": "68609",
       "shopId": "59219",
@@ -134,7 +236,24 @@
       "color": "冰川蓝色",
       "storage": "1TB",
       "channel": "兰州激活",
-      "price": 16060,
+      "price": 16130,
+      "tags": [
+        "激活"
+      ]
+    },
+    {
+      "id": "apple-68625",
+      "sourceId": "68625",
+      "shopId": "59219",
+      "brand": "apple",
+      "category": "苹果",
+      "name": "苹果Duo(3721)-1TB(2T4/434)白色",
+      "model": "3721",
+      "sku": "2T4/434",
+      "color": "白色",
+      "storage": "1TB",
+      "channel": "兰州激活",
+      "price": 23580,
       "tags": [
         "激活"
       ]
@@ -157,6 +276,23 @@
       ]
     },
     {
+      "id": "apple-68629",
+      "sourceId": "68629",
+      "shopId": "59219",
+      "brand": "apple",
+      "category": "苹果",
+      "name": "苹果Duo(3721)-2TB(2V4/464)白色",
+      "model": "3721",
+      "sku": "2V4/464",
+      "color": "白色",
+      "storage": "2TB",
+      "channel": "兰州激活",
+      "price": 27080,
+      "tags": [
+        "激活"
+      ]
+    },
+    {
       "id": "apple-68577",
       "sourceId": "68577",
       "shopId": "59219",
@@ -168,7 +304,24 @@
       "color": "黑色",
       "storage": "2TB",
       "channel": "*",
-      "price": 20380,
+      "price": 20280,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "apple-68549",
+      "sourceId": "68549",
+      "shopId": "59219",
+      "brand": "apple",
+      "category": "苹果",
+      "name": "苹果18Pro(3715)-256GB(T74/TQ4)黑色",
+      "model": "3715",
+      "sku": "T74/TQ4",
+      "color": "黑色",
+      "storage": "256GB",
+      "channel": "官网",
+      "price": 9370,
       "tags": [
         "原封"
       ]
@@ -191,8 +344,8 @@
       ]
     },
     {
-      "id": "apple-68549",
-      "sourceId": "68549",
+      "id": "apple-68600",
+      "sourceId": "68600",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
@@ -201,10 +354,10 @@
       "sku": "T74/TQ4",
       "color": "黑色",
       "storage": "256GB",
-      "channel": "官网",
-      "price": 9370,
+      "channel": "兰州激活",
+      "price": 9230,
       "tags": [
-        "原封"
+        "激活"
       ]
     },
     {
@@ -219,43 +372,9 @@
       "color": "银色",
       "storage": "2TB",
       "channel": "*",
-      "price": 20380,
+      "price": 20280,
       "tags": [
         "原封"
-      ]
-    },
-    {
-      "id": "apple-68600",
-      "sourceId": "68600",
-      "shopId": "59219",
-      "brand": "apple",
-      "category": "苹果",
-      "name": "苹果18Pro(3715)-256GB(T74/TQ4)黑色",
-      "model": "3715",
-      "sku": "T74/TQ4",
-      "color": "黑色",
-      "storage": "256GB",
-      "channel": "兰州激活",
-      "price": 9180,
-      "tags": [
-        "激活"
-      ]
-    },
-    {
-      "id": "apple-68618",
-      "sourceId": "68618",
-      "shopId": "59219",
-      "brand": "apple",
-      "category": "苹果",
-      "name": "苹果18ProMax(3718)-2TB(YM4/074)酒红色",
-      "model": "3718",
-      "sku": "YM4/074",
-      "color": "酒红色",
-      "storage": "2TB",
-      "channel": "兰州激活",
-      "price": 20180,
-      "tags": [
-        "激活"
       ]
     },
     {
@@ -276,6 +395,40 @@
       ]
     },
     {
+      "id": "apple-68618",
+      "sourceId": "68618",
+      "shopId": "59219",
+      "brand": "apple",
+      "category": "苹果",
+      "name": "苹果18ProMax(3718)-2TB(YM4/074)酒红色",
+      "model": "3718",
+      "sku": "YM4/074",
+      "color": "酒红色",
+      "storage": "2TB",
+      "channel": "兰州激活",
+      "price": 20180,
+      "tags": [
+        "激活"
+      ]
+    },
+    {
+      "id": "apple-68550",
+      "sourceId": "68550",
+      "shopId": "59219",
+      "brand": "apple",
+      "category": "苹果",
+      "name": "苹果18Pro(3715)-256GB(T84/TR4)银色",
+      "model": "3715",
+      "sku": "T84/TR4",
+      "color": "银色",
+      "storage": "256GB",
+      "channel": "官网",
+      "price": 9460,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
       "id": "apple-68579",
       "sourceId": "68579",
       "shopId": "59219",
@@ -287,7 +440,7 @@
       "color": "酒红色",
       "storage": "2TB",
       "channel": "*",
-      "price": 20380,
+      "price": 20280,
       "tags": [
         "原封"
       ]
@@ -338,7 +491,7 @@
       "color": "银色",
       "storage": "256GB",
       "channel": "兰州激活",
-      "price": 9280,
+      "price": 9330,
       "tags": [
         "激活"
       ]
@@ -355,7 +508,7 @@
       "color": "冰川蓝色",
       "storage": "2TB",
       "channel": "*",
-      "price": 20380,
+      "price": 20280,
       "tags": [
         "原封"
       ]
@@ -372,7 +525,7 @@
       "color": "银色",
       "storage": "256GB",
       "channel": "*",
-      "price": 9540,
+      "price": 9530,
       "tags": [
         "原封"
       ]
@@ -406,7 +559,7 @@
       "color": "酒红色",
       "storage": "256GB",
       "channel": "官网",
-      "price": 9480,
+      "price": 9460,
       "tags": [
         "原封"
       ]
@@ -423,7 +576,7 @@
       "color": "黑色",
       "storage": "256G",
       "channel": "兰州激活",
-      "price": 5560,
+      "price": 5580,
       "tags": [
         "激活"
       ]
@@ -440,7 +593,7 @@
       "color": "酒红色",
       "storage": "256GB",
       "channel": "兰州激活",
-      "price": 9280,
+      "price": 9360,
       "tags": [
         "激活"
       ]
@@ -457,7 +610,7 @@
       "color": "黑色",
       "storage": "256G",
       "channel": "*",
-      "price": 5710,
+      "price": 5690,
       "tags": [
         "原封"
       ]
@@ -474,7 +627,7 @@
       "color": "酒红色",
       "storage": "256GB",
       "channel": "*",
-      "price": 9530,
+      "price": 9510,
       "tags": [
         "原封"
       ]
@@ -497,8 +650,8 @@
       ]
     },
     {
-      "id": "apple-68552",
-      "sourceId": "68552",
+      "id": "apple-68597",
+      "sourceId": "68597",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
@@ -507,10 +660,10 @@
       "sku": "TA4/TU4",
       "color": "冰川蓝色",
       "storage": "256GB",
-      "channel": "官网",
-      "price": 9460,
+      "channel": "兰州激活",
+      "price": 9280,
       "tags": [
-        "原封"
+        "激活"
       ]
     },
     {
@@ -525,43 +678,9 @@
       "color": "白色",
       "storage": "256G",
       "channel": "兰州激活",
-      "price": 5560,
+      "price": 5580,
       "tags": [
         "激活"
-      ]
-    },
-    {
-      "id": "apple-68597",
-      "sourceId": "68597",
-      "shopId": "59219",
-      "brand": "apple",
-      "category": "苹果",
-      "name": "苹果18Pro(3715)-256GB(TA4/TU4)冰川蓝色",
-      "model": "3715",
-      "sku": "TA4/TU4",
-      "color": "冰川蓝色",
-      "storage": "256GB",
-      "channel": "兰州激活",
-      "price": 9230,
-      "tags": [
-        "激活"
-      ]
-    },
-    {
-      "id": "apple-63796",
-      "sourceId": "63796",
-      "shopId": "59219",
-      "brand": "apple",
-      "category": "苹果",
-      "name": "苹果17(3521)-256G白色(6X4/784)",
-      "model": "3521",
-      "sku": "6X4/784",
-      "color": "白色",
-      "storage": "256G",
-      "channel": "*",
-      "price": 5710,
-      "tags": [
-        "原封"
       ]
     },
     {
@@ -576,7 +695,41 @@
       "color": "冰川蓝色",
       "storage": "256GB",
       "channel": "*",
-      "price": 9500,
+      "price": 9510,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "apple-63796",
+      "sourceId": "63796",
+      "shopId": "59219",
+      "brand": "apple",
+      "category": "苹果",
+      "name": "苹果17(3521)-256G白色(6X4/784)",
+      "model": "3521",
+      "sku": "6X4/784",
+      "color": "白色",
+      "storage": "256G",
+      "channel": "*",
+      "price": 5690,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "apple-68553",
+      "sourceId": "68553",
+      "shopId": "59219",
+      "brand": "apple",
+      "category": "苹果",
+      "name": "苹果18Pro(3715)-512GB(TC4/TV7)黑色",
+      "model": "3715",
+      "sku": "TC4/TV7",
+      "color": "黑色",
+      "storage": "512GB",
+      "channel": "官网",
+      "price": 11510,
       "tags": [
         "原封"
       ]
@@ -599,8 +752,8 @@
       ]
     },
     {
-      "id": "apple-68553",
-      "sourceId": "68553",
+      "id": "apple-68608",
+      "sourceId": "68608",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
@@ -609,10 +762,10 @@
       "sku": "TC4/TV7",
       "color": "黑色",
       "storage": "512GB",
-      "channel": "官网",
-      "price": 11520,
+      "channel": "兰州激活",
+      "price": 11400,
       "tags": [
-        "原封"
+        "激活"
       ]
     },
     {
@@ -633,18 +786,18 @@
       ]
     },
     {
-      "id": "apple-68608",
-      "sourceId": "68608",
+      "id": "apple-68607",
+      "sourceId": "68607",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
-      "name": "苹果18Pro(3715)-512GB(TC4/TV7)黑色",
+      "name": "苹果18Pro(3715)-512GB(TD4/TW4)银色",
       "model": "3715",
-      "sku": "TC4/TV7",
-      "color": "黑色",
+      "sku": "TD4/TW4",
+      "color": "银色",
       "storage": "512GB",
       "channel": "兰州激活",
-      "price": 11280,
+      "price": 11460,
       "tags": [
         "激活"
       ]
@@ -667,8 +820,8 @@
       ]
     },
     {
-      "id": "apple-68607",
-      "sourceId": "68607",
+      "id": "apple-69128",
+      "sourceId": "69128",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
@@ -677,10 +830,10 @@
       "sku": "TD4/TW4",
       "color": "银色",
       "storage": "512GB",
-      "channel": "兰州激活",
-      "price": 11460,
+      "channel": "*",
+      "price": 11630,
       "tags": [
-        "激活"
+        "原封"
       ]
     },
     {
@@ -701,20 +854,20 @@
       ]
     },
     {
-      "id": "apple-69128",
-      "sourceId": "69128",
+      "id": "apple-69109",
+      "sourceId": "69109",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
-      "name": "苹果18Pro(3715)-512GB(TD4/TW4)银色",
+      "name": "苹果18Pro(3715)-512GB(TE4/TX4)酒红色",
       "model": "3715",
-      "sku": "TD4/TW4",
-      "color": "银色",
+      "sku": "TE4/TX4",
+      "color": "酒红色",
       "storage": "512GB",
-      "channel": "*",
-      "price": 11630,
+      "channel": "仅激活",
+      "price": 10880,
       "tags": [
-        "原封"
+        "激活"
       ]
     },
     {
@@ -729,43 +882,9 @@
       "color": "薰衣草紫色",
       "storage": "256G",
       "channel": "兰州激活",
-      "price": 5560,
+      "price": 5580,
       "tags": [
         "激活"
-      ]
-    },
-    {
-      "id": "apple-69109",
-      "sourceId": "69109",
-      "shopId": "59219",
-      "brand": "apple",
-      "category": "苹果",
-      "name": "苹果18Pro(3715)-512GB(TE4/TX4)酒红色",
-      "model": "3715",
-      "sku": "TE4/TX4",
-      "color": "酒红色",
-      "storage": "512GB",
-      "channel": "仅激活",
-      "price": 10980,
-      "tags": [
-        "激活"
-      ]
-    },
-    {
-      "id": "apple-63798",
-      "sourceId": "63798",
-      "shopId": "59219",
-      "brand": "apple",
-      "category": "苹果",
-      "name": "苹果17(3521)-256G薰衣草紫色(704/7A4)",
-      "model": "3521",
-      "sku": "704/7A4",
-      "color": "薰衣草紫色",
-      "storage": "256G",
-      "channel": "*",
-      "price": 5720,
-      "tags": [
-        "原封"
       ]
     },
     {
@@ -786,20 +905,20 @@
       ]
     },
     {
-      "id": "apple-66353",
-      "sourceId": "66353",
+      "id": "apple-63798",
+      "sourceId": "63798",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
-      "name": "苹果17(3521)-256G鼠尾草绿色(714/7C4)(国补)+返100元",
+      "name": "苹果17(3521)-256G薰衣草紫色(704/7A4)",
       "model": "3521",
-      "sku": "714/7C4",
-      "color": "鼠尾草绿色",
+      "sku": "704/7A4",
+      "color": "薰衣草紫色",
       "storage": "256G",
-      "channel": "国补",
-      "price": 6079,
+      "channel": "*",
+      "price": 5730,
       "tags": [
-        "国补"
+        "原封"
       ]
     },
     {
@@ -820,6 +939,40 @@
       ]
     },
     {
+      "id": "apple-66353",
+      "sourceId": "66353",
+      "shopId": "59219",
+      "brand": "apple",
+      "category": "苹果",
+      "name": "苹果17(3521)-256G鼠尾草绿色(714/7C4)(国补)+返100元",
+      "model": "3521",
+      "sku": "714/7C4",
+      "color": "鼠尾草绿色",
+      "storage": "256G",
+      "channel": "国补",
+      "price": 6079,
+      "tags": [
+        "国补"
+      ]
+    },
+    {
+      "id": "apple-68556",
+      "sourceId": "68556",
+      "shopId": "59219",
+      "brand": "apple",
+      "category": "苹果",
+      "name": "苹果18Pro(3715)-512GB(TF4/TY4)冰川蓝色",
+      "model": "3715",
+      "sku": "TF4/TY4",
+      "color": "冰川蓝色",
+      "storage": "512GB",
+      "channel": "官网",
+      "price": 11560,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
       "id": "apple-67301",
       "sourceId": "67301",
       "shopId": "59219",
@@ -831,7 +984,7 @@
       "color": "鼠尾草绿色",
       "storage": "256G",
       "channel": "兰州激活",
-      "price": 5580,
+      "price": 5560,
       "tags": [
         "激活"
       ]
@@ -848,7 +1001,7 @@
       "color": "冰川蓝色",
       "storage": "512GB",
       "channel": "兰州激活",
-      "price": 11460,
+      "price": 11440,
       "tags": [
         "激活"
       ]
@@ -865,7 +1018,7 @@
       "color": "鼠尾草绿色",
       "storage": "256G",
       "channel": "*",
-      "price": 5680,
+      "price": 5700,
       "tags": [
         "原封"
       ]
@@ -882,7 +1035,7 @@
       "color": "冰川蓝色",
       "storage": "512GB",
       "channel": "*",
-      "price": 11630,
+      "price": 11610,
       "tags": [
         "原封"
       ]
@@ -1307,7 +1460,7 @@
       "color": "银色",
       "storage": "512G",
       "channel": "*",
-      "price": 10100,
+      "price": 10130,
       "tags": [
         "原封"
       ]
@@ -1375,7 +1528,7 @@
       "color": "星宇橙色",
       "storage": "512G",
       "channel": "*",
-      "price": 9680,
+      "price": 9710,
       "tags": [
         "原封"
       ]
@@ -1443,7 +1596,7 @@
       "color": "深蓝色",
       "storage": "512G",
       "channel": "*",
-      "price": 9860,
+      "price": 9880,
       "tags": [
         "原封"
       ]
@@ -1460,7 +1613,7 @@
       "color": "黑色",
       "storage": "256GB",
       "channel": "官网",
-      "price": 10530,
+      "price": 10520,
       "tags": [
         "原封"
       ]
@@ -1477,7 +1630,7 @@
       "color": "银色",
       "storage": "256G",
       "channel": "兰州激活",
-      "price": 8830,
+      "price": 8850,
       "tags": [
         "激活"
       ]
@@ -1545,7 +1698,7 @@
       "color": "星宇橙色",
       "storage": "256G",
       "channel": "兰州激活",
-      "price": 8530,
+      "price": 8540,
       "tags": [
         "激活"
       ]
@@ -1579,7 +1732,7 @@
       "color": "星宇橙色",
       "storage": "256G",
       "channel": "*",
-      "price": 8580,
+      "price": 8570,
       "tags": [
         "原封"
       ]
@@ -1596,7 +1749,7 @@
       "color": "银色",
       "storage": "256GB",
       "channel": "官网",
-      "price": 10680,
+      "price": 10700,
       "tags": [
         "原封"
       ]
@@ -1613,7 +1766,7 @@
       "color": "深蓝色",
       "storage": "256G",
       "channel": "兰州激活",
-      "price": 8700,
+      "price": 8680,
       "tags": [
         "激活"
       ]
@@ -1647,7 +1800,7 @@
       "color": "深蓝色",
       "storage": "256G",
       "channel": "*",
-      "price": 8710,
+      "price": 8700,
       "tags": [
         "原封"
       ]
@@ -1664,7 +1817,7 @@
       "color": "银色",
       "storage": "256GB",
       "channel": "兰州激活",
-      "price": 10480,
+      "price": 10560,
       "tags": [
         "激活"
       ]
@@ -1698,7 +1851,7 @@
       "color": "银色",
       "storage": "256GB",
       "channel": "*",
-      "price": 10760,
+      "price": 10770,
       "tags": [
         "原封"
       ]
@@ -1732,7 +1885,7 @@
       "color": "酒红色",
       "storage": "256GB",
       "channel": "官网",
-      "price": 10680,
+      "price": 10650,
       "tags": [
         "原封"
       ]
@@ -1766,7 +1919,7 @@
       "color": "酒红色",
       "storage": "256GB",
       "channel": "仅激活",
-      "price": 10280,
+      "price": 10230,
       "tags": [
         "激活"
       ]
@@ -1800,7 +1953,7 @@
       "color": "酒红色",
       "storage": "256GB",
       "channel": "兰州激活",
-      "price": 10660,
+      "price": 10630,
       "tags": [
         "激活"
       ]
@@ -1834,7 +1987,7 @@
       "color": "酒红色",
       "storage": "256GB",
       "channel": "*",
-      "price": 10760,
+      "price": 10730,
       "tags": [
         "原封"
       ]
@@ -1851,7 +2004,7 @@
       "color": "深蓝色",
       "storage": "512G",
       "channel": "*",
-      "price": 10810,
+      "price": 10800,
       "tags": [
         "原封"
       ]
@@ -1868,7 +2021,7 @@
       "color": "冰川蓝色",
       "storage": "256GB",
       "channel": "官网",
-      "price": 10730,
+      "price": 10660,
       "tags": [
         "原封"
       ]
@@ -1919,7 +2072,7 @@
       "color": "黑色",
       "storage": "256G",
       "channel": "*",
-      "price": 5660,
+      "price": 5640,
       "tags": [
         "原封"
       ]
@@ -1936,7 +2089,7 @@
       "color": "冰川蓝色",
       "storage": "256GB",
       "channel": "兰州激活",
-      "price": 10630,
+      "price": 10580,
       "tags": [
         "激活"
       ]
@@ -1970,7 +2123,7 @@
       "color": "冰川蓝色",
       "storage": "256GB",
       "channel": "*",
-      "price": 10780,
+      "price": 10730,
       "tags": [
         "原封"
       ]
@@ -2004,7 +2157,7 @@
       "color": "黑色",
       "storage": "512GB",
       "channel": "官网",
-      "price": 12780,
+      "price": 12760,
       "tags": [
         "原封"
       ]
@@ -2021,7 +2174,7 @@
       "color": "浅金色",
       "storage": "256G",
       "channel": "*",
-      "price": 5660,
+      "price": 5650,
       "tags": [
         "原封"
       ]
@@ -2038,7 +2191,7 @@
       "color": "黑色",
       "storage": "512GB",
       "channel": "仅激活",
-      "price": 12130,
+      "price": 12080,
       "tags": [
         "激活"
       ]
@@ -2089,7 +2242,7 @@
       "color": "天蓝色",
       "storage": "256G",
       "channel": "*",
-      "price": 5660,
+      "price": 5650,
       "tags": [
         "原封"
       ]
@@ -2106,7 +2259,7 @@
       "color": "黑色",
       "storage": "512GB",
       "channel": "*",
-      "price": 12860,
+      "price": 12830,
       "tags": [
         "原封"
       ]
@@ -2129,8 +2282,8 @@
       ]
     },
     {
-      "id": "apple-69343",
-      "sourceId": "69343",
+      "id": "apple-68570",
+      "sourceId": "68570",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
@@ -2139,10 +2292,10 @@
       "sku": "YC4/YV4",
       "color": "银色",
       "storage": "512GB",
-      "channel": "仅激活",
-      "price": 12430,
+      "channel": "官网",
+      "price": 12830,
       "tags": [
-        "激活"
+        "原封"
       ]
     },
     {
@@ -2163,8 +2316,8 @@
       ]
     },
     {
-      "id": "apple-68623",
-      "sourceId": "68623",
+      "id": "apple-69343",
+      "sourceId": "69343",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
@@ -2173,8 +2326,8 @@
       "sku": "YC4/YV4",
       "color": "银色",
       "storage": "512GB",
-      "channel": "兰州激活",
-      "price": 12810,
+      "channel": "仅激活",
+      "price": 12380,
       "tags": [
         "激活"
       ]
@@ -2197,8 +2350,8 @@
       ]
     },
     {
-      "id": "apple-69141",
-      "sourceId": "69141",
+      "id": "apple-68623",
+      "sourceId": "68623",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
@@ -2207,10 +2360,10 @@
       "sku": "YC4/YV4",
       "color": "银色",
       "storage": "512GB",
-      "channel": "*",
-      "price": 12900,
+      "channel": "兰州激活",
+      "price": 12760,
       "tags": [
-        "原封"
+        "激活"
       ]
     },
     {
@@ -2231,18 +2384,18 @@
       ]
     },
     {
-      "id": "apple-68571",
-      "sourceId": "68571",
+      "id": "apple-69141",
+      "sourceId": "69141",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
-      "name": "苹果18ProMax(3718)-512GB(YD4/YW4)酒红色",
+      "name": "苹果18ProMax(3718)-512GB(YC4/YV4)银色",
       "model": "3718",
-      "sku": "YD4/YW4",
-      "color": "酒红色",
+      "sku": "YC4/YV4",
+      "color": "银色",
       "storage": "512GB",
-      "channel": "官网",
-      "price": 12700,
+      "channel": "*",
+      "price": 12870,
       "tags": [
         "原封"
       ]
@@ -2265,8 +2418,8 @@
       ]
     },
     {
-      "id": "apple-69316",
-      "sourceId": "69316",
+      "id": "apple-68571",
+      "sourceId": "68571",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
@@ -2275,10 +2428,10 @@
       "sku": "YD4/YW4",
       "color": "酒红色",
       "storage": "512GB",
-      "channel": "仅激活",
-      "price": 12360,
+      "channel": "官网",
+      "price": 12680,
       "tags": [
-        "激活"
+        "原封"
       ]
     },
     {
@@ -2299,8 +2452,8 @@
       ]
     },
     {
-      "id": "apple-68622",
-      "sourceId": "68622",
+      "id": "apple-69316",
+      "sourceId": "69316",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
@@ -2309,8 +2462,8 @@
       "sku": "YD4/YW4",
       "color": "酒红色",
       "storage": "512GB",
-      "channel": "兰州激活",
-      "price": 12740,
+      "channel": "仅激活",
+      "price": 12330,
       "tags": [
         "激活"
       ]
@@ -2333,8 +2486,8 @@
       ]
     },
     {
-      "id": "apple-69142",
-      "sourceId": "69142",
+      "id": "apple-68622",
+      "sourceId": "68622",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
@@ -2343,10 +2496,10 @@
       "sku": "YD4/YW4",
       "color": "酒红色",
       "storage": "512GB",
-      "channel": "*",
-      "price": 12740,
+      "channel": "兰州激活",
+      "price": 12630,
       "tags": [
-        "原封"
+        "激活"
       ]
     },
     {
@@ -2361,24 +2514,24 @@
       "color": "黑色",
       "storage": "128G",
       "channel": "*",
-      "price": 5020,
+      "price": 5010,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "apple-68572",
-      "sourceId": "68572",
+      "id": "apple-69142",
+      "sourceId": "69142",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
-      "name": "苹果18ProMax(3718)-512GB(YE4/YX4)冰川蓝色",
+      "name": "苹果18ProMax(3718)-512GB(YD4/YW4)酒红色",
       "model": "3718",
-      "sku": "YE4/YX4",
-      "color": "冰川蓝色",
+      "sku": "YD4/YW4",
+      "color": "酒红色",
       "storage": "512GB",
-      "channel": "官网",
-      "price": 12750,
+      "channel": "*",
+      "price": 12720,
       "tags": [
         "原封"
       ]
@@ -2395,14 +2548,14 @@
       "color": "白色",
       "storage": "128G",
       "channel": "*",
-      "price": 5020,
+      "price": 5010,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "apple-69328",
-      "sourceId": "69328",
+      "id": "apple-68572",
+      "sourceId": "68572",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
@@ -2411,10 +2564,10 @@
       "sku": "YE4/YX4",
       "color": "冰川蓝色",
       "storage": "512GB",
-      "channel": "仅激活",
-      "price": 12460,
+      "channel": "官网",
+      "price": 12730,
       "tags": [
-        "激活"
+        "原封"
       ]
     },
     {
@@ -2435,8 +2588,8 @@
       ]
     },
     {
-      "id": "apple-68621",
-      "sourceId": "68621",
+      "id": "apple-69328",
+      "sourceId": "69328",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
@@ -2445,8 +2598,8 @@
       "sku": "YE4/YX4",
       "color": "冰川蓝色",
       "storage": "512GB",
-      "channel": "兰州激活",
-      "price": 12730,
+      "channel": "仅激活",
+      "price": 12330,
       "tags": [
         "激活"
       ]
@@ -2469,8 +2622,8 @@
       ]
     },
     {
-      "id": "apple-69143",
-      "sourceId": "69143",
+      "id": "apple-68621",
+      "sourceId": "68621",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
@@ -2479,10 +2632,10 @@
       "sku": "YE4/YX4",
       "color": "冰川蓝色",
       "storage": "512GB",
-      "channel": "*",
-      "price": 12830,
+      "channel": "兰州激活",
+      "price": 12680,
       "tags": [
-        "原封"
+        "激活"
       ]
     },
     {
@@ -2503,18 +2656,18 @@
       ]
     },
     {
-      "id": "apple-68573",
-      "sourceId": "68573",
+      "id": "apple-69143",
+      "sourceId": "69143",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
-      "name": "苹果18ProMax(3718)-1TB(YF4/YY4)黑色",
+      "name": "苹果18ProMax(3718)-512GB(YE4/YX4)冰川蓝色",
       "model": "3718",
-      "sku": "YF4/YY4",
-      "color": "黑色",
-      "storage": "1TB",
-      "channel": "官网",
-      "price": 16330,
+      "sku": "YE4/YX4",
+      "color": "冰川蓝色",
+      "storage": "512GB",
+      "channel": "*",
+      "price": 12810,
       "tags": [
         "原封"
       ]
@@ -2537,8 +2690,8 @@
       ]
     },
     {
-      "id": "apple-68612",
-      "sourceId": "68612",
+      "id": "apple-68573",
+      "sourceId": "68573",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
@@ -2547,10 +2700,10 @@
       "sku": "YF4/YY4",
       "color": "黑色",
       "storage": "1TB",
-      "channel": "兰州激活",
-      "price": 16030,
+      "channel": "官网",
+      "price": 16330,
       "tags": [
-        "激活"
+        "原封"
       ]
     },
     {
@@ -2571,8 +2724,8 @@
       ]
     },
     {
-      "id": "apple-69131",
-      "sourceId": "69131",
+      "id": "apple-68612",
+      "sourceId": "68612",
       "shopId": "59219",
       "brand": "apple",
       "category": "苹果",
@@ -2581,10 +2734,10 @@
       "sku": "YF4/YY4",
       "color": "黑色",
       "storage": "1TB",
-      "channel": "*",
-      "price": 16430,
+      "channel": "兰州激活",
+      "price": 16080,
       "tags": [
-        "原封"
+        "激活"
       ]
     },
     {
@@ -2605,18 +2758,18 @@
       ]
     },
     {
-      "id": "huawei-64898",
-      "sourceId": "64898",
+      "id": "huawei-64892",
+      "sourceId": "64892",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "华为Mate80Pro-16GB+512GB雪域白原封",
+      "name": "华为Mate80Pro-12GB+512GB曜石黑原封",
       "model": "",
       "sku": "",
-      "color": "雪域白",
+      "color": "曜石黑",
       "storage": "512GB",
       "channel": "*",
-      "price": 6200,
+      "price": 5690,
       "tags": [
         "原封"
       ]
@@ -2639,18 +2792,18 @@
       ]
     },
     {
-      "id": "huawei-69179",
-      "sourceId": "69179",
+      "id": "huawei-69196",
+      "sourceId": "69196",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90pro-12+512晶钻白原封",
+      "name": "Mate90pro max典藏-16+1T玫瑰金原封",
       "model": "",
       "sku": "",
-      "color": "晶钻白",
-      "storage": "",
+      "color": "玫瑰金",
+      "storage": "1T",
       "channel": "*",
-      "price": 7270,
+      "price": 12170,
       "tags": [
         "原封"
       ]
@@ -2673,18 +2826,18 @@
       ]
     },
     {
-      "id": "huawei-69178",
-      "sourceId": "69178",
+      "id": "huawei-69193",
+      "sourceId": "69193",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90pro-12+512琥珀橙原封",
+      "name": "Mate90pro max典藏-16+1T曜石黑原封",
       "model": "",
       "sku": "",
-      "color": "琥珀橙",
-      "storage": "",
+      "color": "曜石黑",
+      "storage": "1T",
       "channel": "*",
-      "price": 7220,
+      "price": 12620,
       "tags": [
         "原封"
       ]
@@ -2707,18 +2860,18 @@
       ]
     },
     {
-      "id": "huawei-69177",
-      "sourceId": "69177",
+      "id": "huawei-69195",
+      "sourceId": "69195",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90pro-12+512曜石黑原封",
+      "name": "Mate90pro max典藏-16+1T翡冷翠原封",
       "model": "",
       "sku": "",
-      "color": "曜石黑",
-      "storage": "",
+      "color": "翡冷翠",
+      "storage": "1T",
       "channel": "*",
-      "price": 7220,
+      "price": 12170,
       "tags": [
         "原封"
       ]
@@ -2741,18 +2894,18 @@
       ]
     },
     {
-      "id": "huawei-69180",
-      "sourceId": "69180",
+      "id": "huawei-64897",
+      "sourceId": "64897",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90pro-12+512翡冷翠原封",
+      "name": "华为Mate80Pro-16GB+512GB晨曦金原封",
       "model": "",
       "sku": "",
-      "color": "翡冷翠",
-      "storage": "",
+      "color": "晨曦金",
+      "storage": "512GB",
       "channel": "*",
-      "price": 7070,
+      "price": 5950,
       "tags": [
         "原封"
       ]
@@ -2775,18 +2928,18 @@
       ]
     },
     {
-      "id": "huawei-64925",
-      "sourceId": "64925",
+      "id": "huawei-64898",
+      "sourceId": "64898",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "华为Mate80Pro Max-16GB+512GB极地银原封",
+      "name": "华为Mate80Pro-16GB+512GB雪域白原封",
       "model": "",
       "sku": "",
-      "color": "极地银",
+      "color": "雪域白",
       "storage": "512GB",
       "channel": "*",
-      "price": 6690,
+      "price": 6170,
       "tags": [
         "原封"
       ]
@@ -2809,18 +2962,18 @@
       ]
     },
     {
-      "id": "huawei-64923",
-      "sourceId": "64923",
+      "id": "huawei-69179",
+      "sourceId": "69179",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "华为Mate80Pro Max-16GB+512GB极光青原封",
+      "name": "Mate90pro-12+512晶钻白原封",
       "model": "",
       "sku": "",
-      "color": "极光青",
-      "storage": "512GB",
+      "color": "晶钻白",
+      "storage": "",
       "channel": "*",
-      "price": 6620,
+      "price": 7250,
       "tags": [
         "原封"
       ]
@@ -2837,24 +2990,24 @@
       "color": "风信紫",
       "storage": "512GB",
       "channel": "*",
-      "price": 4050,
+      "price": 4030,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-64924",
-      "sourceId": "64924",
+      "id": "huawei-69178",
+      "sourceId": "69178",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "华为Mate80Pro Max-16GB+512GB极夜黑原封",
+      "name": "Mate90pro-12+512琥珀橙原封",
       "model": "",
       "sku": "",
-      "color": "",
-      "storage": "512GB",
+      "color": "琥珀橙",
+      "storage": "",
       "channel": "*",
-      "price": 6700,
+      "price": 7220,
       "tags": [
         "原封"
       ]
@@ -2877,18 +3030,18 @@
       ]
     },
     {
-      "id": "huawei-64926",
-      "sourceId": "64926",
+      "id": "huawei-69177",
+      "sourceId": "69177",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "华为Mate80Pro Max-16GB+512GB极昼金原封",
+      "name": "Mate90pro-12+512曜石黑原封",
       "model": "",
       "sku": "",
-      "color": "",
-      "storage": "512GB",
+      "color": "曜石黑",
+      "storage": "",
       "channel": "*",
-      "price": 6700,
+      "price": 7220,
       "tags": [
         "原封"
       ]
@@ -2911,18 +3064,18 @@
       ]
     },
     {
-      "id": "huawei-66965",
-      "sourceId": "66965",
+      "id": "huawei-69180",
+      "sourceId": "69180",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Pura90 12+256GB原封罗兰紫",
+      "name": "Mate90pro-12+512翡冷翠原封",
       "model": "",
       "sku": "",
-      "color": "罗兰紫",
-      "storage": "256GB",
+      "color": "翡冷翠",
+      "storage": "",
       "channel": "*",
-      "price": 3830,
+      "price": 7090,
       "tags": [
         "原封"
       ]
@@ -2939,24 +3092,24 @@
       "color": "零度白",
       "storage": "12GB",
       "channel": "*",
-      "price": 6320,
+      "price": 6300,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-66963",
-      "sourceId": "66963",
+      "id": "huawei-64925",
+      "sourceId": "64925",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Pura90 12+256GB原封丝绒黑",
+      "name": "华为Mate80Pro Max-16GB+512GB极地银原封",
       "model": "",
       "sku": "",
-      "color": "丝绒黑",
-      "storage": "256GB",
+      "color": "极地银",
+      "storage": "512GB",
       "channel": "*",
-      "price": 3830,
+      "price": 6650,
       "tags": [
         "原封"
       ]
@@ -2973,24 +3126,24 @@
       "color": "型格红",
       "storage": "12GB",
       "channel": "*",
-      "price": 6370,
+      "price": 6320,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-66964",
-      "sourceId": "66964",
+      "id": "huawei-64923",
+      "sourceId": "64923",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Pura90 12+256GB原封雪域白",
+      "name": "华为Mate80Pro Max-16GB+512GB极光青原封",
       "model": "",
       "sku": "",
-      "color": "雪域白",
-      "storage": "256GB",
+      "color": "极光青",
+      "storage": "512GB",
       "channel": "*",
-      "price": 3830,
+      "price": 6650,
       "tags": [
         "原封"
       ]
@@ -3007,24 +3160,24 @@
       "color": "",
       "storage": "12GB",
       "channel": "*",
-      "price": 6370,
+      "price": 6320,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-69198",
-      "sourceId": "69198",
+      "id": "huawei-64924",
+      "sourceId": "64924",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90pro-16+512晶钻白原封",
+      "name": "华为Mate80Pro Max-16GB+512GB极夜黑原封",
       "model": "",
       "sku": "",
-      "color": "晶钻白",
-      "storage": "",
+      "color": "",
+      "storage": "512GB",
       "channel": "*",
-      "price": 7720,
+      "price": 6670,
       "tags": [
         "原封"
       ]
@@ -3041,24 +3194,24 @@
       "color": "月影灰",
       "storage": "12GB",
       "channel": "*",
-      "price": 6270,
+      "price": 6250,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-69200",
-      "sourceId": "69200",
+      "id": "huawei-64926",
+      "sourceId": "64926",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90pro-16+512琥珀橙原封",
+      "name": "华为Mate80Pro Max-16GB+512GB极昼金原封",
       "model": "",
       "sku": "",
-      "color": "琥珀橙",
-      "storage": "",
+      "color": "",
+      "storage": "512GB",
       "channel": "*",
-      "price": 7720,
+      "price": 6650,
       "tags": [
         "原封"
       ]
@@ -3075,24 +3228,24 @@
       "color": "",
       "storage": "16GB",
       "channel": "*",
-      "price": 6470,
+      "price": 6450,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-69197",
-      "sourceId": "69197",
+      "id": "huawei-66965",
+      "sourceId": "66965",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90pro-16+512曜石黑原封",
+      "name": "Pura90 12+256GB原封罗兰紫",
       "model": "",
       "sku": "",
-      "color": "曜石黑",
-      "storage": "",
+      "color": "罗兰紫",
+      "storage": "256GB",
       "channel": "*",
-      "price": 7820,
+      "price": 3830,
       "tags": [
         "原封"
       ]
@@ -3115,18 +3268,18 @@
       ]
     },
     {
-      "id": "huawei-69199",
-      "sourceId": "69199",
+      "id": "huawei-66963",
+      "sourceId": "66963",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90pro-16+512翡冷翠原封",
+      "name": "Pura90 12+256GB原封丝绒黑",
       "model": "",
       "sku": "",
-      "color": "翡冷翠",
-      "storage": "",
+      "color": "丝绒黑",
+      "storage": "256GB",
       "channel": "*",
-      "price": 7670,
+      "price": 3830,
       "tags": [
         "原封"
       ]
@@ -3149,18 +3302,18 @@
       ]
     },
     {
-      "id": "huawei-66966",
-      "sourceId": "66966",
+      "id": "huawei-66964",
+      "sourceId": "66964",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Pura90 12+512GB原封罗兰紫",
+      "name": "Pura90 12+256GB原封雪域白",
       "model": "",
       "sku": "",
-      "color": "罗兰紫",
-      "storage": "512GB",
+      "color": "雪域白",
+      "storage": "256GB",
       "channel": "*",
-      "price": 4170,
+      "price": 3830,
       "tags": [
         "原封"
       ]
@@ -3183,18 +3336,18 @@
       ]
     },
     {
-      "id": "huawei-66967",
-      "sourceId": "66967",
+      "id": "huawei-69198",
+      "sourceId": "69198",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Pura90 12+512GB原封丝绒黑",
+      "name": "Mate90pro-16+512晶钻白原封",
       "model": "",
       "sku": "",
-      "color": "丝绒黑",
-      "storage": "512GB",
+      "color": "晶钻白",
+      "storage": "",
       "channel": "*",
-      "price": 4190,
+      "price": 7720,
       "tags": [
         "原封"
       ]
@@ -3217,18 +3370,18 @@
       ]
     },
     {
-      "id": "huawei-66968",
-      "sourceId": "66968",
+      "id": "huawei-69200",
+      "sourceId": "69200",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Pura90 12+512GB原封雪域白",
+      "name": "Mate90pro-16+512琥珀橙原封",
       "model": "",
       "sku": "",
-      "color": "雪域白",
-      "storage": "512GB",
+      "color": "琥珀橙",
+      "storage": "",
       "channel": "*",
-      "price": 4170,
+      "price": 7720,
       "tags": [
         "原封"
       ]
@@ -3245,24 +3398,24 @@
       "color": "釉白",
       "storage": "",
       "channel": "*",
-      "price": 4650,
+      "price": 4620,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-69206",
-      "sourceId": "69206",
+      "id": "huawei-69197",
+      "sourceId": "69197",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90RS-16+1T瑞红原封",
+      "name": "Mate90pro-16+512曜石黑原封",
       "model": "",
       "sku": "",
-      "color": "",
-      "storage": "1T",
+      "color": "曜石黑",
+      "storage": "",
       "channel": "*",
-      "price": 15470,
+      "price": 7820,
       "tags": [
         "原封"
       ]
@@ -3279,24 +3432,24 @@
       "color": "釉黑",
       "storage": "",
       "channel": "*",
-      "price": 4590,
+      "price": 4560,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-69204",
-      "sourceId": "69204",
+      "id": "huawei-69199",
+      "sourceId": "69199",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90RS-16+1T玄黑原封",
+      "name": "Mate90pro-16+512翡冷翠原封",
       "model": "",
       "sku": "",
-      "color": "",
-      "storage": "1T",
+      "color": "翡冷翠",
+      "storage": "",
       "channel": "*",
-      "price": 15420,
+      "price": 7720,
       "tags": [
         "原封"
       ]
@@ -3313,24 +3466,24 @@
       "color": "釉青",
       "storage": "",
       "channel": "*",
-      "price": 4590,
+      "price": 4560,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-69205",
-      "sourceId": "69205",
+      "id": "huawei-66966",
+      "sourceId": "66966",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90RS-16+1T皓白原封",
+      "name": "Pura90 12+512GB原封罗兰紫",
       "model": "",
       "sku": "",
-      "color": "",
-      "storage": "1T",
+      "color": "罗兰紫",
+      "storage": "512GB",
       "channel": "*",
-      "price": 14670,
+      "price": 4170,
       "tags": [
         "原封"
       ]
@@ -3353,18 +3506,18 @@
       ]
     },
     {
-      "id": "huawei-69203",
-      "sourceId": "69203",
+      "id": "huawei-66967",
+      "sourceId": "66967",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90RS-16+512瑞红原封",
+      "name": "Pura90 12+512GB原封丝绒黑",
       "model": "",
       "sku": "",
-      "color": "",
-      "storage": "",
+      "color": "丝绒黑",
+      "storage": "512GB",
       "channel": "*",
-      "price": 13420,
+      "price": 4190,
       "tags": [
         "原封"
       ]
@@ -3381,24 +3534,24 @@
       "color": "鎏光金",
       "storage": "",
       "channel": "*",
-      "price": 5190,
+      "price": 5170,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-69201",
-      "sourceId": "69201",
+      "id": "huawei-66968",
+      "sourceId": "66968",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90RS-16+512玄黑原封",
+      "name": "Pura90 12+512GB原封雪域白",
       "model": "",
       "sku": "",
-      "color": "",
-      "storage": "",
+      "color": "雪域白",
+      "storage": "512GB",
       "channel": "*",
-      "price": 13120,
+      "price": 4170,
       "tags": [
         "原封"
       ]
@@ -3415,41 +3568,7 @@
       "color": "活力橙",
       "storage": "256GB",
       "channel": "*",
-      "price": 10000,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-69202",
-      "sourceId": "69202",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为",
-      "name": "Mate90RS-16+512皓白原封",
-      "model": "",
-      "sku": "",
-      "color": "",
-      "storage": "",
-      "channel": "*",
-      "price": 12920,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-66869",
-      "sourceId": "66869",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为",
-      "name": "Pura X Max12+256GB原封零度白",
-      "model": "",
-      "sku": "",
-      "color": "零度白",
-      "storage": "256GB",
-      "channel": "*",
-      "price": 10000,
+      "price": 9970,
       "tags": [
         "原封"
       ]
@@ -3466,24 +3585,24 @@
       "color": "晶钻白",
       "storage": "",
       "channel": "*",
-      "price": 8420,
+      "price": 8370,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-66871",
-      "sourceId": "66871",
+      "id": "huawei-66869",
+      "sourceId": "66869",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Pura X Max12+256GB原封橄榄金",
+      "name": "Pura X Max12+256GB原封零度白",
       "model": "",
       "sku": "",
-      "color": "橄榄金",
+      "color": "零度白",
       "storage": "256GB",
       "channel": "*",
-      "price": 10000,
+      "price": 9970,
       "tags": [
         "原封"
       ]
@@ -3500,24 +3619,24 @@
       "color": "玫瑰金",
       "storage": "",
       "channel": "*",
-      "price": 8420,
+      "price": 8370,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-66891",
-      "sourceId": "66891",
+      "id": "huawei-66871",
+      "sourceId": "66871",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Pura X Max典藏版16+512GB原封幻夜黑",
+      "name": "Pura X Max12+256GB原封橄榄金",
       "model": "",
       "sku": "",
-      "color": "幻夜黑",
-      "storage": "512GB",
+      "color": "橄榄金",
+      "storage": "256GB",
       "channel": "*",
-      "price": 11750,
+      "price": 9970,
       "tags": [
         "原封"
       ]
@@ -3534,7 +3653,41 @@
       "color": "曜石黑",
       "storage": "",
       "channel": "*",
-      "price": 8420,
+      "price": 8370,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-66891",
+      "sourceId": "66891",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为",
+      "name": "Pura X Max典藏版16+512GB原封幻夜黑",
+      "model": "",
+      "sku": "",
+      "color": "幻夜黑",
+      "storage": "512GB",
+      "channel": "*",
+      "price": 11720,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-69302",
+      "sourceId": "69302",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为",
+      "name": "Mate90pro max-12+512翡冷翠原封",
+      "model": "",
+      "sku": "",
+      "color": "翡冷翠",
+      "storage": "",
+      "channel": "*",
+      "price": 8370,
       "tags": [
         "原封"
       ]
@@ -3557,40 +3710,6 @@
       ]
     },
     {
-      "id": "huawei-69302",
-      "sourceId": "69302",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为",
-      "name": "Mate90pro max-12+512翡冷翠原封",
-      "model": "",
-      "sku": "",
-      "color": "翡冷翠",
-      "storage": "",
-      "channel": "*",
-      "price": 8420,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-66894",
-      "sourceId": "66894",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为",
-      "name": "Pura X Max典藏版16+512GB原封星际蓝",
-      "model": "",
-      "sku": "",
-      "color": "星际蓝",
-      "storage": "512GB",
-      "channel": "*",
-      "price": 11550,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
       "id": "huawei-64947",
       "sourceId": "64947",
       "shopId": "59219",
@@ -3608,18 +3727,18 @@
       ]
     },
     {
-      "id": "huawei-66892",
-      "sourceId": "66892",
+      "id": "huawei-66894",
+      "sourceId": "66894",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Pura X Max典藏版16+512GB原封橄榄金",
+      "name": "Pura X Max典藏版16+512GB原封星际蓝",
       "model": "",
       "sku": "",
-      "color": "橄榄金",
+      "color": "星际蓝",
       "storage": "512GB",
       "channel": "*",
-      "price": 11700,
+      "price": 11570,
       "tags": [
         "原封"
       ]
@@ -3642,18 +3761,18 @@
       ]
     },
     {
-      "id": "huawei-68484",
-      "sourceId": "68484",
+      "id": "huawei-66892",
+      "sourceId": "66892",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Pura X Max典藏版16+1TB原封波尔多红",
+      "name": "Pura X Max典藏版16+512GB原封橄榄金",
       "model": "",
       "sku": "",
-      "color": "波尔多红",
-      "storage": "1TB",
+      "color": "橄榄金",
+      "storage": "512GB",
       "channel": "*",
-      "price": 13270,
+      "price": 11700,
       "tags": [
         "原封"
       ]
@@ -3670,24 +3789,24 @@
       "color": "",
       "storage": "512GB",
       "channel": "*",
-      "price": 9650,
+      "price": 9620,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-68259",
-      "sourceId": "68259",
+      "id": "huawei-68254",
+      "sourceId": "68254",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Pura X View12+1T跃影红",
+      "name": "Pura X View12+512零度白",
       "model": "",
       "sku": "",
-      "color": "跃影红",
-      "storage": "1T",
+      "color": "零度白",
+      "storage": "",
       "channel": "*",
-      "price": 8390,
+      "price": 6950,
       "tags": [
         "原封"
       ]
@@ -3710,18 +3829,18 @@
       ]
     },
     {
-      "id": "huawei-65049",
-      "sourceId": "65049",
+      "id": "huawei-68484",
+      "sourceId": "68484",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "华为MateX7-12GB+512GB幻影紫原封",
+      "name": "Pura X Max典藏版16+1TB原封波尔多红",
       "model": "",
       "sku": "",
-      "color": "幻影紫",
-      "storage": "512GB",
+      "color": "波尔多红",
+      "storage": "1TB",
       "channel": "*",
-      "price": 11470,
+      "price": 13270,
       "tags": [
         "原封"
       ]
@@ -3744,18 +3863,18 @@
       ]
     },
     {
-      "id": "huawei-65052",
-      "sourceId": "65052",
+      "id": "huawei-68258",
+      "sourceId": "68258",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "华为MateX7-16GB+512GB典藏版云锦白原封",
+      "name": "Pura X View12+1T零度白",
       "model": "",
       "sku": "",
-      "color": "云锦白",
-      "storage": "512GB",
+      "color": "零度白",
+      "storage": "1T",
       "channel": "*",
-      "price": 12450,
+      "price": 8470,
       "tags": [
         "原封"
       ]
@@ -3772,24 +3891,24 @@
       "color": "桑果黑",
       "storage": "512GB",
       "channel": "*",
-      "price": 4950,
+      "price": 4920,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-64882",
-      "sourceId": "64882",
+      "id": "huawei-68260",
+      "sourceId": "68260",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "华为Mate80-12GB+512GB晨曦金原封",
+      "name": "Pura X View12+1T亚麻灰",
       "model": "",
       "sku": "",
-      "color": "晨曦金",
-      "storage": "512GB",
+      "color": "亚麻灰",
+      "storage": "1T",
       "channel": "*",
-      "price": 4520,
+      "price": 8370,
       "tags": [
         "原封"
       ]
@@ -3806,24 +3925,24 @@
       "color": "椰青白",
       "storage": "512GB",
       "channel": "*",
-      "price": 4950,
+      "price": 4920,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-64877",
-      "sourceId": "64877",
+      "id": "huawei-68259",
+      "sourceId": "68259",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "华为Mate80-12GB+512GB云杉绿原封",
+      "name": "Pura X View12+1T跃影红",
       "model": "",
       "sku": "",
-      "color": "云杉绿",
-      "storage": "512GB",
+      "color": "跃影红",
+      "storage": "1T",
       "channel": "*",
-      "price": 4520,
+      "price": 8370,
       "tags": [
         "原封"
       ]
@@ -3840,24 +3959,24 @@
       "color": "橘子汽水",
       "storage": "512GB",
       "channel": "*",
-      "price": 4950,
+      "price": 4920,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-64883",
-      "sourceId": "64883",
+      "id": "huawei-65049",
+      "sourceId": "65049",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "华为Mate80-16GB+512GB晨曦金原封",
+      "name": "华为MateX7-12GB+512GB幻影紫原封",
       "model": "",
       "sku": "",
-      "color": "晨曦金",
+      "color": "幻影紫",
       "storage": "512GB",
       "channel": "*",
-      "price": 4750,
+      "price": 11430,
       "tags": [
         "原封"
       ]
@@ -3880,18 +3999,18 @@
       ]
     },
     {
-      "id": "huawei-64879",
-      "sourceId": "64879",
+      "id": "huawei-65052",
+      "sourceId": "65052",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "华为Mate80-16GB+512GB雪域白原封",
+      "name": "华为MateX7-16GB+512GB典藏版云锦白原封",
       "model": "",
       "sku": "",
-      "color": "雪域白",
+      "color": "云锦白",
       "storage": "512GB",
       "channel": "*",
-      "price": 4770,
+      "price": 12450,
       "tags": [
         "原封"
       ]
@@ -3914,18 +4033,18 @@
       ]
     },
     {
-      "id": "huawei-64878",
-      "sourceId": "64878",
+      "id": "huawei-64882",
+      "sourceId": "64882",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "华为Mate80-16GB+512GB曜石黑原封",
+      "name": "华为Mate80-12GB+512GB晨曦金原封",
       "model": "",
       "sku": "",
-      "color": "曜石黑",
+      "color": "晨曦金",
       "storage": "512GB",
       "channel": "*",
-      "price": 4930,
+      "price": 4500,
       "tags": [
         "原封"
       ]
@@ -3948,18 +4067,18 @@
       ]
     },
     {
-      "id": "huawei-69167",
-      "sourceId": "69167",
+      "id": "huawei-64877",
+      "sourceId": "64877",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90-12+256晶格粉原封",
+      "name": "华为Mate80-12GB+512GB云杉绿原封",
       "model": "",
       "sku": "",
-      "color": "晶格粉",
-      "storage": "",
+      "color": "云杉绿",
+      "storage": "512GB",
       "channel": "*",
-      "price": 5100,
+      "price": 4500,
       "tags": [
         "原封"
       ]
@@ -3982,18 +4101,18 @@
       ]
     },
     {
-      "id": "huawei-69168",
-      "sourceId": "69168",
+      "id": "huawei-64875",
+      "sourceId": "64875",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90-12+256晶格绿原封",
+      "name": "华为Mate80-12GB+512GB曜石黑原封",
       "model": "",
       "sku": "",
-      "color": "晶格绿",
-      "storage": "",
+      "color": "曜石黑",
+      "storage": "512GB",
       "channel": "*",
-      "price": 5100,
+      "price": 4500,
       "tags": [
         "原封"
       ]
@@ -4016,18 +4135,18 @@
       ]
     },
     {
-      "id": "huawei-69166",
-      "sourceId": "69166",
+      "id": "huawei-64883",
+      "sourceId": "64883",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90-12+256零度白原封",
+      "name": "华为Mate80-16GB+512GB晨曦金原封",
       "model": "",
       "sku": "",
-      "color": "零度白",
-      "storage": "",
+      "color": "晨曦金",
+      "storage": "512GB",
       "channel": "*",
-      "price": 5000,
+      "price": 4750,
       "tags": [
         "原封"
       ]
@@ -4050,6 +4169,142 @@
       ]
     },
     {
+      "id": "huawei-64879",
+      "sourceId": "64879",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为",
+      "name": "华为Mate80-16GB+512GB雪域白原封",
+      "model": "",
+      "sku": "",
+      "color": "雪域白",
+      "storage": "512GB",
+      "channel": "*",
+      "price": 4770,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-66796",
+      "sourceId": "66796",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为",
+      "name": "Pura90ProMax 12+512GB原封晨曦金",
+      "model": "",
+      "sku": "",
+      "color": "晨曦金",
+      "storage": "512GB",
+      "channel": "*",
+      "price": 5920,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-64878",
+      "sourceId": "64878",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为",
+      "name": "华为Mate80-16GB+512GB曜石黑原封",
+      "model": "",
+      "sku": "",
+      "color": "曜石黑",
+      "storage": "512GB",
+      "channel": "*",
+      "price": 4920,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-66795",
+      "sourceId": "66795",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为",
+      "name": "Pura90ProMax 12+512GB原封霞光紫",
+      "model": "",
+      "sku": "",
+      "color": "霞光紫",
+      "storage": "512GB",
+      "channel": "*",
+      "price": 5920,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-69167",
+      "sourceId": "69167",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为",
+      "name": "Mate90-12+256晶格粉原封",
+      "model": "",
+      "sku": "",
+      "color": "晶格粉",
+      "storage": "",
+      "channel": "*",
+      "price": 5100,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-66793",
+      "sourceId": "66793",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为",
+      "name": "Pura90ProMax 12+512GB原封橘子海",
+      "model": "",
+      "sku": "",
+      "color": "橘子海",
+      "storage": "512GB",
+      "channel": "*",
+      "price": 5920,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-69168",
+      "sourceId": "69168",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为",
+      "name": "Mate90-12+256晶格绿原封",
+      "model": "",
+      "sku": "",
+      "color": "晶格绿",
+      "storage": "",
+      "channel": "*",
+      "price": 5100,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-66794",
+      "sourceId": "66794",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为",
+      "name": "Pura90ProMax 12+512GB原封曜石黑",
+      "model": "",
+      "sku": "",
+      "color": "曜石黑",
+      "storage": "512GB",
+      "channel": "*",
+      "price": 5920,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
       "id": "huawei-69165",
       "sourceId": "69165",
       "shopId": "59219",
@@ -4067,18 +4322,18 @@
       ]
     },
     {
-      "id": "huawei-66796",
-      "sourceId": "66796",
+      "id": "huawei-66792",
+      "sourceId": "66792",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Pura90ProMax 12+512GB原封晨曦金",
+      "name": "Pura90ProMax 12+512GB原封翡翠湖",
       "model": "",
       "sku": "",
-      "color": "晨曦金",
+      "color": "翡翠湖",
       "storage": "512GB",
       "channel": "*",
-      "price": 5950,
+      "price": 5920,
       "tags": [
         "原封"
       ]
@@ -4095,143 +4350,7 @@
       "color": "晶格粉",
       "storage": "",
       "channel": "*",
-      "price": 6220,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-66795",
-      "sourceId": "66795",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为",
-      "name": "Pura90ProMax 12+512GB原封霞光紫",
-      "model": "",
-      "sku": "",
-      "color": "霞光紫",
-      "storage": "512GB",
-      "channel": "*",
-      "price": 5950,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-69172",
-      "sourceId": "69172",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为",
-      "name": "Mate90-12+512晶格绿原封",
-      "model": "",
-      "sku": "",
-      "color": "晶格绿",
-      "storage": "",
-      "channel": "*",
-      "price": 6200,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-66793",
-      "sourceId": "66793",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为",
-      "name": "Pura90ProMax 12+512GB原封橘子海",
-      "model": "",
-      "sku": "",
-      "color": "橘子海",
-      "storage": "512GB",
-      "channel": "*",
-      "price": 5950,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-69170",
-      "sourceId": "69170",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为",
-      "name": "Mate90-12+512零度白原封",
-      "model": "",
-      "sku": "",
-      "color": "零度白",
-      "storage": "",
-      "channel": "*",
-      "price": 6170,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-66794",
-      "sourceId": "66794",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为",
-      "name": "Pura90ProMax 12+512GB原封曜石黑",
-      "model": "",
-      "sku": "",
-      "color": "曜石黑",
-      "storage": "512GB",
-      "channel": "*",
-      "price": 5950,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-69169",
-      "sourceId": "69169",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为",
-      "name": "Mate90-12+512曜石黑原封",
-      "model": "",
-      "sku": "",
-      "color": "曜石黑",
-      "storage": "",
-      "channel": "*",
-      "price": 6170,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-66792",
-      "sourceId": "66792",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为",
-      "name": "Pura90ProMax 12+512GB原封翡翠湖",
-      "model": "",
-      "sku": "",
-      "color": "翡翠湖",
-      "storage": "512GB",
-      "channel": "*",
-      "price": 5950,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-69186",
-      "sourceId": "69186",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为",
-      "name": "Mate90pro max-16+512晶钻白原封",
-      "model": "",
-      "sku": "",
-      "color": "晶钻白",
-      "storage": "",
-      "channel": "*",
-      "price": 9370,
+      "price": 6190,
       "tags": [
         "原封"
       ]
@@ -4254,18 +4373,18 @@
       ]
     },
     {
-      "id": "huawei-69187",
-      "sourceId": "69187",
+      "id": "huawei-69172",
+      "sourceId": "69172",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90pro max-16+512玫瑰金原封",
+      "name": "Mate90-12+512晶格绿原封",
       "model": "",
       "sku": "",
-      "color": "玫瑰金",
+      "color": "晶格绿",
       "storage": "",
       "channel": "*",
-      "price": 9120,
+      "price": 6170,
       "tags": [
         "原封"
       ]
@@ -4282,24 +4401,24 @@
       "color": "霞光紫",
       "storage": "512GB",
       "channel": "*",
-      "price": 6300,
+      "price": 6270,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-69185",
-      "sourceId": "69185",
+      "id": "huawei-69170",
+      "sourceId": "69170",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90pro max-16+512曜石黑原封",
+      "name": "Mate90-12+512零度白原封",
       "model": "",
       "sku": "",
-      "color": "曜石黑",
+      "color": "零度白",
       "storage": "",
       "channel": "*",
-      "price": 9420,
+      "price": 6150,
       "tags": [
         "原封"
       ]
@@ -4316,24 +4435,24 @@
       "color": "橘子海",
       "storage": "512GB",
       "channel": "*",
-      "price": 6300,
+      "price": 6270,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-69188",
-      "sourceId": "69188",
+      "id": "huawei-69169",
+      "sourceId": "69169",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90pro max-16+512翡冷翠原封",
+      "name": "Mate90-12+512曜石黑原封",
       "model": "",
       "sku": "",
-      "color": "翡冷翠",
+      "color": "曜石黑",
       "storage": "",
       "channel": "*",
-      "price": 9370,
+      "price": 6150,
       "tags": [
         "原封"
       ]
@@ -4356,18 +4475,18 @@
       ]
     },
     {
-      "id": "huawei-64892",
-      "sourceId": "64892",
+      "id": "huawei-69186",
+      "sourceId": "69186",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "华为Mate80Pro-12GB+512GB曜石黑原封",
+      "name": "Mate90pro max-16+512晶钻白原封",
       "model": "",
       "sku": "",
-      "color": "曜石黑",
-      "storage": "512GB",
+      "color": "晶钻白",
+      "storage": "",
       "channel": "*",
-      "price": 5720,
+      "price": 9350,
       "tags": [
         "原封"
       ]
@@ -4384,24 +4503,24 @@
       "color": "翡翠湖",
       "storage": "512GB",
       "channel": "*",
-      "price": 6300,
+      "price": 6270,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-69196",
-      "sourceId": "69196",
+      "id": "huawei-69187",
+      "sourceId": "69187",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90pro max典藏-16+1T玫瑰金原封",
+      "name": "Mate90pro max-16+512玫瑰金原封",
       "model": "",
       "sku": "",
       "color": "玫瑰金",
-      "storage": "1T",
+      "storage": "",
       "channel": "*",
-      "price": 12170,
+      "price": 9120,
       "tags": [
         "原封"
       ]
@@ -4418,25 +4537,24 @@
       "color": "星云灰",
       "storage": "512GB",
       "channel": "*",
-      "price": 70,
+      "price": 8600,
       "tags": [
-        "原封",
-        "缺货"
+        "原封"
       ]
     },
     {
-      "id": "huawei-69193",
-      "sourceId": "69193",
+      "id": "huawei-69185",
+      "sourceId": "69185",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90pro max典藏-16+1T曜石黑原封",
+      "name": "Mate90pro max-16+512曜石黑原封",
       "model": "",
       "sku": "",
       "color": "曜石黑",
-      "storage": "1T",
+      "storage": "",
       "channel": "*",
-      "price": 12620,
+      "price": 9370,
       "tags": [
         "原封"
       ]
@@ -4453,25 +4571,24 @@
       "color": "寰宇红",
       "storage": "512GB",
       "channel": "*",
-      "price": 70,
+      "price": 8720,
       "tags": [
-        "原封",
-        "缺货"
+        "原封"
       ]
     },
     {
-      "id": "huawei-69195",
-      "sourceId": "69195",
+      "id": "huawei-69188",
+      "sourceId": "69188",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为",
-      "name": "Mate90pro max典藏-16+1T翡冷翠原封",
+      "name": "Mate90pro max-16+512翡冷翠原封",
       "model": "",
       "sku": "",
       "color": "翡冷翠",
-      "storage": "1T",
+      "storage": "",
       "channel": "*",
-      "price": 12170,
+      "price": 9320,
       "tags": [
         "原封"
       ]
@@ -4488,25 +4605,7 @@
       "color": "曜石黑",
       "storage": "512GB",
       "channel": "*",
-      "price": 70,
-      "tags": [
-        "原封",
-        "缺货"
-      ]
-    },
-    {
-      "id": "huawei-64897",
-      "sourceId": "64897",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为",
-      "name": "华为Mate80Pro-16GB+512GB晨曦金原封",
-      "model": "",
-      "sku": "",
-      "color": "晨曦金",
-      "storage": "512GB",
-      "channel": "*",
-      "price": 6020,
+      "price": 8670,
       "tags": [
         "原封"
       ]
@@ -4529,15 +4628,15 @@
       ]
     },
     {
-      "id": "huawei-68131",
-      "sourceId": "68131",
+      "id": "huawei-68132",
+      "sourceId": "68132",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova16se-512G天际白(原封)",
+      "name": "华为nova16se-512G破晓橙(原封)",
       "model": "",
       "sku": "",
-      "color": "天际白",
+      "color": "破晓橙",
       "storage": "512G",
       "channel": "*",
       "price": 2770,
@@ -4563,15 +4662,15 @@
       ]
     },
     {
-      "id": "huawei-68130",
-      "sourceId": "68130",
+      "id": "huawei-68131",
+      "sourceId": "68131",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova16se-512G星空黑(原封)",
+      "name": "华为nova16se-512G天际白(原封)",
       "model": "",
       "sku": "",
-      "color": "星空黑",
+      "color": "天际白",
       "storage": "512G",
       "channel": "*",
       "price": 2770,
@@ -4597,15 +4696,15 @@
       ]
     },
     {
-      "id": "huawei-68133",
-      "sourceId": "68133",
+      "id": "huawei-68130",
+      "sourceId": "68130",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova16se-512G樱雪晴空(原封)",
+      "name": "华为nova16se-512G星空黑(原封)",
       "model": "",
       "sku": "",
-      "color": "樱雪晴空",
+      "color": "星空黑",
       "storage": "512G",
       "channel": "*",
       "price": 2770,
@@ -4631,6 +4730,40 @@
       ]
     },
     {
+      "id": "huawei-68133",
+      "sourceId": "68133",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为ND",
+      "name": "华为nova16se-512G樱雪晴空(原封)",
+      "model": "",
+      "sku": "",
+      "color": "樱雪晴空",
+      "storage": "512G",
+      "channel": "*",
+      "price": 2770,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-63755",
+      "sourceId": "63755",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为ND",
+      "name": "Hi畅享80S-6+128G5G珍珠白(原封)",
+      "model": "",
+      "sku": "",
+      "color": "珍珠白",
+      "storage": "",
+      "channel": "*",
+      "price": 1080,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
       "id": "huawei-67520",
       "sourceId": "67520",
       "shopId": "59219",
@@ -4648,15 +4781,15 @@
       ]
     },
     {
-      "id": "huawei-63755",
-      "sourceId": "63755",
+      "id": "huawei-65062",
+      "sourceId": "65062",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "Hi畅享80S-6+128G5G珍珠白(原封)",
+      "name": "Hi畅享80S-6+128G5G曜石黑(原封)",
       "model": "",
       "sku": "",
-      "color": "珍珠白",
+      "color": "曜石黑",
       "storage": "",
       "channel": "*",
       "price": 1080,
@@ -4682,40 +4815,6 @@
       ]
     },
     {
-      "id": "huawei-65062",
-      "sourceId": "65062",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为ND",
-      "name": "Hi畅享80S-6+128G5G曜石黑(原封)",
-      "model": "",
-      "sku": "",
-      "color": "曜石黑",
-      "storage": "",
-      "channel": "*",
-      "price": 1080,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-67519",
-      "sourceId": "67519",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为ND",
-      "name": "华为nova16-256G天际白(原封)",
-      "model": "",
-      "sku": "",
-      "color": "天际白",
-      "storage": "256G",
-      "channel": "*",
-      "price": 2580,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
       "id": "huawei-64535",
       "sourceId": "64535",
       "shopId": "59219",
@@ -4733,15 +4832,15 @@
       ]
     },
     {
-      "id": "huawei-67522",
-      "sourceId": "67522",
+      "id": "huawei-67519",
+      "sourceId": "67519",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova16-256G星空黑(原封)",
+      "name": "华为nova16-256G天际白(原封)",
       "model": "",
       "sku": "",
-      "color": "星空黑",
+      "color": "天际白",
       "storage": "256G",
       "channel": "*",
       "price": 2580,
@@ -4767,18 +4866,18 @@
       ]
     },
     {
-      "id": "huawei-67524",
-      "sourceId": "67524",
+      "id": "huawei-67522",
+      "sourceId": "67522",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova16-512G幻彩贝母(原封)",
+      "name": "华为nova16-256G星空黑(原封)",
       "model": "",
       "sku": "",
-      "color": "幻彩贝母",
-      "storage": "512G",
+      "color": "星空黑",
+      "storage": "256G",
       "channel": "*",
-      "price": 2980,
+      "price": 2580,
       "tags": [
         "原封"
       ]
@@ -4801,15 +4900,15 @@
       ]
     },
     {
-      "id": "huawei-67525",
-      "sourceId": "67525",
+      "id": "huawei-67524",
+      "sourceId": "67524",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova16-512G晴空蓝(原封)",
+      "name": "华为nova16-512G幻彩贝母(原封)",
       "model": "",
       "sku": "",
-      "color": "晴空蓝",
+      "color": "幻彩贝母",
       "storage": "512G",
       "channel": "*",
       "price": 2980,
@@ -4829,7 +4928,41 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 1360,
+      "price": 1350,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-67525",
+      "sourceId": "67525",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为ND",
+      "name": "华为nova16-512G晴空蓝(原封)",
+      "model": "",
+      "sku": "",
+      "color": "晴空蓝",
+      "storage": "512G",
+      "channel": "*",
+      "price": 2980,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-63252",
+      "sourceId": "63252",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为ND",
+      "name": "Hi畅享80pro-8+256G5G星海蓝(原封)",
+      "model": "",
+      "sku": "",
+      "color": "星海蓝",
+      "storage": "",
+      "channel": "*",
+      "price": 1350,
       "tags": [
         "原封"
       ]
@@ -4852,18 +4985,18 @@
       ]
     },
     {
-      "id": "huawei-63252",
-      "sourceId": "63252",
+      "id": "huawei-63250",
+      "sourceId": "63250",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "Hi畅享80pro-8+256G5G星海蓝(原封)",
+      "name": "Hi畅享80pro-8+256G5G星空黑(原封)",
       "model": "",
       "sku": "",
-      "color": "星海蓝",
+      "color": "星空黑",
       "storage": "",
       "channel": "*",
-      "price": 1360,
+      "price": 1350,
       "tags": [
         "原封"
       ]
@@ -4886,40 +5019,6 @@
       ]
     },
     {
-      "id": "huawei-63250",
-      "sourceId": "63250",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为ND",
-      "name": "Hi畅享80pro-8+256G5G星空黑(原封)",
-      "model": "",
-      "sku": "",
-      "color": "星空黑",
-      "storage": "",
-      "channel": "*",
-      "price": 1360,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-67528",
-      "sourceId": "67528",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为ND",
-      "name": "华为nova16pro-256G幻彩贝母昆仑玻璃版(原封)",
-      "model": "",
-      "sku": "",
-      "color": "幻彩贝母",
-      "storage": "256G",
-      "channel": "*",
-      "price": 3280,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
       "id": "huawei-63255",
       "sourceId": "63255",
       "shopId": "59219",
@@ -4937,15 +5036,15 @@
       ]
     },
     {
-      "id": "huawei-67529",
-      "sourceId": "67529",
+      "id": "huawei-67528",
+      "sourceId": "67528",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova16pro-256G晴空蓝昆仑玻璃版(原封)",
+      "name": "华为nova16pro-256G幻彩贝母昆仑玻璃版(原封)",
       "model": "",
       "sku": "",
-      "color": "晴空蓝",
+      "color": "幻彩贝母",
       "storage": "256G",
       "channel": "*",
       "price": 3280,
@@ -4971,15 +5070,15 @@
       ]
     },
     {
-      "id": "huawei-67527",
-      "sourceId": "67527",
+      "id": "huawei-67529",
+      "sourceId": "67529",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova16pro-256G天际白昆仑玻璃版(原封)",
+      "name": "华为nova16pro-256G晴空蓝昆仑玻璃版(原封)",
       "model": "",
       "sku": "",
-      "color": "天际白",
+      "color": "晴空蓝",
       "storage": "256G",
       "channel": "*",
       "price": 3280,
@@ -5005,15 +5104,15 @@
       ]
     },
     {
-      "id": "huawei-67530",
-      "sourceId": "67530",
+      "id": "huawei-67527",
+      "sourceId": "67527",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova16pro-256G星空黑昆仑玻璃版(原封)",
+      "name": "华为nova16pro-256G天际白昆仑玻璃版(原封)",
       "model": "",
       "sku": "",
-      "color": "星空黑",
+      "color": "天际白",
       "storage": "256G",
       "channel": "*",
       "price": 3280,
@@ -5033,7 +5132,41 @@
       "color": "幻夜黑",
       "storage": "",
       "channel": "*",
-      "price": 1420,
+      "price": 1410,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-67530",
+      "sourceId": "67530",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为ND",
+      "name": "华为nova16pro-256G星空黑昆仑玻璃版(原封)",
+      "model": "",
+      "sku": "",
+      "color": "星空黑",
+      "storage": "256G",
+      "channel": "*",
+      "price": 3280,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-65676",
+      "sourceId": "65676",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为ND",
+      "name": "Hi畅享80plus-12+256G5G雅川青(原封)",
+      "model": "",
+      "sku": "",
+      "color": "雅川青",
+      "storage": "",
+      "channel": "*",
+      "price": 1410,
       "tags": [
         "原封"
       ]
@@ -5056,18 +5189,18 @@
       ]
     },
     {
-      "id": "huawei-65676",
-      "sourceId": "65676",
+      "id": "huawei-65675",
+      "sourceId": "65675",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "Hi畅享80plus-12+256G5G雅川青(原封)",
+      "name": "Hi畅享80plus-12+256G5G珍珠白(原封)",
       "model": "",
       "sku": "",
-      "color": "雅川青",
+      "color": "珍珠白",
       "storage": "",
       "channel": "*",
-      "price": 1420,
+      "price": 1410,
       "tags": [
         "原封"
       ]
@@ -5090,18 +5223,18 @@
       ]
     },
     {
-      "id": "huawei-65675",
-      "sourceId": "65675",
+      "id": "huawei-64816",
+      "sourceId": "64816",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "Hi畅享80plus-12+256G5G珍珠白(原封)",
+      "name": "华为nova14活力版-256G冰晶蓝(原封)",
       "model": "",
       "sku": "",
-      "color": "珍珠白",
-      "storage": "",
+      "color": "冰晶蓝",
+      "storage": "256G",
       "channel": "*",
-      "price": 1420,
+      "price": 1690,
       "tags": [
         "原封"
       ]
@@ -5124,18 +5257,18 @@
       ]
     },
     {
-      "id": "huawei-64816",
-      "sourceId": "64816",
+      "id": "huawei-64577",
+      "sourceId": "64577",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova14活力版-256G冰晶蓝(原封)",
+      "name": "华为nova14活力版-256G凝霜白(原封)",
       "model": "",
       "sku": "",
-      "color": "冰晶蓝",
+      "color": "凝霜白",
       "storage": "256G",
       "channel": "*",
-      "price": 1700,
+      "price": 1690,
       "tags": [
         "原封"
       ]
@@ -5158,18 +5291,18 @@
       ]
     },
     {
-      "id": "huawei-64577",
-      "sourceId": "64577",
+      "id": "huawei-64547",
+      "sourceId": "64547",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova14活力版-256G凝霜白(原封)",
+      "name": "华为nova14活力版-256G羽砂黑(原封)",
       "model": "",
       "sku": "",
-      "color": "凝霜白",
+      "color": "羽砂黑",
       "storage": "256G",
       "channel": "*",
-      "price": 1700,
+      "price": 1690,
       "tags": [
         "原封"
       ]
@@ -5186,41 +5319,7 @@
       "color": "晴空蓝",
       "storage": "512G",
       "channel": "*",
-      "price": 3930,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-64547",
-      "sourceId": "64547",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为ND",
-      "name": "华为nova14活力版-256G羽砂黑(原封)",
-      "model": "",
-      "sku": "",
-      "color": "羽砂黑",
-      "storage": "256G",
-      "channel": "*",
-      "price": 1700,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-67538",
-      "sourceId": "67538",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为ND",
-      "name": "华为nova16ultra-512G天际白昆仑玻璃版(原封)",
-      "model": "",
-      "sku": "",
-      "color": "天际白",
-      "storage": "512G",
-      "channel": "*",
-      "price": 3880,
+      "price": 3900,
       "tags": [
         "原封"
       ]
@@ -5237,24 +5336,24 @@
       "color": "冰晶蓝",
       "storage": "512G",
       "channel": "*",
-      "price": 1900,
+      "price": 1890,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-67540",
-      "sourceId": "67540",
+      "id": "huawei-67538",
+      "sourceId": "67538",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova16ultra-512G星空黑昆仑玻璃版(原封)",
+      "name": "华为nova16ultra-512G天际白昆仑玻璃版(原封)",
       "model": "",
       "sku": "",
-      "color": "星空黑",
+      "color": "天际白",
       "storage": "512G",
       "channel": "*",
-      "price": 3880,
+      "price": 3850,
       "tags": [
         "原封"
       ]
@@ -5271,7 +5370,41 @@
       "color": "凝霜白",
       "storage": "512G",
       "channel": "*",
-      "price": 1900,
+      "price": 1890,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-67540",
+      "sourceId": "67540",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为ND",
+      "name": "华为nova16ultra-512G星空黑昆仑玻璃版(原封)",
+      "model": "",
+      "sku": "",
+      "color": "星空黑",
+      "storage": "512G",
+      "channel": "*",
+      "price": 3850,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-64548",
+      "sourceId": "64548",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为ND",
+      "name": "华为nova14活力版-512G羽砂黑(原封)",
+      "model": "",
+      "sku": "",
+      "color": "羽砂黑",
+      "storage": "512G",
+      "channel": "*",
+      "price": 1890,
       "tags": [
         "原封"
       ]
@@ -5294,18 +5427,18 @@
       ]
     },
     {
-      "id": "huawei-64548",
-      "sourceId": "64548",
+      "id": "huawei-62322",
+      "sourceId": "62322",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova14活力版-512G羽砂黑(原封)",
+      "name": "华为nova14pro-256G冰晶蓝(原封)",
       "model": "",
       "sku": "",
-      "color": "羽砂黑",
-      "storage": "512G",
+      "color": "冰晶蓝",
+      "storage": "256G",
       "channel": "*",
-      "price": 1900,
+      "price": 1970,
       "tags": [
         "原封"
       ]
@@ -5328,18 +5461,18 @@
       ]
     },
     {
-      "id": "huawei-62322",
-      "sourceId": "62322",
+      "id": "huawei-62323",
+      "sourceId": "62323",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova14pro-256G冰晶蓝(原封)",
+      "name": "华为nova14pro-256G凝霜白(原封)",
       "model": "",
       "sku": "",
-      "color": "冰晶蓝",
+      "color": "凝霜白",
       "storage": "256G",
       "channel": "*",
-      "price": 1980,
+      "price": 1970,
       "tags": [
         "原封"
       ]
@@ -5354,40 +5487,6 @@
       "model": "",
       "sku": "",
       "color": "星海蓝",
-      "storage": "256G",
-      "channel": "*",
-      "price": 1520,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-62323",
-      "sourceId": "62323",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为ND",
-      "name": "华为nova14pro-256G凝霜白(原封)",
-      "model": "",
-      "sku": "",
-      "color": "凝霜白",
-      "storage": "256G",
-      "channel": "*",
-      "price": 1980,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-65216",
-      "sourceId": "65216",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为ND",
-      "name": "华为畅享70X尊享版-256G曜金黑(原封)",
-      "model": "",
-      "sku": "",
-      "color": "曜金黑",
       "storage": "256G",
       "channel": "*",
       "price": 1520,
@@ -5413,18 +5512,18 @@
       ]
     },
     {
-      "id": "huawei-65220",
-      "sourceId": "65220",
+      "id": "huawei-65216",
+      "sourceId": "65216",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为畅享70X尊享版-512G流沙金(原封)",
+      "name": "华为畅享70X尊享版-256G曜金黑(原封)",
       "model": "",
       "sku": "",
-      "color": "流沙金",
-      "storage": "512G",
+      "color": "曜金黑",
+      "storage": "256G",
       "channel": "*",
-      "price": 1820,
+      "price": 1520,
       "tags": [
         "原封"
       ]
@@ -5447,18 +5546,18 @@
       ]
     },
     {
-      "id": "huawei-65218",
-      "sourceId": "65218",
+      "id": "huawei-65220",
+      "sourceId": "65220",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为畅享70X尊享版-512G星海蓝(原封)",
+      "name": "华为畅享70X尊享版-512G流沙金(原封)",
       "model": "",
       "sku": "",
-      "color": "星海蓝",
+      "color": "流沙金",
       "storage": "512G",
       "channel": "*",
-      "price": 1820,
+      "price": 1810,
       "tags": [
         "原封"
       ]
@@ -5481,18 +5580,18 @@
       ]
     },
     {
-      "id": "huawei-65219",
-      "sourceId": "65219",
+      "id": "huawei-65218",
+      "sourceId": "65218",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为畅享70X尊享版-512G曜金黑(原封)",
+      "name": "华为畅享70X尊享版-512G星海蓝(原封)",
       "model": "",
       "sku": "",
-      "color": "曜金黑",
+      "color": "星海蓝",
       "storage": "512G",
       "channel": "*",
-      "price": 1830,
+      "price": 1810,
       "tags": [
         "原封"
       ]
@@ -5515,18 +5614,18 @@
       ]
     },
     {
-      "id": "huawei-61646",
-      "sourceId": "61646",
+      "id": "huawei-65219",
+      "sourceId": "65219",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为畅享70X活力版-256G冰晶蓝(原封)",
+      "name": "华为畅享70X尊享版-512G曜金黑(原封)",
       "model": "",
       "sku": "",
-      "color": "冰晶蓝",
-      "storage": "256G",
+      "color": "曜金黑",
+      "storage": "512G",
       "channel": "*",
-      "price": 1440,
+      "price": 1830,
       "tags": [
         "原封"
       ]
@@ -5549,18 +5648,18 @@
       ]
     },
     {
-      "id": "huawei-61648",
-      "sourceId": "61648",
+      "id": "huawei-61646",
+      "sourceId": "61646",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为畅享70X活力版-256G曜金黑(原封)",
+      "name": "华为畅享70X活力版-256G冰晶蓝(原封)",
       "model": "",
       "sku": "",
-      "color": "曜金黑",
+      "color": "冰晶蓝",
       "storage": "256G",
       "channel": "*",
-      "price": 1480,
+      "price": 1440,
       "tags": [
         "原封"
       ]
@@ -5577,24 +5676,24 @@
       "color": "带感绿",
       "storage": "256G",
       "channel": "*",
-      "price": 2070,
+      "price": 2050,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-61838",
-      "sourceId": "61838",
+      "id": "huawei-61648",
+      "sourceId": "61648",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为畅享80-128G曜金黑(原封)",
+      "name": "华为畅享70X活力版-256G曜金黑(原封)",
       "model": "",
       "sku": "",
       "color": "曜金黑",
-      "storage": "128G",
+      "storage": "256G",
       "channel": "*",
-      "price": 1190,
+      "price": 1480,
       "tags": [
         "原封"
       ]
@@ -5617,6 +5716,40 @@
       ]
     },
     {
+      "id": "huawei-61838",
+      "sourceId": "61838",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为ND",
+      "name": "华为畅享80-128G曜金黑(原封)",
+      "model": "",
+      "sku": "",
+      "color": "曜金黑",
+      "storage": "128G",
+      "channel": "*",
+      "price": 1180,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-65409",
+      "sourceId": "65409",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为ND",
+      "name": "华为nova15-256G幻夜黑(原封)",
+      "model": "",
+      "sku": "",
+      "color": "幻夜黑",
+      "storage": "256G",
+      "channel": "*",
+      "price": 2150,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
       "id": "huawei-61840",
       "sourceId": "61840",
       "shopId": "59219",
@@ -5634,15 +5767,15 @@
       ]
     },
     {
-      "id": "huawei-65409",
-      "sourceId": "65409",
+      "id": "huawei-65406",
+      "sourceId": "65406",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova15-256G幻夜黑(原封)",
+      "name": "华为nova15-256G零度白(原封)",
       "model": "",
       "sku": "",
-      "color": "幻夜黑",
+      "color": "零度白",
       "storage": "256G",
       "channel": "*",
       "price": 2150,
@@ -5668,18 +5801,18 @@
       ]
     },
     {
-      "id": "huawei-65406",
-      "sourceId": "65406",
+      "id": "huawei-65412",
+      "sourceId": "65412",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova15-256G零度白(原封)",
+      "name": "华为nova15-512G带感绿(原封)",
       "model": "",
       "sku": "",
-      "color": "零度白",
-      "storage": "256G",
+      "color": "带感绿",
+      "storage": "512G",
       "channel": "*",
-      "price": 2170,
+      "price": 2330,
       "tags": [
         "原封"
       ]
@@ -5702,18 +5835,18 @@
       ]
     },
     {
-      "id": "huawei-65412",
-      "sourceId": "65412",
+      "id": "huawei-65411",
+      "sourceId": "65411",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova15-512G带感绿(原封)",
+      "name": "华为nova15-512G好搭紫(原封)",
       "model": "",
       "sku": "",
-      "color": "带感绿",
+      "color": "好搭紫",
       "storage": "512G",
       "channel": "*",
-      "price": 2350,
+      "price": 2420,
       "tags": [
         "原封"
       ]
@@ -5736,18 +5869,18 @@
       ]
     },
     {
-      "id": "huawei-65411",
-      "sourceId": "65411",
+      "id": "huawei-65413",
+      "sourceId": "65413",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova15-512G好搭紫(原封)",
+      "name": "华为nova15-512G幻夜黑(原封)",
       "model": "",
       "sku": "",
-      "color": "好搭紫",
+      "color": "幻夜黑",
       "storage": "512G",
       "channel": "*",
-      "price": 2430,
+      "price": 2420,
       "tags": [
         "原封"
       ]
@@ -5770,18 +5903,18 @@
       ]
     },
     {
-      "id": "huawei-65413",
-      "sourceId": "65413",
+      "id": "huawei-65410",
+      "sourceId": "65410",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova15-512G幻夜黑(原封)",
+      "name": "华为nova15-512G零度白(原封)",
       "model": "",
       "sku": "",
-      "color": "幻夜黑",
+      "color": "零度白",
       "storage": "512G",
       "channel": "*",
-      "price": 2430,
+      "price": 2420,
       "tags": [
         "原封"
       ]
@@ -5804,18 +5937,18 @@
       ]
     },
     {
-      "id": "huawei-65410",
-      "sourceId": "65410",
+      "id": "huawei-65420",
+      "sourceId": "65420",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova15-512G零度白(原封)",
+      "name": "华为nova15pro-256G带感绿昆仑玻璃版(原封)",
       "model": "",
       "sku": "",
-      "color": "零度白",
-      "storage": "512G",
+      "color": "带感绿",
+      "storage": "256G",
       "channel": "*",
-      "price": 2430,
+      "price": 2530,
       "tags": [
         "原封"
       ]
@@ -5838,18 +5971,18 @@
       ]
     },
     {
-      "id": "huawei-65420",
-      "sourceId": "65420",
+      "id": "huawei-65419",
+      "sourceId": "65419",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova15pro-256G带感绿昆仑玻璃版(原封)",
+      "name": "华为nova15pro-256G好搭紫昆仑玻璃版(原封)",
       "model": "",
       "sku": "",
-      "color": "带感绿",
+      "color": "好搭紫",
       "storage": "256G",
       "channel": "*",
-      "price": 2530,
+      "price": 2570,
       "tags": [
         "原封"
       ]
@@ -5864,40 +5997,6 @@
       "model": "",
       "sku": "",
       "color": "星空黑",
-      "storage": "128G",
-      "channel": "*",
-      "price": 1310,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-65419",
-      "sourceId": "65419",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为ND",
-      "name": "华为nova15pro-256G好搭紫昆仑玻璃版(原封)",
-      "model": "",
-      "sku": "",
-      "color": "好搭紫",
-      "storage": "256G",
-      "channel": "*",
-      "price": 2550,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-66519",
-      "sourceId": "66519",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为ND",
-      "name": "华为畅享90plus-128G羽沙白(原封)",
-      "model": "",
-      "sku": "",
-      "color": "羽沙白",
       "storage": "128G",
       "channel": "*",
       "price": 1310,
@@ -5923,18 +6022,18 @@
       ]
     },
     {
-      "id": "huawei-66520",
-      "sourceId": "66520",
+      "id": "huawei-66519",
+      "sourceId": "66519",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为畅享90plus-256G星海蓝(原封)",
+      "name": "华为畅享90plus-128G羽沙白(原封)",
       "model": "",
       "sku": "",
-      "color": "星海蓝",
-      "storage": "256G",
+      "color": "羽沙白",
+      "storage": "128G",
       "channel": "*",
-      "price": 1610,
+      "price": 1310,
       "tags": [
         "原封"
       ]
@@ -5957,15 +6056,15 @@
       ]
     },
     {
-      "id": "huawei-66521",
-      "sourceId": "66521",
+      "id": "huawei-66520",
+      "sourceId": "66520",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为畅享90plus-256G星空黑(原封)",
+      "name": "华为畅享90plus-256G星海蓝(原封)",
       "model": "",
       "sku": "",
-      "color": "星空黑",
+      "color": "星海蓝",
       "storage": "256G",
       "channel": "*",
       "price": 1610,
@@ -5985,21 +6084,21 @@
       "color": "带感绿",
       "storage": "512G",
       "channel": "*",
-      "price": 2830,
+      "price": 2820,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-66522",
-      "sourceId": "66522",
+      "id": "huawei-66521",
+      "sourceId": "66521",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为畅享90plus-256G羽沙白(原封)",
+      "name": "华为畅享90plus-256G星空黑(原封)",
       "model": "",
       "sku": "",
-      "color": "羽沙白",
+      "color": "星空黑",
       "storage": "256G",
       "channel": "*",
       "price": 1610,
@@ -6025,18 +6124,18 @@
       ]
     },
     {
-      "id": "huawei-68088",
-      "sourceId": "68088",
+      "id": "huawei-66522",
+      "sourceId": "66522",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为畅享90promax-128G曜金黑(原封)",
+      "name": "华为畅享90plus-256G羽沙白(原封)",
       "model": "",
       "sku": "",
-      "color": "曜金黑",
-      "storage": "128G",
+      "color": "羽沙白",
+      "storage": "256G",
       "channel": "*",
-      "price": 1750,
+      "price": 1610,
       "tags": [
         "原封"
       ]
@@ -6059,18 +6158,18 @@
       ]
     },
     {
-      "id": "huawei-66524",
-      "sourceId": "66524",
+      "id": "huawei-68088",
+      "sourceId": "68088",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为畅享90promax-256G晨曦金(原封)",
+      "name": "华为畅享90promax-128G曜金黑(原封)",
       "model": "",
       "sku": "",
-      "color": "晨曦金",
-      "storage": "256G",
+      "color": "曜金黑",
+      "storage": "128G",
       "channel": "*",
-      "price": 1930,
+      "price": 1750,
       "tags": [
         "原封"
       ]
@@ -6087,24 +6186,24 @@
       "color": "零度白",
       "storage": "512G",
       "channel": "*",
-      "price": 2920,
+      "price": 2900,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-66523",
-      "sourceId": "66523",
+      "id": "huawei-66524",
+      "sourceId": "66524",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为畅享90promax-256G飞天青(原封)",
+      "name": "华为畅享90promax-256G晨曦金(原封)",
       "model": "",
       "sku": "",
-      "color": "飞天青",
+      "color": "晨曦金",
       "storage": "256G",
       "channel": "*",
-      "price": 1910,
+      "price": 1920,
       "tags": [
         "原封"
       ]
@@ -6127,15 +6226,15 @@
       ]
     },
     {
-      "id": "huawei-66525",
-      "sourceId": "66525",
+      "id": "huawei-66523",
+      "sourceId": "66523",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为畅享90promax-256G雪域白(原封)",
+      "name": "华为畅享90promax-256G飞天青(原封)",
       "model": "",
       "sku": "",
-      "color": "雪域白",
+      "color": "飞天青",
       "storage": "256G",
       "channel": "*",
       "price": 1910,
@@ -6155,21 +6254,21 @@
       "color": "幻夜黑",
       "storage": "256G",
       "channel": "*",
-      "price": 3030,
+      "price": 3000,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-66526",
-      "sourceId": "66526",
+      "id": "huawei-66525",
+      "sourceId": "66525",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为畅享90promax-256G曜金黑(原封)",
+      "name": "华为畅享90promax-256G雪域白(原封)",
       "model": "",
       "sku": "",
-      "color": "曜金黑",
+      "color": "雪域白",
       "storage": "256G",
       "channel": "*",
       "price": 1910,
@@ -6195,18 +6294,18 @@
       ]
     },
     {
-      "id": "huawei-66528",
-      "sourceId": "66528",
+      "id": "huawei-66526",
+      "sourceId": "66526",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为畅享90promax-512G晨曦金(原封)",
+      "name": "华为畅享90promax-256G曜金黑(原封)",
       "model": "",
       "sku": "",
-      "color": "晨曦金",
-      "storage": "512G",
+      "color": "曜金黑",
+      "storage": "256G",
       "channel": "*",
-      "price": 2340,
+      "price": 1910,
       "tags": [
         "原封"
       ]
@@ -6229,6 +6328,40 @@
       ]
     },
     {
+      "id": "huawei-66528",
+      "sourceId": "66528",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为ND",
+      "name": "华为畅享90promax-512G晨曦金(原封)",
+      "model": "",
+      "sku": "",
+      "color": "晨曦金",
+      "storage": "512G",
+      "channel": "*",
+      "price": 2340,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-65430",
+      "sourceId": "65430",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为ND",
+      "name": "华为nova15ultra-512G零度白(原封)",
+      "model": "",
+      "sku": "",
+      "color": "零度白",
+      "storage": "512G",
+      "channel": "*",
+      "price": 3180,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
       "id": "huawei-66527",
       "sourceId": "66527",
       "shopId": "59219",
@@ -6246,18 +6379,18 @@
       ]
     },
     {
-      "id": "huawei-65430",
-      "sourceId": "65430",
+      "id": "huawei-68128",
+      "sourceId": "68128",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova15ultra-512G零度白(原封)",
+      "name": "华为nova16se-256G破晓橙(原封)",
       "model": "",
       "sku": "",
-      "color": "零度白",
-      "storage": "512G",
+      "color": "破晓橙",
+      "storage": "256G",
       "channel": "*",
-      "price": 3200,
+      "price": 2350,
       "tags": [
         "原封"
       ]
@@ -6280,15 +6413,15 @@
       ]
     },
     {
-      "id": "huawei-68128",
-      "sourceId": "68128",
+      "id": "huawei-68127",
+      "sourceId": "68127",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova16se-256G破晓橙(原封)",
+      "name": "华为nova16se-256G天际白(原封)",
       "model": "",
       "sku": "",
-      "color": "破晓橙",
+      "color": "天际白",
       "storage": "256G",
       "channel": "*",
       "price": 2350,
@@ -6314,15 +6447,15 @@
       ]
     },
     {
-      "id": "huawei-68127",
-      "sourceId": "68127",
+      "id": "huawei-68126",
+      "sourceId": "68126",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova16se-256G天际白(原封)",
+      "name": "华为nova16se-256G星空黑(原封)",
       "model": "",
       "sku": "",
-      "color": "天际白",
+      "color": "星空黑",
       "storage": "256G",
       "channel": "*",
       "price": 2350,
@@ -6348,15 +6481,15 @@
       ]
     },
     {
-      "id": "huawei-68126",
-      "sourceId": "68126",
+      "id": "huawei-68129",
+      "sourceId": "68129",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为ND",
-      "name": "华为nova16se-256G星空黑(原封)",
+      "name": "华为nova16se-256G樱雪晴空(原封)",
       "model": "",
       "sku": "",
-      "color": "星空黑",
+      "color": "樱雪晴空",
       "storage": "256G",
       "channel": "*",
       "price": 2350,
@@ -6382,57 +6515,6 @@
       ]
     },
     {
-      "id": "huawei-68129",
-      "sourceId": "68129",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为ND",
-      "name": "华为nova16se-256G樱雪晴空(原封)",
-      "model": "",
-      "sku": "",
-      "color": "樱雪晴空",
-      "storage": "256G",
-      "channel": "*",
-      "price": 2350,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-63073",
-      "sourceId": "63073",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为ND",
-      "name": "麦芒40-8+256G5G原野绿(原封)",
-      "model": "",
-      "sku": "",
-      "color": "原野绿",
-      "storage": "",
-      "channel": "*",
-      "price": 1400,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-68132",
-      "sourceId": "68132",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为ND",
-      "name": "华为nova16se-512G破晓橙(原封)",
-      "model": "",
-      "sku": "",
-      "color": "破晓橙",
-      "storage": "512G",
-      "channel": "*",
-      "price": 2770,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
       "id": "huawei-59189",
       "sourceId": "59189",
       "shopId": "59219",
@@ -6444,24 +6526,24 @@
       "color": "风信紫",
       "storage": "512GB",
       "channel": "*",
-      "price": 3870,
+      "price": 3850,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-68266",
-      "sourceId": "68266",
+      "id": "huawei-68268",
+      "sourceId": "68268",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Pura X View12+512零度白-省外",
+      "name": "Pura X View12+512亚麻灰-省外",
       "model": "",
       "sku": "",
-      "color": "零度白",
+      "color": "亚麻灰",
       "storage": "",
       "channel": "*",
-      "price": 7050,
+      "price": 7040,
       "tags": [
         "原封"
       ]
@@ -6484,18 +6566,18 @@
       ]
     },
     {
-      "id": "huawei-68268",
-      "sourceId": "68268",
+      "id": "huawei-68267",
+      "sourceId": "68267",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Pura X View12+512亚麻灰-省外",
+      "name": "Pura X View12+512跃影红-省外",
       "model": "",
       "sku": "",
-      "color": "亚麻灰",
+      "color": "跃影红",
       "storage": "",
       "channel": "*",
-      "price": 7000,
+      "price": 6990,
       "tags": [
         "原封"
       ]
@@ -6518,18 +6600,18 @@
       ]
     },
     {
-      "id": "huawei-68267",
-      "sourceId": "68267",
+      "id": "huawei-66906",
+      "sourceId": "66906",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Pura X View12+512跃影红-省外",
+      "name": "Pura X Max典藏版16+1TB原封幻夜黑-省外",
       "model": "",
       "sku": "",
-      "color": "跃影红",
-      "storage": "",
+      "color": "幻夜黑",
+      "storage": "1TB",
       "channel": "*",
-      "price": 7020,
+      "price": 12850,
       "tags": [
         "原封"
       ]
@@ -6552,40 +6634,6 @@
       ]
     },
     {
-      "id": "huawei-66906",
-      "sourceId": "66906",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为全国",
-      "name": "Pura X Max典藏版16+1TB原封幻夜黑-省外",
-      "model": "",
-      "sku": "",
-      "color": "幻夜黑",
-      "storage": "1TB",
-      "channel": "*",
-      "price": 12890,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-60826",
-      "sourceId": "60826",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为全国",
-      "name": "Mate70Pro 优享版-12+512GB雪域白原封-省外",
-      "model": "",
-      "sku": "",
-      "color": "雪域白",
-      "storage": "512GB",
-      "channel": "*",
-      "price": 3820,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
       "id": "huawei-66905",
       "sourceId": "66905",
       "shopId": "59219",
@@ -6603,18 +6651,18 @@
       ]
     },
     {
-      "id": "huawei-60824",
-      "sourceId": "60824",
+      "id": "huawei-60826",
+      "sourceId": "60826",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Mate70Pro 优享版-12+512GB曜石黑原封-省外",
+      "name": "Mate70Pro 优享版-12+512GB雪域白原封-省外",
       "model": "",
       "sku": "",
-      "color": "曜石黑",
+      "color": "雪域白",
       "storage": "512GB",
       "channel": "*",
-      "price": 3820,
+      "price": 3750,
       "tags": [
         "原封"
       ]
@@ -6637,18 +6685,18 @@
       ]
     },
     {
-      "id": "huawei-59209",
-      "sourceId": "59209",
+      "id": "huawei-60824",
+      "sourceId": "60824",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Mate70Pro-12+512GB雪域白原封-省外",
+      "name": "Mate70Pro 优享版-12+512GB曜石黑原封-省外",
       "model": "",
       "sku": "",
-      "color": "雪域白",
+      "color": "曜石黑",
       "storage": "512GB",
       "channel": "*",
-      "price": 4170,
+      "price": 3750,
       "tags": [
         "原封"
       ]
@@ -6665,24 +6713,24 @@
       "color": "橄榄金",
       "storage": "1TB",
       "channel": "*",
-      "price": 12890,
+      "price": 12870,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-59210",
-      "sourceId": "59210",
+      "id": "huawei-59209",
+      "sourceId": "59209",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Mate70Pro-12+512GB云杉绿原封-省外",
+      "name": "Mate70Pro-12+512GB雪域白原封-省外",
       "model": "",
       "sku": "",
-      "color": "云杉绿",
+      "color": "雪域白",
       "storage": "512GB",
       "channel": "*",
-      "price": 4070,
+      "price": 4150,
       "tags": [
         "原封"
       ]
@@ -6705,18 +6753,18 @@
       ]
     },
     {
-      "id": "huawei-59208",
-      "sourceId": "59208",
+      "id": "huawei-59210",
+      "sourceId": "59210",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Mate70Pro-12+512GB曜石黑原封-省外",
+      "name": "Mate70Pro-12+512GB云杉绿原封-省外",
       "model": "",
       "sku": "",
-      "color": "曜石黑",
+      "color": "云杉绿",
       "storage": "512GB",
       "channel": "*",
-      "price": 4250,
+      "price": 4070,
       "tags": [
         "原封"
       ]
@@ -6733,24 +6781,24 @@
       "color": "云锦白",
       "storage": "512GB",
       "channel": "*",
-      "price": 11470,
+      "price": 11450,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-63490",
-      "sourceId": "63490",
+      "id": "huawei-59208",
+      "sourceId": "59208",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Mate70Pro-16+512GB曜石黑原封-省外",
+      "name": "Mate70Pro-12+512GB曜石黑原封-省外",
       "model": "",
       "sku": "",
       "color": "曜石黑",
       "storage": "512GB",
       "channel": "*",
-      "price": 4570,
+      "price": 4250,
       "tags": [
         "原封"
       ]
@@ -6773,86 +6821,18 @@
       ]
     },
     {
-      "id": "huawei-59230",
-      "sourceId": "59230",
+      "id": "huawei-63490",
+      "sourceId": "63490",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Mate70Pro+ 16+512GB飞天青原封-省外",
-      "model": "",
-      "sku": "",
-      "color": "飞天青",
-      "storage": "512GB",
-      "channel": "*",
-      "price": 4720,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-65076",
-      "sourceId": "65076",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为全国",
-      "name": "华为MateX7-12GB+512GB寰宇红原封-省外",
-      "model": "",
-      "sku": "",
-      "color": "寰宇红",
-      "storage": "512GB",
-      "channel": "*",
-      "price": 11590,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-59231",
-      "sourceId": "59231",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为全国",
-      "name": "Mate70Pro+ 16+512GB金丝银锦原封-省外",
-      "model": "",
-      "sku": "",
-      "color": "金丝银锦",
-      "storage": "512GB",
-      "channel": "*",
-      "price": 4870,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-65077",
-      "sourceId": "65077",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为全国",
-      "name": "华为MateX7-12GB+512GB曜石黑原封-省外",
+      "name": "Mate70Pro-16+512GB曜石黑原封-省外",
       "model": "",
       "sku": "",
       "color": "曜石黑",
       "storage": "512GB",
       "channel": "*",
-      "price": 11630,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-59229",
-      "sourceId": "59229",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为全国",
-      "name": "Mate70Pro+ 16+512GB羽衣白原封-省外",
-      "model": "",
-      "sku": "",
-      "color": "羽衣白",
-      "storage": "512GB",
-      "channel": "*",
-      "price": 4830,
+      "price": 4550,
       "tags": [
         "原封"
       ]
@@ -6875,6 +6855,74 @@
       ]
     },
     {
+      "id": "huawei-59231",
+      "sourceId": "59231",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为全国",
+      "name": "Mate70Pro+ 16+512GB金丝银锦原封-省外",
+      "model": "",
+      "sku": "",
+      "color": "金丝银锦",
+      "storage": "512GB",
+      "channel": "*",
+      "price": 4900,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-65080",
+      "sourceId": "65080",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为全国",
+      "name": "华为MateX7-16GB+512GB典藏版曜石黑原封-省外",
+      "model": "",
+      "sku": "",
+      "color": "曜石黑",
+      "storage": "512GB",
+      "channel": "*",
+      "price": 12920,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-59229",
+      "sourceId": "59229",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为全国",
+      "name": "Mate70Pro+ 16+512GB羽衣白原封-省外",
+      "model": "",
+      "sku": "",
+      "color": "羽衣白",
+      "storage": "512GB",
+      "channel": "*",
+      "price": 4750,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-65086",
+      "sourceId": "65086",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为全国",
+      "name": "华为MateX7-16GB+1TB典藏版曜石黑原封-省外",
+      "model": "",
+      "sku": "",
+      "color": "曜石黑",
+      "storage": "1TB",
+      "channel": "*",
+      "price": 14520,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
       "id": "huawei-58907",
       "sourceId": "58907",
       "shopId": "59219",
@@ -6892,18 +6940,18 @@
       ]
     },
     {
-      "id": "huawei-65084",
-      "sourceId": "65084",
+      "id": "huawei-64969",
+      "sourceId": "64969",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "华为MateX7-16GB+512GB典藏版寰宇红原封-省外",
+      "name": "华为Mate80-12GB+512GB晨曦金原封-省外",
       "model": "",
       "sku": "",
-      "color": "寰宇红",
+      "color": "晨曦金",
       "storage": "512GB",
       "channel": "*",
-      "price": 12600,
+      "price": 4500,
       "tags": [
         "原封"
       ]
@@ -6926,18 +6974,18 @@
       ]
     },
     {
-      "id": "huawei-65080",
-      "sourceId": "65080",
+      "id": "huawei-64968",
+      "sourceId": "64968",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "华为MateX7-16GB+512GB典藏版曜石黑原封-省外",
+      "name": "华为Mate80-12GB+512GB雪域白原封-省外",
       "model": "",
       "sku": "",
-      "color": "曜石黑",
+      "color": "雪域白",
       "storage": "512GB",
       "channel": "*",
-      "price": 12900,
+      "price": 4500,
       "tags": [
         "原封"
       ]
@@ -6954,109 +7002,7 @@
       "color": "零度白",
       "storage": "12GB",
       "channel": "*",
-      "price": 6070,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-65086",
-      "sourceId": "65086",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为全国",
-      "name": "华为MateX7-16GB+1TB典藏版曜石黑原封-省外",
-      "model": "",
-      "sku": "",
-      "color": "曜石黑",
-      "storage": "1TB",
-      "channel": "*",
-      "price": 14470,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-61394",
-      "sourceId": "61394",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为全国",
-      "name": "Pura X 12GB+256GB5G原封月影灰-省外",
-      "model": "",
-      "sku": "",
-      "color": "月影灰",
-      "storage": "12GB",
-      "channel": "*",
-      "price": 6070,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-64969",
-      "sourceId": "64969",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为全国",
-      "name": "华为Mate80-12GB+512GB晨曦金原封-省外",
-      "model": "",
-      "sku": "",
-      "color": "晨曦金",
-      "storage": "512GB",
-      "channel": "*",
-      "price": 4520,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-61398",
-      "sourceId": "61398",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为全国",
-      "name": "Pura X 12GB+512GB5G原封幻夜黑-省外",
-      "model": "",
-      "sku": "",
-      "color": "幻夜黑",
-      "storage": "12GB",
-      "channel": "*",
-      "price": 6520,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-64968",
-      "sourceId": "64968",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为全国",
-      "name": "华为Mate80-12GB+512GB雪域白原封-省外",
-      "model": "",
-      "sku": "",
-      "color": "雪域白",
-      "storage": "512GB",
-      "channel": "*",
-      "price": 4520,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-67054",
-      "sourceId": "67054",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为全国",
-      "name": "Pura X 16GB+512GB5G原封型格橙-省外",
-      "model": "",
-      "sku": "",
-      "color": "",
-      "storage": "16GB",
-      "channel": "*",
-      "price": 6500,
+      "price": 6050,
       "tags": [
         "原封"
       ]
@@ -7073,24 +7019,24 @@
       "color": "曜石黑",
       "storage": "512GB",
       "channel": "*",
-      "price": 4520,
+      "price": 4500,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-61402",
-      "sourceId": "61402",
+      "id": "huawei-61394",
+      "sourceId": "61394",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Pura X 典藏版 16GB+512GB5G原封零度白-省外",
+      "name": "Pura X 12GB+256GB5G原封月影灰-省外",
       "model": "",
       "sku": "",
-      "color": "零度白",
-      "storage": "16GB",
+      "color": "月影灰",
+      "storage": "12GB",
       "channel": "*",
-      "price": 7270,
+      "price": 6050,
       "tags": [
         "原封"
       ]
@@ -7113,18 +7059,52 @@
       ]
     },
     {
-      "id": "huawei-63369",
-      "sourceId": "63369",
+      "id": "huawei-61398",
+      "sourceId": "61398",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Pura80 12+256GB5G原封丝绒黑-省外",
+      "name": "Pura X 12GB+512GB5G原封幻夜黑-省外",
       "model": "",
       "sku": "",
-      "color": "丝绒黑",
+      "color": "幻夜黑",
+      "storage": "12GB",
+      "channel": "*",
+      "price": 6490,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-69209",
+      "sourceId": "69209",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为全国",
+      "name": "Mate90-12+256零度白原封省外",
+      "model": "",
+      "sku": "",
+      "color": "零度白",
       "storage": "",
       "channel": "*",
-      "price": 3720,
+      "price": 5070,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-67054",
+      "sourceId": "67054",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为全国",
+      "name": "Pura X 16GB+512GB5G原封型格橙-省外",
+      "model": "",
+      "sku": "",
+      "color": "",
+      "storage": "16GB",
+      "channel": "*",
+      "price": 6470,
       "tags": [
         "原封"
       ]
@@ -7147,18 +7127,18 @@
       ]
     },
     {
-      "id": "huawei-63371",
-      "sourceId": "63371",
+      "id": "huawei-61402",
+      "sourceId": "61402",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Pura80 12+256GB5G原封丝绒金-省外",
+      "name": "Pura X 典藏版 16GB+512GB5G原封零度白-省外",
       "model": "",
       "sku": "",
-      "color": "",
-      "storage": "",
+      "color": "零度白",
+      "storage": "16GB",
       "channel": "*",
-      "price": 3720,
+      "price": 7190,
       "tags": [
         "原封"
       ]
@@ -7175,7 +7155,75 @@
       "color": "极地银",
       "storage": "512GB",
       "channel": "*",
-      "price": 6720,
+      "price": 6690,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-63369",
+      "sourceId": "63369",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为全国",
+      "name": "Pura80 12+256GB5G原封丝绒黑-省外",
+      "model": "",
+      "sku": "",
+      "color": "丝绒黑",
+      "storage": "",
+      "channel": "*",
+      "price": 3700,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-69241",
+      "sourceId": "69241",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为全国",
+      "name": "Mate90RS-16+1T瑞红原封省外",
+      "model": "",
+      "sku": "",
+      "color": "",
+      "storage": "1T",
+      "channel": "*",
+      "price": 15570,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-63371",
+      "sourceId": "63371",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为全国",
+      "name": "Pura80 12+256GB5G原封丝绒金-省外",
+      "model": "",
+      "sku": "",
+      "color": "",
+      "storage": "",
+      "channel": "*",
+      "price": 3700,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-69240",
+      "sourceId": "69240",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为全国",
+      "name": "Mate90RS-16+1T玄黑原封省外",
+      "model": "",
+      "sku": "",
+      "color": "",
+      "storage": "1T",
+      "channel": "*",
+      "price": 15520,
       "tags": [
         "原封"
       ]
@@ -7190,6 +7238,40 @@
       "model": "",
       "sku": "",
       "color": "",
+      "storage": "",
+      "channel": "*",
+      "price": 3950,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-69243",
+      "sourceId": "69243",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为全国",
+      "name": "Mate90RS-16+512玄黑原封省外",
+      "model": "",
+      "sku": "",
+      "color": "",
+      "storage": "",
+      "channel": "*",
+      "price": 13220,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-63374",
+      "sourceId": "63374",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为全国",
+      "name": "Pura80 12+512GB5G原封丝绒黑-省外",
+      "model": "",
+      "sku": "",
+      "color": "丝绒黑",
       "storage": "",
       "channel": "*",
       "price": 3950,
@@ -7215,15 +7297,15 @@
       ]
     },
     {
-      "id": "huawei-63374",
-      "sourceId": "63374",
+      "id": "huawei-63372",
+      "sourceId": "63372",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Pura80 12+512GB5G原封丝绒黑-省外",
+      "name": "Pura80 12+512GB5G原封丝绒金-省外",
       "model": "",
       "sku": "",
-      "color": "丝绒黑",
+      "color": "",
       "storage": "",
       "channel": "*",
       "price": 3950,
@@ -7243,41 +7325,7 @@
       "color": "粉红芭乐",
       "storage": "256GB",
       "channel": "*",
-      "price": 4570,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-63372",
-      "sourceId": "63372",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为全国",
-      "name": "Pura80 12+512GB5G原封丝绒金-省外",
-      "model": "",
-      "sku": "",
-      "color": "",
-      "storage": "",
-      "channel": "*",
-      "price": 3950,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "huawei-66775",
-      "sourceId": "66775",
-      "shopId": "59219",
-      "brand": "huawei",
-      "category": "华为全国",
-      "name": "Pura90Pro 12+256GB原封桑果黑-省外",
-      "model": "",
-      "sku": "",
-      "color": "桑果黑",
-      "storage": "256GB",
-      "channel": "*",
-      "price": 4570,
+      "price": 4550,
       "tags": [
         "原封"
       ]
@@ -7300,18 +7348,18 @@
       ]
     },
     {
-      "id": "huawei-66776",
-      "sourceId": "66776",
+      "id": "huawei-66775",
+      "sourceId": "66775",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Pura90Pro 12+256GB原封椰青白-省外",
+      "name": "Pura90Pro 12+256GB原封桑果黑-省外",
       "model": "",
       "sku": "",
-      "color": "椰青白",
+      "color": "桑果黑",
       "storage": "256GB",
       "channel": "*",
-      "price": 4570,
+      "price": 4550,
       "tags": [
         "原封"
       ]
@@ -7328,24 +7376,24 @@
       "color": "釉黑",
       "storage": "",
       "channel": "*",
-      "price": 4200,
+      "price": 4220,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-66777",
-      "sourceId": "66777",
+      "id": "huawei-66776",
+      "sourceId": "66776",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Pura90Pro 12+256GB原封橘子汽水-省外",
+      "name": "Pura90Pro 12+256GB原封椰青白-省外",
       "model": "",
       "sku": "",
-      "color": "橘子汽水",
+      "color": "椰青白",
       "storage": "256GB",
       "channel": "*",
-      "price": 4570,
+      "price": 4550,
       "tags": [
         "原封"
       ]
@@ -7362,24 +7410,24 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 4170,
+      "price": 4190,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-58185",
-      "sourceId": "58185",
+      "id": "huawei-66777",
+      "sourceId": "66777",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "MateXT折叠屏-16+1TB5G玄黑原封-省外",
+      "name": "Pura90Pro 12+256GB原封橘子汽水-省外",
       "model": "",
       "sku": "",
-      "color": "",
-      "storage": "",
+      "color": "橘子汽水",
+      "storage": "256GB",
       "channel": "*",
-      "price": 12170,
+      "price": 4550,
       "tags": [
         "原封"
       ]
@@ -7402,21 +7450,20 @@
       ]
     },
     {
-      "id": "huawei-59275",
-      "sourceId": "59275",
+      "id": "huawei-58185",
+      "sourceId": "58185",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "MateX6-12+512GB星云白原封-省外",
+      "name": "MateXT折叠屏-16+1TB5G玄黑原封-省外",
       "model": "",
       "sku": "",
-      "color": "星云白",
-      "storage": "512GB",
+      "color": "",
+      "storage": "",
       "channel": "*",
-      "price": 70,
+      "price": 12120,
       "tags": [
-        "原封",
-        "缺货"
+        "原封"
       ]
     },
     {
@@ -7431,27 +7478,26 @@
       "color": "幻夜黑",
       "storage": "512GB",
       "channel": "*",
-      "price": 10790,
+      "price": 10740,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-59274",
-      "sourceId": "59274",
+      "id": "huawei-59275",
+      "sourceId": "59275",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "MateX6-12+512GB星云灰原封-省外",
+      "name": "MateX6-12+512GB星云白原封-省外",
       "model": "",
       "sku": "",
-      "color": "星云灰",
+      "color": "星云白",
       "storage": "512GB",
       "channel": "*",
-      "price": 70,
+      "price": 8590,
       "tags": [
-        "原封",
-        "缺货"
+        "原封"
       ]
     },
     {
@@ -7472,6 +7518,74 @@
       ]
     },
     {
+      "id": "huawei-59274",
+      "sourceId": "59274",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为全国",
+      "name": "MateX6-12+512GB星云灰原封-省外",
+      "model": "",
+      "sku": "",
+      "color": "星云灰",
+      "storage": "512GB",
+      "channel": "*",
+      "price": 8640,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-66885",
+      "sourceId": "66885",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为全国",
+      "name": "Pura X Max12+512GB原封零度白-省外",
+      "model": "",
+      "sku": "",
+      "color": "零度白",
+      "storage": "512GB",
+      "channel": "*",
+      "price": 10800,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-59276",
+      "sourceId": "59276",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为全国",
+      "name": "MateX6-12+512GB曜石黑原封-省外",
+      "model": "",
+      "sku": "",
+      "color": "曜石黑",
+      "storage": "512GB",
+      "channel": "*",
+      "price": 8700,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "huawei-66887",
+      "sourceId": "66887",
+      "shopId": "59219",
+      "brand": "huawei",
+      "category": "华为全国",
+      "name": "Pura X Max12+512GB原封星际蓝-省外",
+      "model": "",
+      "sku": "",
+      "color": "星际蓝",
+      "storage": "512GB",
+      "channel": "*",
+      "price": 10690,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
       "id": "huawei-63732",
       "sourceId": "63732",
       "shopId": "59219",
@@ -7483,7 +7597,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 14970,
+      "price": 14620,
       "tags": [
         "原封"
       ]
@@ -7500,7 +7614,7 @@
       "color": "幻夜黑",
       "storage": "",
       "channel": "*",
-      "price": 6050,
+      "price": 6070,
       "tags": [
         "原封"
       ]
@@ -7517,7 +7631,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 14670,
+      "price": 14570,
       "tags": [
         "原封"
       ]
@@ -7534,7 +7648,7 @@
       "color": "零度白",
       "storage": "",
       "channel": "*",
-      "price": 6170,
+      "price": 6220,
       "tags": [
         "原封"
       ]
@@ -7551,7 +7665,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 14320,
+      "price": 14270,
       "tags": [
         "原封"
       ]
@@ -7585,7 +7699,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 15570,
+      "price": 15420,
       "tags": [
         "原封"
       ]
@@ -7602,7 +7716,7 @@
       "color": "跃影红",
       "storage": "",
       "channel": "*",
-      "price": 6250,
+      "price": 6220,
       "tags": [
         "原封"
       ]
@@ -7619,24 +7733,24 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 14620,
+      "price": 14570,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "huawei-66901",
-      "sourceId": "66901",
+      "id": "huawei-66904",
+      "sourceId": "66904",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Pura X Max典藏版16+512GB原封幻夜黑-省外",
+      "name": "Pura X Max典藏版16+512GB原封活力橙-省外",
       "model": "",
       "sku": "",
-      "color": "幻夜黑",
+      "color": "活力橙",
       "storage": "512GB",
       "channel": "*",
-      "price": 11800,
+      "price": 11650,
       "tags": [
         "原封"
       ]
@@ -7659,18 +7773,18 @@
       ]
     },
     {
-      "id": "huawei-66904",
-      "sourceId": "66904",
+      "id": "huawei-66900",
+      "sourceId": "66900",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Pura X Max典藏版16+512GB原封活力橙-省外",
+      "name": "Pura X Max典藏版16+512GB原封零度白-省外",
       "model": "",
       "sku": "",
-      "color": "活力橙",
+      "color": "零度白",
       "storage": "512GB",
       "channel": "*",
-      "price": 11670,
+      "price": 11740,
       "tags": [
         "原封"
       ]
@@ -7693,18 +7807,18 @@
       ]
     },
     {
-      "id": "huawei-66900",
-      "sourceId": "66900",
+      "id": "huawei-66903",
+      "sourceId": "66903",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Pura X Max典藏版16+512GB原封零度白-省外",
+      "name": "Pura X Max典藏版16+512GB原封星际蓝-省外",
       "model": "",
       "sku": "",
-      "color": "零度白",
+      "color": "星际蓝",
       "storage": "512GB",
       "channel": "*",
-      "price": 11750,
+      "price": 11590,
       "tags": [
         "原封"
       ]
@@ -7727,18 +7841,18 @@
       ]
     },
     {
-      "id": "huawei-66903",
-      "sourceId": "66903",
+      "id": "huawei-68265",
+      "sourceId": "68265",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Pura X Max典藏版16+512GB原封星际蓝-省外",
+      "name": "Pura X View12+512幻夜黑-省外",
       "model": "",
       "sku": "",
-      "color": "星际蓝",
-      "storage": "512GB",
+      "color": "幻夜黑",
+      "storage": "",
       "channel": "*",
-      "price": 11590,
+      "price": 7000,
       "tags": [
         "原封"
       ]
@@ -7761,18 +7875,18 @@
       ]
     },
     {
-      "id": "huawei-68265",
-      "sourceId": "68265",
+      "id": "huawei-68266",
+      "sourceId": "68266",
       "shopId": "59219",
       "brand": "huawei",
       "category": "华为全国",
-      "name": "Pura X View12+512幻夜黑-省外",
+      "name": "Pura X View12+512零度白-省外",
       "model": "",
       "sku": "",
-      "color": "幻夜黑",
+      "color": "零度白",
       "storage": "",
       "channel": "*",
-      "price": 7000,
+      "price": 7020,
       "tags": [
         "原封"
       ]
@@ -7874,7 +7988,7 @@
       "color": "浅紫色",
       "storage": "",
       "channel": "*",
-      "price": 3540,
+      "price": 3560,
       "tags": [
         "原封"
       ]
@@ -7908,7 +8022,7 @@
       "color": "暗影黑",
       "storage": "",
       "channel": "*",
-      "price": 3380,
+      "price": 3340,
       "tags": [
         "原封"
       ]
@@ -8112,7 +8226,7 @@
       "color": "暗影黑",
       "storage": "",
       "channel": "*",
-      "price": 3310,
+      "price": 3240,
       "tags": [
         "原封"
       ]
@@ -8146,7 +8260,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 3310,
+      "price": 3240,
       "tags": [
         "原封"
       ]
@@ -8180,7 +8294,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 3310,
+      "price": 3240,
       "tags": [
         "原封"
       ]
@@ -13897,7 +14011,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 4290,
+      "price": 4490,
       "tags": [
         "原封"
       ]
@@ -13931,7 +14045,7 @@
       "color": "白色",
       "storage": "",
       "channel": "*",
-      "price": 5110,
+      "price": 5290,
       "tags": [
         "原封"
       ]
@@ -14169,7 +14283,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 5060,
+      "price": 5090,
       "tags": [
         "原封"
       ]
@@ -15563,7 +15677,7 @@
       "color": "白色",
       "storage": "",
       "channel": "*",
-      "price": 5660,
+      "price": 5690,
       "tags": [
         "原封"
       ]
@@ -15631,7 +15745,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 5640,
+      "price": 5610,
       "tags": [
         "原封"
       ]
@@ -16107,7 +16221,7 @@
       "color": "白色",
       "storage": "",
       "channel": "*",
-      "price": 2710,
+      "price": 2740,
       "tags": [
         "原封"
       ]
@@ -16175,7 +16289,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 2710,
+      "price": 2740,
       "tags": [
         "原封"
       ]
@@ -16311,7 +16425,7 @@
       "color": "白色",
       "storage": "",
       "channel": "*",
-      "price": 3110,
+      "price": 3090,
       "tags": [
         "原封"
       ]
@@ -16345,7 +16459,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 3140,
+      "price": 3090,
       "tags": [
         "原封"
       ]
@@ -16413,7 +16527,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 3140,
+      "price": 3090,
       "tags": [
         "原封"
       ]
@@ -16583,7 +16697,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 3310,
+      "price": 3440,
       "tags": [
         "原封"
       ]
@@ -16651,7 +16765,7 @@
       "color": "白色",
       "storage": "",
       "channel": "*",
-      "price": 3690,
+      "price": 3660,
       "tags": [
         "原封"
       ]
@@ -16753,7 +16867,7 @@
       "color": "白色",
       "storage": "",
       "channel": "*",
-      "price": 4060,
+      "price": 4090,
       "tags": [
         "原封"
       ]
@@ -16787,7 +16901,7 @@
       "color": "黑色",
       "storage": "",
       "channel": "*",
-      "price": 4060,
+      "price": 4010,
       "tags": [
         "原封"
       ]
@@ -16821,7 +16935,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 3760,
+      "price": 3710,
       "tags": [
         "原封"
       ]
@@ -16855,7 +16969,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 4260,
+      "price": 4290,
       "tags": [
         "原封"
       ]
@@ -17093,7 +17207,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 4660,
+      "price": 4640,
       "tags": [
         "原封"
       ]
@@ -17127,7 +17241,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 4660,
+      "price": 4640,
       "tags": [
         "原封"
       ]
@@ -18357,12 +18471,12 @@
       ]
     },
     {
-      "id": "honor-67713",
-      "sourceId": "67713",
+      "id": "honor-67714",
+      "sourceId": "67714",
       "shopId": "59219",
       "brand": "honor",
       "category": "荣耀",
-      "name": "荣耀X80 ProMax 8+512GB5G玄甲黑原封",
+      "name": "荣耀X80 ProMax 8+512GB5G闪电红原封",
       "model": "",
       "sku": "",
       "color": "",
@@ -18391,12 +18505,12 @@
       ]
     },
     {
-      "id": "honor-67712",
-      "sourceId": "67712",
+      "id": "honor-67713",
+      "sourceId": "67713",
       "shopId": "59219",
       "brand": "honor",
       "category": "荣耀",
-      "name": "荣耀X80 ProMax 8+512GB5G元气橙原封",
+      "name": "荣耀X80 ProMax 8+512GB5G玄甲黑原封",
       "model": "",
       "sku": "",
       "color": "",
@@ -18425,12 +18539,12 @@
       ]
     },
     {
-      "id": "honor-67715",
-      "sourceId": "67715",
+      "id": "honor-67712",
+      "sourceId": "67712",
       "shopId": "59219",
       "brand": "honor",
       "category": "荣耀",
-      "name": "荣耀X80 ProMax 8+512GB5G月影白原封",
+      "name": "荣耀X80 ProMax 8+512GB5G元气橙原封",
       "model": "",
       "sku": "",
       "color": "",
@@ -18459,6 +18573,40 @@
       ]
     },
     {
+      "id": "honor-67715",
+      "sourceId": "67715",
+      "shopId": "59219",
+      "brand": "honor",
+      "category": "荣耀",
+      "name": "荣耀X80 ProMax 8+512GB5G月影白原封",
+      "model": "",
+      "sku": "",
+      "color": "",
+      "storage": "",
+      "channel": "*",
+      "price": 2410,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "honor-67261",
+      "sourceId": "67261",
+      "shopId": "59219",
+      "brand": "honor",
+      "category": "荣耀",
+      "name": "荣耀600 超级版 12+256GB5G青苹果原封",
+      "model": "",
+      "sku": "",
+      "color": "",
+      "storage": "",
+      "channel": "*",
+      "price": 2860,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
       "id": "honor-63223",
       "sourceId": "63223",
       "shopId": "59219",
@@ -18476,12 +18624,12 @@
       ]
     },
     {
-      "id": "honor-67261",
-      "sourceId": "67261",
+      "id": "honor-67258",
+      "sourceId": "67258",
       "shopId": "59219",
       "brand": "honor",
       "category": "荣耀",
-      "name": "荣耀600 超级版 12+256GB5G青苹果原封",
+      "name": "荣耀600 超级版 12+256GB5G幸运星原封",
       "model": "",
       "sku": "",
       "color": "",
@@ -18510,15 +18658,15 @@
       ]
     },
     {
-      "id": "honor-67258",
-      "sourceId": "67258",
+      "id": "honor-67259",
+      "sourceId": "67259",
       "shopId": "59219",
       "brand": "honor",
       "category": "荣耀",
-      "name": "荣耀600 超级版 12+256GB5G幸运星原封",
+      "name": "荣耀600 超级版 12+256GB5G曜石黑原封",
       "model": "",
       "sku": "",
-      "color": "",
+      "color": "曜石黑",
       "storage": "",
       "channel": "*",
       "price": 2860,
@@ -18538,41 +18686,7 @@
       "color": "幻夜黑",
       "storage": "",
       "channel": "*",
-      "price": 1730,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "honor-67259",
-      "sourceId": "67259",
-      "shopId": "59219",
-      "brand": "honor",
-      "category": "荣耀",
-      "name": "荣耀600 超级版 12+256GB5G曜石黑原封",
-      "model": "",
-      "sku": "",
-      "color": "曜石黑",
-      "storage": "",
-      "channel": "*",
-      "price": 2860,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "honor-67699",
-      "sourceId": "67699",
-      "shopId": "59219",
-      "brand": "honor",
-      "category": "荣耀",
-      "name": "荣耀X70 ProMax 8+256GB5G幻影紫原封",
-      "model": "",
-      "sku": "",
-      "color": "幻影紫",
-      "storage": "",
-      "channel": "*",
-      "price": 1730,
+      "price": 1780,
       "tags": [
         "原封"
       ]
@@ -18595,18 +18709,18 @@
       ]
     },
     {
-      "id": "honor-67698",
-      "sourceId": "67698",
+      "id": "honor-67699",
+      "sourceId": "67699",
       "shopId": "59219",
       "brand": "honor",
       "category": "荣耀",
-      "name": "荣耀X70 ProMax 8+256GB5G旭日金原封",
+      "name": "荣耀X70 ProMax 8+256GB5G幻影紫原封",
       "model": "",
       "sku": "",
-      "color": "",
+      "color": "幻影紫",
       "storage": "",
       "channel": "*",
-      "price": 1730,
+      "price": 1780,
       "tags": [
         "原封"
       ]
@@ -18629,18 +18743,18 @@
       ]
     },
     {
-      "id": "honor-67697",
-      "sourceId": "67697",
+      "id": "honor-67698",
+      "sourceId": "67698",
       "shopId": "59219",
       "brand": "honor",
       "category": "荣耀",
-      "name": "荣耀X70 ProMax 8+256GB5G竹韵青原封",
+      "name": "荣耀X70 ProMax 8+256GB5G旭日金原封",
       "model": "",
       "sku": "",
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 1730,
+      "price": 1770,
       "tags": [
         "原封"
       ]
@@ -18663,18 +18777,18 @@
       ]
     },
     {
-      "id": "honor-67700",
-      "sourceId": "67700",
+      "id": "honor-67697",
+      "sourceId": "67697",
       "shopId": "59219",
       "brand": "honor",
       "category": "荣耀",
-      "name": "荣耀X70 ProMax 8+512GB5G幻影紫原封",
+      "name": "荣耀X70 ProMax 8+256GB5G竹韵青原封",
       "model": "",
       "sku": "",
-      "color": "幻影紫",
+      "color": "",
       "storage": "",
       "channel": "*",
-      "price": 2020,
+      "price": 1770,
       "tags": [
         "原封"
       ]
@@ -18697,15 +18811,15 @@
       ]
     },
     {
-      "id": "honor-67701",
-      "sourceId": "67701",
+      "id": "honor-67700",
+      "sourceId": "67700",
       "shopId": "59219",
       "brand": "honor",
       "category": "荣耀",
-      "name": "荣耀X70 ProMax 8+512GB5G旭日金原封",
+      "name": "荣耀X70 ProMax 8+512GB5G幻影紫原封",
       "model": "",
       "sku": "",
-      "color": "",
+      "color": "幻影紫",
       "storage": "",
       "channel": "*",
       "price": 2020,
@@ -19184,7 +19298,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 995,
+      "price": 993,
       "tags": [
         "原封"
       ]
@@ -19218,7 +19332,7 @@
       "color": "海湖青",
       "storage": "",
       "channel": "*",
-      "price": 990,
+      "price": 988,
       "tags": [
         "原封"
       ]
@@ -19252,7 +19366,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 990,
+      "price": 988,
       "tags": [
         "原封"
       ]
@@ -19507,7 +19621,7 @@
       "color": "黑色",
       "storage": "",
       "channel": "*",
-      "price": 9910,
+      "price": 9940,
       "tags": [
         "原封"
       ]
@@ -19575,7 +19689,7 @@
       "color": "雪域白",
       "storage": "",
       "channel": "*",
-      "price": 9760,
+      "price": 9740,
       "tags": [
         "原封"
       ]
@@ -19762,7 +19876,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 908,
+      "price": 903,
       "tags": [
         "原封"
       ]
@@ -19796,7 +19910,7 @@
       "color": "海湖青",
       "storage": "",
       "channel": "*",
-      "price": 903,
+      "price": 900,
       "tags": [
         "原封"
       ]
@@ -19830,7 +19944,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 903,
+      "price": 900,
       "tags": [
         "原封"
       ]
@@ -19864,7 +19978,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 1020,
+      "price": 1015,
       "tags": [
         "原封"
       ]
@@ -19898,7 +20012,7 @@
       "color": "海湖青",
       "storage": "",
       "channel": "*",
-      "price": 1020,
+      "price": 1015,
       "tags": [
         "原封"
       ]
@@ -19932,7 +20046,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 1018,
+      "price": 1013,
       "tags": [
         "原封"
       ]
@@ -22182,23 +22296,6 @@
       ]
     },
     {
-      "id": "honor-67714",
-      "sourceId": "67714",
-      "shopId": "59219",
-      "brand": "honor",
-      "category": "荣耀",
-      "name": "荣耀X80 ProMax 8+512GB5G闪电红原封",
-      "model": "",
-      "sku": "",
-      "color": "",
-      "storage": "",
-      "channel": "*",
-      "price": 2410,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
       "id": "dji-67865",
       "sourceId": "67865",
       "shopId": "59219",
@@ -22278,7 +22375,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 1280,
+      "price": 1260,
       "tags": [
         "原封"
       ]
@@ -22312,7 +22409,7 @@
       "color": "黑色",
       "storage": "",
       "channel": "*",
-      "price": 1270,
+      "price": 1260,
       "tags": [
         "原封"
       ]
@@ -22346,7 +22443,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 1280,
+      "price": 1260,
       "tags": [
         "原封"
       ]
@@ -22414,7 +22511,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 1960,
+      "price": 1950,
       "tags": [
         "原封"
       ]
@@ -22448,7 +22545,7 @@
       "color": "黑色",
       "storage": "",
       "channel": "*",
-      "price": 2080,
+      "price": 2070,
       "tags": [
         "原封"
       ]
@@ -22788,7 +22885,7 @@
       "color": "黑色",
       "storage": "",
       "channel": "*",
-      "price": 2290,
+      "price": 2260,
       "tags": [
         "原封"
       ]
@@ -22822,7 +22919,7 @@
       "color": "白色",
       "storage": "",
       "channel": "*",
-      "price": 2460,
+      "price": 2450,
       "tags": [
         "原封"
       ]
@@ -22856,7 +22953,7 @@
       "color": "黑色",
       "storage": "",
       "channel": "*",
-      "price": 2300,
+      "price": 2270,
       "tags": [
         "原封"
       ]
@@ -22890,7 +22987,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 2400,
+      "price": 2390,
       "tags": [
         "原封"
       ]
@@ -23026,7 +23123,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 4680,
+      "price": 4580,
       "tags": [
         "原封"
       ]
@@ -23060,7 +23157,7 @@
       "color": "银色",
       "storage": "",
       "channel": "*",
-      "price": 3390,
+      "price": 3370,
       "tags": [
         "原封"
       ]
@@ -25969,7 +26066,7 @@
       "color": "黑色",
       "storage": "",
       "channel": "*",
-      "price": 2600,
+      "price": 2590,
       "tags": [
         "原封"
       ]
@@ -26003,7 +26100,7 @@
       "color": "黑色",
       "storage": "",
       "channel": "国补",
-      "price": 2700,
+      "price": 2690,
       "tags": [
         "国补"
       ]
@@ -26684,7 +26781,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 1210,
+      "price": 1190,
       "tags": [
         "原封"
       ]
@@ -26754,7 +26851,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 1600,
+      "price": 1570,
       "tags": [
         "原封"
       ]
@@ -26794,6 +26891,40 @@
       ]
     },
     {
+      "id": "xiaomi-69100",
+      "sourceId": "69100",
+      "shopId": "59219",
+      "brand": "xiaomi",
+      "category": "小米融合",
+      "name": "小米平板9Pro标准版-12.5寸-8+256G(WIFI)黑色",
+      "model": "",
+      "sku": "",
+      "color": "黑色",
+      "storage": "256G",
+      "channel": "*",
+      "price": 3730,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "xiaomi-62332",
+      "sourceId": "62332",
+      "shopId": "59219",
+      "brand": "xiaomi",
+      "category": "小米融合",
+      "name": "小米平板7Ultra 15周年纪念版16+1TB(WIFI) 黑色原封",
+      "model": "",
+      "sku": "",
+      "color": "黑色",
+      "storage": "1TB",
+      "channel": "*",
+      "price": 6050,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
       "id": "xiaomi-69108",
       "sourceId": "69108",
       "shopId": "59219",
@@ -26811,18 +26942,18 @@
       ]
     },
     {
-      "id": "xiaomi-62332",
-      "sourceId": "62332",
+      "id": "xiaomi-59100",
+      "sourceId": "59100",
       "shopId": "59219",
       "brand": "xiaomi",
       "category": "小米融合",
-      "name": "小米平板7Ultra 15周年纪念版16+1TB(WIFI) 黑色原封",
+      "name": "小米平板7Pro柔光版-11.2寸-12+512G(WIFI)黑色原封",
       "model": "",
       "sku": "",
       "color": "黑色",
-      "storage": "1TB",
+      "storage": "512G",
       "channel": "*",
-      "price": 5950,
+      "price": 3530,
       "tags": [
         "原封"
       ]
@@ -26845,18 +26976,18 @@
       ]
     },
     {
-      "id": "xiaomi-59100",
-      "sourceId": "59100",
+      "id": "xiaomi-64128",
+      "sourceId": "64128",
       "shopId": "59219",
       "brand": "xiaomi",
       "category": "小米融合",
-      "name": "小米平板7Pro柔光版-11.2寸-12+512G(WIFI)黑色原封",
+      "name": "小米平板8pro标准版-11.2寸-12+256G(WIFI)黑色",
       "model": "",
       "sku": "",
       "color": "黑色",
-      "storage": "512G",
+      "storage": "256G",
       "channel": "*",
-      "price": 3450,
+      "price": 3530,
       "tags": [
         "原封"
       ]
@@ -26879,40 +27010,6 @@
       ]
     },
     {
-      "id": "xiaomi-64128",
-      "sourceId": "64128",
-      "shopId": "59219",
-      "brand": "xiaomi",
-      "category": "小米融合",
-      "name": "小米平板8pro标准版-11.2寸-12+256G(WIFI)黑色",
-      "model": "",
-      "sku": "",
-      "color": "黑色",
-      "storage": "256G",
-      "channel": "*",
-      "price": 3850,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "xiaomi-65344",
-      "sourceId": "65344",
-      "shopId": "59219",
-      "brand": "xiaomi",
-      "category": "小米融合",
-      "name": "红米手表Redmi Watch6 典雅黑",
-      "model": "",
-      "sku": "",
-      "color": "",
-      "storage": "",
-      "channel": "*",
-      "price": 580,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
       "id": "xiaomi-64402",
       "sourceId": "64402",
       "shopId": "59219",
@@ -26924,18 +27021,18 @@
       "color": "",
       "storage": "256G",
       "channel": "*",
-      "price": 3250,
+      "price": 3350,
       "tags": [
         "原封"
       ]
     },
     {
-      "id": "xiaomi-65346",
-      "sourceId": "65346",
+      "id": "xiaomi-65344",
+      "sourceId": "65344",
       "shopId": "59219",
       "brand": "xiaomi",
       "category": "小米融合",
-      "name": "红米手表Redmi Watch6 迷雾蓝",
+      "name": "红米手表Redmi Watch6 典雅黑",
       "model": "",
       "sku": "",
       "color": "",
@@ -26964,12 +27061,12 @@
       ]
     },
     {
-      "id": "xiaomi-65345",
-      "sourceId": "65345",
+      "id": "xiaomi-65346",
+      "sourceId": "65346",
       "shopId": "59219",
       "brand": "xiaomi",
       "category": "小米融合",
-      "name": "红米手表Redmi Watch6 皎月银",
+      "name": "红米手表Redmi Watch6 迷雾蓝",
       "model": "",
       "sku": "",
       "color": "",
@@ -26998,6 +27095,40 @@
       ]
     },
     {
+      "id": "xiaomi-65345",
+      "sourceId": "65345",
+      "shopId": "59219",
+      "brand": "xiaomi",
+      "category": "小米融合",
+      "name": "红米手表Redmi Watch6 皎月银",
+      "model": "",
+      "sku": "",
+      "color": "",
+      "storage": "",
+      "channel": "*",
+      "price": 580,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "xiaomi-64366",
+      "sourceId": "64366",
+      "shopId": "59219",
+      "brand": "xiaomi",
+      "category": "小米融合",
+      "name": "小米平板8标准版-11.2寸-8+256G(WIFI)冰晶蓝",
+      "model": "",
+      "sku": "",
+      "color": "冰晶蓝",
+      "storage": "256G",
+      "channel": "*",
+      "price": 2450,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
       "id": "xiaomi-49889",
       "sourceId": "49889",
       "shopId": "59219",
@@ -27015,18 +27146,18 @@
       ]
     },
     {
-      "id": "xiaomi-64366",
-      "sourceId": "64366",
+      "id": "xiaomi-64121",
+      "sourceId": "64121",
       "shopId": "59219",
       "brand": "xiaomi",
       "category": "小米融合",
-      "name": "小米平板8标准版-11.2寸-8+256G(WIFI)冰晶蓝",
+      "name": "小米平板8标准版-11.2寸-8+256G(WIFI)黑色",
       "model": "",
       "sku": "",
-      "color": "冰晶蓝",
+      "color": "黑色",
       "storage": "256G",
       "channel": "*",
-      "price": 2570,
+      "price": 2450,
       "tags": [
         "原封"
       ]
@@ -27060,7 +27191,7 @@
       "color": "冰晶蓝",
       "storage": "256G",
       "channel": "*",
-      "price": 3050,
+      "price": 3350,
       "tags": [
         "原封"
       ]
@@ -27094,7 +27225,7 @@
       "color": "冰晶蓝",
       "storage": "256G",
       "channel": "*",
-      "price": 2750,
+      "price": 2950,
       "tags": [
         "原封"
       ]
@@ -27418,23 +27549,6 @@
       "storage": "",
       "channel": "*",
       "price": 380,
-      "tags": [
-        "原封"
-      ]
-    },
-    {
-      "id": "xiaomi-69100",
-      "sourceId": "69100",
-      "shopId": "59219",
-      "brand": "xiaomi",
-      "category": "小米融合",
-      "name": "小米平板9Pro标准版-12.5寸-8+256G(WIFI)黑色",
-      "model": "",
-      "sku": "",
-      "color": "黑色",
-      "storage": "256G",
-      "channel": "*",
-      "price": 3730,
       "tags": [
         "原封"
       ]
@@ -35144,7 +35258,7 @@
       "color": "黑色",
       "storage": "",
       "channel": "兰州激活",
-      "price": 3030,
+      "price": 3120,
       "tags": [
         "激活"
       ]
@@ -35178,7 +35292,7 @@
       "color": "浅金色",
       "storage": "",
       "channel": "*",
-      "price": 3030,
+      "price": 3120,
       "tags": [
         "原封"
       ]
@@ -35212,7 +35326,7 @@
       "color": "浅金色",
       "storage": "",
       "channel": "*",
-      "price": 3030,
+      "price": 3120,
       "tags": [
         "原封"
       ]
@@ -35246,7 +35360,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 3030,
+      "price": 3120,
       "tags": [
         "原封"
       ]
@@ -35280,7 +35394,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 3030,
+      "price": 3120,
       "tags": [
         "原封"
       ]
@@ -35314,7 +35428,7 @@
       "color": "",
       "storage": "",
       "channel": "兰州激活",
-      "price": 3030,
+      "price": 3080,
       "tags": [
         "激活"
       ]
@@ -35416,7 +35530,7 @@
       "color": "深空灰",
       "storage": "",
       "channel": "兰州激活",
-      "price": 3030,
+      "price": 3090,
       "tags": [
         "激活"
       ]
@@ -35654,7 +35768,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 3340,
+      "price": 3330,
       "tags": [
         "原封"
       ]
@@ -35671,7 +35785,7 @@
       "color": "",
       "storage": "",
       "channel": "兰州激活",
-      "price": 5490,
+      "price": 5530,
       "tags": [
         "激活"
       ]
@@ -35688,7 +35802,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 3340,
+      "price": 3330,
       "tags": [
         "原封"
       ]
@@ -35705,7 +35819,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 5510,
+      "price": 5540,
       "tags": [
         "原封"
       ]
@@ -35722,7 +35836,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 3340,
+      "price": 3330,
       "tags": [
         "原封"
       ]
@@ -35739,7 +35853,7 @@
       "color": "",
       "storage": "",
       "channel": "兰州激活",
-      "price": 5490,
+      "price": 5530,
       "tags": [
         "激活"
       ]
@@ -35773,7 +35887,7 @@
       "color": "星光色",
       "storage": "",
       "channel": "*",
-      "price": 5555,
+      "price": 5550,
       "tags": [
         "原封"
       ]
@@ -35790,7 +35904,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 3340,
+      "price": 3330,
       "tags": [
         "原封"
       ]
@@ -35824,7 +35938,7 @@
       "color": "",
       "storage": "",
       "channel": "兰州激活",
-      "price": 3330,
+      "price": 3320,
       "tags": [
         "激活"
       ]
@@ -35841,7 +35955,7 @@
       "color": "",
       "storage": "",
       "channel": "兰州激活",
-      "price": 5490,
+      "price": 5530,
       "tags": [
         "激活"
       ]
@@ -35858,7 +35972,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 3800,
+      "price": 3840,
       "tags": [
         "原封"
       ]
@@ -35960,7 +36074,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 3815,
+      "price": 3840,
       "tags": [
         "原封"
       ]
@@ -36028,7 +36142,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 3815,
+      "price": 3840,
       "tags": [
         "原封"
       ]
@@ -36334,7 +36448,7 @@
       "color": "",
       "storage": "",
       "channel": "*",
-      "price": 5510,
+      "price": 5540,
       "tags": [
         "原封"
       ]
@@ -36929,7 +37043,7 @@
       "color": "天蓝色",
       "storage": "512G",
       "channel": "*",
-      "price": 7870,
+      "price": 7800,
       "tags": [
         "原封"
       ]
@@ -36997,7 +37111,7 @@
       "color": "星光色",
       "storage": "512G",
       "channel": "*",
-      "price": 7890,
+      "price": 7800,
       "tags": [
         "原封"
       ]
@@ -37032,6 +37146,23 @@
       "storage": "512G",
       "channel": "*",
       "price": 7770,
+      "tags": [
+        "原封"
+      ]
+    },
+    {
+      "id": "apple-51685",
+      "sourceId": "51685",
+      "shopId": "59219",
+      "brand": "apple",
+      "category": "苹果融合",
+      "name": "苹果原装追踪器-AirTag四件套(542)",
+      "model": "",
+      "sku": "",
+      "color": "",
+      "storage": "",
+      "channel": "*",
+      "price": 830,
       "tags": [
         "原封"
       ]
@@ -38360,7 +38491,7 @@
       "color": "晶钻白",
       "storage": "",
       "channel": "*",
-      "price": 410,
+      "price": 230,
       "tags": [
         "原封"
       ]
