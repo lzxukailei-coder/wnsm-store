@@ -1,4 +1,4 @@
-// 成本录入模板生成器：按品牌切表 + 同型号(内存/颜色/渠道)聚拢，激活/原封相邻。
+// 成本录入模板生成器：按品牌切表 + 同型号(版本/内存/颜色/渠道)聚拢，激活/原封相邻。
 // 输出后台「批量导入」可直接粘贴的长表 CSV（6列），只含手机+平板、在库、公开价>=MIN。
 import fs from 'fs';
 const MIN = 5000;
@@ -19,36 +19,51 @@ function channelKind(p) {
   return { rank: 1, label: '原封' };
 }
 
-// 机型归并键（用于“同型号”聚拢）。苹果用“型号名”；安卓取内存配置前的机型名
+// 版本/配置变体词（出现在内存配置之后，需补入机型键；不含纯颜色/玻璃工艺）
+const VERSION_WORDS = [
+  '典藏版','先锋版','优享版','周年纪念版','纪念版','柔光悦读版','柔光版','标准版',
+  '灵动款','灵动版','悦读版','鸿蒙焕新版','焕新版','北斗版','灵盾防窥屏','超能版',
+  '超级版','至尊版','尊享版','活力版','元气版','徕卡版','特别版','卫星通信版',
+  '卫星消息版','星闪版','畅学版','非凡大师'
+];
+
+// 解析运行内存/存储容量，返回 {ram,rom,index,str}
+function parseCfg(n) {
+  const m = n.match(/(\d+)\s*GB?\s*\+\s*(\d+)\s*(TB|GB|G|T)?/i) ||
+            n.match(/(\d+)\s*\+\s*(\d+)\s*(TB|GB|G|T)?/i);
+  if (m) {
+    let rom = +m[2];
+    const u = (m[3] || 'G').toUpperCase();
+    if (u === 'TB' || u === 'T') rom *= 1024;
+    return { ram: +m[1], rom, index: n.indexOf(m[0]), str: m[0] };
+  }
+  const m2 = n.match(/(\d+)\s*(TB|GB|G|T)(?![A-Za-z])/i);
+  if (m2) {
+    let rom = +m2[1];
+    if (/TB|T/i.test(m2[2])) rom *= 1024;
+    return { ram: 0, rom, index: n.indexOf(m2[0]), str: m2[0] };
+  }
+  return { ram: 0, rom: 0, index: -1, str: '' };
+}
+
+// 机型归并键：苹果用型号名；其他取“机型名”，并补内存配置后的版本词（典藏/先锋/柔光…）
 function familyOf(p) {
   const n = p.name || '';
   if (p.category === '苹果' && p.model) {
     const i = n.indexOf('(');
     return i > 0 ? n.slice(0, i) : n;
   }
-  const m = n.match(/\d+GB?\+\d+(?:GB|TB|G|T)?/i) || n.match(/\d+\+\d+(?:GB|TB|G|T)?/i);
-  if (m) return n.slice(0, n.indexOf(m[0])).replace(/[\s\-_·]+$/, '').trim();
-  const m2 = n.match(/(\d+)(TB|GB|G)(?![A-Za-z])/i);
-  if (m2) return n.slice(0, n.indexOf(m2[0])).replace(/[\s\-_·]+$/, '').trim();
-  return n.replace(/原封.*$/, '').replace(/激活.*$/, '').trim();
-}
-
-// 存储容量（GB），用于同机型内存排序（256<512<1024）
-function storageRankOf(p) {
-  const n = p.name || '';
-  const re = /(\d+)\s*(TB|GB|G|T)\b/gi;
-  const vals = [];
-  let m;
-  while ((m = re.exec(n))) {
-    let v = +m[1];
-    if (m[2].toUpperCase() === 'TB' || m[2] === 'T') v *= 1024;
-    vals.push(v);
+  const cfg = parseCfg(n);
+  let prefix, suffix;
+  if (cfg.index >= 0) {
+    prefix = n.slice(0, cfg.index).replace(/[\s\-_·]+$/, '').trim();
+    suffix = n.slice(cfg.index + cfg.str.length);
+  } else {
+    prefix = n.replace(/原封.*$/, '').replace(/激活.*$/, '').trim();
+    suffix = '';
   }
-  if (vals.length) return Math.max(...vals);
-  const s = String(p.storage || '');
-  const mm = s.match(/(\d+)\s*(TB|GB|G|T)/i);
-  if (mm) { let v = +mm[1]; if (/TB|T/i.test(mm[2])) v *= 1024; return v; }
-  return 0;
+  const vs = VERSION_WORDS.filter(w => suffix.includes(w) && !prefix.includes(w));
+  return vs.length ? prefix + ' ' + vs.join('') : prefix;
 }
 
 function fileKey(p) {
@@ -66,10 +81,11 @@ function fileKey(p) {
 
 const rows = ps.filter(p => isCore(p) && !oos(p) && p.price >= MIN).map(p => {
   const ck = channelKind(p);
+  const cfg = parseCfg(p.name || '');
   return {
     id: p.id, name: p.name, category: p.category, price: p.price,
     chLabel: ck.label, chRank: ck.rank,
-    family: familyOf(p), storage: storageRankOf(p), color: p.color || '',
+    family: familyOf(p), rom: cfg.rom, ram: cfg.ram, color: p.color || '',
     file: fileKey(p)
   };
 });
@@ -93,7 +109,8 @@ for (const [file, list] of Object.entries(files)) {
   list.sort((a, b) =>
     b.gmax - a.gmax ||
     a.family.localeCompare(b.family, 'zh') ||
-    a.storage - b.storage ||
+    a.rom - b.rom ||
+    a.ram - b.ram ||
     a.color.localeCompare(b.color, 'zh') ||
     a.chRank - b.chRank ||
     a.price - b.price
