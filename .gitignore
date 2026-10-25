@@ -47,3 +47,31 @@ run*.txt
 # 成本录入表（含真实拿货价，禁止提交）
 成本*.csv
 
+# 会员价原始中间数据（已并入 data.json，data.json 由后端网关保护）
+member.json
+sess.json
+
+# 验证码/登录探查临时文件与图片
+captcha*.jpg
+captcha*.png
+exp_*.jpg
+exp_*.png
+exp_*.txt
+login.html
+login-inline.js
+compare.txt
+crawl-run.txt
+
+# 一次性探测/实验脚本（ESM）
+*.mjs
+
+# tesseract 运行时语言数据（CI 运行时自动下载，不入库）
+*.traineddata
+
+# 浏览器临时截图
+btn.png
+full.png
+
+# 临时输出文本（命令结果/日志）
+*.txt
+

@@ -21,8 +21,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
 
-      - name: 运行爬虫
+      - name: 安装依赖（验证码识别 + 图像处理）
+        run: npm ci
+
+      - name: 运行爬虫（公开价 + 登录会员价）
+        env:
+          BF_USER: ${{ secrets.BF_USER }}
+          BF_PASS: ${{ secrets.BF_PASS }}
         run: node crawler.js
 
       - name: 检查数据变化

@@ -5,11 +5,17 @@
 
 const fs = require('fs');
 const path = require('path');
+const { CaptchaSolver } = require('./captcha');
 
 const BASE_URL = 'http://www.lzbftx.vip';
 const QUOTE_URL = BASE_URL + '/quoteList.action';
+const LOGIN_URL = BASE_URL + '/index.htm?ykflag=Y';
 const MAX_REDIRECTS = 20;
 const REQ_DELAY = 400; // 每个分类请求间隔，防反爬
+const LOGIN_MAX_RETRY = 8; // 验证码 OCR 失败重试次数
+// 八方登录凭证仅从环境变量读取（在 GitHub Secrets / 本地环境注入，不写入仓库）
+const BF_USER = process.env.BF_USER;
+const BF_PASS = process.env.BF_PASS;
 
 // 全部二级分类（一个品牌/品类一个请求）
 const CATEGORIES = [
@@ -219,6 +225,77 @@ async function fetchCategory(jar, km) {
   return await res.text();
 }
 
+// ===== 登录（OCR 识别图形验证码，自动重试）=====
+async function loginMember(solver) {
+  for (let attempt = 1; attempt <= LOGIN_MAX_RETRY; attempt++) {
+    const jar = new CookieJar();
+    // 1. 登录页建立 session
+    const r0 = await fetchWithCookies(LOGIN_URL, jar);
+    await r0.text();
+    // 2. 取验证码（同 session）
+    const rc = await fetchWithCookies(BASE_URL + '/image.jsp?t=' + Math.random(), jar);
+    const capBuf = Buffer.from(await rc.arrayBuffer());
+    const sign = await solver.solve(capBuf);
+    if (!/^\d{4}$/.test(sign)) {
+      console.log(`  登录第 ${attempt} 次：验证码识别为"${sign}"，刷新重试`);
+      await new Promise(r => setTimeout(r, 500));
+      continue;
+    }
+    // 3. 提交登录（jiqima 安全控件非必填，密码明文）
+    const form = new URLSearchParams({
+      pwd: BF_PASS, dhhm: BF_USER, sign,
+      autoDhhm: '', autoPass: '', autoLoginCheck: '0',
+      autoLoginFlag: 'N', autoTime: '', jiqima: ''
+    });
+    const r = await fetch(BASE_URL + '/dologin.action?bjdflag=', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Cookie': jar.toString(),
+        'Referer': LOGIN_URL
+      },
+      body: form.toString()
+    });
+    jar.setFromHeaders(r.headers);
+    const txt = await r.text();
+    let j = {};
+    try { j = JSON.parse(txt); } catch { /* 非 JSON 视为失败 */ }
+    if (j.code === 0 || j.code === 200) {
+      console.log(`  登录成功（第 ${attempt} 次，验证码 ${sign}）`);
+      return jar;
+    }
+    console.log(`  登录第 ${attempt} 次失败：${txt.slice(0, 80)}（验证码 ${sign}）`);
+    await new Promise(r => setTimeout(r, 600));
+  }
+  throw new Error('登录失败：超过最大重试次数（' + LOGIN_MAX_RETRY + '）');
+}
+
+// 登录后遍历全分类，返回 Map<sourceId, 会员价>
+async function crawlMemberPrices(jar) {
+  const prices = new Map();
+  function ingest(html) {
+    const sections = extractSections(html);
+    const raw = extractProducts(html, sections);
+    for (const p of raw) {
+      if (!prices.has(p.productId)) prices.set(p.productId, p.price);
+    }
+    return raw.length;
+  }
+  const homeRes = await fetchWithCookies(QUOTE_URL, jar);
+  console.log(`  会员价首页: ${ingest(await homeRes.text())} 条`);
+  for (const km of CATEGORIES) {
+    try {
+      const html = await fetchCategory(jar, km);
+      const n = ingest(html);
+      console.log(`  [会员价] ${km.padEnd(14)} ${String(n).padStart(3)} 条`);
+    } catch (e) {
+      console.log(`  [会员价] ${km.padEnd(14)} 失败: ${e.message}`);
+    }
+    await new Promise(r => setTimeout(r, REQ_DELAY));
+  }
+  return prices;
+}
+
 async function main() {
   console.log('开始全分类爬取八方报价单...');
   const jar = new CookieJar();
@@ -261,7 +338,32 @@ async function main() {
   }
 
   const products = [...byId.values()];
-  console.log(`\n去重后总产品数: ${products.length}`);
+  console.log(`\n[公开价]去重后总产品数: ${products.length}`);
+
+  // ===== 登录抓取会员价（真实拿货成本基准）=====
+  if (!BF_USER || !BF_PASS) {
+    throw new Error('缺少八方登录凭证：请在环境变量设置 BF_USER / BF_PASS（GitHub Actions 中配置为同名 Secrets）');
+  }
+  console.log('\n开始登录抓取会员价（八方会员）...');
+  const solver = new CaptchaSolver();
+  await solver.init();
+  let memberPrices = new Map();
+  try {
+    const memberJar = await loginMember(solver);
+    memberPrices = await crawlMemberPrices(memberJar);
+  } finally {
+    await solver.close();
+  }
+  console.log(`[会员价]去重后总条数: ${memberPrices.size}`);
+
+  // 合并：按 sourceId 挂 memberPrice（会员价 <100 视为缺货置 null，定价回退）
+  let withMember = 0;
+  for (const p of products) {
+    const mp = memberPrices.get(p.sourceId);
+    if (mp !== undefined && mp >= 100) { p.memberPrice = mp; withMember++; }
+    else p.memberPrice = null;
+  }
+  console.log(`成功对齐会员价的产品: ${withMember}/${products.length}`);
 
   // 品牌/分区统计
   const byBrand = {}, byCat = {};
@@ -285,12 +387,14 @@ async function main() {
 
   const output = {
     updateTime,
+    memberPriceTime: updateTime,
     source: QUOTE_URL,
     count: products.length,
+    memberCount: withMember,
     products
   };
   fs.writeFileSync(path.join(__dirname, 'data.json'), JSON.stringify(output, null, 2), 'utf-8');
-  console.log(`\n已写入 data.json（${products.length} 个产品）`);
+  console.log(`\n已写入 data.json（${products.length} 个产品，其中 ${withMember} 个含真实会员价）`);
 }
 
 main().catch(err => {

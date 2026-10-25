@@ -5,8 +5,8 @@ let pricingCache = { data: null, time: 0 };
 const CATALOG_TTL = 5 * 60 * 1000;   // 目录 5 分钟
 const PRICING_TTL = 60 * 1000;       // 底价规则/设置 60 秒（改价后最多 1 分钟生效）
 
-const DEFAULT_B_MARGIN = 50;         // B 端默认每台最低毛利（八方会员价 +50，即公开价 -30）
-const C_MIN_MARGIN = 100;            // 有真实成本时，C 端零售价至少高于成本 100
+const DEFAULT_B_MARGIN = 50;         // B 端默认每台最低毛利（八方真实会员价 +50）
+const C_MIN_MARGIN = 100;            // C 端零售价至少高于拿货成本 100
 
 // 通过 env.ASSETS 读取受保护的静态 data.json（ASSETS 不走 Functions 路由，可读到被拦截的文件）
 export async function loadCatalog(request, env) {
@@ -110,13 +110,14 @@ export function isOutOfStock(p) {
 // 核心定价：计算 B/C 两个价格，并应用 SKU 底价保护
 export function computePrices(p, pricing) {
   const base = p.price;
-  const member = base - 80;                  // 八方会员价基准（公开价 -80）
+  // 八方登录后真实会员价（每日随爬虫抓取，即默认拿货成本基准）；缺失时回退 公开价-80
+  const member = (p.memberPrice && p.memberPrice >= 100) ? p.memberPrice : base - 80;
   const ov = findOverride(p, pricing);
   const cost = ov ? ov.cost : null;
   const floor = ov ? ov.floor : null;
   const fixed = ov ? ov.fixed : null;
 
-  // B 端批发价：固定价优先；否则不得低于 默认安全线/成本+毛利/硬底价
+  // B 端批发价：固定价优先；否则不得低于 真实会员价+毛利/成本+毛利/硬底价
   let wholesale;
   if (fixed !== null) {
     wholesale = fixed;
@@ -127,8 +128,9 @@ export function computePrices(p, pricing) {
     wholesale = Math.round(w);
   }
 
-  // C 端零售价：阶梯加价；若录了真实成本，不得低于成本 + 最低零售毛利
+  // C 端零售价：阶梯加价；同时不得低于真实拿货价/手工成本 + 最低零售毛利
   let retail = retailPrice(base);
+  retail = Math.max(retail, Math.round(member + C_MIN_MARGIN));
   if (cost !== null) retail = Math.max(retail, Math.round(cost + C_MIN_MARGIN));
 
   return {
