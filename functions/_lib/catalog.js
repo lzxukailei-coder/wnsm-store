@@ -110,8 +110,8 @@ export function isOutOfStock(p) {
 // 核心定价：计算 B/C 两个价格，并应用 SKU 底价保护
 export function computePrices(p, pricing) {
   const base = p.price;
-  // 八方登录后真实会员价（每日随爬虫抓取，即默认拿货成本基准）；缺失时回退 公开价-80
-  const member = (p.memberPrice && p.memberPrice >= 100) ? p.memberPrice : base - 80;
+  // 八方登录后真实会员价（每日随爬虫抓取，即默认拿货成本基准）；无会员价/无折扣时直接同步公开价，不臆测折扣
+  const member = (p.memberPrice && p.memberPrice >= 100) ? p.memberPrice : base;
   const ov = findOverride(p, pricing);
   const cost = ov ? ov.cost : null;
   const floor = ov ? ov.floor : null;
@@ -125,12 +125,13 @@ export function computePrices(p, pricing) {
     let w = member + pricing.bMargin;
     if (cost !== null) w = Math.max(w, cost + pricing.bMargin);
     if (floor !== null) w = Math.max(w, floor);
+    // 无手工成本/底价干预时：会员价+毛利不得高于不登录直接同步的公开价（否则登录后反而更贵）
+    if (cost === null && floor === null) w = Math.min(w, base);
     wholesale = Math.round(w);
   }
 
-  // C 端零售价：阶梯加价；同时不得低于真实拿货价/手工成本 + 最低零售毛利
-  let retail = retailPrice(base);
-  retail = Math.max(retail, Math.round(member + C_MIN_MARGIN));
+  // C 端/未登录：直接同步八方公开价（不登录会员看到的价）；手工成本兜底防填错
+  let retail = Math.round(base);
   if (cost !== null) retail = Math.max(retail, Math.round(cost + C_MIN_MARGIN));
 
   return {
@@ -146,17 +147,19 @@ export function computePrices(p, pricing) {
 export function toPublicProduct(p, user, pricing) {
   const outStock = isOutOfStock(p);
   let displayPrice = null;
-  let priceLabel = null; // retail=零售价 wholesale=批发价 pending=B端审核中(暂看零售)
+  let priceLabel = null; // wholesale=批发价 retail=零售价 pending=B端审核中(暂看公开价) public=未登录(同步公开价)
   if (!outStock) {
     const c = computePrices(p, pricing);
     if (user && user.role === 'B' && user.status === 'approved') {
       displayPrice = c.wholesale;
       priceLabel = 'wholesale';
-    } else if (user) {
+    } else {
+      // 非 B 端会员（未登录 / C 端 / B 端审核中）：直接同步八方公开价
       displayPrice = c.retail;
-      priceLabel = (user.role === 'B' && user.status === 'pending') ? 'pending' : 'retail';
+      if (user && user.role === 'B' && user.status === 'pending') priceLabel = 'pending';
+      else if (user) priceLabel = 'retail';
+      else priceLabel = 'public';
     }
-    // 未登录：displayPrice/priceLabel 均为 null，前端引导登录
   }
   return {
     id: p.id,

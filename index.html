@@ -43,6 +43,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 .tag-c{background:#e3f2fd;color:#1976d2}
 .tag-b{background:#fce4ec;color:#c2185b}
 .tag-p{background:#fff8e1;color:#f9a825}
+.tag-public{background:#eceff1;color:#607d8b}
 .card .tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px}
 .card .tags span{font-size:10px;padding:2px 7px;border-radius:4px}
 .t-original{background:#e3f2fd;color:#1976d2}
@@ -339,12 +340,13 @@ function renderCard(p) {
   let priceHtml = '', priceTag = '';
   if (p.outStock) {
     priceHtml = `<span style="font-size:15px;color:#86868b">缺货/待报价</span>`;
-  } else if (!user || p.displayPrice == null) {
+  } else if (p.displayPrice == null) {
     priceHtml = `<span class="price-locked">🔒 登录后查看价格</span>`;
   } else {
     priceHtml = `<span class="price cny">￥</span><span class="price">${Number(p.displayPrice).toLocaleString()}</span>`;
     if (p.priceLabel === 'wholesale') priceTag = `<span class="price-tag tag-b">批发价</span>`;
-    else if (p.priceLabel === 'pending') priceTag = `<span class="price-tag tag-p">审核中·零售价</span>`;
+    else if (p.priceLabel === 'pending') priceTag = `<span class="price-tag tag-p">审核中·公开价</span>`;
+    else if (p.priceLabel === 'public') priceTag = `<span class="price-tag tag-public">公开价</span>`;
     else priceTag = `<span class="price-tag tag-c">零售价</span>`;
   }
 
