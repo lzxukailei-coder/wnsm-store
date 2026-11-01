@@ -105,6 +105,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 .contact-who{font-size:12px;color:#86868b;text-align:center;margin-bottom:12px}
 .contact-qr{width:190px;height:190px;margin:0 auto 8px;display:block;border-radius:10px;border:1px solid #eee}
 .contact-hint{font-size:12px;color:#666;text-align:center;margin-bottom:12px}
+.contact-qrs{display:flex;gap:12px;justify-content:center;margin-bottom:8px}
+.contact-qrs>div{flex:1;max-width:190px}
+.contact-qr-mini{width:100%;border-radius:10px;border:1px solid #eee;display:block}
+.qr-label{font-size:11px;color:#86868b;text-align:center;margin-top:4px}
 /* 页脚 */
 .footer{background:#1a1a2e;color:#cfd3e0;padding:18px 16px 120px;font-size:12px;line-height:1.8}
 .footer .f-title{color:#fff;font-weight:600;margin-bottom:6px;font-size:13px}
@@ -254,8 +258,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
     <div class="contact-subject" id="contactSubject">咨询报价</div>
     <a class="contact-phone" href="tel:17361593016">17361593016</a>
     <div class="contact-who">兰州蜗牛数码 · 个人经营者</div>
-    <img class="contact-qr" src="assets/qr-wechat.jpg" alt="微信二维码">
-    <div class="contact-hint">扫二维码添加微信，备注需求型号更快对接</div>
+    <div class="contact-qrs">
+      <div>
+        <img class="contact-qr-mini" src="assets/qr-wechat.jpg" alt="个人微信二维码">
+        <div class="qr-label">个人微信（咨询/交易）</div>
+      </div>
+      <div>
+        <img class="contact-qr-mini" src="assets/qr-gongzhonghao.jpg" alt="公众号二维码">
+        <div class="qr-label">公众号（关注每日报价）</div>
+      </div>
+    </div>
+    <div class="contact-hint">扫码添加微信，备注需求型号更快对接</div>
     <button class="submit" onclick="copySubject()">复制咨询内容</button>
     <div class="tip">
       咨询前请先阅读 <a href="rules.html" style="color:#0071e3">交易规则</a> 与 <a href="service.html" style="color:#0071e3">售后与投诉</a><br>
@@ -276,7 +289,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 <!-- 页脚：主体声明 / 联系 / 规则 / 售后 / 隐私 / 风险 -->
 <footer class="footer">
   <div class="f-title">兰州蜗牛数码 · 个人经营者</div>
-  <div>所在地：甘肃兰州 ｜ 电话：<a href="tel:17361593016">17361593016</a> ｜ 微信：扫码添加</div>
+  <div>所在地：甘肃兰州 ｜ 电话：<a href="tel:17361593016">17361593016</a> ｜ 微信：扫码添加 ｜ 公众号：兰州蜗牛数码</div>
   <div class="links">
     <a href="rules.html">交易规则</a>
     <a href="service.html">售后与投诉</a>
