@@ -20,6 +20,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 .card li{font-size:14px;line-height:1.8;color:#333}
 .note{background:#fff8e1;border-radius:10px;padding:12px 14px;font-size:13px;line-height:1.7;color:#8a6d00;margin-top:10px}
 .qr{width:180px;height:180px;border-radius:10px;border:1px solid #eee;display:block;margin:8px auto}
+.qr-pair{display:flex;gap:12px;justify-content:center;max-width:380px;margin:0 auto}
+.qr-pair>div{flex:1;text-align:center}
+.qr-pair .qr{width:100%;max-width:180px;height:auto;margin:0 auto}
+.qr-caption{font-size:11px;color:#86868b;margin-top:4px}
 .tel{display:block;text-align:center;font-size:20px;font-weight:700;color:#0071e3;text-decoration:none;margin:6px 0 2px}
 .who{text-align:center;font-size:12px;color:#86868b;margin-bottom:10px}
 .footer{background:#1a1a2e;color:#cfd3e0;padding:18px 16px 28px;font-size:12px;line-height:1.8;margin-top:10px}
@@ -47,8 +51,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
     <h2>联系与核验</h2>
     <a class="tel" href="tel:17361593016">17361593016</a>
     <div class="who">兰州蜗牛数码 · 个人经营者 · 甘肃兰州</div>
-    <img class="qr" src="assets/qr-wechat.jpg" alt="微信二维码">
-    <p style="text-align:center;font-size:13px;color:#86868b">扫二维码添加微信，备注需求型号更快对接</p>
+    <div class="qr-pair">
+      <div>
+        <img class="qr" src="assets/qr-wechat.jpg" alt="个人微信二维码">
+        <div class="qr-caption">个人微信（咨询/交易）</div>
+      </div>
+      <div>
+        <img class="qr" src="assets/qr-gongzhonghao.jpg" alt="公众号二维码">
+        <div class="qr-caption">公众号：兰州蜗牛数码（关注每日报价）</div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:#86868b;margin-top:10px">扫码添加微信备注需求型号，或关注公众号获取每日报价</p>
   </div>
 
   <div class="card">
