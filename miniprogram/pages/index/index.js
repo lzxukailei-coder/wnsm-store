@@ -122,12 +122,19 @@ Page({
   },
 
   onContact() {
-    // 联系客服：跳转公众号/官网客服，线下电话在 about 页统一展示
+    // 联系客服：拨号或跳「关于我们」页查看个人微信 / 公众号二维码
     wx.showModal({
       title: '联系客服',
-      content: '致电 17361593016，或在「关于我们」页扫码添加微信',
+      content: '致电 17361593016，或到「关于我们」页扫码添加微信、查看公众号',
       confirmText: '拨打',
-      success: (r) => { if (r.confirm) wx.makePhoneCall({ phoneNumber: '17361593016' }); }
+      cancelText: '查看联系方式',
+      success: (r) => {
+        if (r.confirm) {
+          wx.makePhoneCall({ phoneNumber: '17361593016' });
+        } else if (r.cancel) {
+          wx.switchTab({ url: '/pages/about/about' });
+        }
+      }
     });
   },
 

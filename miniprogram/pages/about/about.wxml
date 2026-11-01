@@ -20,6 +20,21 @@
   </view>
 
   <view class="card">
+    <view class="h">联系对接 · 兰州蜗牛数码</view>
+    <view class="qr-pair">
+      <view class="qr-item" bindtap="previewQr" data-src="/assets/qr-wechat.jpg">
+        <image class="qr-img" src="/assets/qr-wechat.jpg" mode="aspectFit"></image>
+        <view class="qr-cap">个人微信 · 兰州蜗牛数码</view>
+      </view>
+      <view class="qr-item" bindtap="previewQr" data-src="/assets/qr-gongzhonghao.jpg">
+        <image class="qr-img" src="/assets/qr-gongzhonghao.jpg" mode="aspectFit"></image>
+        <view class="qr-cap">公众号 · 兰州蜗牛数码</view>
+      </view>
+    </view>
+    <view class="qr-hint">截图后在微信扫码添加个人微信，关注公众号获取每日报价；也可直接拨打 17361593016 咨询。本小程序仅展示报价与联系方式，不在线成交收款。</view>
+  </view>
+
+  <view class="card">
     <view class="h">多平台账号矩阵（统一品牌）</view>
     <view class="account"><text>微信公众号</text><text class="v">蜗牛数码渠道报价（待绑定）</text></view>
     <view class="account"><text>视频号</text><text class="v">展示获客（待开通）</text></view>

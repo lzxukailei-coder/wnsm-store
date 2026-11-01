@@ -20,6 +20,13 @@ Page({
       })
     });
   },
+  previewQr(e) {
+    const current = e.currentTarget.dataset.src;
+    wx.previewImage({
+      current,
+      urls: ['/assets/qr-wechat.jpg', '/assets/qr-gongzhonghao.jpg']
+    });
+  },
   onShareAppMessage() {
     return { title: '兰州蜗牛数码 · 手机渠道报价', path: '/pages/about/about' };
   }

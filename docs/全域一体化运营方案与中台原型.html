@@ -47,6 +47,19 @@ body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSys
 .chip.wechat{border-color:#1f9d55}
 .chip.external{border-color:#7c5cd6}
 .arch-arrow{text-align:center;color:var(--sub);font-size:13px;margin:-6px 0 10px}
+/* routing tiers */
+.route-tier{display:flex;gap:12px;flex-wrap:wrap}
+.route-node{flex:1 1 180px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.route-node .rn-t{font-weight:600;font-size:14px;margin-bottom:6px}
+.route-node .rn-s{font-size:12px;color:var(--sub);line-height:1.7}
+.route-node.wechat{border-color:#1f9d55}
+.route-node.external{border-color:#7c5cd6}
+.route-node.private{border-color:var(--gold)}
+.route-flow{text-align:center;color:var(--sub);font-size:12px;margin:8px 0}
+.flow-tag{display:inline-block;font-size:11px;padding:2px 9px;border-radius:6px;margin:2px 4px 2px 0}
+.f-ok{background:rgba(52,199,89,.15);color:var(--green)}
+.f-no{background:rgba(239,68,68,.15);color:var(--red)}
+.f-mid{background:rgba(245,124,0,.15);color:var(--orange)}
 /* platform matrix table */
 table{width:100%;border-collapse:collapse;background:var(--panel);border-radius:var(--radius);overflow:hidden;font-size:13.5px}
 th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
@@ -122,7 +135,7 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
 
   <div class="hero">
     <h1>一套商品库、一套会员体系，<br>分发到 <em>7 个触达渠道</em>统一运营</h1>
-    <p>在已上线的 wnsm.store（Cloudflare Pages + Functions + D1，手机渠道报价，C/B 分级定价）基础上，把微信公众号、微信小程序、微信视频号、个人微信、抖音、快手、小红书纳入同一套后台与数据统一运营：商品与价格只录一次，用户身份跨端打通，咨询线索按渠道回溯。<b>定位边界：小程序、公众号、官网只用于让客户了解产品，仅做报价展示与咨询留资，不做线上下单与在线收款；抖音、快手、小红书只做功能性分类短视频引流，视频号只做展示获客，不在任何平台开店、不做直播带货与站内成交。</b>短视频两条生产线：用户提供原始素材由我方剪辑；用户给出产品型号后由 Seedance 2.5 生成视频，人工审核合规再发布。本页是方案说明 + 中台看板可交互原型，深色数据中台风格。</p>
+    <p>在已上线的 wnsm.store（Cloudflare Pages + Functions + D1，手机渠道报价，C/B 分级定价）基础上，把微信公众号、微信小程序、微信视频号、个人微信、抖音、快手、小红书纳入同一套后台与数据统一运营：商品与价格只录一次，用户身份跨端打通，咨询线索按渠道回溯。<b>定位边界：小程序、公众号、官网只用于让客户了解产品，仅做报价展示与咨询留资，不做线上下单与在线收款；抖音、快手、小红书只做功能性分类短视频引流，视频号只做展示获客，不在任何平台开店、不做直播带货与站内成交。</b>短视频两条生产线：用户提供原始素材由我方剪辑；用户给出产品型号后由 Seedance 2.5 生成视频，人工审核合规再发布。用户路径固定为：短视频公域 → 公众号 / 小程序 / 官网展示承接 → 个人微信（兰州蜗牛数码）对接；抖音、快手、小红书受平台规则限制，只能走官方合规入口，不能直接挂微信、官网或小程序链接。本页是方案说明 + 中台看板可交互原型，深色数据中台风格。</p>
     <div class="hero-meta">
       <div><div class="n">7</div><div class="l">触达渠道（3 微信系 + 4 外部公域）</div></div>
       <div><div class="n">1 套</div><div class="l">商品库 / 会员表 / 定价规则（D1 现有）</div></div>
@@ -146,6 +159,31 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
         <div class="chip external"><div class="t">抖音（企业号）</div><div class="s">只做功能性分类短视频曝光获客；不开小店、不做直播带货与站内成交，主页仅保留平台允许的合规联系方式入口</div></div>
         <div class="chip external"><div class="t">快手（企业号）</div><div class="s">只做功能性分类短视频与同城内容获客；不开设快手小店、不做直播带货与站内下单，引导合规留资</div></div>
         <div class="chip external"><div class="t">小红书（商家号）</div><div class="s">功能性分类短视频 + 机型选购图文；只做内容曝光与合规私信留资，不开站内店铺、不做直播带货</div></div>
+      </div>
+    </div>
+
+    <div class="arch-layer">
+      <h3>①·补 分层跳转链路 · 从看到短视频到加上个人微信</h3>
+      <div class="route-tier">
+        <div class="route-node external">
+          <div class="rn-t">第一层 · 公域短视频</div>
+          <div class="rn-s">抖音、快手、小红书、微信视频号：只发布功能性分类短视频与选购图文，负责曝光与获客，不开店、不直播带货、不站内成交。</div>
+        </div>
+        <div class="route-node wechat">
+          <div class="rn-t">第二层 · 展示承接阵地</div>
+          <div class="rn-s">微信公众号、微信小程序、官网 www.wnsm.store：让客户了解不同产品、查看报价与分级价；三端互相跳转，页面统一展示个人微信（兰州蜗牛数码）二维码与电话。</div>
+        </div>
+        <div class="route-node private">
+          <div class="rn-t">第三层 · 对接成交</div>
+          <div class="rn-s">个人微信（兰州蜗牛数码）1V1 咨询、报价单转发；成交在线下门店或微信私聊完成，线上三端与各平台均不收款、不记订单。</div>
+        </div>
+      </div>
+      <div class="route-flow">▼ 各层之间允许使用的跳转入口（合规口径，详见「平台对接清单」跳转关系矩阵）</div>
+      <div class="chips">
+        <div class="chip"><div class="t">视频号 → 公众号 / 小程序</div><div class="s"><span class="flow-tag f-ok">同主体官方入口</span>视频号主页可挂公众号链接与小程序入口，微信内直接跳转；官网经公众号菜单中转，不在视频号直挂外链。</div></div>
+        <div class="chip"><div class="t">公众号 ↔ 小程序 ↔ 官网</div><div class="s"><span class="flow-tag f-ok">微信内互通</span>公众号菜单跳小程序与官网 H5；小程序 web-view 回嵌官网；三端页面都展示个人微信二维码与电话。</div></div>
+        <div class="chip"><div class="t">抖音 / 快手 / 小红书 → 承接阵地</div><div class="s"><span class="flow-tag f-no">禁止直挂链接</span>视频、简介、评论、私信不得出现微信号、手机号、官网链接、二维码；仅可用企业号官方联系方式组件与留资入口，由电话沟通或用户主动搜索名称后进入公众号 / 小程序 / 官网。</div></div>
+        <div class="chip"><div class="t">展示三端 → 个人微信</div><div class="s"><span class="flow-tag f-ok">页面直接展示</span>官网、小程序、公众号关于页统一展示个人微信（兰州蜗牛数码）二维码、昵称与电话 17361593016，供客户扫码或拨号对接。</div></div>
       </div>
     </div>
 
@@ -200,58 +238,118 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
         <tr>
           <td><b>官网 www.wnsm.store</b></td>
           <td>报价展示中枢、统一落地页</td>
-          <td>已有完整报价、登录、C/B 分级价、咨询电话与微信/公众号二维码；所有渠道最终可回链到此；无购物车、下单与收款功能</td>
+          <td>已有完整报价、登录、C/B 分级价；联系页统一展示个人微信（兰州蜗牛数码）二维码、公众号二维码与电话；可被公众号菜单、小程序 web-view、视频号中转回链；无购物车、下单与收款功能</td>
           <td>成本价不下发；已做服务端定价与 403 拦截；本站不在线成交收款</td>
           <td><span class="tag t-ok">已上线</span> 保持现有部署</td>
         </tr>
         <tr>
           <td><b>微信小程序</b></td>
           <td>微信内报价展示入口</td>
-          <td>复用 /api/products、/api/login、/api/register；wx.login 微信授权；分享卡片；咨询拨号；web-view 回嵌官网页面；不设购物车与在线下单</td>
+          <td>复用 /api/products、/api/login、/api/register；wx.login 微信授权；分享卡片；咨询拨号；关于页展示个人微信（兰州蜗牛数码）与公众号二维码；web-view 回嵌官网页面；不设购物车与在线下单</td>
           <td>需组织主体（个体工商户/企业）注册并做小程序备案；request 合法域名必须配 https://wnsm.store；类目选"工具-报价/商业信息"，不选电商交易类目</td>
           <td><span class="tag t-do">工程已生成</span> 注册账号 → 填 AppID → 配域名 → 提审</td>
         </tr>
         <tr>
           <td><b>微信公众号</b></td>
           <td>内容触达、菜单导流、咨询承接</td>
-          <td>菜单跳转小程序/官网 H5；图文内嵌小程序卡片；客服消息；JS-SDK 自定义分享；网页授权拿 openid 并入统一账号</td>
+          <td>菜单跳转小程序 / 官网 H5；图文内嵌小程序卡片；客服消息引导到小程序、官网与个人微信；关于页展示个人微信（兰州蜗牛数码）二维码；JS-SDK 自定义分享；网页授权拿 openid 并入统一账号</td>
           <td>服务号才能用客服消息、模板消息、网页授权；订阅号能力受限；同一主体才能与小程序互相跳转；公众号不挂载支付与商品商城</td>
           <td><span class="tag t-mid">待注册认证</span> 建议注册服务号，300 元/年认证费</td>
         </tr>
         <tr>
           <td><b>微信视频号</b></td>
           <td>短视频展示获客</td>
-          <td>与公众号/小程序同主体绑定；两条生产线产出的功能性分类短视频同步分发，引导到小程序查看完整报价；主页挂公众号与小程序入口；不开视频号小店、不挂线上商品、不做直播带货</td>
+          <td>与公众号/小程序同主体绑定；两条生产线产出的功能性分类短视频同步分发；主页挂公众号链接与小程序入口（微信内官方跳转）；官网经公众号菜单中转，不在视频号直挂官网外链或个人微信二维码；不开视频号小店、不挂线上商品、不做直播带货</td>
           <td>视频话术不得夸大价格与保修承诺；不在线收款，咨询引导至小程序/公众号后转线下对接</td>
           <td><span class="tag t-mid">待开通</span> 公众号认证后在视频号助手绑定</td>
         </tr>
         <tr>
           <td><b>个人微信 / 企业微信</b></td>
           <td>1V1 咨询对接、报价转发、私域沉淀</td>
-          <td>小程序/官网链接转发到聊天；后续可升级企微：自动欢迎语、客户标签、渠道活码、话术库；成交在线下门店或微信私聊完成，不经过网站收款</td>
+          <td>由公众号、小程序、官网关于页的二维码与电话引导添加；小程序/官网链接转发到聊天；后续可升级企微：自动欢迎语、客户标签、渠道活码、话术库；成交在线下门店或微信私聊完成，不经过网站收款</td>
           <td>个人微信高频加人/发广告有封号风险；规模化后必须转企业微信</td>
           <td><span class="tag t-do">先人工承接</span> 预留企微渠道活码接入位</td>
         </tr>
         <tr>
           <td><b>抖音（企业号）</b></td>
           <td>功能性分类短视频获客、引流曝光</td>
-          <td>企业号主页 + 功能性分类短视频（机型分类、功能卖点、选购避坑）；平台允许范围内的主页联系方式展示；私信按平台规则合规承接咨询；不开通抖音小店、不做直播带货、不做站内成交</td>
-          <td><b>禁止站内引流到外部网站、微信、第三方小程序</b>；不得在视频/评论/主页站外导流；不在站内挂载交易闭环；现阶段不开直播带货</td>
+          <td>企业号主页 + 功能性分类短视频（机型分类、功能卖点、选购避坑）；仅使用平台官方联系方式组件 / 留资入口；私信按平台规则合规承接咨询；不直接挂公众号、小程序、官网、个人微信任何链接；不开通抖音小店、不做直播带货、不做站内成交</td>
+          <td><b>禁止站内引流到外部网站、微信、第三方小程序</b>；视频/简介/评论/私信不得出现微信号、手机号变体、官网链接、二维码；不在站内挂载交易闭环；现阶段不开直播带货；回流方式为官方电话组件沟通，或用户主动搜索"兰州蜗牛数码"进入承接阵地</td>
           <td><span class="tag t-mid">待企业认证</span> 先做企业号内容号，不做小店、直播带货与外链</td>
         </tr>
         <tr>
           <td><b>快手（企业号）</b></td>
           <td>功能性分类短视频、同城获客曝光</td>
-          <td>与抖音同选题结构的分类短视频；私信合规咨询承接；不开快手小店、不做直播带货、不引导站内下单，线索回流微信/小程序</td>
-          <td>同样禁止站外导流；价格宣传需与实际咨询报价一致，避免虚假比价</td>
+          <td>与抖音同选题结构的分类短视频；仅用官方联系方式组件与私信合规承接咨询；不直接挂公众号、小程序、官网、个人微信链接；不开快手小店、不做直播带货、不引导站内下单，线索经官方组件或主动搜索回流微信 / 小程序 / 官网</td>
+          <td>同样禁止站外导流，简介、视频、评论、私信不得出现微信号、外链与二维码；价格宣传需与实际咨询报价一致，避免虚假比价</td>
           <td><span class="tag t-mid">待企业认证</span> 抖音跑通后复制到快手</td>
         </tr>
         <tr>
           <td><b>小红书（商家号）</b></td>
           <td>功能性分类短视频 + 选购图文引流</td>
-          <td>按机型分类与功能卖点产出短视频、选购攻略与避坑图文；私信/群聊按平台规则承接咨询；不开小红书店铺、不做直播带货、不做站内购买闭环</td>
-          <td>笔记内硬广、外链、微信号导流属违规；内容需真实体验、不夸大参数；AI 生成视频须与实物一致</td>
+          <td>按机型分类与功能卖点产出短视频、选购攻略与避坑图文；仅用平台官方私信 / 留资入口承接咨询；不直接挂公众号、小程序、官网、个人微信链接；不开小红书店铺、不做直播带货、不做站内购买闭环</td>
+          <td>笔记内硬广、外链、微信号导流属违规，视频/简介/评论/私信不得出现站外联系方式；内容需真实体验、不夸大参数；AI 生成视频须与实物一致；回流靠官方组件或用户主动搜索品牌名</td>
           <td><span class="tag t-mid">待开通商家号</span> 先做分类短视频与选购攻略类软内容</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 style="margin:22px 0 10px;font-size:15px">跳转关系矩阵 · 谁能直接链到哪个承接阵地（合规可行口径）</h3>
+    <div class="scroll">
+    <table>
+      <thead>
+        <tr><th style="width:18%">来源平台</th><th style="width:20%">微信公众号</th><th style="width:20%">微信小程序</th><th style="width:21%">官网 www.wnsm.store</th><th style="width:21%">个人微信（兰州蜗牛数码）</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>微信视频号</b></td>
+          <td><span class="flow-tag f-ok">允许</span>主页官方公众号链接（同主体绑定）</td>
+          <td><span class="flow-tag f-ok">允许</span>主页小程序入口（同主体绑定）</td>
+          <td><span class="flow-tag f-mid">经中转</span>不直挂外链，由公众号菜单 / 图文进入官网</td>
+          <td><span class="flow-tag f-no">禁止</span>主页与视频不展示微信号、二维码，引导至公众号 / 小程序后再展示</td>
+        </tr>
+        <tr>
+          <td><b>微信公众号</b></td>
+          <td>—</td>
+          <td><span class="flow-tag f-ok">允许</span>菜单跳转、图文小程序卡片</td>
+          <td><span class="flow-tag f-ok">允许</span>菜单 H5 链接、图文跳转（服务号能力）</td>
+          <td><span class="flow-tag f-ok">允许</span>关于页二维码、客服消息引导添加</td>
+        </tr>
+        <tr>
+          <td><b>微信小程序</b></td>
+          <td><span class="flow-tag f-mid">受限</span>分享卡片与跳转规则以微信开放平台为准</td>
+          <td>—</td>
+          <td><span class="flow-tag f-ok">允许</span>web-view 回嵌官网（需配置业务域名）</td>
+          <td><span class="flow-tag f-ok">允许</span>关于页展示二维码与电话，点击拨号</td>
+        </tr>
+        <tr>
+          <td><b>官网</b></td>
+          <td><span class="flow-tag f-ok">允许</span>页面公众号二维码</td>
+          <td><span class="flow-tag f-mid">待上线</span>小程序上线后在页面加入口 / 二维码</td>
+          <td>—</td>
+          <td><span class="flow-tag f-ok">允许</span>个人微信二维码 + 电话拨号（关于页、联系弹窗）</td>
+        </tr>
+        <tr>
+          <td><b>抖音企业号</b></td>
+          <td><span class="flow-tag f-no">禁止直链</span>仅官方联系方式 / 留资组件</td>
+          <td><span class="flow-tag f-no">禁止直链</span>不得挂第三方小程序</td>
+          <td><span class="flow-tag f-no">禁止直链</span>简介 / 视频 / 评论 / 私信不出现网址</td>
+          <td><span class="flow-tag f-no">禁止直链</span>不出现微信号、二维码；官方电话沟通后再加微信</td>
+        </tr>
+        <tr>
+          <td><b>快手企业号</b></td>
+          <td><span class="flow-tag f-no">禁止直链</span>仅官方联系方式 / 留资组件</td>
+          <td><span class="flow-tag f-no">禁止直链</span>不得挂第三方小程序</td>
+          <td><span class="flow-tag f-no">禁止直链</span>简介 / 视频 / 评论 / 私信不出现网址</td>
+          <td><span class="flow-tag f-no">禁止直链</span>不出现微信号、二维码；官方电话沟通后再加微信</td>
+        </tr>
+        <tr>
+          <td><b>小红书商家号</b></td>
+          <td><span class="flow-tag f-no">禁止直链</span>仅官方私信 / 留资入口</td>
+          <td><span class="flow-tag f-no">禁止直链</span>不得挂第三方小程序</td>
+          <td><span class="flow-tag f-no">禁止直链</span>笔记 / 简介 / 评论 / 私信不出现网址</td>
+          <td><span class="flow-tag f-no">禁止直链</span>不出现微信号、二维码；用户主动搜索品牌名进入承接阵地</td>
         </tr>
       </tbody>
     </table>
@@ -338,7 +436,8 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
           <li>Cloudflare 后台配置 WX_MP_APPID / WX_MP_SECRET / WX_OA_APPID / WX_OA_SECRET 环境变量；新表由接口首次访问时幂等自动创建，无需手动执行建表语句</li>
           <li>微信开发者工具导入 miniprogram 目录，填写 AppID，配置 request 合法域名 https://wnsm.store，真机预览后提交审核上线</li>
           <li>公众号菜单配置：直达小程序报价页、关于我们、联系客服；接入 JS-SDK 自定义分享标题与封面</li>
-          <li>开通视频号并与公众号同主体绑定，先用两条生产线产出首批功能性分类短视频做展示获客，按平台规则引导到小程序查看报价；不开小店、不做直播带货</li>
+          <li>公众号、小程序、官网关于页统一展示个人微信（兰州蜗牛数码）二维码、昵称与电话 17361593016，三端跳转路径与话术保持一致</li>
+          <li>开通视频号并与公众号同主体绑定，主页挂公众号链接与小程序入口；先用两条生产线产出首批功能性分类短视频做展示获客，按平台规则引导到小程序查看报价；不开小店、不做直播带货，不直挂官网外链与个人微信二维码</li>
           <li>个人微信作为咨询承接入口，统一回复话术与报价引导路径</li>
         </ul>
       </div>
@@ -350,7 +449,7 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
           <li>快手企业号认证，复制抖音分类选题结构；不开设快手小店、不做直播带货、不引导站内下单</li>
           <li>小红书商家号，发布分类短视频与机型选购攻略、避坑图文，不发硬广外链，不开店铺成交</li>
           <li>建立两条生产线：轨道 A 用户素材剪辑成片；轨道 B 给定型号由 Seedance 2.5 生成视频后人工审核；统一内容排期表固定选题、剪辑、生成与各平台发布时间</li>
-          <li>所有外部平台主页简介、私信话术遵守平台导流禁令，仅在平台允许的范围内展示联系方式，不出现微信号、外链与二维码</li>
+          <li>所有外部平台主页简介、私信话术遵守平台导流禁令：不直接挂公众号、小程序、官网与个人微信链接，仅使用官方联系方式 / 留资组件，不出现微信号、外链与二维码；回流靠官方电话沟通或用户主动搜索"兰州蜗牛数码"进入承接阵地</li>
         </ul>
       </div>
       <div class="phase">
@@ -390,6 +489,7 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
           <li>小程序后台 → 开发管理 → 服务器域名，添加 https://wnsm.store</li>
           <li>Cloudflare Pages 环境变量填入 4 个微信密钥；两张新表由接口首次访问时自动创建，无需手动执行 D1 迁移</li>
           <li>视频号助手绑定公众号与小程序；当前定位不开通视频号小店、不挂载线上商品、不做直播带货</li>
+          <li>公众号、小程序、官网关于页统一配置个人微信（兰州蜗牛数码）二维码、昵称与电话，保证三端展示一致</li>
         </ul>
       </div>
     </div>
@@ -397,7 +497,7 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
       <b>合规与风控提醒：</b>
       <ul>
         <li>报价宣传须标注"渠道参考价，以电话/微信咨询确认为准"，避免虚构原价、虚假比价、夸大配置与保修承诺。</li>
-        <li>抖音/快手/小红书站内严禁出现微信号、手机号、外部链接、"加微信"等导流字样，违规会限流封号；这些平台不开设小店、不做直播带货与站内成交。</li>
+        <li>抖音/快手/小红书站内严禁出现微信号、手机号、外部链接、"加微信"等导流字样，也不得直接挂公众号、小程序、官网与个人微信入口；违规会限流封号。这些平台不开设小店、不做直播带货与站内成交，回流只走官方联系方式 / 留资组件或用户主动搜索品牌名。</li>
         <li>Seedance 2.5 生成视频发布前必须人工核对机型、外观、参数与价格口径，画面与实物一致；不得用生成画面暗示不存在的配置、颜色或促销活动。</li>
         <li>用户手机号、聊天记录属于个人信息，私域承接要告知用途，不随意转发客户信息到群聊。</li>
         <li>小程序、公众号、官网仅做产品了解展示与咨询，服务规则、隐私政策页面与官网保持同一版本；全链路不挂在线支付入口。</li>
