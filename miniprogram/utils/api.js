@@ -2,7 +2,7 @@
 // 官网用 httpOnly Cookie 携带 session；小程序没有浏览器 Cookie，改用自定义 header `X-Wnsm-Token`，
 // 后端需要在 getUser() 中同时读取该 header（见 functions/_lib/auth.js 适配代码）。
 
-// 生产环境线上域名（已在微信公众平台「开发管理 - 服务器域名」request 合法域名中配置 https://wnsm.store）
+// 生产环境线上域名（已在微信公众平台「开发管理 - 服务器域名」request 合法域名配置 https://wnsm.store 与 https://www.wnsm.store）
 const BASE_URL = 'https://wnsm.store';
 
 function getToken() {

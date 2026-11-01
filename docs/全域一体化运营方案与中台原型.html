@@ -246,8 +246,8 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
           <td><b>微信小程序</b></td>
           <td>微信内报价展示入口</td>
           <td>复用 /api/products、/api/login、/api/register；wx.login 微信授权；分享卡片；咨询拨号；关于页展示个人微信（兰州蜗牛数码）与公众号二维码；web-view 回嵌官网页面；不设购物车与在线下单</td>
-          <td>需组织主体（个体工商户/企业）注册并做小程序备案；request 合法域名必须配 https://wnsm.store；类目选"工具-报价/商业信息"，不选电商交易类目</td>
-          <td><span class="tag t-do">工程已生成</span> 注册账号 → 填 AppID → 配域名 → 提审</td>
+          <td>当前先个人主体过渡（互通受限，见风险提示）；类目已选"工具 &gt; 报价/比价"并通过；request 合法域名待配 https://wnsm.store；备案未完成；不选电商交易类目</td>
+          <td><span class="tag t-mid">已注册 · 待备案提审</span> AppID wxeccbce30eb0064b8 已回填 → 配域名 → 备案 → 上传提审</td>
         </tr>
         <tr>
           <td><b>微信公众号</b></td>
@@ -383,7 +383,7 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
       <div class="panel">
         <h3>账号矩阵状态总览</h3>
         <div class="account-row"><div>官网 wnsm.store</div><span class="status s-live">已上线运行</span></div>
-        <div class="account-row"><div>微信小程序</div><span class="status s-setup">代码就绪 · 待注册提审</span></div>
+        <div class="account-row"><div>微信小程序（wxeccbce30eb0064b8）</div><span class="status s-setup">已注册 · 待备案与提审</span></div>
         <div class="account-row"><div>微信公众号（个人订阅号）</div><span class="status s-setup">已注册 · 未认证 · 能力受限</span></div>
         <div class="account-row"><div>微信公众号（组织服务号）</div><span class="status s-pending">待注册认证</span></div>
         <div class="account-row"><div>微信视频号（展示获客）</div><span class="status s-pending">待开通绑定</span></div>
@@ -433,9 +433,9 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
         <h4>第一阶段：微信内展示阵地跑通（优先，1–2 周）</h4>
         <div class="when">目标：小程序上线，公众号/小程序/视频号互相导流，私域咨询承接跑顺；全程不接在线支付</div>
         <ul>
-          <li>用个体工商户/企业营业执照注册小程序、服务号，完成认证与备案（个人主体无法满足经营类目与互通要求）</li>
+          <li>小程序已以个人主体注册过渡（wxeccbce30eb0064b8），先完成基础信息与备案；服务号、开放平台与视频号互通后续用个体工商户/企业营业执照办理，个人主体无法满足互通要求</li>
           <li>Cloudflare 后台配置 WX_MP_APPID / WX_MP_SECRET / WX_OA_APPID / WX_OA_SECRET 环境变量；新表由接口首次访问时幂等自动创建，无需手动执行建表语句</li>
-          <li>微信开发者工具导入 miniprogram 目录，填写 AppID，配置 request 合法域名 https://wnsm.store，真机预览后提交审核上线</li>
+          <li>微信开发者工具导入 miniprogram 目录（AppID 已回填），配置 request 合法域名 https://wnsm.store，真机预览后提交审核上线</li>
           <li>公众号菜单配置：直达小程序报价页、关于我们、联系客服；接入 JS-SDK 自定义分享标题与封面</li>
           <li>公众号、小程序、官网关于页统一展示个人微信（兰州蜗牛数码）二维码、昵称与电话 17361593016，三端跳转路径与话术保持一致</li>
           <li>开通视频号并与公众号同主体绑定，主页挂公众号链接与小程序入口；先用两条生产线产出首批功能性分类短视频做展示获客，按平台规则引导到小程序查看报价；不开小店、不做直播带货，不直挂官网外链与个人微信二维码</li>
@@ -484,10 +484,10 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
       <div class="panel">
         <h3>微信侧待办</h3>
         <ul class="checklist">
-          <li>注册小程序并完成微信备案（2024 年后所有小程序强制备案）</li>
+          <li>小程序已注册（wxeccbce30eb0064b8），补齐基础信息并完成微信备案（2024 年后所有小程序强制备案）</li>
           <li>注册服务号（非订阅号）并完成 300 元/年认证</li>
           <li>注册微信开放平台账号，把公众号、小程序绑定到同一开放平台，获得 unionid</li>
-          <li>小程序后台 → 开发管理 → 服务器域名，添加 https://wnsm.store</li>
+          <li>小程序 request 合法域名已配置 https://wnsm.store 与 https://www.wnsm.store</li>
           <li>Cloudflare Pages 环境变量填入 4 个微信密钥；两张新表由接口首次访问时自动创建，无需手动执行 D1 迁移</li>
           <li>视频号助手绑定公众号与小程序；当前定位不开通视频号小店、不挂载线上商品、不做直播带货</li>
           <li>公众号、小程序、官网关于页统一配置个人微信（兰州蜗牛数码）二维码、昵称与电话，保证三端展示一致</li>
