@@ -134,4 +134,4 @@ npx wrangler pages deploy . --project-name=wnsm-store --branch=main --commit-dir
 - `miniprogram/`：微信小程序原生工程，复用本仓库同一套 API 与 D1 用户体系，微信开发者工具导入即可预览。
 - 新增后端接口：`/api/wechat-login`、`/api/wechat-bind`、`/api/channel-track`、`/api/wx-jsapi-signature`；`/api/login`、`/api/register`、`/api/me` 响应补充小程序端使用的 `token`。
 - 新增表：`external_identities`（各端 openid/unionid 与手机号账号映射）、`channel_tracks`（渠道归因）。
-- 上线前需在 Cloudflare Pages 配置 `WX_MP_APPID / WX_MP_SECRET / WX_OA_APPID / WX_OA_SECRET` 环境变量，并完成小程序、服务号、视频号的组织主体（个体工商户或企业）注册、备案与同主体绑定。
+- 上线前需在 Cloudflare Pages 配置 `WX_MP_APPID / WX_MP_SECRET / WX_OA_APPID / WX_OA_SECRET` 环境变量。现有公众号为个人未认证订阅号（AppID `wx6212429f86c140c9`，gh_7798ba1be459），不具备服务号互通能力；小程序 AppID / AppSecret 待管理员扫码后台确认后回填，组织主体（个体工商户或企业）、服务号、视频号的注册、备案与同主体绑定待完成。实测账号清单见 `docs/一体化上线操作手册.md` 〇·五节。
