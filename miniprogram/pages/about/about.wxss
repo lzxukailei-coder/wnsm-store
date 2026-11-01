@@ -12,3 +12,6 @@
 .account { display: flex; justify-content: space-between; padding: 20rpx 0; border-bottom: 1rpx solid #f0f0f3; font-size: 26rpx; }
 .account:last-child { border-bottom: none; }
 .note { font-size: 22rpx; color: #86868b; line-height: 1.8; padding: 0 40rpx; margin-top: 24rpx; }
+.rule-p { font-size: 26rpx; color: #333; line-height: 1.8; margin-bottom: 16rpx; }
+.rule-li { font-size: 25rpx; color: #333; line-height: 1.9; padding-left: 4rpx; margin-bottom: 10rpx; }
+.rule-warn { margin-top: 16rpx; background: #ffebee; color: #c62828; border-radius: 16rpx; padding: 18rpx 20rpx; font-size: 24rpx; line-height: 1.7; }

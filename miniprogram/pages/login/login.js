@@ -24,6 +24,10 @@ Page({
     this.setData({ role: e.currentTarget.dataset.role });
   },
 
+  openAbout() {
+    wx.switchTab({ url: '/pages/about/about' });
+  },
+
   onInput(e) {
     this.setData({ [e.currentTarget.dataset.field]: e.detail.value });
   },
