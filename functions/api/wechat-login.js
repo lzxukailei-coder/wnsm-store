@@ -8,6 +8,7 @@
 
 import { json, readBody } from '../_lib/respond.js';
 import { createSession, publicUser, getUser } from '../_lib/auth.js';
+import { ensureNewTables } from '../_lib/ensure-schema.js';
 
 const TTL = 30 * 86400 * 1000;
 
@@ -39,6 +40,8 @@ export async function onRequestPost({ request, env }) {
   if (!appid || !secret) {
     return json({ ok: false, error: '微信登录尚未配置（后台补充 AppID/Secret 后生效），请先用手机号登录' }, 503);
   }
+
+  await ensureNewTables(env);
 
   let wx;
   try {

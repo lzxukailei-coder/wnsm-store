@@ -1,10 +1,12 @@
 // 绑定当前登录账号与微信 openid/unionid：手机号登录成功后由前端调用，完成多端身份打通
 import { json, readBody } from '../_lib/respond.js';
 import { getUser } from '../_lib/auth.js';
+import { ensureNewTables } from '../_lib/ensure-schema.js';
 
 export async function onRequestPost({ request, env }) {
   const me = await getUser(request, env);
   if (!me) return json({ ok: false, error: '请先登录' }, 401);
+  await ensureNewTables(env);
   const b = await readBody(request);
   const source = b.source === 'official' ? 'official' : 'miniprogram';
   const openid = (b.openid || '').trim();

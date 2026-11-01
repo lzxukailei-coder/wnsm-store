@@ -2,6 +2,7 @@
 // 前端进入小程序/官网时读取路径参数（source / medium / campaign）或渠道二维码 scene，POST 到这里落库
 import { json, readBody } from '../_lib/respond.js';
 import { getUser } from '../_lib/auth.js';
+import { ensureNewTables } from '../_lib/ensure-schema.js';
 
 const ALLOWED = new Set([
   'wechat_mp', 'wechat_oa', 'wechat_channels', 'web',
@@ -12,6 +13,8 @@ export async function onRequestPost({ request, env }) {
   const b = await readBody(request);
   const source = (b.source || '').trim();
   if (!ALLOWED.has(source)) return json({ ok: false, error: '未知渠道来源' }, 400);
+
+  await ensureNewTables(env);
 
   const me = await getUser(request, env);
   const now = new Date().toISOString();
