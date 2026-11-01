@@ -57,8 +57,11 @@ export function publicUser(u) {
 }
 
 // 根据请求 Cookie 解析当前登录用户（校验过期），未登录返回 null
+// 多端适配：官网走 httpOnly Cookie；微信小程序/其他端没有浏览器 Cookie，读取自定义头 X-Wnsm-Token
 export async function getUser(request, env) {
-  const token = parseCookies(request.headers.get('Cookie') || '')[COOKIE_NAME];
+  const cookie = parseCookies(request.headers.get('Cookie') || '')[COOKIE_NAME];
+  const headerToken = request.headers.get('X-Wnsm-Token') || '';
+  const token = cookie || headerToken;
   if (!token) return null;
   const row = await env.DB.prepare(
     `SELECT u.id, u.phone, u.role, u.status, u.company, u.contact, u.business_license, s.expires_at
@@ -78,7 +81,7 @@ export async function getUser(request, env) {
   };
 }
 
-// 创建会话并返回 Set-Cookie 头值
+// 创建会话并返回 Set-Cookie 头值；同时返回 token 供小程序等无 Cookie 端保存到本地存储
 export async function createSession(env, userId) {
   const token = randomHex(32);
   const now = Date.now();

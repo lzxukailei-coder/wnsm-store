@@ -1,0 +1,14 @@
+.wrap { padding-bottom: 60rpx; }
+.hero { background: linear-gradient(135deg, #1a1a2e, #16213e); color: #fff; padding: 56rpx 40rpx; text-align: center; }
+.brand { font-size: 40rpx; font-weight: 700; margin-bottom: 16rpx; }
+.sub { font-size: 26rpx; color: #cfd3e0; line-height: 1.8; }
+.card { background: #fff; margin: 24rpx; border-radius: 28rpx; padding: 28rpx; }
+.row { display: flex; justify-content: space-between; padding: 24rpx 0; border-bottom: 1rpx solid #f0f0f3; font-size: 28rpx; }
+.row:last-child { border-bottom: none; }
+.k { color: #86868b; }
+.v { color: #1d1d1f; }
+.v.link { color: #0071e3; }
+.h { font-size: 30rpx; font-weight: 600; margin-bottom: 12rpx; }
+.account { display: flex; justify-content: space-between; padding: 20rpx 0; border-bottom: 1rpx solid #f0f0f3; font-size: 26rpx; }
+.account:last-child { border-bottom: none; }
+.note { font-size: 22rpx; color: #86868b; line-height: 1.8; padding: 0 40rpx; margin-top: 24rpx; }

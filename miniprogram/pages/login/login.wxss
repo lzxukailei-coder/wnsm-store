@@ -1,0 +1,16 @@
+.wrap { min-height: 100vh; padding: 40rpx 32rpx; background: #f5f5f7; }
+.modal { background: #fff; border-radius: 32rpx; padding: 48rpx 36rpx; }
+.tabs { display: flex; background: #f5f5f7; border-radius: 20rpx; padding: 6rpx; margin-bottom: 36rpx; }
+.tab { flex: 1; text-align: center; padding: 18rpx; font-size: 30rpx; border-radius: 16rpx; color: #666; }
+.tab.active { background: #fff; color: #0071e3; font-weight: 500; }
+.field { margin-bottom: 28rpx; }
+.label { font-size: 24rpx; color: #86868b; display: block; margin-bottom: 10rpx; }
+.field input { width: 100%; padding: 22rpx 24rpx; border: 1rpx solid #d2d2d7; border-radius: 16rpx; font-size: 28rpx; box-sizing: border-box; }
+.role-row { display: flex; gap: 16rpx; margin-bottom: 28rpx; }
+.role-btn { flex: 1; text-align: center; padding: 18rpx; border-radius: 16rpx; background: #f5f5f7; font-size: 26rpx; color: #666; }
+.role-btn.active { background: #e3f2fd; color: #1976d2; }
+.submit { width: 100%; background: #0071e3; color: #fff; border: none; padding: 26rpx; border-radius: 20rpx; font-size: 30rpx; margin-top: 16rpx; }
+.divider { display: flex; align-items: center; gap: 20rpx; color: #bbb; font-size: 24rpx; margin: 32rpx 0; }
+.divider::before, .divider::after { content: ''; flex: 1; height: 1rpx; background: #eee; }
+.wechat { width: 100%; background: #07c160; color: #fff; border: none; padding: 24rpx; border-radius: 20rpx; font-size: 28rpx; }
+.tip { font-size: 22rpx; color: #86868b; text-align: center; margin-top: 28rpx; line-height: 1.7; }

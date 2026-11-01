@@ -1,0 +1,67 @@
+<view class="page">
+  <!-- 顶部用户区 -->
+  <view class="header">
+    <view class="logo">蜗牛数码 <text class="hl">渠道报价</text></view>
+    <view class="user-area">
+      <block wx:if="{{user}}">
+        <text class="user-info">{{user.role === 'B' ? (user.status === 'approved' ? '同行' : '审核中') : '客户'}}</text>
+        <button class="user-btn" bindtap="onLogout">退出</button>
+      </block>
+      <block wx:else>
+        <button class="user-btn" bindtap="goLogin">登录 / 注册</button>
+      </block>
+    </view>
+  </view>
+
+  <!-- 搜索 -->
+  <view class="search-bar">
+    <input class="search-input" placeholder="搜索型号 / 名称 / 品牌" value="{{keyword}}" bindinput="onSearch" confirm-type="search" />
+    <view class="update-line">报价更新：{{updateTime || '加载中…'}} · 共 {{groups.length ? groups[0].items.length : 0}} 类</view>
+  </view>
+
+  <!-- 品类横滑 -->
+  <scroll-view scroll-x class="type-bar" enhanced show-scrollbar="{{false}}">
+    <view wx:for="{{typeTabs}}" wx:key="key"
+          class="ch-btn {{currentType === item.key ? 'active' : ''}}"
+          data-type="{{item.key}}" bindtap="onTypeTap">{{item.name}}</view>
+  </scroll-view>
+
+  <!-- 品牌横滑 -->
+  <scroll-view scroll-x class="filter-bar" enhanced show-scrollbar="{{false}}">
+    <view wx:for="{{brandList}}" wx:key="key"
+          class="filter-btn {{currentBrand === item.key ? 'active' : ''}}"
+          data-brand="{{item.key}}" bindtap="onBrandTap">{{item.name}}</view>
+  </scroll-view>
+
+  <!-- 加载失败 -->
+  <view wx:if="{{loadingError}}" class="empty">
+    <text>{{loadingError}}</text>
+    <button class="retry" bindtap="loadProducts">重新加载</button>
+  </view>
+
+  <!-- 分组商品列表 -->
+  <block wx:for="{{groups}}" wx:for-item="group" wx:key="key">
+    <view class="brand-title">
+      <text>{{group.name}}</text>
+      <text class="count">{{group.items.length}} 款</text>
+    </view>
+
+    <view wx:for="{{group.items}}" wx:for-item="p" wx:key="id" class="card">
+      <view class="name">{{p.name}} {{p.storage}} {{p.color}}</view>
+      <view class="meta">
+        <view class="price-box">
+          <text class="price {{p.outStock ? 'muted' : ''}}">{{p.priceText}}</text>
+          <text class="price-tag {{p.labelCls}}">{{p.labelText}}</text>
+        </view>
+        <button class="buy-btn" bindtap="onContact" disabled="{{p.outStock}}">咨询</button>
+      </view>
+      <view class="tags">
+        <text wx:for="{{p.tags}}" wx:for-item="t" wx:key="*this" class="tag">{{t}}</text>
+      </view>
+    </view>
+  </block>
+
+  <view wx:if="{{loaded && groups.length === 0}}" class="empty">没有匹配的机型，换个关键词试试</view>
+
+  <view class="footer-space"></view>
+</view>

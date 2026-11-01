@@ -28,12 +28,13 @@ export async function onRequestPost({ request, env }) {
   ).bind(phone, passwordHash, salt, role, status, company || null, contact || null, businessLicense || null, createdAt).run();
 
   const userId = ins.meta.last_row_id;
-  const { cookie } = await createSession(env, userId);
+  const { token, cookie } = await createSession(env, userId);
   const user = { id: userId, phone, role, status, company, contact, business_license: businessLicense };
 
   return json({
     ok: true,
     user: publicUser(user),
+    token,
     message: role === 'B' ? '注册成功，同行资质正在审核中，审核通过后显示批发价' : '注册成功'
   }, 200, { 'Set-Cookie': cookie });
 }

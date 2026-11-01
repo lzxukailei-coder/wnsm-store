@@ -106,9 +106,17 @@ npx wrangler pages deploy . --project-name=wnsm-store --branch=main --commit-dir
 ## 待做
 
 - [ ] 录入各机型真实拿货价/底价（当前仅全局毛利兜底，建议优先覆盖高价与走量机型）
-- [ ] 域名 wnsm.store 接入 Cloudflare（Add site + 阿里云改 NS + Pages 自定义域名）
 - [ ] B 端营业执照图片上传（当前为文本字段）
 - [ ] 管理员/用户修改密码、找回密码
 - [ ] 价格涨跌对比（历史数据）
 - [ ] 型号聚合视图、购物车/下单流程
 - [ ] 多供应商比价、微信客服对接
+
+## 全域一体化（小程序 / 公众号 / 视频号 / 抖音 / 快手 / 小红书）
+
+详见 `docs/全域一体化运营方案与中台原型.html` 与 `docs/一体化上线操作手册.md`。
+
+- `miniprogram/`：微信小程序原生工程，复用本仓库同一套 API 与 D1 用户体系，微信开发者工具导入即可预览。
+- 新增后端接口：`/api/wechat-login`、`/api/wechat-bind`、`/api/channel-track`、`/api/wx-jsapi-signature`；`/api/login`、`/api/register`、`/api/me` 响应补充小程序端使用的 `token`。
+- 新增表：`external_identities`（各端 openid/unionid 与手机号账号映射）、`channel_tracks`（渠道归因）。
+- 上线前需在 Cloudflare Pages 配置 `WX_MP_APPID / WX_MP_SECRET / WX_OA_APPID / WX_OA_SECRET` 环境变量，并完成小程序、服务号、视频号的企业主体注册、备案与同主体绑定。

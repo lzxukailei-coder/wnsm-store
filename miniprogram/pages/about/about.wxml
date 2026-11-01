@@ -1,0 +1,32 @@
+<view class="wrap">
+  <view class="hero">
+    <view class="brand">兰州蜗牛数码</view>
+    <view class="sub">苹果 / 华为 / 小米 / 荣耀等主流品牌手机、平板与配件渠道报价，每日更新。先核验、后下单。</view>
+  </view>
+
+  <view class="card">
+    <view class="row" bindtap="callPhone">
+      <text class="k">联系电话</text>
+      <text class="v link">17361593016</text>
+    </view>
+    <view class="row" bindtap="openWebsite">
+      <text class="k">官方网站</text>
+      <text class="v link">wnsm.store</text>
+    </view>
+    <view class="row">
+      <text class="k">线下门店</text>
+      <text class="v">兰州市城关区金昌路华德大厦二楼 B03</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="h">多平台账号矩阵（统一品牌）</view>
+    <view class="account"><text>微信公众号</text><text class="v">蜗牛数码渠道报价（待绑定）</text></view>
+    <view class="account"><text>视频号</text><text class="v">蜗牛数码（待开通）</text></view>
+    <view class="account"><text>抖音</text><text class="v">蜗牛数码渠道报价（待认证企业号）</text></view>
+    <view class="account"><text>快手</text><text class="v">蜗牛数码渠道报价（待认证企业号）</text></view>
+    <view class="account"><text>小红书</text><text class="v">蜗牛数码（待开通商家号）</text></view>
+  </view>
+
+  <view class="note">报价仅供渠道参考，最终成交价以电话/微信确认为准；本小程序与官网 www.wnsm.store 共用同一商品库与会员价格体系。</view>
+</view>

@@ -1,0 +1,49 @@
+<view class="wrap">
+  <view class="modal">
+    <view class="tabs">
+      <view class="tab {{mode === 'login' ? 'active' : ''}}" bindtap="switchMode">登录</view>
+      <view class="tab {{mode === 'register' ? 'active' : ''}}" bindtap="switchMode">注册</view>
+    </view>
+
+    <view class="field">
+      <text class="label">手机号</text>
+      <input type="number" maxlength="11" placeholder="11 位手机号" data-field="phone" bindinput="onInput" value="{{phone}}" />
+    </view>
+    <view class="field">
+      <text class="label">密码</text>
+      <input password placeholder="6-32 位密码" data-field="password" bindinput="onInput" value="{{password}}" />
+    </view>
+
+    <block wx:if="{{mode === 'register'}}">
+      <view class="field">
+        <text class="label">确认密码</text>
+        <input password placeholder="再次输入密码" data-field="password2" bindinput="onInput" value="{{password2}}" />
+      </view>
+      <view class="role-row">
+        <view class="role-btn {{role === 'C' ? 'active' : ''}}" data-role="C" bindtap="switchRole">个人客户</view>
+        <view class="role-btn {{role === 'B' ? 'active' : ''}}" data-role="B" bindtap="switchRole">同行/渠道商</view>
+      </view>
+      <block wx:if="{{role === 'B'}}">
+        <view class="field">
+          <text class="label">公司/门店名称 *</text>
+          <input placeholder="门店或公司全称" data-field="company" bindinput="onInput" value="{{company}}" />
+        </view>
+        <view class="field">
+          <text class="label">联系人</text>
+          <input placeholder="联系人称呼" data-field="contact" bindinput="onInput" value="{{contact}}" />
+        </view>
+        <view class="field">
+          <text class="label">营业执照编号</text>
+          <input placeholder="选填" data-field="businessLicense" bindinput="onInput" value="{{businessLicense}}" />
+        </view>
+      </block>
+    </block>
+
+    <button class="submit" loading="{{loading}}" bindtap="onSubmit">{{mode === 'login' ? '登录' : '注册'}}</button>
+
+    <view class="divider"><text>或</text></view>
+    <button class="wechat" open-type="getUserInfo" bindtap="onWechatLogin">微信一键登录</button>
+
+    <view class="tip">登录即代表同意《服务规则》与《隐私政策》；同行提交后由管理员审核，通过后可见批发价。</view>
+  </view>
+</view>

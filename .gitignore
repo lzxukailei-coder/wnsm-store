@@ -72,6 +72,9 @@ crawl-run.txt
 btn.png
 full.png
 
+# 方案文档本地自检截图（不入库）
+docs/_shots/
+
 # 临时输出文本（命令结果/日志）
 *.txt
 

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2316213e'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%23f5c542' font-family='sans-serif' font-weight='700'>W</text></svg>">
+<title>wnsm.store 全域一体化运营中台原型 · 方案与落地清单</title>
+<style>
+:root{
+  --bg:#0f1420; --panel:#171e2e; --panel2:#1e2739; --line:#2a3548;
+  --txt:#e8edf5; --sub:#93a1b8; --blue:#3b82f6; --cyan:#22d3ee;
+  --gold:#f5c542; --green:#34c759; --orange:#f57c00; --red:#ef4444;
+  --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;font-size:15px;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+/* top bar */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(15,20,32,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1180px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.brand{font-size:18px;font-weight:700}
+.brand span{color:var(--gold)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button{background:transparent;border:1px solid var(--line);color:var(--sub);padding:7px 14px;border-radius:20px;font-size:13px;cursor:pointer}
+.tabs button.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+/* hero */
+.hero{padding:48px 0 28px}
+.hero h1{font-size:30px;line-height:1.3;margin-bottom:12px}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{color:var(--sub);max-width:760px}
+.hero-meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px}
+.hero-meta div{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px;flex:1 1 180px}
+.hero-meta .n{font-size:22px;font-weight:700;color:var(--cyan)}
+.hero-meta .l{font-size:12px;color:var(--sub);margin-top:2px}
+/* section */
+.section{display:none;margin-top:36px}
+.section.active{display:block}
+.section h2{font-size:21px;margin-bottom:6px}
+.section .desc{color:var(--sub);margin-bottom:20px;font-size:14px}
+/* architecture */
+.arch-layer{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+.arch-layer h3{font-size:14px;color:var(--gold);margin-bottom:14px;letter-spacing:1px}
+.chips{display:flex;gap:12px;flex-wrap:wrap}
+.chip{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;flex:1 1 150px;min-width:140px}
+.chip .t{font-weight:600;font-size:14px;margin-bottom:4px}
+.chip .s{font-size:12px;color:var(--sub)}
+.chip.wechat{border-color:#1f9d55}
+.chip.external{border-color:#7c5cd6}
+.arch-arrow{text-align:center;color:var(--sub);font-size:13px;margin:-6px 0 10px}
+/* platform matrix table */
+table{width:100%;border-collapse:collapse;background:var(--panel);border-radius:var(--radius);overflow:hidden;font-size:13.5px}
+th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--gold);font-weight:600;background:var(--panel2)}
+td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;margin-right:4px}
+.t-ok{background:rgba(52,199,89,.15);color:var(--green)}
+.t-do{background:rgba(245,197,66,.15);color:var(--gold)}
+.t-no{background:rgba(239,68,68,.15);color:var(--red)}
+.t-mid{background:rgba(59,130,246,.15);color:var(--blue)}
+.scroll{overflow-x:auto;border-radius:var(--radius)}
+/* dashboard cards */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.kpi .n{font-size:26px;font-weight:700}
+.kpi .l{color:var(--sub);font-size:12px;margin-top:4px}
+.kpi .d{font-size:12px;margin-top:6px}
+.up{color:var(--green)} .down{color:var(--red)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.panel h3{font-size:15px;margin-bottom:14px}
+.account-row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.account-row:last-child{border-bottom:none}
+.status{font-size:12px;padding:3px 10px;border-radius:12px}
+.s-live{background:rgba(52,199,89,.15);color:var(--green)}
+.s-setup{background:rgba(245,197,66,.15);color:var(--gold)}
+.s-pending{background:rgba(239,68,68,.15);color:var(--red)}
+/* bar chart */
+.bar{margin-bottom:12px}
+.bar .bh{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px}
+.bar .track{height:10px;background:var(--panel2);border-radius:6px;overflow:hidden}
+.bar .fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--blue),var(--cyan))}
+/* roadmap timeline */
+.timeline{position:relative;padding-left:34px}
+.timeline::before{content:'';position:absolute;left:12px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.phase{position:relative;margin-bottom:26px}
+.phase::before{content:'';position:absolute;left:-28px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--gold);border:3px solid var(--bg)}
+.phase h4{font-size:16px;color:var(--gold)}
+.phase .when{font-size:12px;color:var(--sub);margin:2px 0 8px}
+.phase ul{list-style:none}
+.phase li{padding:4px 0;color:var(--txt);font-size:14px}
+.phase li::before{content:'✓';color:var(--green);margin-right:8px;font-size:12px}
+/* checklist */
+.checklist li{padding:6px 0;border-bottom:1px dashed var(--line);font-size:14px;list-style:none}
+.checklist li::before{content:'☐';margin-right:10px;color:var(--gold)}
+/* notice */
+.notice{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);border-radius:var(--radius);padding:16px 18px;margin-top:16px;font-size:13.5px}
+.notice b{color:var(--red)}
+.notice ul{margin:8px 0 0 18px}
+.note{color:var(--sub);font-size:12px;margin-top:10px}
+@media(max-width:860px){
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+  .grid2{grid-template-columns:1fr}
+  .hero h1{font-size:24px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">wnsm.store <span>全域一体化运营中台</span> 原型</div>
+    <div class="tabs" id="tabs">
+      <button class="active" data-t="arch">总体架构</button>
+      <button data-t="matrix">平台对接清单</button>
+      <button data-t="board">运营中台看板</button>
+      <button data-t="roadmap">落地路线图</button>
+      <button data-t="checklist">资质与合规清单</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <h1>一套商品库、一套会员体系，<br>分发到 <em>7 个触达渠道</em>统一运营</h1>
+    <p>在已上线的 wnsm.store（Cloudflare Pages + Functions + D1，手机渠道报价，C/B 分级定价）基础上，把微信公众号、微信小程序、微信视频号、个人微信、抖音、快手、小红书全部挂到同一套后台与数据上：商品与价格只录一次，用户身份跨端打通，线索与成交按渠道回溯。本页是方案说明 + 中台看板可交互原型，深色数据中台风格。</p>
+    <div class="hero-meta">
+      <div><div class="n">7</div><div class="l">触达渠道（3 微信系 + 4 外部公域）</div></div>
+      <div><div class="n">1 套</div><div class="l">商品库 / 会员表 / 定价规则（D1 现有）</div></div>
+      <div><div class="n">3 步</div><div class="l">先闭环微信生态，再铺外部公域</div></div>
+      <div><div class="n">0 新服务器</div><div class="l">继续复用 Cloudflare 现有部署</div></div>
+    </div>
+  </div>
+
+  <!-- ===== 架构 ===== -->
+  <section class="section active" id="arch">
+    <h2>总体架构：一个中台，三层分发</h2>
+    <p class="desc">自上而下：渠道触点 → 统一中台（已有网站 + 本次新增接口）→ 数据源。用户不管从哪个端进来，落到的都是同一张 users 表和同一份 products 目录。</p>
+
+    <div class="arch-layer">
+      <h3>① 触点层 · 用户在哪里看到你</h3>
+      <div class="chips">
+        <div class="chip wechat"><div class="t">微信公众号（服务号/订阅号）</div><div class="s">图文菜单 → 小程序/官网；模板消息触达；客服消息承接咨询</div></div>
+        <div class="chip wechat"><div class="t">微信小程序（本次生成）</div><div class="s">报价列表、登录注册、批发/零售分级价、联系客服；微信内主交易入口</div></div>
+        <div class="chip wechat"><div class="t">微信视频号</div><div class="s">短视频/直播，挂小程序或微信小店商品；公众号 + 小程序 + 视频号同主体联动</div></div>
+        <div class="chip wechat"><div class="t">个人微信 / 企业微信</div><div class="s">1V1 成交、报价单转发、朋友圈；企微后可自动打标签、归属渠道</div></div>
+        <div class="chip external"><div class="t">抖音（企业号 + 抖音小程序/小店）</div><div class="s">短视频引流；平台内闭环交易为主，主页留合规联系方式</div></div>
+        <div class="chip external"><div class="t">快手（企业号 + 快手小店）</div><div class="s">同城与渠道批发内容；直播挂载快手小店商品</div></div>
+        <div class="chip external"><div class="t">小红书（商家号）</div><div class="s">种草笔记、机型选购攻略；引导合规进私域或小红书店铺成交</div></div>
+      </div>
+    </div>
+
+    <div class="arch-arrow">▼ 统一入口与身份汇聚（同一套 HTTPS API：https://wnsm.store/api）</div>
+
+    <div class="arch-layer">
+      <h3>② 中台层 · 本次在现有 Cloudflare Functions 上补齐</h3>
+      <div class="chips">
+        <div class="chip"><div class="t">商品与定价（已有）</div><div class="s">/api/products 按身份返回零售价/批发价；底价保护规则；爬虫每日更新</div></div>
+        <div class="chip"><div class="t">统一账号（已有 + 扩展）</div><div class="s">users 手机号账号；新增 external_identities 绑定各端 openid/unionid</div></div>
+        <div class="chip"><div class="t">微信登录打通（新增）</div><div class="s">/api/wechat-login code2session；/api/wechat-bind 绑定手机号账号；unionid 跨公众号/小程序/视频号</div></div>
+        <div class="chip"><div class="t">渠道归因（新增）</div><div class="s">/api/channel-track 记录来源平台/内容/活动；成交可回溯到具体渠道</div></div>
+        <div class="chip"><div class="t">公众号 JS-SDK（新增）</div><div class="s">/api/wx-jsapi-signature 生成分享/扫码/客服签名，图文页可调起微信能力</div></div>
+        <div class="chip"><div class="t">内容素材库（待建）</div><div class="s">一次剪辑出多平台适配版本；文案、封面、话题标签集中管理</div></div>
+      </div>
+    </div>
+
+    <div class="arch-arrow">▼</div>
+
+    <div class="arch-layer">
+      <h3>③ 数据层 · 现有 Cloudflare D1</h3>
+      <div class="chips">
+        <div class="chip"><div class="t">users / sessions（已有）</div><div class="s">C 端客户、B 端同行、管理员三级身份</div></div>
+        <div class="chip"><div class="t">price_overrides / settings（已有）</div><div class="s">SKU 底价规则、全局毛利</div></div>
+        <div class="chip"><div class="t">external_identities（新增）</div><div class="s">各平台 openid/unionid 与手机号账号映射</div></div>
+        <div class="chip"><div class="t">channel_tracks（新增）</div><div class="s">渠道来源、内容编号、活动、落地时间</div></div>
+        <div class="chip"><div class="t">data.json（爬虫生成）</div><div class="s">八方公开价/会员价，服务端读取、外部 403 拦截</div></div>
+      </div>
+    </div>
+
+    <div class="notice">
+      <b>必须先认清的边界（不要被"一键全平台打通"的说法带偏）：</b>
+      <ul>
+        <li><b>微信内部能深度打通：</b>公众号、小程序、视频号、微信小店在同一主体、接入微信开放平台后可用 unionid 识别同一用户，菜单/图文/直播/客服互相跳转。</li>
+        <li><b>抖音、快手、小红书是封闭围墙：</b>平台规则禁止在站内引导跳到外部网站、微信或第三方小程序（抖音小程序运营规范明确禁止第三方引流）。这些平台只能"站内成交闭环 + 合规主页简介/私信引流"，商品与用户数据无法像微信那样直接写入你的 D1，只能靠导出报表、私信留资、渠道二维码做弱关联。</li>
+        <li>因此"一体"的真实含义是：<b>一套商品/内容/会员中台 + 微信内闭环互通 + 外部平台各自合规运营后回流线索</b>，而不是七个平台共用一个后台账号体系。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== 平台对接清单 ===== -->
+  <section class="section" id="matrix">
+    <h2>各平台对接能力与状态清单</h2>
+    <p class="desc">状态口径：<span class="tag t-ok">已上线</span> <span class="tag t-do">本次已生成代码/待配置</span> <span class="tag t-mid">需平台认证后开通</span> <span class="tag t-no">受限/不可直接打通</span></p>
+    <div class="scroll">
+    <table>
+      <thead>
+        <tr><th style="width:15%">平台</th><th style="width:20%">承担角色</th><th style="width:24%">可对接的能力</th><th style="width:23%">限制 / 合规红线</th><th style="width:18%">当前状态与下一步</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>官网 www.wnsm.store</b></td>
+          <td>商品报价中枢、统一落地页</td>
+          <td>已有完整报价、登录、C/B 分级价、后台审核；所有渠道最终可回链到此</td>
+          <td>成本价不下发；已做服务端定价与 403 拦截</td>
+          <td><span class="tag t-ok">已上线</span> 保持现有部署</td>
+        </tr>
+        <tr>
+          <td><b>微信小程序</b></td>
+          <td>微信内主交易/报价入口</td>
+          <td>复用 /api/products、/api/login、/api/register；wx.login 微信授权；分享卡片；联系客服；web-view 回嵌官网页面</td>
+          <td>需企业/个体户主体注册并做小程序备案；request 合法域名必须配 https://wnsm.store；类目选"工具-报价"或"电商-3C 数码"</td>
+          <td><span class="tag t-do">工程已生成</span> 注册账号 → 填 AppID → 配域名 → 提审</td>
+        </tr>
+        <tr>
+          <td><b>微信公众号</b></td>
+          <td>内容触达、菜单导流、客服承接</td>
+          <td>菜单跳转小程序/官网 H5；图文内嵌小程序卡片；客服消息；JS-SDK 自定义分享；网页授权拿 openid 并入统一账号</td>
+          <td>服务号才能用客服消息、模板消息、网页授权；订阅号能力受限；同一主体才能与小程序互相跳转</td>
+          <td><span class="tag t-mid">待注册认证</span> 建议注册服务号，300 元/年认证费</td>
+        </tr>
+        <tr>
+          <td><b>微信视频号</b></td>
+          <td>短视频 + 直播引流成交</td>
+          <td>与公众号/小程序同主体绑定；视频挂小程序商品；直播挂微信小店；直播间引导到小程序报价</td>
+          <td>视频号小店与店铺经营需相应类目资质；直播话术不得夸大价格与承诺</td>
+          <td><span class="tag t-mid">待开通</span> 公众号认证后在视频号助手绑定</td>
+        </tr>
+        <tr>
+          <td><b>个人微信 / 企业微信</b></td>
+          <td>1V1 成交、报价转发、私域沉淀</td>
+          <td>小程序/官网链接转发到聊天；后续可升级企微：自动欢迎语、客户标签、渠道活码、话术库</td>
+          <td>个人微信高频加人/发广告有封号风险；规模化后必须转企业微信</td>
+          <td><span class="tag t-do">先人工承接</span> 预留企微渠道活码接入位</td>
+        </tr>
+        <tr>
+          <td><b>抖音（企业号）</b></td>
+          <td>公域短视频获客、站内成交</td>
+          <td>企业号主页、短视频挂抖音小程序/抖音小店；直播自主挂载（同主体账号绑定）；私信自动回复留资</td>
+          <td><b>禁止站内引流到外部网站、微信、第三方小程序</b>；不得在视频/评论/主页站外导流；交易优先走抖音小店闭环</td>
+          <td><span class="tag t-mid">待企业认证</span> 先做企业号 + 抖音小店，不做外链</td>
+        </tr>
+        <tr>
+          <td><b>快手（企业号）</b></td>
+          <td>同城批发、直播带货</td>
+          <td>快手小店上架同款机型；直播间挂载商品；私信咨询引导站内下单</td>
+          <td>同样禁止站外导流；价格宣传需与实际成交一致，避免虚假比价</td>
+          <td><span class="tag t-mid">待企业认证</span> 抖音跑通后复制到快手</td>
+        </tr>
+        <tr>
+          <td><b>小红书（商家号）</b></td>
+          <td>种草攻略、机型选购内容</td>
+          <td>商家笔记、商品笔记挂小红书店铺；私信/群聊承接；合规方式引导站内购买</td>
+          <td>笔记内硬广、外链、微信号导流属违规；内容需真实体验、不夸大参数</td>
+          <td><span class="tag t-mid">待开通商家号</span> 先做选购攻略类软内容</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note">注：各平台开放能力、认证门槛与引流禁令会随平台政策调整，正式开通时以各平台开发者后台与最新运营规范为准。</p>
+  </section>
+
+  <!-- ===== 中台看板原型 ===== -->
+  <section class="section" id="board">
+    <h2>统一运营中台看板（原型 · 示例数据）</h2>
+    <p class="desc">这是未来后台要长成的样子：一屏看完商品、账号矩阵、渠道线索与转化。当前数字均为演示占位，真实数据来自 D1 与各平台后台导出。</p>
+
+    <div class="kpi-row">
+      <div class="kpi"><div class="n">1,284</div><div class="l">总注册用户（跨端合计）</div><div class="d up">▲ 12.4% 较上周</div></div>
+      <div class="kpi"><div class="n">317</div><div class="l">B 端同行（已审核）</div><div class="d up">▲ 8 位新增</div></div>
+      <div class="kpi"><div class="n">46</div><div class="l">今日新增线索</div><div class="d up">▲ 抖音 18 · 微信 21</div></div>
+      <div class="kpi"><div class="n">209</div><div class="l">在库可报价机型</div><div class="d">今日 08:00 爬虫更新</div></div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <h3>渠道来源线索分布（本周 · 示例）</h3>
+        <div class="bar"><div class="bh"><span>微信小程序 + 公众号</span><span>186 · 41%</span></div><div class="track"><div class="fill" style="width:41%"></div></div></div>
+        <div class="bar"><div class="bh"><span>抖音企业号</span><span>92 · 20%</span></div><div class="track"><div class="fill" style="width:20%"></div></div></div>
+        <div class="bar"><div class="bh"><span>视频号</span><span>58 · 13%</span></div><div class="track"><div class="fill" style="width:13%"></div></div></div>
+        <div class="bar"><div class="bh"><span>小红书</span><span>47 · 10%</span></div><div class="track"><div class="fill" style="width:10%"></div></div></div>
+        <div class="bar"><div class="bh"><span>快手</span><span>39 · 9%</span></div><div class="track"><div class="fill" style="width:9%"></div></div></div>
+        <div class="bar"><div class="bh"><span>官网直接访问 / 老客</span><span>31 · 7%</span></div><div class="track"><div class="fill" style="width:7%"></div></div></div>
+      </div>
+
+      <div class="panel">
+        <h3>账号矩阵状态总览</h3>
+        <div class="account-row"><div>官网 wnsm.store</div><span class="status s-live">已上线运行</span></div>
+        <div class="account-row"><div>微信小程序</div><span class="status s-setup">代码就绪 · 待注册提审</span></div>
+        <div class="account-row"><div>微信公众号（服务号）</div><span class="status s-pending">待注册认证</span></div>
+        <div class="account-row"><div>微信视频号</div><span class="status s-pending">待开通绑定</span></div>
+        <div class="account-row"><div>企业微信 / 私域</div><span class="status s-setup">人工承接中</span></div>
+        <div class="account-row"><div>抖音企业号 + 小店</div><span class="status s-pending">待认证开通</span></div>
+        <div class="account-row"><div>快手企业号 + 小店</div><span class="status s-pending">待认证开通</span></div>
+        <div class="account-row"><div>小红书商家号</div><span class="status s-pending">待开通</span></div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:16px">
+      <h3>统一商品与内容工作台（规划模块）</h3>
+      <div class="chips">
+        <div class="chip"><div class="t">商品同步</div><div class="s">D1 商品 → 一键生成小程序列表；外部小店按平台模板另建，价格人工核对</div></div>
+        <div class="chip"><div class="t">内容素材库</div><div class="s">一版成片裁剪 9:16 / 3:4；文案与封面按平台模板保存复用</div></div>
+        <div class="chip"><div class="t">线索分配</div><div class="s">各平台私信/留资统一进线索池，标注来源渠道，分配到微信承接</div></div>
+        <div class="chip"><div class="t">数据复盘</div><div class="s">每周汇总各平台曝光、进店、留资、成交，按渠道算 ROI</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 路线图 ===== -->
+  <section class="section" id="roadmap">
+    <h2>分阶段落地路线图</h2>
+    <p class="desc">先把微信闭环跑通再铺外部，避免七个平台同时开工、每个都半成品。每阶段都有可验收的产出。</p>
+    <div class="timeline">
+      <div class="phase">
+        <h4>第一阶段：微信内闭环（优先，1–2 周）</h4>
+        <div class="when">目标：小程序上线，公众号/小程序/视频号互相导流，私域承接跑顺</div>
+        <ul>
+          <li>用"兰州新佰通通讯器材经营部 / 蜗牛数码"营业执照注册小程序、服务号，完成认证与备案</li>
+          <li>Cloudflare 后台配置 WX_MP_APPID / WX_MP_SECRET / WX_OA_APPID / WX_OA_SECRET 环境变量，执行新增建表语句</li>
+          <li>微信开发者工具导入 miniprogram 目录，填写 AppID，配置 request 合法域名 https://wnsm.store，真机预览后提交审核上线</li>
+          <li>公众号菜单配置：直达小程序报价页、关于我们、联系客服；接入 JS-SDK 自定义分享标题与封面</li>
+          <li>开通视频号并与公众号同主体绑定，发布首批机型报价短视频，评论区引导小程序查看报价</li>
+          <li>个人微信作为客服承接入口，统一回复话术与报价引导路径</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <h4>第二阶段：外部公域铺号（2–4 周）</h4>
+        <div class="when">目标：抖音、快手、小红书企业/商家号开通，站内闭环成交，内容统一排期</div>
+        <ul>
+          <li>抖音企业号认证，开通抖音小店，上架主推机型；直播挂载同主体小程序/小店商品</li>
+          <li>快手企业号 + 快手小店，复制抖音内容与商品结构</li>
+          <li>小红书商家号，先发布机型选购攻略、避坑笔记，不发硬广外链</li>
+          <li>建立统一内容排期表：每周选题、拍摄、剪辑、各平台发布时间固定下来</li>
+          <li>所有外部平台主页简介、私信话术统一引导站内咨询，不出现违规站外导流</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <h4>第三阶段：中台沉淀与自动化（1–2 个月后）</h4>
+        <div class="when">目标：线索统一归集、渠道可追溯、内容与数据半自动化</div>
+        <ul>
+          <li>升级企业微信：渠道活码、客户标签、自动欢迎语、话术库，外部平台回流线索统一打标签</li>
+          <li>中台看板接入真实数据：D1 用户/线索 + 各平台后台定期导出报表，形成周报</li>
+          <li>内容素材库与多版本裁剪模板固化；热门机型做固定短视频选题库</li>
+          <li>按渠道复盘转化率，砍掉低效平台动作，集中资源到成交最好的两个渠道</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 清单 ===== -->
+  <section class="section" id="checklist">
+    <h2>资质材料与操作清单（动手前备齐）</h2>
+    <p class="desc">注册各平台主体认证时逐项核对，缺一项都会卡在审核环节。</p>
+    <div class="grid2">
+      <div class="panel">
+        <h3>主体资质（企业/个体户一套复用）</h3>
+        <ul class="checklist">
+          <li>营业执照（兰州新佰通通讯器材经营部 / 蜗牛数码，拍照 + 扫描件）</li>
+          <li>法人身份证正反面、法人实名微信、管理员手机号与邮箱（每个平台独立邮箱更佳）</li>
+          <li>对公账户或法人账户（企业号认证、小店结算绑定）</li>
+          <li>3C 数码/通讯配件经营类目相关经营范围核对</li>
+          <li>品牌名统一：微信/抖音/快手/小红书昵称、头像、简介、背景图全部一致</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>微信侧待办</h3>
+        <ul class="checklist">
+          <li>注册小程序并完成微信备案（2024 年后所有小程序强制备案）</li>
+          <li>注册服务号（非订阅号）并完成 300 元/年认证</li>
+          <li>注册微信开放平台账号，把公众号、小程序绑定到同一开放平台，获得 unionid</li>
+          <li>小程序后台 → 开发管理 → 服务器域名，添加 https://wnsm.store</li>
+          <li>Cloudflare Pages 环境变量填入 4 个微信密钥；D1 执行新表结构</li>
+          <li>视频号助手绑定公众号与小程序，完成小店类目资质提交</li>
+        </ul>
+      </div>
+    </div>
+    <div class="notice" style="margin-top:16px">
+      <b>合规与风控提醒：</b>
+      <ul>
+        <li>报价宣传须标注"渠道参考价，以实际成交为准"，避免虚构原价、虚假比价、夸大配置与保修承诺。</li>
+        <li>抖音/快手/小红书站内严禁出现微信号、手机号、外部链接、"加微信"等导流字样，违规会限流封号。</li>
+        <li>用户手机号、聊天记录属于个人信息，私域承接要告知用途，不随意转发客户信息到群聊。</li>
+        <li>小程序与公众号涉及交易/报价时，服务规则、隐私政策页面已在官网存在，多端保持同一版本。</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var tabs = document.getElementById('tabs');
+  var sections = document.querySelectorAll('.section');
+  tabs.addEventListener('click', function(e){
+    var btn = e.target.closest('button');
+    if(!btn) return;
+    tabs.querySelectorAll('button').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    sections.forEach(function(s){ s.classList.remove('active'); });
+    document.getElementById(btn.dataset.t).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

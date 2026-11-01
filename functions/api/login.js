@@ -18,8 +18,8 @@ export async function onRequestPost({ request, env }) {
     return json({ ok: false, error: '账号审核未通过：' + (u.reject_reason || '请联系管理员') }, 403);
   }
 
-  const { cookie } = await createSession(env, u.id);
-  return json({ ok: true, user: publicUser(u) }, 200, { 'Set-Cookie': cookie });
+  const { token, cookie } = await createSession(env, u.id);
+  return json({ ok: true, user: publicUser(u), token }, 200, { 'Set-Cookie': cookie });
 }
 
 export function onRequestGet() {
