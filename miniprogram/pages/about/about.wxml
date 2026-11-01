@@ -1,7 +1,7 @@
 <view class="wrap">
   <view class="hero">
     <view class="brand">兰州蜗牛数码</view>
-    <view class="sub">苹果 / 华为 / 小米 / 荣耀等主流品牌手机、平板与配件渠道报价，每日更新。先核验、后下单。</view>
+    <view class="sub">苹果 / 华为 / 小米 / 荣耀等主流品牌手机、平板与配件渠道报价展示，每日更新。本小程序仅展示报价与联系方式，不提供线上下单与在线收款。</view>
   </view>
 
   <view class="card">

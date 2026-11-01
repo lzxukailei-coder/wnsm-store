@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>兰州蜗牛数码 - 手机渠道报价（每日更新）</title>
-<meta name="description" content="兰州蜗牛数码（个人经营者）：苹果/华为/小米/荣耀等主流品牌手机、平板与配件渠道报价，每日更新；报价含交易条件，先核验、后下单。联系电话 17361593016。">
+<meta name="description" content="兰州蜗牛数码（个人经营者）：苹果/华为/小米/荣耀等主流品牌手机、平板与配件渠道报价，每日更新；本站仅展示报价与联系方式，不提供线上下单与收款，成交以电话/微信咨询确认为准。联系电话 17361593016。">
 <meta property="og:title" content="兰州蜗牛数码 - 手机渠道报价（每日更新）">
-<meta property="og:description" content="个人经营者直供，覆盖主流品牌手机、平板与配件；报价每日更新，先核验、后下单。">
+<meta property="og:description" content="个人经营者渠道报价展示，覆盖主流品牌手机、平板与配件；报价每日更新，电话/微信咨询对接，本站不在线成交收款。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://wnsm.store/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
@@ -132,7 +132,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 <!-- 首屏：卖什么 / 面向谁 / 下一步 -->
 <div class="hero">
   <h1>手机渠道报价 · <span class="hl">每日更新</span></h1>
-  <div class="sub">兰州蜗牛数码（个人经营者）直供：苹果 / 华为 / 小米 / 荣耀等主流品牌手机、平板与配件。报价含交易条件，先核验、后下单。</div>
+  <div class="sub">兰州蜗牛数码（个人经营者）渠道报价展示：苹果 / 华为 / 小米 / 荣耀等主流品牌手机、平板与配件。本站仅展示报价与联系方式，不提供线上下单与收款，成交以电话/微信咨询确认为准。</div>
   <div class="hero-btns">
     <button class="hero-btn main" onclick="document.getElementById('searchInput').scrollIntoView({behavior:'smooth'})">查看今日报价</button>
     <button class="hero-btn ghost" onclick="openContact('')">联系核验/咨询</button>
@@ -143,7 +143,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 <div class="trust-bar">
   <div class="trust-item"><span class="dot"></span>个人经营者，如实运营</div>
   <div class="trust-item"><span class="dot"></span>报价每日更新，当日有效</div>
-  <div class="trust-item"><span class="dot"></span>支持平台担保或合规支付</div>
+  <div class="trust-item"><span class="dot"></span>仅展示报价 · 本站不在线成交收款</div>
   <div class="trust-item"><span class="dot"></span>售后 24 小时响应、48 小时给方案</div>
 </div>
 
@@ -261,7 +261,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
     <div class="contact-qrs">
       <div>
         <img class="contact-qr-mini" src="assets/qr-wechat.jpg" alt="个人微信二维码">
-        <div class="qr-label">个人微信（咨询/交易）</div>
+        <div class="qr-label">个人微信（咨询对接）</div>
       </div>
       <div>
         <img class="contact-qr-mini" src="assets/qr-gongzhonghao.jpg" alt="公众号二维码">
@@ -272,7 +272,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
     <button class="submit" onclick="copySubject()">复制咨询内容</button>
     <div class="tip">
       咨询前请先阅读 <a href="rules.html" style="color:#0071e3">交易规则</a> 与 <a href="service.html" style="color:#0071e3">售后与投诉</a><br>
-      请勿向个人账户私下转账，建议使用平台担保或合规支付渠道
+      本站不提供线上下单与在线收款；成交方式、价格与交易条件请在电话/微信中当面确认
     </div>
     <div class="close" onclick="closeContact()">关闭</div>
   </div>
@@ -280,9 +280,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 
 <!-- 底部导航 -->
 <div class="bottom-nav">
-  <div class="nav-item active"><span class="icon">🏠</span>报价</div>
-  <div class="nav-item"><span class="icon">🔍</span>分类</div>
-  <div class="nav-item"><span class="icon">🛒</span>购物车</div>
+  <div class="nav-item active" onclick="scrollTop()"><span class="icon">🏠</span>报价</div>
+  <div class="nav-item" onclick="scrollToFilters()"><span class="icon">🔍</span>分类</div>
   <div class="nav-item" onclick="goMe()"><span class="icon">👤</span>我的</div>
 </div>
 
@@ -296,7 +295,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
     <a href="about.html">关于本站</a>
     <a href="privacy.html">隐私政策</a>
   </div>
-  <div class="risk">风险提示：本站为报价展示与咨询渠道，不提供任何形式的个人收款码或私下转账；请使用平台担保或合规支付渠道。报价每日更新，具体价格、库存、保修与发票等交易条件以咨询确认为准。</div>
+  <div class="risk">风险提示：本站为报价展示与咨询渠道，不提供线上下单、在线收款或个人收款码；成交在线下门店或微信私聊完成，价格、库存、保修与发票等交易条件以电话/微信咨询确认为准。</div>
 </footer>
 
 <script>
@@ -467,9 +466,9 @@ function renderCard(p) {
       </div>
       <div class="tags">${tags}</div>
       <div class="card-info">
-        <div>更新 ${updateTime || '--'} ｜ 报价当日有效 ｜ 起订 1 台</div>
-        <div>库存：${stockHtml} ｜ 报价不含税 ｜ 保修以机型确认为准</div>
-        <div class="ci-link"><a href="rules.html">查看交易条件 →</a></div>
+        <div>更新 ${updateTime || '--'} ｜ 报价当日有效 ｜ 1 台起询</div>
+        <div>库存：${stockHtml} ｜ 报价不含税 ｜ 保修以咨询确认为准</div>
+        <div class="ci-link"><a href="rules.html">查看报价规则 →</a></div>
       </div>
     </div>`;
 }
@@ -564,6 +563,9 @@ function updateUserArea() {
 }
 
 function goMe() { if (user) { alert('当前账号：' + user.phone + '\n类型：' + (user.role === 'B' ? '同行' : '个人客户')); } else { openModal('login'); } }
+
+function scrollTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+function scrollToFilters() { var el = document.getElementById('brandFilter'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }
 
 function openContact(nameEnc) {
   const name = nameEnc ? decodeURIComponent(nameEnc) : '';

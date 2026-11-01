@@ -122,11 +122,11 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
 
   <div class="hero">
     <h1>一套商品库、一套会员体系，<br>分发到 <em>7 个触达渠道</em>统一运营</h1>
-    <p>在已上线的 wnsm.store（Cloudflare Pages + Functions + D1，手机渠道报价，C/B 分级定价）基础上，把微信公众号、微信小程序、微信视频号、个人微信、抖音、快手、小红书全部挂到同一套后台与数据上：商品与价格只录一次，用户身份跨端打通，线索与成交按渠道回溯。本页是方案说明 + 中台看板可交互原型，深色数据中台风格。</p>
+    <p>在已上线的 wnsm.store（Cloudflare Pages + Functions + D1，手机渠道报价，C/B 分级定价）基础上，把微信公众号、微信小程序、微信视频号、个人微信、抖音、快手、小红书纳入同一套后台与数据统一运营：商品与价格只录一次，用户身份跨端打通，咨询线索按渠道回溯。<b>定位边界：小程序、公众号、官网仅做报价展示与咨询留资，不做线上下单与在线收款；抖音、快手、小红书、视频号只做内容引流，不在站内开店成交。</b>本页是方案说明 + 中台看板可交互原型，深色数据中台风格。</p>
     <div class="hero-meta">
       <div><div class="n">7</div><div class="l">触达渠道（3 微信系 + 4 外部公域）</div></div>
       <div><div class="n">1 套</div><div class="l">商品库 / 会员表 / 定价规则（D1 现有）</div></div>
-      <div><div class="n">3 步</div><div class="l">先闭环微信生态，再铺外部公域</div></div>
+      <div><div class="n">3 步</div><div class="l">先跑通微信展示阵地，再铺外部公域引流</div></div>
       <div><div class="n">0 新服务器</div><div class="l">继续复用 Cloudflare 现有部署</div></div>
     </div>
   </div>
@@ -139,13 +139,13 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
     <div class="arch-layer">
       <h3>① 触点层 · 用户在哪里看到你</h3>
       <div class="chips">
-        <div class="chip wechat"><div class="t">微信公众号（服务号/订阅号）</div><div class="s">图文菜单 → 小程序/官网；模板消息触达；客服消息承接咨询</div></div>
-        <div class="chip wechat"><div class="t">微信小程序（本次生成）</div><div class="s">报价列表、登录注册、批发/零售分级价、联系客服；微信内主交易入口</div></div>
-        <div class="chip wechat"><div class="t">微信视频号</div><div class="s">短视频/直播，挂小程序或微信小店商品；公众号 + 小程序 + 视频号同主体联动</div></div>
-        <div class="chip wechat"><div class="t">个人微信 / 企业微信</div><div class="s">1V1 成交、报价单转发、朋友圈；企微后可自动打标签、归属渠道</div></div>
-        <div class="chip external"><div class="t">抖音（企业号 + 抖音小程序/小店）</div><div class="s">短视频引流；平台内闭环交易为主，主页留合规联系方式</div></div>
-        <div class="chip external"><div class="t">快手（企业号 + 快手小店）</div><div class="s">同城与渠道批发内容；直播挂载快手小店商品</div></div>
-        <div class="chip external"><div class="t">小红书（商家号）</div><div class="s">种草笔记、机型选购攻略；引导合规进私域或小红书店铺成交</div></div>
+        <div class="chip wechat"><div class="t">微信公众号（服务号/订阅号）</div><div class="s">图文菜单 → 小程序/官网；客服消息承接咨询；不做在线成交与收款</div></div>
+        <div class="chip wechat"><div class="t">微信小程序（本次生成）</div><div class="s">报价列表、登录注册、批发/零售分级价、咨询拨号/微信；微信内报价展示入口，无购物车与下单</div></div>
+        <div class="chip wechat"><div class="t">微信视频号</div><div class="s">短视频/直播内容引流，评论区与主页引导到小程序/公众号看报价；同主体联动，不开小店</div></div>
+        <div class="chip wechat"><div class="t">个人微信 / 企业微信</div><div class="s">1V1 咨询对接、报价单转发、朋友圈；成交在线下门店或微信私聊完成；企微后可自动打标签、归属渠道</div></div>
+        <div class="chip external"><div class="t">抖音（企业号）</div><div class="s">短视频/直播内容引流曝光；不在站内开店成交，主页仅保留平台允许的合规联系方式入口</div></div>
+        <div class="chip external"><div class="t">快手（企业号）</div><div class="s">同城与渠道批发内容引流；不开设快手小店、不做站内下单，引导合规留资</div></div>
+        <div class="chip external"><div class="t">小红书（商家号）</div><div class="s">种草笔记、机型选购攻略；只做内容曝光与合规私信留资，不开站内店铺成交</div></div>
       </div>
     </div>
 
@@ -157,7 +157,7 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
         <div class="chip"><div class="t">商品与定价（已有）</div><div class="s">/api/products 按身份返回零售价/批发价；底价保护规则；爬虫每日更新</div></div>
         <div class="chip"><div class="t">统一账号（已有 + 扩展）</div><div class="s">users 手机号账号；新增 external_identities 绑定各端 openid/unionid</div></div>
         <div class="chip"><div class="t">微信登录打通（新增）</div><div class="s">/api/wechat-login code2session；/api/wechat-bind 绑定手机号账号；unionid 跨公众号/小程序/视频号</div></div>
-        <div class="chip"><div class="t">渠道归因（新增）</div><div class="s">/api/channel-track 记录来源平台/内容/活动；成交可回溯到具体渠道</div></div>
+        <div class="chip"><div class="t">渠道归因（新增）</div><div class="s">/api/channel-track 记录来源平台/内容/活动；咨询线索可回溯到具体渠道</div></div>
         <div class="chip"><div class="t">公众号 JS-SDK（新增）</div><div class="s">/api/wx-jsapi-signature 生成分享/扫码/客服签名，图文页可调起微信能力</div></div>
         <div class="chip"><div class="t">内容素材库（待建）</div><div class="s">一次剪辑出多平台适配版本；文案、封面、话题标签集中管理</div></div>
       </div>
@@ -179,9 +179,9 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
     <div class="notice">
       <b>必须先认清的边界（不要被"一键全平台打通"的说法带偏）：</b>
       <ul>
-        <li><b>微信内部能深度打通：</b>公众号、小程序、视频号、微信小店在同一主体、接入微信开放平台后可用 unionid 识别同一用户，菜单/图文/直播/客服互相跳转。</li>
-        <li><b>抖音、快手、小红书是封闭围墙：</b>平台规则禁止在站内引导跳到外部网站、微信或第三方小程序（抖音小程序运营规范明确禁止第三方引流）。这些平台只能"站内成交闭环 + 合规主页简介/私信引流"，商品与用户数据无法像微信那样直接写入你的 D1，只能靠导出报表、私信留资、渠道二维码做弱关联。</li>
-        <li>因此"一体"的真实含义是：<b>一套商品/内容/会员中台 + 微信内闭环互通 + 外部平台各自合规运营后回流线索</b>，而不是七个平台共用一个后台账号体系。</li>
+        <li><b>微信内部能深度打通：</b>公众号、小程序、视频号在同一主体、接入微信开放平台后可用 unionid 识别同一用户，菜单/图文/客服互相跳转；三者只做展示与咨询对接，不接在线支付、不开微信小店。</li>
+        <li><b>抖音、快手、小红书是封闭围墙：</b>平台规则禁止在站内引导跳到外部网站、微信或第三方小程序。按当前定位，这些平台<b>只做内容曝光引流，不开通小店、不做站内成交闭环</b>；商品与用户数据无法像微信那样直接写入你的 D1，只能靠导出报表、平台允许范围内的合规留资、渠道参数做弱关联。</li>
+        <li>因此"一体"的真实含义是：<b>一套商品/内容/会员中台 + 微信三端展示互通 + 外部平台合规引流后回流咨询线索</b>，而不是七个平台共用一个后台账号体系，更不是把成交搬到线上。</li>
       </ul>
     </div>
   </section>
@@ -198,57 +198,57 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
       <tbody>
         <tr>
           <td><b>官网 www.wnsm.store</b></td>
-          <td>商品报价中枢、统一落地页</td>
-          <td>已有完整报价、登录、C/B 分级价、后台审核；所有渠道最终可回链到此</td>
-          <td>成本价不下发；已做服务端定价与 403 拦截</td>
+          <td>报价展示中枢、统一落地页</td>
+          <td>已有完整报价、登录、C/B 分级价、咨询电话与微信/公众号二维码；所有渠道最终可回链到此；无购物车、下单与收款功能</td>
+          <td>成本价不下发；已做服务端定价与 403 拦截；本站不在线成交收款</td>
           <td><span class="tag t-ok">已上线</span> 保持现有部署</td>
         </tr>
         <tr>
           <td><b>微信小程序</b></td>
-          <td>微信内主交易/报价入口</td>
-          <td>复用 /api/products、/api/login、/api/register；wx.login 微信授权；分享卡片；联系客服；web-view 回嵌官网页面</td>
-          <td>需企业/个体户主体注册并做小程序备案；request 合法域名必须配 https://wnsm.store；类目选"工具-报价"或"电商-3C 数码"</td>
+          <td>微信内报价展示入口</td>
+          <td>复用 /api/products、/api/login、/api/register；wx.login 微信授权；分享卡片；咨询拨号；web-view 回嵌官网页面；不设购物车与在线下单</td>
+          <td>需组织主体（个体工商户/企业）注册并做小程序备案；request 合法域名必须配 https://wnsm.store；类目选"工具-报价/商业信息"，不选电商交易类目</td>
           <td><span class="tag t-do">工程已生成</span> 注册账号 → 填 AppID → 配域名 → 提审</td>
         </tr>
         <tr>
           <td><b>微信公众号</b></td>
-          <td>内容触达、菜单导流、客服承接</td>
+          <td>内容触达、菜单导流、咨询承接</td>
           <td>菜单跳转小程序/官网 H5；图文内嵌小程序卡片；客服消息；JS-SDK 自定义分享；网页授权拿 openid 并入统一账号</td>
-          <td>服务号才能用客服消息、模板消息、网页授权；订阅号能力受限；同一主体才能与小程序互相跳转</td>
+          <td>服务号才能用客服消息、模板消息、网页授权；订阅号能力受限；同一主体才能与小程序互相跳转；公众号不挂载支付与商品商城</td>
           <td><span class="tag t-mid">待注册认证</span> 建议注册服务号，300 元/年认证费</td>
         </tr>
         <tr>
           <td><b>微信视频号</b></td>
-          <td>短视频 + 直播引流成交</td>
-          <td>与公众号/小程序同主体绑定；视频挂小程序商品；直播挂微信小店；直播间引导到小程序报价</td>
-          <td>视频号小店与店铺经营需相应类目资质；直播话术不得夸大价格与承诺</td>
+          <td>短视频 + 直播引流曝光</td>
+          <td>与公众号/小程序同主体绑定；短视频/直播内容引导到小程序查看完整报价；主页挂公众号与小程序入口；不开视频号小店、不挂线上商品</td>
+          <td>直播话术不得夸大价格与保修承诺；不在线收款，成交引导至小程序/公众号咨询后转线下对接</td>
           <td><span class="tag t-mid">待开通</span> 公众号认证后在视频号助手绑定</td>
         </tr>
         <tr>
           <td><b>个人微信 / 企业微信</b></td>
-          <td>1V1 成交、报价转发、私域沉淀</td>
-          <td>小程序/官网链接转发到聊天；后续可升级企微：自动欢迎语、客户标签、渠道活码、话术库</td>
+          <td>1V1 咨询对接、报价转发、私域沉淀</td>
+          <td>小程序/官网链接转发到聊天；后续可升级企微：自动欢迎语、客户标签、渠道活码、话术库；成交在线下门店或微信私聊完成，不经过网站收款</td>
           <td>个人微信高频加人/发广告有封号风险；规模化后必须转企业微信</td>
           <td><span class="tag t-do">先人工承接</span> 预留企微渠道活码接入位</td>
         </tr>
         <tr>
           <td><b>抖音（企业号）</b></td>
-          <td>公域短视频获客、站内成交</td>
-          <td>企业号主页、短视频挂抖音小程序/抖音小店；直播自主挂载（同主体账号绑定）；私信自动回复留资</td>
-          <td><b>禁止站内引流到外部网站、微信、第三方小程序</b>；不得在视频/评论/主页站外导流；交易优先走抖音小店闭环</td>
-          <td><span class="tag t-mid">待企业认证</span> 先做企业号 + 抖音小店，不做外链</td>
+          <td>公域短视频获客、引流曝光</td>
+          <td>企业号主页、短视频与直播内容；平台允许范围内的主页联系方式展示；私信按平台规则合规承接咨询；不开通抖音小店、不做站内成交</td>
+          <td><b>禁止站内引流到外部网站、微信、第三方小程序</b>；不得在视频/评论/主页站外导流；不在站内挂载交易闭环</td>
+          <td><span class="tag t-mid">待企业认证</span> 先做企业号内容号，不做小店与外链</td>
         </tr>
         <tr>
           <td><b>快手（企业号）</b></td>
-          <td>同城批发、直播带货</td>
-          <td>快手小店上架同款机型；直播间挂载商品；私信咨询引导站内下单</td>
-          <td>同样禁止站外导流；价格宣传需与实际成交一致，避免虚假比价</td>
+          <td>同城内容引流、获客曝光</td>
+          <td>同城与渠道批发短视频内容；私信合规咨询承接；不开快手小店、不引导站内下单，线索回流微信/小程序</td>
+          <td>同样禁止站外导流；价格宣传需与实际咨询报价一致，避免虚假比价</td>
           <td><span class="tag t-mid">待企业认证</span> 抖音跑通后复制到快手</td>
         </tr>
         <tr>
           <td><b>小红书（商家号）</b></td>
-          <td>种草攻略、机型选购内容</td>
-          <td>商家笔记、商品笔记挂小红书店铺；私信/群聊承接；合规方式引导站内购买</td>
+          <td>种草攻略、机型选购内容引流</td>
+          <td>选购攻略与体验笔记；私信/群聊按平台规则承接咨询；不开小红书店铺、不做站内购买闭环</td>
           <td>笔记内硬广、外链、微信号导流属违规；内容需真实体验、不夸大参数</td>
           <td><span class="tag t-mid">待开通商家号</span> 先做选购攻略类软内容</td>
         </tr>
@@ -261,7 +261,7 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
   <!-- ===== 中台看板原型 ===== -->
   <section class="section" id="board">
     <h2>统一运营中台看板（原型 · 示例数据）</h2>
-    <p class="desc">这是未来后台要长成的样子：一屏看完商品、账号矩阵、渠道线索与转化。当前数字均为演示占位，真实数据来自 D1 与各平台后台导出。</p>
+    <p class="desc">这是未来后台要长成的样子：一屏看完商品、账号矩阵、渠道线索与咨询转化。当前数字均为演示占位，真实数据来自 D1 与各平台后台导出。</p>
 
     <div class="kpi-row">
       <div class="kpi"><div class="n">1,284</div><div class="l">总注册用户（跨端合计）</div><div class="d up">▲ 12.4% 较上周</div></div>
@@ -288,19 +288,19 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
         <div class="account-row"><div>微信公众号（服务号）</div><span class="status s-pending">待注册认证</span></div>
         <div class="account-row"><div>微信视频号</div><span class="status s-pending">待开通绑定</span></div>
         <div class="account-row"><div>企业微信 / 私域</div><span class="status s-setup">人工承接中</span></div>
-        <div class="account-row"><div>抖音企业号 + 小店</div><span class="status s-pending">待认证开通</span></div>
-        <div class="account-row"><div>快手企业号 + 小店</div><span class="status s-pending">待认证开通</span></div>
-        <div class="account-row"><div>小红书商家号</div><span class="status s-pending">待开通</span></div>
+        <div class="account-row"><div>抖音企业号（内容引流）</div><span class="status s-pending">待认证开通</span></div>
+        <div class="account-row"><div>快手企业号（内容引流）</div><span class="status s-pending">待认证开通</span></div>
+        <div class="account-row"><div>小红书商家号（内容引流）</div><span class="status s-pending">待开通</span></div>
       </div>
     </div>
 
     <div class="panel" style="margin-top:16px">
       <h3>统一商品与内容工作台（规划模块）</h3>
       <div class="chips">
-        <div class="chip"><div class="t">商品同步</div><div class="s">D1 商品 → 一键生成小程序列表；外部小店按平台模板另建，价格人工核对</div></div>
+        <div class="chip"><div class="t">商品同步</div><div class="s">D1 商品 → 一键生成小程序与官网列表；外部平台只发布内容选题，不在站内另建商品店铺</div></div>
         <div class="chip"><div class="t">内容素材库</div><div class="s">一版成片裁剪 9:16 / 3:4；文案与封面按平台模板保存复用</div></div>
-        <div class="chip"><div class="t">线索分配</div><div class="s">各平台私信/留资统一进线索池，标注来源渠道，分配到微信承接</div></div>
-        <div class="chip"><div class="t">数据复盘</div><div class="s">每周汇总各平台曝光、进店、留资、成交，按渠道算 ROI</div></div>
+        <div class="chip"><div class="t">线索分配</div><div class="s">各平台私信/留资统一进线索池，标注来源渠道，分配到微信承接咨询</div></div>
+        <div class="chip"><div class="t">数据复盘</div><div class="s">每周汇总各平台曝光、主页访问、留资与咨询量，按渠道评估引流效率</div></div>
       </div>
     </div>
   </section>
@@ -308,39 +308,39 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
   <!-- ===== 路线图 ===== -->
   <section class="section" id="roadmap">
     <h2>分阶段落地路线图</h2>
-    <p class="desc">先把微信闭环跑通再铺外部，避免七个平台同时开工、每个都半成品。每阶段都有可验收的产出。</p>
+    <p class="desc">先把微信三端展示与咨询承接跑顺再铺外部，避免七个平台同时开工、每个都半成品。每阶段都有可验收的产出。</p>
     <div class="timeline">
       <div class="phase">
-        <h4>第一阶段：微信内闭环（优先，1–2 周）</h4>
-        <div class="when">目标：小程序上线，公众号/小程序/视频号互相导流，私域承接跑顺</div>
+        <h4>第一阶段：微信内展示阵地跑通（优先，1–2 周）</h4>
+        <div class="when">目标：小程序上线，公众号/小程序/视频号互相导流，私域咨询承接跑顺；全程不接在线支付</div>
         <ul>
-          <li>用"兰州新佰通通讯器材经营部 / 蜗牛数码"营业执照注册小程序、服务号，完成认证与备案</li>
-          <li>Cloudflare 后台配置 WX_MP_APPID / WX_MP_SECRET / WX_OA_APPID / WX_OA_SECRET 环境变量，执行新增建表语句</li>
+          <li>用个体工商户/企业营业执照注册小程序、服务号，完成认证与备案（个人主体无法满足经营类目与互通要求）</li>
+          <li>Cloudflare 后台配置 WX_MP_APPID / WX_MP_SECRET / WX_OA_APPID / WX_OA_SECRET 环境变量；新表由接口首次访问时幂等自动创建，无需手动执行建表语句</li>
           <li>微信开发者工具导入 miniprogram 目录，填写 AppID，配置 request 合法域名 https://wnsm.store，真机预览后提交审核上线</li>
           <li>公众号菜单配置：直达小程序报价页、关于我们、联系客服；接入 JS-SDK 自定义分享标题与封面</li>
-          <li>开通视频号并与公众号同主体绑定，发布首批机型报价短视频，评论区引导小程序查看报价</li>
-          <li>个人微信作为客服承接入口，统一回复话术与报价引导路径</li>
+          <li>开通视频号并与公众号同主体绑定，发布首批机型报价短视频，按平台规则引导到小程序查看报价</li>
+          <li>个人微信作为咨询承接入口，统一回复话术与报价引导路径</li>
         </ul>
       </div>
       <div class="phase">
-        <h4>第二阶段：外部公域铺号（2–4 周）</h4>
-        <div class="when">目标：抖音、快手、小红书企业/商家号开通，站内闭环成交，内容统一排期</div>
+        <h4>第二阶段：外部公域铺号引流（2–4 周）</h4>
+        <div class="when">目标：抖音、快手、小红书企业/商家号开通，只做内容曝光与合规留资，不做站内开店成交；内容统一排期</div>
         <ul>
-          <li>抖音企业号认证，开通抖音小店，上架主推机型；直播挂载同主体小程序/小店商品</li>
-          <li>快手企业号 + 快手小店，复制抖音内容与商品结构</li>
-          <li>小红书商家号，先发布机型选购攻略、避坑笔记，不发硬广外链</li>
+          <li>抖音企业号认证，只发布短视频/直播内容；不开通抖音小店，不在站内挂载交易商品</li>
+          <li>快手企业号认证，复制抖音内容与选题结构；不开设快手小店、不引导站内下单</li>
+          <li>小红书商家号，先发布机型选购攻略、避坑笔记，不发硬广外链，不开店铺成交</li>
           <li>建立统一内容排期表：每周选题、拍摄、剪辑、各平台发布时间固定下来</li>
-          <li>所有外部平台主页简介、私信话术统一引导站内咨询，不出现违规站外导流</li>
+          <li>所有外部平台主页简介、私信话术遵守平台导流禁令，仅在平台允许的范围内展示联系方式，不出现微信号、外链与二维码</li>
         </ul>
       </div>
       <div class="phase">
         <h4>第三阶段：中台沉淀与自动化（1–2 个月后）</h4>
-        <div class="when">目标：线索统一归集、渠道可追溯、内容与数据半自动化</div>
+        <div class="when">目标：咨询线索统一归集、渠道可追溯、内容与数据半自动化</div>
         <ul>
           <li>升级企业微信：渠道活码、客户标签、自动欢迎语、话术库，外部平台回流线索统一打标签</li>
           <li>中台看板接入真实数据：D1 用户/线索 + 各平台后台定期导出报表，形成周报</li>
           <li>内容素材库与多版本裁剪模板固化；热门机型做固定短视频选题库</li>
-          <li>按渠道复盘转化率，砍掉低效平台动作，集中资源到成交最好的两个渠道</li>
+          <li>按渠道复盘引流与咨询转化，砍掉低效平台动作，集中资源到咨询量最好的两个渠道</li>
         </ul>
       </div>
     </div>
@@ -354,9 +354,9 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
       <div class="panel">
         <h3>主体资质（企业/个体户一套复用）</h3>
         <ul class="checklist">
-          <li>营业执照（兰州新佰通通讯器材经营部 / 蜗牛数码，拍照 + 扫描件）</li>
+          <li>营业执照（个体工商户或企业主体，拍照 + 扫描件；最终注册名称与页面称谓保持一致）</li>
           <li>法人身份证正反面、法人实名微信、管理员手机号与邮箱（每个平台独立邮箱更佳）</li>
-          <li>对公账户或法人账户（企业号认证、小店结算绑定）</li>
+          <li>主体经营者银行账户（仅用于平台认证核验；当前定位不在线收款，无需绑定小店结算账户）</li>
           <li>3C 数码/通讯配件经营类目相关经营范围核对</li>
           <li>品牌名统一：微信/抖音/快手/小红书昵称、头像、简介、背景图全部一致</li>
         </ul>
@@ -368,18 +368,18 @@ td .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;ma
           <li>注册服务号（非订阅号）并完成 300 元/年认证</li>
           <li>注册微信开放平台账号，把公众号、小程序绑定到同一开放平台，获得 unionid</li>
           <li>小程序后台 → 开发管理 → 服务器域名，添加 https://wnsm.store</li>
-          <li>Cloudflare Pages 环境变量填入 4 个微信密钥；D1 执行新表结构</li>
-          <li>视频号助手绑定公众号与小程序，完成小店类目资质提交</li>
+          <li>Cloudflare Pages 环境变量填入 4 个微信密钥；两张新表由接口首次访问时自动创建，无需手动执行 D1 迁移</li>
+          <li>视频号助手绑定公众号与小程序；当前定位不开通视频号小店、不挂载线上商品</li>
         </ul>
       </div>
     </div>
     <div class="notice" style="margin-top:16px">
       <b>合规与风控提醒：</b>
       <ul>
-        <li>报价宣传须标注"渠道参考价，以实际成交为准"，避免虚构原价、虚假比价、夸大配置与保修承诺。</li>
-        <li>抖音/快手/小红书站内严禁出现微信号、手机号、外部链接、"加微信"等导流字样，违规会限流封号。</li>
+        <li>报价宣传须标注"渠道参考价，以电话/微信咨询确认为准"，避免虚构原价、虚假比价、夸大配置与保修承诺。</li>
+        <li>抖音/快手/小红书站内严禁出现微信号、手机号、外部链接、"加微信"等导流字样，违规会限流封号；这些平台不开设小店、不做站内成交。</li>
         <li>用户手机号、聊天记录属于个人信息，私域承接要告知用途，不随意转发客户信息到群聊。</li>
-        <li>小程序与公众号涉及交易/报价时，服务规则、隐私政策页面已在官网存在，多端保持同一版本。</li>
+        <li>小程序、公众号、官网仅做展示与咨询，服务规则、隐私政策页面与官网保持同一版本；全链路不挂在线支付入口。</li>
       </ul>
     </div>
   </section>
