@@ -1,11 +1,12 @@
 // 报价首页：列表 / 搜索 / 品牌筛选 / 品类筛选 / 登录态入口 / 联系客服
 const { request, clearToken } = require('../../utils/api');
-const { TYPE_TABS, PRICE_LABEL, groupByBrand } = require('../../utils/catalog');
+const { TYPE_TABS, PRICE_LABEL, BRAND_ORDER, BRAND_NAMES, groupByBrand } = require('../../utils/catalog');
 const app = getApp();
+
+const PAGE_SIZE = 20;
 
 Page({
   data: {
-    products: [],
     groups: [],
     updateTime: '',
     user: null,
@@ -15,7 +16,9 @@ Page({
     brandList: [{ key: 'all', name: '全部' }],
     typeTabs: TYPE_TABS,
     loaded: false,
-    loadingError: ''
+    loadingError: '',
+    visibleCount: PAGE_SIZE,
+    filteredCount: 0
   },
 
   onShow() {
@@ -33,6 +36,7 @@ Page({
         app.setUser(data.auth);
         this.setData({ user: data.auth });
       }
+      this.setData({ visibleCount: PAGE_SIZE });
       this.applyFilter();
       this.setData({
         updateTime: data.updateTime || '',
@@ -40,15 +44,16 @@ Page({
         loadingError: ''
       });
     } catch (e) {
-      this.setData({ loaded: true, loadingError: e.message });
+      console.error('loadProducts failed', e);
+      this.setData({ loaded: true, loadingError: e.message || '网络异常，请稍后重试' });
     } finally {
       wx.hideLoading();
     }
   },
 
   applyFilter() {
-    let list = app.globalData.products;
-    const { keyword, currentBrand, currentType } = this.data;
+    let list = app.globalData.products || [];
+    const { keyword, currentBrand, currentType, visibleCount } = this.data;
 
     if (currentBrand !== 'all') list = list.filter(p => p.brand === currentBrand);
     if (currentType !== 'all') list = list.filter(p => p.ptype === currentType);
@@ -60,44 +65,55 @@ Page({
         (p.category || '').toLowerCase().includes(k)
       );
     }
+    const brandKeys = {};
+    list.forEach(p => { brandKeys[p.brand || 'other'] = true; });
+    const brands = [{ key: 'all', name: '全部' }].concat(
+      BRAND_ORDER.filter(k => brandKeys[k]).map(k => ({ key: k, name: BRAND_NAMES[k] || k }))
+    );
 
-    // 品牌筛选条选项按当前商品实际出现的品牌生成
-    const brands = [{ key: 'all', name: '全部' }];
-    const seen = {};
-    list.forEach(p => {
-      if (!seen[p.brand]) { seen[p.brand] = true; brands.push({ key: p.brand, name: p.brand }); }
+    const fullGroups = groupByBrand(list);
+    const visibleList = list.slice(0, visibleCount);
+    const groups = groupByBrand(visibleList).map(g => {
+      const fullGroup = fullGroups.find(x => x.key === g.key);
+      return {
+        key: g.key,
+        name: g.name,
+        totalItems: fullGroup ? fullGroup.items.length : g.items.length,
+        items: g.items.map(p => this.decorateProduct(p))
+      };
     });
 
-    const groups = groupByBrand(list).map(g => ({
-      ...g,
-      items: g.items.map(this.decorateProduct)
-    }));
-
-    this.setData({ groups, brandList: brands });
+    this.setData({ groups, brandList: brands, filteredCount: list.length });
   },
 
   decorateProduct(p) {
     const label = PRICE_LABEL[p.priceLabel] || PRICE_LABEL.public;
-    return {
-      ...p,
+    return Object.assign({}, p, {
       labelText: label.text,
       labelCls: label.cls,
       priceText: p.outStock ? '缺货/待报价' : (p.displayPrice != null ? '¥ ' + p.displayPrice : '—')
-    };
+    });
+  },
+
+  onReachBottom() {
+    const { visibleCount, filteredCount } = this.data;
+    if (visibleCount >= filteredCount) return;
+    this.setData({ visibleCount: visibleCount + PAGE_SIZE });
+    this.applyFilter();
   },
 
   onSearch(e) {
-    this.setData({ keyword: e.detail.value });
+    this.setData({ keyword: e.detail.value, visibleCount: PAGE_SIZE });
     this.applyFilter();
   },
 
   onBrandTap(e) {
-    this.setData({ currentBrand: e.currentTarget.dataset.brand });
+    this.setData({ currentBrand: e.currentTarget.dataset.brand, visibleCount: PAGE_SIZE });
     this.applyFilter();
   },
 
   onTypeTap(e) {
-    this.setData({ currentType: e.currentTarget.dataset.type });
+    this.setData({ currentType: e.currentTarget.dataset.type, visibleCount: PAGE_SIZE });
     this.applyFilter();
   },
 

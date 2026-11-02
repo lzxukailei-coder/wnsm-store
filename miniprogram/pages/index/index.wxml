@@ -16,7 +16,7 @@
   <!-- 搜索 -->
   <view class="search-bar">
     <input class="search-input" placeholder="搜索型号 / 名称 / 品牌" value="{{keyword}}" bindinput="onSearch" confirm-type="search" />
-    <view class="update-line">报价更新：{{updateTime || '加载中…'}} · 共 {{groups.length}} 类</view>
+    <view class="update-line">报价更新：{{updateTime || '加载中…'}} · 共 {{filteredCount}} 款 · {{groups.length}} 类</view>
   </view>
 
   <!-- 品类横滑 -->
@@ -43,7 +43,7 @@
   <block wx:for="{{groups}}" wx:for-item="group" wx:key="key">
     <view class="brand-title">
       <text>{{group.name}}</text>
-      <text class="count">{{group.items.length}} 款</text>
+      <text class="count">{{group.totalItems || group.items.length}} 款</text>
     </view>
 
     <view wx:for="{{group.items}}" wx:for-item="p" wx:key="id" class="card">
@@ -62,6 +62,7 @@
   </block>
 
   <view wx:if="{{loaded && groups.length === 0}}" class="empty">没有匹配的机型，换个关键词试试</view>
+  <view wx:if="{{loaded && filteredCount > visibleCount}}" class="empty">上滑加载更多机型</view>
 
   <view class="footer-space"></view>
 </view>

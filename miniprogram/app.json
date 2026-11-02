@@ -1,5 +1,3 @@
-// wnsm.store 小程序 - 全局配置
-// 后端与官网 www.wnsm.store 共用同一套 Cloudflare Pages Functions 与 D1 数据库
 {
   "pages": [
     "pages/index/index",
