@@ -5,7 +5,8 @@
   "description": "wnsm.store 手机批发报价站：每日爬取八方公开价与登录后会员价（含验证码自动识别），服务端计算 C/B 分级价格",
   "main": "crawler.js",
   "scripts": {
-    "crawl": "node crawler.js"
+    "crawl": "node crawler.js",
+    "test": "node --test tests/*.test.js"
   },
   "license": "UNLICENSED",
   "dependencies": {
