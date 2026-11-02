@@ -16,7 +16,7 @@
   <!-- 搜索 -->
   <view class="search-bar">
     <input class="search-input" placeholder="搜索型号 / 名称 / 品牌" value="{{keyword}}" bindinput="onSearch" confirm-type="search" />
-    <view class="update-line">报价更新：{{updateTime || '加载中…'}} · 共 {{groups.length ? groups[0].items.length : 0}} 类</view>
+    <view class="update-line">报价更新：{{updateTime || '加载中…'}} · 共 {{groups.length}} 类</view>
   </view>
 
   <!-- 品类横滑 -->
