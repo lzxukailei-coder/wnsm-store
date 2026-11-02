@@ -38,7 +38,13 @@ export function parseCookies(header) {
   if (!header) return out;
   header.split(';').forEach(part => {
     const i = part.indexOf('=');
-    if (i > 0) out[part.slice(0, i).trim()] = decodeURIComponent(part.slice(i + 1).trim());
+    if (i > 0) {
+      try {
+        out[part.slice(0, i).trim()] = decodeURIComponent(part.slice(i + 1).trim());
+      } catch {
+        // 忽略损坏的 Cookie，避免无关 Cookie 导致整个报价接口返回 500。
+      }
+    }
   });
   return out;
 }
@@ -69,7 +75,8 @@ export async function getUser(request, env) {
       WHERE s.token = ?`
   ).bind(token).first();
   if (!row) return null;
-  if (new Date(row.expires_at).getTime() < Date.now()) return null;
+  const expiresAt = new Date(row.expires_at).getTime();
+  if (!Number.isFinite(expiresAt) || expiresAt <= Date.now()) return null;
   return {
     id: row.id,
     phone: row.phone,

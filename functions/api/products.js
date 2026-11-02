@@ -4,8 +4,8 @@ import { loadCatalog, loadPricing, toPublicProduct } from '../_lib/catalog.js';
 
 // 商品列表：按当前登录身份返回对应展示价（含 SKU 底价保护），原始价/成本永不下发
 export async function onRequestGet({ request, env }) {
-  const user = await getUser(request, env);
-  const [data, pricing] = await Promise.all([
+  const [user, data, pricing] = await Promise.all([
+    getUser(request, env),
     loadCatalog(request, env),
     loadPricing(env)
   ]);
