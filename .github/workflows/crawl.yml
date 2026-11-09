@@ -1,9 +1,10 @@
 name: 定时爬取八方报价
 
 on:
-  # 每天早上8点（北京时间）= UTC 0点
+  # 北京时间 08:00 和 15:00（UTC 00:00 和 07:00）
   schedule:
     - cron: '0 0 * * *'
+    - cron: '0 7 * * *'
   # 支持手动触发
   workflow_dispatch:
 
