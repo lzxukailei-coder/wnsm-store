@@ -5,6 +5,7 @@ const { PRICE_LABEL } = require('./catalog');
 const PAGE_SIZE = 20;
 const LEGACY_TTL = 60000;
 let publicSnapshot;
+let publicRequestId = 0;
 
 function queryString(parameters) {
   return Object.keys(parameters)
@@ -42,14 +43,16 @@ async function requestQuotes(parameters, { refresh = false } = {}) {
   if (!refresh && anonymous && publicSnapshot && publicSnapshot.expires > Date.now()) {
     return projectLegacy(publicSnapshot.data, parameters);
   }
+  const requestId = anonymous ? ++publicRequestId : 0;
   const data = await request('/api/products?' + queryString(parameters));
+  if (!Array.isArray(data.products)) throw new Error('暂时无法读取报价，请稍后重试');
+  const canUpdateSnapshot = anonymous && requestId === publicRequestId && !getToken();
   if (data.pagination || data.modelName) {
-    publicSnapshot = null;
+    if (canUpdateSnapshot) publicSnapshot = null;
     return data;
   }
-  if (!Array.isArray(data.products)) throw new Error('暂时无法读取报价，请稍后重试');
   // 过渡期间兼容旧接口，只暂存无身份的公开报价。
-  if (anonymous && !data.auth) publicSnapshot = { data, expires: Date.now() + LEGACY_TTL };
+  if (canUpdateSnapshot && data.auth === null) publicSnapshot = { data, expires: Date.now() + LEGACY_TTL };
   return projectLegacy(data, parameters);
 }
 

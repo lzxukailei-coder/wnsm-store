@@ -13,4 +13,5 @@
 .divider { display: flex; align-items: center; gap: 20rpx; color: #bbb; font-size: 24rpx; margin: 32rpx 0; }
 .divider::before, .divider::after { content: ''; flex: 1; height: 1rpx; background: #eee; }
 .wechat { width: 100%; background: #07c160; color: #fff; border: none; padding: 24rpx; border-radius: 20rpx; font-size: 28rpx; }
+.notice { margin-top: 20rpx; color: #854d0e; font-size: 26rpx; line-height: 1.6; }
 .tip { font-size: 22rpx; color: #86868b; text-align: center; margin-top: 28rpx; line-height: 1.7; }

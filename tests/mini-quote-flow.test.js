@@ -9,22 +9,46 @@ const item = (id, name) => ({ id, name, brand: 'huawei', ptype: 'phone', display
 function mount(name) {
   let definition;
   globalThis.Page = value => { definition = value; };
-  require(path(name));
-  return { ...definition, data: structuredClone(definition.data), setData(next) { Object.assign(this.data, next); } };
+  const file = require.resolve(path(name));
+  delete require.cache[file];
+  require(file);
+  return {
+    ...definition,
+    data: structuredClone(definition.data),
+    writes: [],
+    setData(next) {
+      this.writes.push(next);
+      for (const [key, value] of Object.entries(next)) {
+        const parts = key.replace(/\[(\d+)\]/g, '.$1').split('.');
+        const field = parts.pop();
+        const parent = parts.reduce((current, part) => current[part], this.data);
+        parent[field] = value;
+      }
+    }
+  };
 }
 
-function harness() {
+function harness(token = '') {
   const calls = [];
-  const captured = { route: '', clipboard: '' };
+  const captured = { route: '', clipboard: '', backs: 0, toasts: [] };
   globalThis.wx = {
-    getStorageSync: () => '',
+    getStorageSync: () => token,
+    setStorageSync: (key, value) => { token = value; },
+    removeStorageSync: () => { token = ''; },
     request: options => { calls.push(options); },
     navigateTo: ({ url }) => { captured.route = url; },
+    navigateBack: () => { captured.backs++; },
+    showToast: ({ title }) => { captured.toasts.push(title); },
     setNavigationBarTitle() {},
     setClipboardData: ({ data }) => { captured.clipboard = data; }
   };
-  globalThis.getApp = () => ({ globalData: { user: null }, setUser() {} });
-  return { calls, captured };
+  const app = {
+    globalData: { user: null },
+    setUser(user) { this.globalData.user = user; },
+    logout() { this.setUser(null); wx.removeStorageSync('wnsm_token'); }
+  };
+  globalThis.getApp = () => app;
+  return { calls, captured, app };
 }
 
 function send(call, data) {
@@ -62,6 +86,9 @@ test('切换搜索条件后，较早返回的请求不会覆盖新报价', async
   });
   await more;
   assert.deepEqual(page.data.groups.map(group => group.items.map(product => product.id)), [['mate', 'mate-white'], ['mate-pro']]);
+  const append = page.writes.at(-1);
+  assert.equal(Object.hasOwn(append, 'groups'), false);
+  assert.equal(append['groups[0].items[1]'].id, 'mate-white');
   const quote = page.data.groups[0].items[1];
   page.openQuote({ currentTarget: { dataset: { id: quote.id, key: quote.modelKey } } });
   assert.match(captured.route, /^\/pages\/quote\/quote\?/);
@@ -124,4 +151,77 @@ test('预览对官网旧报价排序，登录后会重新获取报价', async ()
   assert.equal(Object.entries(calls[1].header).find(([name]) => name.toLowerCase() === 'x-wnsm-token')?.[1], 'test-session');
   send(calls[1], { products: [{ ...black, displayPrice: 900 }], auth: { approved: true } });
   assert.equal((await memberModel).products[0].displayPrice, 900);
+});
+
+test('较晚返回的旧报价不能覆盖刚刷新的预览缓存', async () => {
+  const { calls } = harness();
+  const { requestQuotes } = require('../miniprogram/utils/quote-catalog.js');
+  const params = { view: 'catalog', page: 1 };
+  const earlier = requestQuotes(params, { refresh: true });
+  const later = requestQuotes(params, { refresh: true });
+  send(calls[1], { products: [item('today', '今日报价')], updateTime: '2026-11-10 07:05' });
+  await later;
+  send(calls[0], { products: [item('morning', '早间报价')], updateTime: '2026-11-10 00:57' });
+  await earlier;
+  const cached = await requestQuotes(params);
+  assert.equal(calls.length, 2);
+  assert.equal(cached.products[0].id, 'today');
+});
+
+test('翻页时登录失效会清理旧批发价并重新取公开报价', async () => {
+  const { calls } = harness('expired-during-pagination');
+  const page = mount('index');
+  const updateTime = '2026-11-10 07:05';
+  const phone = item('mate', '华为Mate80 12GB+256GB雪域白原封');
+  page.onLoad();
+  const first = page.onShow();
+  send(calls[0], {
+    updateTime, auth: { id: 1, role: 'B', status: 'approved' },
+    pagination: { page: 1, total: 2, hasMore: true },
+    products: [{ ...phone, displayPrice: 900, priceLabel: 'wholesale' }]
+  });
+  await first;
+  assert.equal(page.data.groups[0].items[0].displayPrice, 900);
+
+  const more = page.loadMore();
+  send(calls[1], { updateTime, pagination: { page: 2, total: 2, hasMore: false }, products: [] });
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(wx.getStorageSync('wnsm_token'), '');
+  assert.equal(page.data.user, null);
+  assert.deepEqual(page.data.groups, []);
+  assert.equal(new URL(calls[2].url).searchParams.get('page'), '1');
+  assert.equal(calls[2].header['X-Wnsm-Token'], undefined);
+  send(calls[2], { updateTime, pagination: { page: 1, total: 1, hasMore: false }, products: [phone] });
+  await more;
+  assert.equal(page.data.groups[0].items[0].displayPrice, 1000);
+});
+
+test('未绑定微信停留在登录页，拿到手机号登录会话后才返回', async () => {
+  const { calls, captured, app } = harness();
+  wx.login = ({ success }) => success({ code: 'test-code' });
+  const page = mount('login');
+  const wechatLogin = page.onWechatLogin();
+  await page.onWechatLogin();
+  assert.equal(calls.length, 1);
+  send(calls[0], { needBind: true });
+  await wechatLogin;
+  assert.equal(captured.backs, 0);
+  assert.deepEqual(captured.toasts, []);
+  assert.equal(app.globalData.user, null);
+  assert.match(page.data.notice, /未绑定.*手机号/);
+
+  page.setData({ phone: '19900000000', password: 'test-password' });
+  const unexpected = page.onSubmit();
+  calls[1].success({ statusCode: 200, data: '<html>unavailable</html>' });
+  await unexpected;
+  assert.equal(captured.backs, 0);
+  assert.match(page.data.notice, /失败/);
+
+  const passwordLogin = page.onSubmit();
+  const user = { id: 2, role: 'C', status: 'approved' };
+  send(calls[2], { user, token: 'new-session' });
+  await passwordLogin;
+  assert.equal(wx.getStorageSync('wnsm_token'), 'new-session');
+  assert.deepEqual(app.globalData.user, user);
+  assert.equal(captured.backs, 1);
 });

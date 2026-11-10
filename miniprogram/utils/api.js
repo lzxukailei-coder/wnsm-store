@@ -37,16 +37,14 @@ function request(path, method = 'GET', body) {
       dataType: 'json',
       timeout: 30000,
       success(res) {
-        let data = res.data || {};
+        let data = res.data;
         if (typeof data === 'string') {
-          try { data = JSON.parse(data); } catch (err) { data = {}; }
+          try { data = JSON.parse(data); } catch { data = null; }
         }
-        if (res.statusCode >= 200 && res.statusCode < 300 && data.ok !== false) {
-          // 登录/注册接口回传 token（后端在响应里同时给 session token，供小程序保存）
-          if (data.token) setToken(data.token);
+        if (res.statusCode >= 200 && res.statusCode < 300 && data && data.ok === true) {
           resolve(data);
         } else {
-          reject(new Error(data.error || '请求失败，请稍后重试'));
+          reject(new Error((data && data.error) || '请求失败，请稍后重试'));
         }
       },
       fail(err) {

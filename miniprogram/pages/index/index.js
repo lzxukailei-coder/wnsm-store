@@ -1,7 +1,30 @@
-const { request, clearToken, getToken } = require('../../utils/api');
+const { request, getToken } = require('../../utils/api');
 const { TYPE_TABS, BRAND_ORDER, BRAND_NAMES, groupByModel } = require('../../utils/catalog');
 const { PAGE_SIZE, requestQuotes, decorateQuote, beijingQuoteTime, quotePath } = require('../../utils/quote-catalog');
 const app = getApp();
+
+function groupUpdates(existing, incoming) {
+  if (existing.length === 0) return { groups: incoming };
+  const lastIndex = existing.length - 1;
+  const last = existing[lastIndex];
+  const updates = {};
+  let nextIndex = existing.length;
+  for (const group of incoming) {
+    if (group.key === last.key) {
+      group.items.forEach((item, index) => {
+        updates[`groups[${lastIndex}].items[${last.items.length + index}]`] = item;
+      });
+    } else {
+      updates[`groups[${nextIndex}]`] = group;
+      nextIndex++;
+    }
+  }
+  return updates;
+}
+
+function samePriceViewer(previous, current) {
+  return previous?.id === current?.id && previous?.role === current?.role && previous?.status === current?.status;
+}
 
 Page({
   data: {
@@ -27,10 +50,9 @@ Page({
 
   onShow() {
     const token = getToken();
-    this.setData({ user: app.globalData.user });
     if (this.activeToken !== token) {
       this.activeToken = token;
-      this.startQuery({}, { refresh: true });
+      return this.startQuery({ user: app.globalData.user }, { refresh: true });
     }
   },
 
@@ -50,9 +72,8 @@ Page({
   startQuery(filters = {}, { delay = 0, refresh = false } = {}) {
     clearTimeout(this.searchTimer);
     const version = ++this.queryVersion;
-    this.rows = [];
     this.setData(Object.assign({
-      groups: [], page: 0, count: 0, hasMore: false, loading: true, loadingMore: false, error: ''
+      groups: [], quoteTime: '', page: 0, count: 0, hasMore: false, loading: true, loadingMore: false, error: ''
     }, filters));
     if (delay) {
       this.searchTimer = setTimeout(() => this.readPage(1, version, refresh), delay);
@@ -63,21 +84,26 @@ Page({
 
   async readPage(page, version, refresh) {
     const { keyword, currentBrand, currentType } = this.data;
+    const token = getToken();
     try {
       const result = await requestQuotes({
         view: 'catalog', page, pageSize: PAGE_SIZE, q: keyword,
         brand: currentBrand, type: currentType
       }, { refresh });
-      if (version !== this.queryVersion) return;
-      if (page > 1 && this.rawQuoteTime !== result.updateTime) {
-        return this.startQuery({}, { refresh: true });
+      if (version !== this.queryVersion || token !== getToken()) return;
+      const user = result.auth || null;
+      if (token && result.auth === null) {
+        app.logout();
+        this.activeToken = '';
+      }
+      app.setUser(user);
+      if (page > 1 && (this.rawQuoteTime !== result.updateTime || !samePriceViewer(this.data.user, user))) {
+        return this.startQuery({ user }, { refresh: true });
       }
       this.rawQuoteTime = result.updateTime;
-      this.rows = this.rows.concat(result.products.map(decorateQuote));
-      const user = result.auth || null;
-      app.setUser(user);
+      const incoming = groupByModel(result.products.map(decorateQuote));
       this.setData({
-        groups: groupByModel(this.rows),
+        ...groupUpdates(this.data.groups, incoming),
         quoteTime: beijingQuoteTime(result.updateTime),
         user,
         page: result.pagination.page,
@@ -138,14 +164,14 @@ Page({
     wx.showModal({
       title: '退出登录',
       content: '确定退出当前账号吗？',
-      success: async (result) => {
-        if (result.confirm) {
-          await request('/api/logout', 'POST').catch(() => {});
-          clearToken();
-          app.logout();
-          this.activeToken = '';
-          this.startQuery({ user: null }, { refresh: true });
-        }
+      success: (result) => {
+        if (!result.confirm) return;
+        // 请求先取到当前会话，再立即清理本机页面与登录状态。
+        const revoke = request('/api/logout', 'POST');
+        app.logout();
+        this.activeToken = '';
+        this.startQuery({ user: null }, { refresh: true });
+        revoke.catch(() => wx.showToast({ title: '本机已退出，服务端退出未确认', icon: 'none' }));
       }
     });
   },

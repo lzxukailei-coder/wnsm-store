@@ -5,6 +5,7 @@ const UNKNOWN_SIZE = Number.MAX_SAFE_INTEGER;
 const collator = typeof Intl !== 'undefined' && typeof Intl.Collator === 'function'
   ? new Intl.Collator('zh-CN', { numeric: true }) : null;
 const sortedSnapshots = new WeakMap();
+const parsedModels = new WeakMap();
 
 function normalize(value) {
   return String(value || '').normalize('NFKC').toLowerCase().replace(/\s+/g, '');
@@ -38,16 +39,20 @@ function quoteColor(product, suffix) {
 
 // 用名称中的完整规格补足旧目录的空字段或误识别的容量。
 function quoteModel(product) {
+  const cached = parsedModels.get(product);
+  if (cached) return cached;
   const name = productName(product).normalize('NFKC');
   const explicit = CAPACITY.exec(name);
   const bare = BARE_CAPACITY.exec(name);
   const match = bare && (!explicit || bare.index < explicit.index) ? bare : explicit;
-  return {
+  const model = {
     ...modelIdentity(product, name, match),
     storage: storageLabel(match ? match[3] : product.storage),
     ram: match && match[2] ? Number(match[2]) : 0,
     color: quoteColor(product, match ? name.slice(match.index + match[0].length) : '')
   };
+  parsedModels.set(product, model);
+  return model;
 }
 
 function compareKey(left, right) {
@@ -115,7 +120,9 @@ function matchesQuote(product, { terms, brand, type }, productType = product.pty
   if (type !== 'all' && productType !== type) return false;
   if (terms.length === 0) return true;
   const tags = Array.isArray(product.tags) ? product.tags.join(' ') : '';
-  const fields = [product.name, product.model, product.category, product.storage, product.color, product.channel, tags];
+  const model = quoteModel(product);
+  const memory = model.ram ? model.ram + 'GB+' + model.storage : model.storage;
+  const fields = [product.name, product.model, product.category, product.storage, memory, model.color, product.channel, tags];
   const searchable = fields.map(normalize).join(' ');
   return terms.every(term => searchable.includes(term));
 }

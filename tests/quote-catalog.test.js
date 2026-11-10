@@ -79,6 +79,13 @@ test('型号按数字顺序，规格跨页按容量、运行内存和颜色排�
   assert.deepEqual(detail.products.map(product => product.id), [...first.products, ...second.products].map(product => product.id));
 });
 
+test('带单位搜索也能查到简称和省略单位的报价', async () => {
+  const { body: gb } = await query({ view: 'catalog', q: 'Mate90 Pro 512GB' });
+  assert.deepEqual(gb.products.map(product => product.id), ['mate90-512-white', 'mate90-512-black', 'mate90-512-purple']);
+  const { body: tb } = await query({ view: 'catalog', q: 'Mate90 Pro 1TB' });
+  assert.deepEqual(tb.products.map(product => product.id), ['mate90-1tb']);
+});
+
 test('分享机型只聚合相同型号，新旧查询均按会话保护价格', async () => {
   const { body: list } = await query({ view: 'catalog', q: 'Mate80' });
   const [base, , , pro, max] = list.products;
