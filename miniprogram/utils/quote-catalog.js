@@ -1,5 +1,5 @@
 const { request, getToken } = require('./api');
-const { quoteModel, quoteChannel, searchTerms, matchesQuote } = require('./quote-model');
+const { quoteModel, quoteChannel, searchTerms, matchesQuote, sortQuotes, modelQuotes } = require('./quote-model');
 const { PRICE_LABEL } = require('./catalog');
 
 const PAGE_SIZE = 20;
@@ -15,7 +15,7 @@ function queryString(parameters) {
 
 function projectLegacy(data, parameters) {
   if (parameters.view === 'model') {
-    const products = data.products.filter(product => quoteModel(product).key === parameters.key);
+    const products = modelQuotes(data.products, parameters.key);
     if (!products.length) throw new Error('这个机型暂时没有报价');
     return {
       products,
@@ -27,7 +27,7 @@ function projectLegacy(data, parameters) {
   const page = parameters.page || 1;
   const pageSize = parameters.pageSize || PAGE_SIZE;
   const filters = { terms: searchTerms(parameters.q), brand: parameters.brand || 'all', type: parameters.type || 'all' };
-  const matching = data.products.filter(product => matchesQuote(product, filters));
+  const matching = sortQuotes(data.products).filter(product => matchesQuote(product, filters));
   const offset = (page - 1) * pageSize;
   return {
     products: matching.slice(offset, offset + pageSize),
@@ -59,7 +59,8 @@ function decorateQuote(product) {
   return Object.assign({}, product, {
     modelKey: product.modelKey || model.key,
     modelName: product.modelName || model.title,
-    storageLabel: model.storage,
+    storageLabel: model.ram ? model.ram + 'GB+' + model.storage : model.storage,
+    color: model.color,
     channelLabel: quoteChannel(product),
     labelText: label.text,
     labelCls: label.cls,

@@ -27,18 +27,17 @@ const PRICE_LABEL = {
   public: { text: '渠道价', cls: 'tag-public' }
 };
 
-function groupByBrand(products) {
-  const map = {};
-  products.forEach(p => {
-    const key = p.brand || 'other';
-    if (!map[key]) map[key] = [];
-    map[key].push(p);
-  });
-  return BRAND_ORDER.filter(k => map[k] && map[k].length).map(k => ({
-    key: k,
-    name: BRAND_NAMES[k] || k,
-    items: map[k]
-  }));
+function groupByModel(products) {
+  const groups = [];
+  for (const product of products) {
+    const group = groups[groups.length - 1];
+    if (group && group.key === product.modelKey) {
+      group.items.push(product);
+    } else {
+      groups.push({ key: product.modelKey, name: product.modelName, items: [product] });
+    }
+  }
+  return groups;
 }
 
-module.exports = { BRAND_ORDER, BRAND_NAMES, TYPE_TABS, PRICE_LABEL, groupByBrand };
+module.exports = { BRAND_ORDER, BRAND_NAMES, TYPE_TABS, PRICE_LABEL, groupByModel };

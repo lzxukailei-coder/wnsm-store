@@ -15,10 +15,11 @@
 
   <!-- 搜索 -->
   <view class="search-bar">
-    <input class="search-input" placeholder="搜索型号、容量或渠道，如 Mate80 256 原封" maxlength="80" value="{{keyword}}" bindinput="onSearch" bindconfirm="onSearchConfirm" confirm-type="search" />
+    <input class="search-input" placeholder="搜型号、内存、颜色或渠道" maxlength="80" value="{{keyword}}" bindinput="onSearch" bindconfirm="onSearchConfirm" confirm-type="search" />
     <view class="update-line">
       <text wx:if="{{quoteTime}}">报价更新 {{quoteTime}}（北京时间）</text>
       <text wx:if="{{page}}"> · {{count}} 条报价</text>
+      <view wx:if="{{count}}">按型号、内存、颜色排序</view>
     </view>
   </view>
 
@@ -38,9 +39,9 @@
 
   <view wx:if="{{loading}}" class="empty">正在加载报价…</view>
 
-  <!-- 分组商品列表 -->
+  <!-- 按机型分组的商品列表 -->
   <block wx:for="{{groups}}" wx:for-item="group" wx:key="key">
-    <view class="brand-title">
+    <view wx:if="{{group.name !== group.items[0].name}}" class="model-heading">
       <text>{{group.name}}</text>
     </view>
 

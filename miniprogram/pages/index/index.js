@@ -1,5 +1,5 @@
 const { request, clearToken, getToken } = require('../../utils/api');
-const { TYPE_TABS, BRAND_ORDER, BRAND_NAMES, groupByBrand } = require('../../utils/catalog');
+const { TYPE_TABS, BRAND_ORDER, BRAND_NAMES, groupByModel } = require('../../utils/catalog');
 const { PAGE_SIZE, requestQuotes, decorateQuote, beijingQuoteTime, quotePath } = require('../../utils/quote-catalog');
 const app = getApp();
 
@@ -77,7 +77,7 @@ Page({
       const user = result.auth || null;
       app.setUser(user);
       this.setData({
-        groups: groupByBrand(this.rows),
+        groups: groupByModel(this.rows),
         quoteTime: beijingQuoteTime(result.updateTime),
         user,
         page: result.pagination.page,

@@ -3,7 +3,7 @@ import { getUser, publicUser } from '../_lib/auth.js';
 import { getType, loadCatalog, loadPricing, toPublicProduct } from '../_lib/catalog.js';
 import quoteModelHelpers from '../../miniprogram/utils/quote-model.js';
 
-const { quoteModel, searchTerms, matchesQuote } = quoteModelHelpers;
+const { quoteModel, searchTerms, matchesQuote, sortQuotes, modelQuotes } = quoteModelHelpers;
 
 function positiveInt(value, fallback, max) {
   const number = Number(value);
@@ -29,7 +29,7 @@ export async function onRequestGet({ request, env }) {
   if (view === 'model') {
     const key = query.get('key');
     if (!key || key.length > 250) return json({ ok: false, error: '机型链接不完整' }, 400);
-    const variants = raw.filter(product => quoteModel(product).key === key);
+    const variants = modelQuotes(raw, key);
     if (!variants.length) return json({ ok: false, error: '这个机型暂时没有报价' }, 404);
     const products = variants.map(toQuote);
     return json({ ...common, count: products.length, modelName: products[0].modelName, products });
@@ -43,7 +43,7 @@ export async function onRequestGet({ request, env }) {
       brand: (query.get('brand') || 'all').trim().toLowerCase(),
       type: (query.get('type') || 'all').trim().toLowerCase()
     };
-    const matching = raw.filter(product => matchesQuote(product, filters, filters.type === 'all' ? '' : getType(product)));
+    const matching = sortQuotes(raw).filter(product => matchesQuote(product, filters, filters.type === 'all' ? '' : getType(product)));
     const offset = (page - 1) * pageSize;
     const products = matching.slice(offset, offset + pageSize).map(toQuote);
     return json({

@@ -41,8 +41,8 @@ test('切换搜索条件后，较早返回的请求不会覆盖新报价', async
   assert.equal(new URL(calls[1].url).searchParams.get('q'), 'Mate80 256');
   send(calls[1], {
     updateTime: '2026-11-09 07:05',
-    pagination: { page: 1, total: 2, hasMore: true },
-    products: [item('mate', '华为Mate80 12GB+256GB曜石黑原封')]
+    pagination: { page: 1, total: 3, hasMore: true },
+    products: [item('mate', '华为Mate80 12GB+256GB冰川蓝原封')]
   });
   await search;
   send(calls[0], {
@@ -57,11 +57,11 @@ test('切换搜索条件后，较早返回的请求不会覆盖新报价', async
   assert.equal(new URL(calls[2].url).searchParams.get('page'), '2');
   send(calls[2], {
     updateTime: '2026-11-09 07:05',
-    pagination: { page: 2, total: 2, hasMore: false },
-    products: [item('mate-white', '华为Mate80 12GB+256GB雪域白原封')]
+    pagination: { page: 2, total: 3, hasMore: false },
+    products: [item('mate-white', '华为Mate80 12GB+256GB雪域白原封'), item('mate-pro', '华为Mate80Pro 16GB+512GB曜石黑原封')]
   });
   await more;
-  assert.equal(page.data.groups[0].items.length, 2);
+  assert.deepEqual(page.data.groups.map(group => group.items.map(product => product.id)), [['mate', 'mate-white'], ['mate-pro']]);
   const quote = page.data.groups[0].items[1];
   page.openQuote({ currentTarget: { dataset: { id: quote.id, key: quote.modelKey } } });
   assert.match(captured.route, /^\/pages\/quote\/quote\?/);
@@ -93,22 +93,30 @@ test('机型分享保留选中规格，询价复制商品信息而不夹带会�
   assert.equal(link.searchParams.get('id'), 'white');
 });
 
-test('预览能兼容官网旧接口，登录后会重新获取报价', async () => {
+test('预览对官网旧报价排序，登录后会重新获取报价', async () => {
   const { calls } = harness();
-  const { requestQuotes } = require('../miniprogram/utils/quote-catalog.js');
+  const { requestQuotes, decorateQuote } = require('../miniprogram/utils/quote-catalog.js');
   const black = item('black', '华为Mate80 12GB+256GB曜石黑原封');
   const white = item('white', '华为Mate80 12GB+256GB雪域白原封');
   const pro = item('pro', '华为Mate80Pro 16GB+512GB曜石黑原封');
+  const pura = { ...item('pura', 'Pura X 12GB+512GB5G原封型格紫'), storage: '12GB' };
   const firstPage = requestQuotes({ view: 'catalog', page: 1, pageSize: 1, q: 'Mate80' });
-  send(calls[0], { products: [black, white, pro], updateTime: '2026-11-09 07:05' });
+  send(calls[0], { products: [pro, black, pura, white], updateTime: '2026-11-09 07:05' });
   const data = await firstPage;
   assert.deepEqual(data.pagination, { page: 1, total: 3, hasMore: true });
-  assert.deepEqual(data.products.map(product => product.id), ['black']);
+  assert.deepEqual(data.products.map(product => product.id), ['white']);
+  const nextPage = await requestQuotes({ view: 'catalog', page: 2, pageSize: 1, q: 'Mate80' });
+  assert.deepEqual(nextPage.products.map(product => product.id), ['black']);
 
   const params = { view: 'model', key: 'huawei|华为mate80' };
   const publicModel = await requestQuotes(params);
   assert.equal(calls.length, 1);
-  assert.deepEqual(publicModel.products.map(product => product.id), ['black', 'white']);
+  assert.deepEqual(publicModel.products.map(product => product.id), ['white', 'black']);
+
+  const puraModel = await requestQuotes({ view: 'model', key: 'huawei|purax12gb+512gb5g原封型格紫' });
+  const variant = decorateQuote(puraModel.products[0]);
+  assert.equal(variant.storageLabel, '12GB+512GB');
+  assert.equal(variant.color, '型格紫');
 
   wx.getStorageSync = () => 'test-session';
   const memberModel = requestQuotes(params);

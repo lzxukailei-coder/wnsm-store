@@ -35,11 +35,10 @@
 }
 .filter-btn.active { background: #0071e3; color: #fff; }
 
-.brand-title {
+.model-heading {
   padding: 20rpx 32rpx 12rpx; font-size: 28rpx; font-weight: 600;
-  background: #f5f5f7; display: flex; justify-content: space-between;
+  background: #f5f5f7;
 }
-.brand-title .count { font-size: 24rpx; font-weight: 400; color: #86868b; }
 
 .card {
   background: #fff; margin: 16rpx 24rpx; border-radius: 28rpx; padding: 28rpx;
