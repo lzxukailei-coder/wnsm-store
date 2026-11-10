@@ -15,8 +15,11 @@
 
   <!-- 搜索 -->
   <view class="search-bar">
-    <input class="search-input" placeholder="搜索型号 / 名称 / 品牌" value="{{keyword}}" bindinput="onSearch" confirm-type="search" />
-    <view class="update-line">报价更新：{{updateTime || '加载中…'}} · 共 {{filteredCount}} 款 · {{groups.length}} 类</view>
+    <input class="search-input" placeholder="搜索型号、容量或渠道，如 Mate80 256 原封" maxlength="80" value="{{keyword}}" bindinput="onSearch" bindconfirm="onSearchConfirm" confirm-type="search" />
+    <view class="update-line">
+      <text wx:if="{{quoteTime}}">报价更新 {{quoteTime}}（北京时间）</text>
+      <text wx:if="{{page}}"> · {{count}} 条报价</text>
+    </view>
   </view>
 
   <!-- 品类横滑 -->
@@ -33,27 +36,22 @@
           data-brand="{{item.key}}" bindtap="onBrandTap">{{item.name}}</view>
   </scroll-view>
 
-  <!-- 加载失败 -->
-  <view wx:if="{{loadingError}}" class="empty">
-    <text>{{loadingError}}</text>
-    <button class="retry" bindtap="loadProducts">重新加载</button>
-  </view>
+  <view wx:if="{{loading}}" class="empty">正在加载报价…</view>
 
   <!-- 分组商品列表 -->
   <block wx:for="{{groups}}" wx:for-item="group" wx:key="key">
     <view class="brand-title">
       <text>{{group.name}}</text>
-      <text class="count">{{group.totalItems || group.items.length}} 款</text>
     </view>
 
     <view wx:for="{{group.items}}" wx:for-item="p" wx:key="id" class="card">
-      <view class="name">{{p.name}} {{p.storage}} {{p.color}}</view>
+      <view class="name">{{p.name}}</view>
       <view class="meta">
         <view class="price-box">
           <text class="price {{p.outStock ? 'muted' : ''}}">{{p.priceText}}</text>
           <text class="price-tag {{p.labelCls}}">{{p.labelText}}</text>
         </view>
-        <button class="buy-btn" bindtap="onContact" disabled="{{p.outStock}}">咨询</button>
+        <button class="buy-btn" data-key="{{p.modelKey}}" data-id="{{p.id}}" bindtap="openQuote">看规格</button>
       </view>
       <view class="tags">
         <text wx:for="{{p.tags}}" wx:for-item="t" wx:key="*this" class="tag">{{t}}</text>
@@ -61,8 +59,13 @@
     </view>
   </block>
 
-  <view wx:if="{{loaded && groups.length === 0}}" class="empty">没有匹配的机型，换个关键词试试</view>
-  <view wx:if="{{loaded && filteredCount > visibleCount}}" class="empty">上滑加载更多机型</view>
+  <view wx:if="{{error}}" class="empty">
+    <text>{{error}}</text>
+    <button class="retry" bindtap="retry">重新加载</button>
+  </view>
+  <view wx:elif="{{!loading && page && groups.length === 0}}" class="empty">没有匹配的机型，换个关键词试试</view>
+  <view wx:if="{{loadingMore}}" class="load-more">正在加载更多报价…</view>
+  <button wx:elif="{{hasMore && !error}}" class="load-more load-more-button" bindtap="loadMore">加载更多报价</button>
 
   <view class="footer-space"></view>
 </view>

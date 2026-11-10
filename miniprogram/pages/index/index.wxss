@@ -67,5 +67,8 @@
 .tags .tag { font-size: 20rpx; padding: 4rpx 14rpx; border-radius: 8rpx; background: #f0f0f3; color: #555; }
 
 .empty { text-align: center; padding: 120rpx 40rpx; color: #86868b; font-size: 28rpx; }
+.load-more { margin: 20rpx 24rpx; padding: 18rpx; color: #516681; font-size: 26rpx; text-align: center; }
+.load-more-button { line-height: 1.5; color: #005ebc; background: #eaf3ff; }
+.load-more-button::after { border: 0; }
 .retry { margin-top: 32rpx; background: #0071e3; color: #fff; border-radius: 20rpx; font-size: 26rpx; }
 .footer-space { height: 60rpx; }

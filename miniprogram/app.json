@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/login/login",
+    "pages/quote/quote",
     "pages/about/about"
   ],
   "window": {
@@ -19,11 +20,11 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "报价"
+        "text": "查报价"
       },
       {
         "pagePath": "pages/about/about",
-        "text": "关于我们"
+        "text": "联系"
       }
     ]
   },
