@@ -1,4 +1,4 @@
-.wrap { min-height: 100vh; padding: 40rpx 32rpx; background: #f5f5f7; }
+.wrap { min-height: 100vh; padding: 40rpx 32rpx; }
 .modal { background: #fff; border-radius: 32rpx; padding: 48rpx 36rpx; }
 .tabs { display: flex; background: #f5f5f7; border-radius: 20rpx; padding: 6rpx; margin-bottom: 36rpx; }
 .tab { flex: 1; text-align: center; padding: 18rpx; font-size: 30rpx; border-radius: 16rpx; color: #666; }
