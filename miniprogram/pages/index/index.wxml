@@ -1,7 +1,13 @@
 <view class="page">
   <!-- 顶部用户区 -->
   <view class="header">
-    <view class="logo">蜗牛数码 <text class="hl">渠道报价</text></view>
+    <view class="brand-lockup">
+      <image class="brand-icon" src="/assets/wnsm-logo.png" mode="aspectFit"></image>
+      <view class="brand-lines">
+        <text class="brand-name">蜗牛数码</text>
+        <text class="brand-caption">渠道报价</text>
+      </view>
+    </view>
     <view class="user-area">
       <block wx:if="{{user}}">
         <text class="user-info">{{user.role === 'B' ? (user.status === 'approved' ? '同行' : '审核中') : '客户'}}</text>
