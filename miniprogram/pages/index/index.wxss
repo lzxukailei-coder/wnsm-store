@@ -37,6 +37,7 @@
 
 .model-heading {
   padding: 20rpx 32rpx 12rpx; font-size: 28rpx; font-weight: 600;
+  background-color: rgba(116, 181, 214, 0.16);
 }
 
 .card {
