@@ -1,4 +1,4 @@
-.wrap { min-height: 100vh; padding: 40rpx 32rpx; background: #f5f5f7; }
+.wrap { min-height: 100vh; padding: 40rpx 32rpx; }
 .modal { background: #fff; border-radius: 32rpx; padding: 48rpx 36rpx; }
 .tabs { display: flex; background: #f5f5f7; border-radius: 20rpx; padding: 6rpx; margin-bottom: 36rpx; }
 .tab { flex: 1; text-align: center; padding: 18rpx; font-size: 30rpx; border-radius: 16rpx; color: #666; }
@@ -13,4 +13,5 @@
 .divider { display: flex; align-items: center; gap: 20rpx; color: #bbb; font-size: 24rpx; margin: 32rpx 0; }
 .divider::before, .divider::after { content: ''; flex: 1; height: 1rpx; background: #eee; }
 .wechat { width: 100%; background: #07c160; color: #fff; border: none; padding: 24rpx; border-radius: 20rpx; font-size: 28rpx; }
+.notice { margin-top: 20rpx; color: #854d0e; font-size: 26rpx; line-height: 1.6; }
 .tip { font-size: 22rpx; color: #86868b; text-align: center; margin-top: 28rpx; line-height: 1.7; }

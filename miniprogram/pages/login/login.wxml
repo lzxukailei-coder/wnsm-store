@@ -39,10 +39,11 @@
       </block>
     </block>
 
-    <button class="submit" loading="{{loading}}" bindtap="onSubmit">{{mode === 'login' ? '登录' : '注册'}}</button>
+    <button class="submit" loading="{{loading === 'password'}}" disabled="{{loading !== ''}}" bindtap="onSubmit">{{mode === 'login' ? '登录' : '注册'}}</button>
 
     <view class="divider"><text>或</text></view>
-    <button class="wechat" open-type="getUserInfo" bindtap="onWechatLogin">微信一键登录</button>
+    <button class="wechat" loading="{{loading === 'wechat'}}" disabled="{{loading !== ''}}" bindtap="onWechatLogin">微信一键登录</button>
+    <view wx:if="{{notice}}" class="notice">{{notice}}</view>
 
     <view class="tip" bindtap="openAbout">登录即代表同意《服务规则》与《隐私政策》（点击查看「关于我们」页）；同行提交后由管理员审核，通过后可见批发价。</view>
   </view>

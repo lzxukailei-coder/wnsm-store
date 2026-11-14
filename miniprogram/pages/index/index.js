@@ -1,163 +1,182 @@
-// 报价首页：列表 / 搜索 / 品牌筛选 / 品类筛选 / 登录态入口 / 联系客服
-const { request, clearToken } = require('../../utils/api');
-const { TYPE_TABS, PRICE_LABEL, BRAND_ORDER, BRAND_NAMES, groupByBrand } = require('../../utils/catalog');
+const { request, getToken } = require('../../utils/api');
+const { TYPE_TABS, BRAND_ORDER, BRAND_NAMES, groupByModel } = require('../../utils/catalog');
+const { PAGE_SIZE, requestQuotes, decorateQuote, beijingQuoteTime, quotePath } = require('../../utils/quote-catalog');
 const app = getApp();
 
-const PAGE_SIZE = 20;
+function groupUpdates(existing, incoming) {
+  if (existing.length === 0) return { groups: incoming };
+  const lastIndex = existing.length - 1;
+  const last = existing[lastIndex];
+  const updates = {};
+  let nextIndex = existing.length;
+  for (const group of incoming) {
+    if (group.key === last.key) {
+      group.items.forEach((item, index) => {
+        updates[`groups[${lastIndex}].items[${last.items.length + index}]`] = item;
+      });
+    } else {
+      updates[`groups[${nextIndex}]`] = group;
+      nextIndex++;
+    }
+  }
+  return updates;
+}
+
+function samePriceViewer(previous, current) {
+  return previous?.id === current?.id && previous?.role === current?.role && previous?.status === current?.status;
+}
 
 Page({
   data: {
     groups: [],
-    updateTime: '',
+    quoteTime: '',
     user: null,
     keyword: '',
     currentBrand: 'all',
     currentType: 'all',
-    brandList: [{ key: 'all', name: '全部' }],
+    brandList: [{ key: 'all', name: '全部' }].concat(BRAND_ORDER.map(key => ({ key, name: BRAND_NAMES[key] }))),
     typeTabs: TYPE_TABS,
-    loaded: false,
-    loadingError: '',
-    visibleCount: PAGE_SIZE,
-    filteredCount: 0
+    page: 0,
+    count: 0,
+    hasMore: false,
+    loading: true,
+    loadingMore: false,
+    error: ''
+  },
+
+  onLoad() {
+    this.queryVersion = 0;
   },
 
   onShow() {
-    this.setData({ user: app.globalData.user });
-    this.loadProducts();
+    const token = getToken();
+    if (this.activeToken !== token) {
+      this.activeToken = token;
+      return this.startQuery({ user: app.globalData.user }, { refresh: true });
+    }
   },
 
-  async loadProducts() {
-    wx.showLoading({ title: '加载报价…' });
+  onUnload() {
+    clearTimeout(this.searchTimer);
+    this.queryVersion++;
+  },
+
+  async onPullDownRefresh() {
     try {
-      const data = await request('/api/products');
-      app.globalData.products = data.products || [];
-      app.globalData.updateTime = data.updateTime || '';
-      if (data.auth) {
-        app.setUser(data.auth);
-        this.setData({ user: data.auth });
-      }
-      this.setData({ visibleCount: PAGE_SIZE });
-      this.applyFilter();
-      this.setData({
-        updateTime: data.updateTime || '',
-        loaded: true,
-        loadingError: ''
-      });
-    } catch (e) {
-      console.error('loadProducts failed', e);
-      this.setData({ loaded: true, loadingError: e.message || '网络异常，请稍后重试' });
+      await this.startQuery({}, { refresh: true });
     } finally {
-      wx.hideLoading();
+      wx.stopPullDownRefresh();
     }
   },
 
-  applyFilter() {
-    let list = app.globalData.products || [];
-    const { keyword, currentBrand, currentType, visibleCount } = this.data;
-
-    if (currentBrand !== 'all') list = list.filter(p => p.brand === currentBrand);
-    if (currentType !== 'all') list = list.filter(p => p.ptype === currentType);
-    if (keyword) {
-      const k = keyword.trim().toLowerCase();
-      list = list.filter(p =>
-        (p.name || '').toLowerCase().includes(k) ||
-        (p.model || '').toLowerCase().includes(k) ||
-        (p.category || '').toLowerCase().includes(k)
-      );
+  startQuery(filters = {}, { delay = 0, refresh = false } = {}) {
+    clearTimeout(this.searchTimer);
+    const version = ++this.queryVersion;
+    this.setData(Object.assign({
+      groups: [], quoteTime: '', page: 0, count: 0, hasMore: false, loading: true, loadingMore: false, error: ''
+    }, filters));
+    if (delay) {
+      this.searchTimer = setTimeout(() => this.readPage(1, version, refresh), delay);
+      return;
     }
-    const brandKeys = {};
-    list.forEach(p => { brandKeys[p.brand || 'other'] = true; });
-    const brands = [{ key: 'all', name: '全部' }].concat(
-      BRAND_ORDER.filter(k => brandKeys[k]).map(k => ({ key: k, name: BRAND_NAMES[k] || k }))
-    );
-
-    const fullGroups = groupByBrand(list);
-    const visibleList = list.slice(0, visibleCount);
-    const groups = groupByBrand(visibleList).map(g => {
-      const fullGroup = fullGroups.find(x => x.key === g.key);
-      return {
-        key: g.key,
-        name: g.name,
-        totalItems: fullGroup ? fullGroup.items.length : g.items.length,
-        items: g.items.map(p => this.decorateProduct(p))
-      };
-    });
-
-    this.setData({ groups, brandList: brands, filteredCount: list.length });
+    return this.readPage(1, version, refresh);
   },
 
-  decorateProduct(p) {
-    const label = PRICE_LABEL[p.priceLabel] || PRICE_LABEL.public;
-    return Object.assign({}, p, {
-      labelText: label.text,
-      labelCls: label.cls,
-      priceText: p.outStock ? '缺货/待报价' : (p.displayPrice != null ? '¥ ' + p.displayPrice : '—')
-    });
+  async readPage(page, version, refresh) {
+    const { keyword, currentBrand, currentType } = this.data;
+    const token = getToken();
+    try {
+      const result = await requestQuotes({
+        view: 'catalog', page, pageSize: PAGE_SIZE, q: keyword,
+        brand: currentBrand, type: currentType
+      }, { refresh });
+      if (version !== this.queryVersion || token !== getToken()) return;
+      const user = result.auth || null;
+      if (token && result.auth === null) {
+        app.logout();
+        this.activeToken = '';
+      }
+      app.setUser(user);
+      if (page > 1 && (this.rawQuoteTime !== result.updateTime || !samePriceViewer(this.data.user, user))) {
+        return this.startQuery({ user }, { refresh: true });
+      }
+      this.rawQuoteTime = result.updateTime;
+      const incoming = groupByModel(result.products.map(decorateQuote));
+      this.setData({
+        ...groupUpdates(this.data.groups, incoming),
+        quoteTime: beijingQuoteTime(result.updateTime),
+        user,
+        page: result.pagination.page,
+        count: result.pagination.total,
+        hasMore: result.pagination.hasMore,
+        loading: false,
+        loadingMore: false
+      });
+    } catch (error) {
+      if (version === this.queryVersion) {
+        this.setData({ error: error.message || '暂时无法读取报价，请重试。', loading: false, loadingMore: false });
+      }
+    }
   },
 
   onReachBottom() {
-    const { visibleCount, filteredCount } = this.data;
-    if (visibleCount >= filteredCount) return;
-    this.setData({ visibleCount: visibleCount + PAGE_SIZE });
-    this.applyFilter();
+    if (!this.data.error) this.loadMore();
   },
 
-  onSearch(e) {
-    this.setData({ keyword: e.detail.value, visibleCount: PAGE_SIZE });
-    this.applyFilter();
+  loadMore() {
+    const { loading, loadingMore, hasMore, page } = this.data;
+    if (loading || loadingMore || !hasMore) return;
+    this.setData({ loadingMore: true, error: '' });
+    return this.readPage(page + 1, this.queryVersion, false);
   },
 
-  onBrandTap(e) {
-    this.setData({ currentBrand: e.currentTarget.dataset.brand, visibleCount: PAGE_SIZE });
-    this.applyFilter();
+  retry() {
+    if (this.data.page) return this.loadMore();
+    return this.startQuery({}, { refresh: true });
   },
 
-  onTypeTap(e) {
-    this.setData({ currentType: e.currentTarget.dataset.type, visibleCount: PAGE_SIZE });
-    this.applyFilter();
+  onSearch(event) {
+    this.startQuery({ keyword: event.detail.value }, { delay: 280 });
+  },
+
+  onSearchConfirm(event) {
+    this.startQuery({ keyword: event.detail.value });
+  },
+
+  onBrandTap(event) {
+    this.startQuery({ currentBrand: event.currentTarget.dataset.brand });
+  },
+
+  onTypeTap(event) {
+    this.startQuery({ currentType: event.currentTarget.dataset.type });
+  },
+
+  openQuote(event) {
+    const { key, id } = event.currentTarget.dataset;
+    if (key) wx.navigateTo({ url: quotePath(key, String(id)) });
   },
 
   goLogin() {
     wx.navigateTo({ url: '/pages/login/login' });
   },
 
-  async onLogout() {
+  onLogout() {
     wx.showModal({
       title: '退出登录',
       content: '确定退出当前账号吗？',
-      success: async (res) => {
-        if (res.confirm) {
-          await request('/api/logout', 'POST').catch(() => {});
-          clearToken();
-          app.logout();
-          this.setData({ user: null });
-          this.loadProducts();
-        }
-      }
-    });
-  },
-
-  onContact() {
-    // 联系客服：拨号或跳「关于我们」页查看个人微信 / 公众号二维码
-    wx.showModal({
-      title: '联系客服',
-      content: '致电 17361593016，或到「关于我们」页扫码添加微信、查看公众号',
-      confirmText: '拨打',
-      cancelText: '查看联系方式',
-      success: (r) => {
-        if (r.confirm) {
-          wx.makePhoneCall({ phoneNumber: '17361593016' });
-        } else if (r.cancel) {
-          wx.switchTab({ url: '/pages/about/about' });
-        }
+      success: (result) => {
+        if (!result.confirm) return;
+        // 请求先取到当前会话，再立即清理本机页面与登录状态。
+        const revoke = request('/api/logout', 'POST');
+        app.logout();
+        this.activeToken = '';
+        this.startQuery({ user: null }, { refresh: true });
+        revoke.catch(() => wx.showToast({ title: '本机已退出，服务端退出未确认', icon: 'none' }));
       }
     });
   },
 
   onShareAppMessage() {
-    return {
-      title: '蜗牛数码·手机渠道报价（每日更新）',
-      path: '/pages/index/index'
-    };
+    return { title: '蜗牛数码·手机渠道报价', path: '/pages/index/index' };
   }
 });
