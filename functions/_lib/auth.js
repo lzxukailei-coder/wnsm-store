@@ -62,12 +62,14 @@ export function publicUser(u) {
   };
 }
 
-// 根据请求 Cookie 解析当前登录用户（校验过期），未登录返回 null
-// 多端适配：官网走 httpOnly Cookie；微信小程序/其他端没有浏览器 Cookie，读取自定义头 X-Wnsm-Token
-export async function getUser(request, env) {
+// 官网使用 Cookie，小程序使用 X-Wnsm-Token，登录校验与退出采用同一顺序。
+export function getSessionToken(request) {
   const cookie = parseCookies(request.headers.get('Cookie') || '')[COOKIE_NAME];
-  const headerToken = request.headers.get('X-Wnsm-Token') || '';
-  const token = cookie || headerToken;
+  return cookie || request.headers.get('X-Wnsm-Token') || '';
+}
+
+export async function getUser(request, env) {
+  const token = getSessionToken(request);
   if (!token) return null;
   const row = await env.DB.prepare(
     `SELECT u.id, u.phone, u.role, u.status, u.company, u.contact, u.business_license, s.expires_at

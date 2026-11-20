@@ -1,0 +1,38 @@
+<view class="detail">
+  <view wx:if="{{loading}}" class="status-card">正在加载机型报价…</view>
+  <view wx:elif="{{error}}" class="status-card">
+    <text>{{error}}</text>
+    <button wx:if="{{variants.length == 0}}" class="secondary" bindtap="loadModel">重试</button>
+    <button class="secondary" bindtap="goQuotes">返回查报价</button>
+  </view>
+  <block wx:elif="{{selected}}">
+    <view class="summary">
+      <view class="eyebrow">蜗牛数码 · 渠道报价</view>
+      <view class="model-title">{{modelName}}</view>
+      <view class="quote-time" wx:if="{{quoteTime}}">报价更新 {{quoteTime}}（北京时间）</view>
+      <view class="price-line">
+        <text class="price">{{selected.priceText}}</text>
+        <text class="price-label">{{selected.labelText}}</text>
+      </view>
+      <view class="selected-spec">{{selected.name}}</view>
+      <view class="specs">
+        <text wx:if="{{selected.storageLabel}}">{{selected.storageLabel}}</text>
+        <text wx:if="{{selected.color}}">{{selected.color}}</text>
+        <text wx:if="{{selected.channelLabel}}">{{selected.channelLabel}}</text>
+      </view>
+    </view>
+    <view class="section-title">选择规格 <text>{{variants.length}} 个报价</text></view>
+    <button wx:for="{{variants}}" wx:key="id" class="variant {{selected.id == item.id ? 'selected' : ''}}" data-id="{{item.id}}" bindtap="chooseVariant">
+      <view class="variant-name">{{item.name}}</view>
+      <view class="variant-price">{{item.priceText}}</view>
+    </button>
+    <view class="contact-card">
+      <view class="note">库存、到店自提、保修和发票以咨询确认的信息为准。</view>
+      <button class="primary" bindtap="copyInquiry">复制这款询价信息</button>
+      <view class="secondary-row">
+        <button class="secondary" bindtap="goContact">查看联系方式</button>
+        <button class="secondary" open-type="share">分享这款机型</button>
+      </view>
+    </view>
+  </block>
+</view>

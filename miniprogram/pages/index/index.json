@@ -1,1 +1,1 @@
-{ "usingComponents": {}, "navigationBarTitleText": "渠道报价" }
+{ "usingComponents": {}, "navigationBarTitleText": "查报价", "enablePullDownRefresh": true }
