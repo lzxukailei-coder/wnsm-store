@@ -1,5 +1,6 @@
 page {
-  background: #f5f5f7;
+  background-color: #fff;
+  background-image: linear-gradient(rgba(128, 128, 128, 0.16), rgba(128, 128, 128, 0.16));
   color: #1d1d1f;
   font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 28rpx;

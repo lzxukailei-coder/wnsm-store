@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { parseCookies, getUser } from '../functions/_lib/auth.js';
 import { toPublicProduct } from '../functions/_lib/catalog.js';
 import { onRequestGet } from '../functions/api/products.js';
+import { onRequestPost as logout } from '../functions/api/logout.js';
 import { onRequest } from '../functions/data.json.js';
 
 test('损坏的无关 Cookie 不阻断有效会话', () => {
@@ -18,6 +19,29 @@ test('过期、缺失或非法到期时间不能授予登录身份', async () =>
   }
   const env = { DB: { prepare: () => ({ bind: () => ({ first: async () => ({ id: 1, role: 'B', status: 'approved', expires_at: new Date(Date.now() + 60000).toISOString() }) }) }) } };
   assert.equal((await getUser(request, env)).id, 1);
+});
+
+test('小程序和官网退出时都会注销当前会话', async () => {
+  const sessions = new Set(['mini-session', 'web-session']);
+  const expires_at = new Date(Date.now() + 60000).toISOString();
+  const env = { DB: { prepare: sql => ({
+    bind: token => ({
+      first: async () => sessions.has(token) ? { id: 1, expires_at } : null,
+      run: async () => {
+        assert.match(sql, /^DELETE FROM sessions/);
+        sessions.delete(token);
+      }
+    })
+  }) } };
+  const mini = new Request('https://example.test/api/logout', { method: 'POST', headers: { 'X-Wnsm-Token': 'mini-session' } });
+  const web = new Request('https://example.test/api/logout', { method: 'POST', headers: { Cookie: 'wnsm_session=web-session' } });
+  assert.ok(await getUser(mini, env));
+  assert.equal((await logout({ request: mini, env })).status, 200);
+  assert.equal(await getUser(mini, env), null);
+  assert.ok(await getUser(web, env));
+  const response = await logout({ request: web, env });
+  assert.match(response.headers.get('Set-Cookie'), /^wnsm_session=;/);
+  assert.equal(await getUser(web, env), null);
 });
 
 const product = { id: 'sku1', name: '测试手机', category: '苹果', price: 1000, memberPrice: 800, tags: [] };
